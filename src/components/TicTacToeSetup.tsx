@@ -5,6 +5,11 @@ import { FaArrowLeft, FaPlay, FaRobot, FaUsers, FaPalette, FaChartBar, FaLink } 
 import { socket } from '../socket';
 import { useEffect } from 'react';
 
+type JoinRoomResponse = {
+  success: boolean;
+  message?: string;
+};
+
 const GAME_MODES = [
   { key: 'AI', label: 'vs AI', icon: <FaRobot /> },
   { key: 'PVP', label: 'Player vs Player', icon: <FaUsers /> },
@@ -43,7 +48,7 @@ const TicTacToeSetup: React.FC = () => {
       setWaiting(false);
     };
 
-    const handleConnectError = (error: any) => {
+    const handleConnectError = (error: Error) => {
       console.log('[SETUP] Socket connection error:', error);
       setIsConnected(false);
       setError('Failed to connect to server. Please check if the server is running.');
@@ -87,7 +92,8 @@ const TicTacToeSetup: React.FC = () => {
   }, [navigate]);
 
   useEffect(() => {
-    (socket as any).onAny((event: string, ...args: any[]) => console.log('[SETUP SOCKET EVENT]', event, args));
+    const socketWithOnAny = socket as unknown as { onAny?: (cb: (event: string, ...args: unknown[]) => void) => void };
+    socketWithOnAny.onAny?.((event: string, ...args: unknown[]) => console.log('[SETUP SOCKET EVENT]', event, args));
     console.log('[SETUP SOCKET] socket.id:', socket.id);
   }, []);
 
@@ -155,7 +161,7 @@ const TicTacToeSetup: React.FC = () => {
     setError('');
     console.log('[SETUP] Joining room:', joinRoomId.trim().toUpperCase());
     
-    socket.emit('joinRoom', joinRoomId.trim().toUpperCase(), (res: any) => {
+    socket.emit('joinRoom', joinRoomId.trim().toUpperCase(), (res: JoinRoomResponse) => {
       console.log('[SETUP] Join room response:', res);
       if (res.success) {
         setRoomId(joinRoomId.trim().toUpperCase());

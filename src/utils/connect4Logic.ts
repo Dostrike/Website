@@ -51,7 +51,7 @@ export class Connect4Logic {
     ];
     for (const [dr, dc] of directions) {
       let count = 1;
-      let line: Connect4Position[] = [[lastRow, lastCol]];
+      const line: Connect4Position[] = [[lastRow, lastCol]];
       // Check one direction
       for (let step = 1; step < 4; step++) {
         const r = lastRow + dr * step;

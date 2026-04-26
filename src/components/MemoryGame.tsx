@@ -36,7 +36,6 @@ const MemoryGame: React.FC = () => {
   // Initialize cards
   useEffect(() => {
     resetGame();
-    // eslint-disable-next-line
   }, []);
 
   // Timer effect
@@ -54,7 +53,7 @@ const MemoryGame: React.FC = () => {
     if (flippedIndices.length === 2) {
       setIsBusy(true);
       const [i, j] = flippedIndices;
-      let newCards = [...cards];
+      const newCards = [...cards];
       if (newCards[i].symbol === newCards[j].symbol) {
         // Matched: pulse, then remove
         setTimeout(() => {
@@ -84,8 +83,7 @@ const MemoryGame: React.FC = () => {
       }
       setMoves((m) => m + 1); // Only increment after a pair attempt
     }
-    // eslint-disable-next-line
-  }, [flippedIndices]);
+  }, [flippedIndices, cards]);
 
   // End game modal
   useEffect(() => {

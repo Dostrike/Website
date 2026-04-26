@@ -10,7 +10,12 @@ class SoundEffects {
 
   private initAudioContext() {
     try {
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioCtx = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) {
+        this.enabled = false;
+        return;
+      }
+      this.audioContext = new AudioCtx();
     } catch (e) {
       console.warn('Web Audio API not supported');
       this.enabled = false;
@@ -34,8 +39,8 @@ class SoundEffects {
 
   // Create a simple tone
   private createTone(frequency: number, duration: number, type: OscillatorType = 'sine') {
-    return new Promise<void>(async (resolve) => {
-      const ctx = await this.ensureAudioContext();
+    return new Promise<void>((resolve) => {
+      void this.ensureAudioContext().then((ctx) => {
       if (!ctx) {
         resolve();
         return;
@@ -57,6 +62,7 @@ class SoundEffects {
       oscillator.stop(ctx.currentTime + duration);
       
       oscillator.onended = () => resolve();
+      });
     });
   }
 

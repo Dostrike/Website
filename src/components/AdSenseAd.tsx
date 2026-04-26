@@ -8,8 +8,9 @@ interface AdSenseAdProps {
 const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
   useEffect(() => {
     try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      const adsWindow = window as Window & { adsbygoogle?: unknown[] };
+      adsWindow.adsbygoogle = adsWindow.adsbygoogle || [];
+      adsWindow.adsbygoogle.push({});
     } catch (e) {
       // Ignore errors
     }
