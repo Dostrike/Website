@@ -124,8 +124,12 @@ const GamingPortal: React.FC = () => {
               </h1>
             </div>
             <p className="portal-subtitle">
-              Your ultimate destination for online multiplayer games. Play classic games, create private rooms, and challenge friends!
+              Play simple games, sharpen your mind, and challenge friends in quick private matches.
             </p>
+            <div className="hero-cta-row">
+              <a className="hero-primary-cta" href="#games-start">Start Playing</a>
+              <a className="hero-secondary-cta" href="/how-to-play">Learn Strategy</a>
+            </div>
             <div className="header-stats">
               <div className="header-stat">
                 <strong>3</strong>
@@ -158,7 +162,7 @@ const GamingPortal: React.FC = () => {
         </header>
 
         {/* Choose Your Game Section */}
-        <section className="games-section">
+        <section className="games-section" id="games-start">
           <h2 className="section-title">Choose Your Game</h2>
           <div className="games-grid">
             {games.map((game) => (
