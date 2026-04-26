@@ -1,0 +1,103 @@
+.score-board {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.score-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.score-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--background);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.score-row:hover {
+  background: var(--border);
+  transform: translateX(2px);
+}
+
+.score-row.draws {
+  background: var(--surface);
+  border-color: var(--primary);
+}
+
+.score-player {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.player-icon {
+  font-size: 1.25rem;
+}
+
+.player-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.score-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.score-wins {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-rate {
+  font-size: 0.875rem;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.total-games {
+  text-align: center;
+  padding: 1rem;
+  background: var(--background);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .score-board {
+    max-width: 100%;
+  }
+  
+  .score-row {
+    padding: 0.5rem;
+  }
+  
+  .player-name {
+    font-size: 0.875rem;
+  }
+  
+  .score-wins {
+    font-size: 1.125rem;
+  }
+} 

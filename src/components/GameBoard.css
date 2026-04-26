@@ -1,0 +1,154 @@
+.game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 300px;
+  height: 300px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.board-cell {
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.board-cell:hover:not(:disabled) {
+  background: var(--border);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-hover);
+}
+
+.board-cell:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.board-cell:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.board-cell.winning {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  animation: winningPulse 1s ease-in-out infinite alternate;
+}
+
+.cell-symbol {
+  font-size: 2.5rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.cell-symbol.x {
+  color: var(--primary);
+}
+
+.cell-symbol.o {
+  color: var(--secondary);
+}
+
+.board-cell.winning .cell-symbol {
+  color: white;
+}
+
+/* Winning animation */
+@keyframes winningPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--primary);
+  }
+  100% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Cell entrance animation */
+.board-cell {
+  animation: cellEntrance 0.3s ease-out;
+}
+
+@keyframes cellEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Symbol entrance animation */
+.cell-symbol {
+  animation: symbolEntrance 0.3s ease-out;
+}
+
+@keyframes symbolEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .board-grid {
+    width: 90vw;
+    height: 90vw;
+    max-width: 300px;
+    max-height: 300px;
+  }
+  
+  .board-cell {
+    font-size: 2rem;
+  }
+  
+  .cell-symbol {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .board-grid {
+    width: 90vw;
+    height: 90vw;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .board-cell {
+    font-size: 1.5rem;
+  }
+  
+  .cell-symbol {
+    font-size: 1.5rem;
+  }
+} 

@@ -1,0 +1,200 @@
+/* MemoryGame.css - Custom styles for Memory Game with DoStrike branding */
+.memory-game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  padding: 1.5rem 2rem 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.memory-game-logo {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 1px;
+}
+.memory-game-private-btn {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  color: white;
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(255,107,53,0.18);
+}
+.memory-game-bg {
+  min-height: 100vh;
+  background: var(--background, #f7f8fa);
+  background-image: repeating-linear-gradient(135deg, rgba(30,136,229,0.03) 0 2px, transparent 2px 40px);
+  color: var(--text, #222);
+  padding-bottom: 2rem;
+}
+.memory-game-title {
+  font-family: inherit;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 2rem 0 0.5rem 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.memory-game-info {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+.memory-game-board {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto 1.5rem auto;
+  background: rgba(255,255,255,0.7);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(30,136,229,0.07);
+  padding: 2rem 1.5rem;
+  max-width: 480px;
+}
+.memory-card {
+  width: 64px;
+  height: 88px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30,136,229,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  perspective: 600px;
+  border: none;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+.memory-card:active {
+  box-shadow: 0 4px 16px rgba(30,136,229,0.18);
+}
+.memory-card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  transform-style: preserve-3d;
+}
+.memory-card.flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+.memory-card-front, .memory-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+.memory-card-front {
+  background: linear-gradient(135deg, #fff 60%, #e3e8f0 100%);
+  color: #222;
+  font-size: 2.1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(30,136,229,0.10);
+}
+.memory-card-back {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  box-shadow: 0 2px 8px rgba(255,107,53,0.10);
+}
+.memory-card.matched .memory-card-inner {
+  filter: grayscale(0.7) brightness(1.2);
+  animation: match-glow 0.7s;
+}
+@keyframes match-glow {
+  0% { box-shadow: 0 0 0 0 #ff6b35; }
+  60% { box-shadow: 0 0 16px 8px #ff6b35; }
+  100% { box-shadow: 0 0 0 0 #ff6b35; }
+}
+.memory-card.mismatched .memory-card-inner {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+.memory-game-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,136,229,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.memory-game-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(30,136,229,0.18);
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+  max-width: 340px;
+}
+.memory-game-modal-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.memory-game-modal-stats {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.memory-game-modal-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.memory-game-modal-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.memory-game-modal-btn:hover {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+}
