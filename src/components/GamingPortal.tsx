@@ -63,6 +63,24 @@ const GamingPortal: React.FC = () => {
     }
   ];
 
+  const strategyPreview = [
+    {
+      title: 'Take center control early',
+      detail: 'In Tic-Tac-Toe, the center creates the most winning lines and helps you defend efficiently.',
+      link: '/how-to-play'
+    },
+    {
+      title: 'Think in two-move patterns',
+      detail: 'In Connect 4, plan your next move and your opponent response before dropping a disc.',
+      link: '/connect4-setup'
+    },
+    {
+      title: 'Use repeatable memory anchors',
+      detail: 'In Memory Game, scan in zones and pair by location pattern, not by random guessing.',
+      link: '/memory'
+    }
+  ];
+
   const features = [
     {
       icon: <FaGamepad />,
@@ -199,6 +217,23 @@ const GamingPortal: React.FC = () => {
                 <h3>{guide.title}</h3>
                 <p>{guide.summary}</p>
                 <a href={guide.link} className="text-link">{guide.linkLabel}</a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Strategy Preview */}
+        <section className="strategy-preview-section">
+          <h2 className="section-title">Strategy Preview</h2>
+          <p className="strategy-preview-subtitle">
+            Short tactical ideas you can apply immediately in your next game.
+          </p>
+          <div className="strategy-preview-grid">
+            {strategyPreview.map((item) => (
+              <article key={item.title} className="strategy-preview-card">
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+                <a href={item.link} className="text-link">Try this now</a>
               </article>
             ))}
           </div>
