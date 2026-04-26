@@ -70,7 +70,9 @@
 /* Section Styles */
 .games-section,
 .features-section,
-.newsletter-section {
+.content-section,
+.guides-section,
+.trust-section {
   padding: 2.5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -107,11 +109,6 @@
   transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   border-color: var(--primary);
-}
-
-.game-card.coming-soon {
-  opacity: 0.7;
-  cursor: not-allowed;
 }
 
 .game-visual {
@@ -174,16 +171,6 @@
   box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
 }
 
-.coming-soon-badge {
-  background: var(--border);
-  color: var(--text);
-  opacity: 0.6;
-  padding: 0.6rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
 /* Features Section */
 .features-section {
   background: var(--surface);
@@ -223,71 +210,83 @@
   font-size: 0.9rem;
 }
 
-/* Newsletter Section */
-.newsletter-section {
+/* Editorial and Trust Sections */
+.content-section {
+  background: var(--background);
+}
+
+.content-grid,
+.guides-grid,
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.content-card,
+.guide-card,
+.trust-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-card h3,
+.guide-card h3,
+.trust-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.content-card p,
+.guide-card p,
+.trust-card p,
+.content-card li {
+  color: var(--text);
+  opacity: 0.85;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+}
+
+.content-card ul {
+  padding-left: 1.2rem;
+  margin: 0 0 0.8rem 0;
+}
+
+.guides-section {
+  background: var(--surface);
+}
+
+.trust-section {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
-  text-align: center;
   margin: 0;
   max-width: none;
 }
 
-.newsletter-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin: 0 0 1rem 0;
-}
-
-.newsletter-description {
-  font-size: 1rem;
-  margin: 0 0 1.5rem 0;
-  opacity: 0.9;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.newsletter-form {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.newsletter-input {
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  min-width: 300px;
-  max-width: 400px;
-}
-
-.newsletter-button {
-  background: #ff6b35;
+.trust-section .section-title,
+.trust-section .trust-card h3,
+.trust-section .trust-card p,
+.trust-section .trust-card a {
   color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+}
+
+.trust-section .trust-card {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.text-link {
+  color: var(--primary);
+  text-decoration: none;
   font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
 }
 
-.newsletter-button:hover {
-  background: #e55a2b;
-  transform: translateY(-2px);
-}
-
-.newsletter-privacy {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin: 0;
+.text-link:hover {
+  text-decoration: underline;
 }
 
 /* Footer */
@@ -343,16 +342,7 @@
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
-  .newsletter-form {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .newsletter-input {
-    min-width: 250px;
-  }
-  
+
   .footer-nav {
     gap: 1rem;
   }
@@ -362,7 +352,9 @@
   .portal-header,
   .games-section,
   .features-section,
-  .newsletter-section {
+  .content-section,
+  .guides-section,
+  .trust-section {
     padding: 1.5rem 1rem;
   }
   

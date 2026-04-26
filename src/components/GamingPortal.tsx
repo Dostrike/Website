@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaRocket, FaGamepad, FaUsers, FaTrophy, FaEnvelope } from 'react-icons/fa';
+import { FaRocket, FaGamepad, FaUsers, FaTrophy } from 'react-icons/fa';
 import './GamingPortal.css';
 
 const GamingPortal: React.FC = () => {
@@ -29,16 +29,6 @@ const GamingPortal: React.FC = () => {
       route: '/connect4-setup'
     },
     {
-      id: 'rockpaperscissors',
-      name: 'Rock Paper Scissors',
-      description: 'Classic hand game. Best of 3 rounds wins!',
-      players: '2 Players',
-      difficulty: 'Easy',
-      visual: '✊✋',
-      available: false,
-      route: '/rockpaperscissors'
-    },
-    {
       id: 'memory',
       name: 'Memory Game',
       description: 'Test your memory with card matching!',
@@ -47,16 +37,27 @@ const GamingPortal: React.FC = () => {
       visual: '❓❓',
       available: true,
       route: '/memory'
+    }
+  ];
+
+  const gameGuides = [
+    {
+      title: 'Tic-Tac-Toe quick strategy',
+      summary: 'Control the center first, then create double-threats (forks) while blocking your opponent.',
+      link: '/how-to-play',
+      linkLabel: 'Read how to play'
     },
     {
-      id: 'wordguessing',
-      name: 'Word Guessing',
-      description: 'Guess the hidden word letter by letter!',
-      players: '1-4 Players',
-      difficulty: 'Easy - Hard',
-      visual: 'W O R ? ?',
-      available: false,
-      route: '/wordguessing'
+      title: 'Connect 4 winning basics',
+      summary: 'Play toward the center columns and think 2 moves ahead to set up diagonal threats.',
+      link: '/connect4-setup',
+      linkLabel: 'Play Connect 4'
+    },
+    {
+      title: 'Memory game improvement',
+      summary: 'Use board zones and repeat patterns to remember positions and reduce total moves.',
+      link: '/memory',
+      linkLabel: 'Play Memory Game'
     }
   ];
 
@@ -129,7 +130,7 @@ const GamingPortal: React.FC = () => {
             {games.map((game) => (
               <div 
                 key={game.id} 
-                className={`game-card ${!game.available ? 'coming-soon' : ''}`}
+                className="game-card"
                 onClick={() => handleGameClick(game)}
               >
                 <div className="game-visual">{game.visual}</div>
@@ -139,12 +140,49 @@ const GamingPortal: React.FC = () => {
                   <span className="game-players">{game.players}</span>
                   <span className="game-difficulty">{game.difficulty}</span>
                 </div>
-                {game.available ? (
-                  <button className="play-button">Play Now</button>
-                ) : (
-                  <div className="coming-soon-badge">Coming Soon</div>
-                )}
+                <button className="play-button">Play Now</button>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Editorial Section */}
+        <section className="content-section">
+          <h2 className="section-title">Play, Learn, Improve</h2>
+          <div className="content-grid">
+            <article className="content-card">
+              <h3>What makes DoStrike different?</h3>
+              <p>
+                DoStrike Gaming Portal is built for players who want quick, fun gameplay without sacrificing strategy.
+                Every game here focuses on clear rules, fast rounds, and practical skill-building.
+              </p>
+              <p>
+                You can jump into solo practice against AI, play private rounds with friends, and use our guides to
+                improve your decisions. We keep the experience lightweight, readable, and mobile-friendly.
+              </p>
+            </article>
+            <article className="content-card">
+              <h3>How to get better fast</h3>
+              <ul>
+                <li>Start with short sessions and focus on one game pattern at a time.</li>
+                <li>Review losses to spot repeated mistakes and improve your next match.</li>
+                <li>Use private matches to test tactics against friends in a low-pressure setting.</li>
+              </ul>
+              <a href="/blog" className="text-link">Explore strategy articles</a>
+            </article>
+          </div>
+        </section>
+
+        {/* Quick Guides */}
+        <section className="guides-section">
+          <h2 className="section-title">Quick Game Guides</h2>
+          <div className="guides-grid">
+            {gameGuides.map((guide) => (
+              <article key={guide.title} className="guide-card">
+                <h3>{guide.title}</h3>
+                <p>{guide.summary}</p>
+                <a href={guide.link} className="text-link">{guide.linkLabel}</a>
+              </article>
             ))}
           </div>
         </section>
@@ -163,26 +201,27 @@ const GamingPortal: React.FC = () => {
           </div>
         </section>
 
-        {/* Newsletter Section */}
-        <section className="newsletter-section">
-          <h2 className="newsletter-title">Stay Updated with Tic-Tac-Toe Strategy</h2>
-          <p className="newsletter-description">
-            Get the latest strategy tips, game variations, and community updates delivered to your inbox!
-          </p>
-          <div className="newsletter-form">
-            <input 
-              type="email" 
-              placeholder="Enter your email address" 
-              className="newsletter-input"
-            />
-            <button className="newsletter-button">
-              <FaEnvelope />
-              Subscribe
-            </button>
+        {/* Trust Section */}
+        <section className="trust-section">
+          <h2 className="section-title">Trust & Transparency</h2>
+          <div className="trust-grid">
+            <div className="trust-card">
+              <h3>Contact</h3>
+              <p>Email: <a href="mailto:dostrike0@gmail.com">dostrike0@gmail.com</a></p>
+              <p>Address: Eastwood, NSW, Australia</p>
+            </div>
+            <div className="trust-card">
+              <h3>Policies</h3>
+              <p><a href="/privacy">Privacy Policy</a></p>
+              <p><a href="/terms">Terms of Service</a></p>
+              <p><a href="/cookies">Cookie Policy</a></p>
+            </div>
+            <div className="trust-card">
+              <h3>Content</h3>
+              <p>Original strategy guides and playable games.</p>
+              <p>Updated gameplay pages and editorial resources.</p>
+            </div>
           </div>
-          <p className="newsletter-privacy">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
         </section>
 
         {/* Footer */}
