@@ -4,6 +4,8 @@ import { getArticleBySlug, articles } from '../data/articles';
 import { Helmet } from 'react-helmet-async';
 import SocialShare from './SocialShare';
 
+const ARTICLE_AUTHOR = 'DoStrike Editorial Team';
+
 const Article: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = getArticleBySlug(slug || '');
@@ -56,8 +58,9 @@ const Article: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{article.title} | Tic-Tac-Toe Blog</title>
+        <title>{article.title} | DoStrike Blog</title>
         <meta name="description" content={article.excerpt} />
+        <meta name="author" content={ARTICLE_AUTHOR} />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
         {/* Breadcrumb Navigation */}
@@ -78,6 +81,11 @@ const Article: React.FC = () => {
             <span>{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
             <span>•</span>
             <span>{article.readTime}</span>
+          </div>
+          <div style={{ display: 'flex', gap: '1em', alignItems: 'center', marginBottom: '1em', fontSize: '0.9em', color: 'var(--text-muted)' }}>
+            <span>By {ARTICLE_AUTHOR}</span>
+            <span>•</span>
+            <span>Last updated: {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
           </div>
           <p style={{ fontSize: '1.1em', color: 'var(--text)', lineHeight: 1.6, fontStyle: 'italic' }}>
             {article.excerpt}

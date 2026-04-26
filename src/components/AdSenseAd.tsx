@@ -5,6 +5,12 @@ interface AdSenseAdProps {
   style?: React.CSSProperties;
 }
 
+declare global {
+  interface Window {
+    adsbygoogle?: Array<Record<string, unknown>> & { requestNonPersonalizedAds?: number };
+  }
+}
+
 const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
   const [consent, setConsent] = useState<string | null>(null);
 
@@ -22,9 +28,17 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
   }, []);
 
   useEffect(() => {
+    if (consent === 'false') {
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.requestNonPersonalizedAds = 1;
+    }
+
     if (consent !== 'true') {
       return;
     }
+
+    window.adsbygoogle = window.adsbygoogle || [];
+    window.adsbygoogle.requestNonPersonalizedAds = 0;
 
     const scriptId = 'adsbygoogle-script';
     if (!document.getElementById(scriptId)) {
@@ -37,9 +51,8 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
     }
 
     try {
-      const adsWindow = window as Window & { adsbygoogle?: unknown[] };
-      adsWindow.adsbygoogle = adsWindow.adsbygoogle || [];
-      adsWindow.adsbygoogle.push({});
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
     } catch (e) {
       // Ignore errors
     }

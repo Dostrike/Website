@@ -39,13 +39,14 @@ const Blog: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Tic-Tac-Toe Blog - Strategies, History, and More</title>
-        <meta name="description" content="Read articles about Tic-Tac-Toe strategies, history, game variations, and more. Become a Tic-Tac-Toe master!" />
+        <title>DoStrike Blog - Game Strategy, Guides, and Tutorials</title>
+        <meta name="description" content="Read original strategy guides and practical tutorials for Tic-Tac-Toe, Connect 4, and Memory Game on DoStrike Gaming Portal." />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Blog</h1>
         <p style={{ marginBottom: '2em', color: 'var(--text)', fontSize: '1.1em', lineHeight: 1.6 }}>
-          Explore articles about Tic-Tac-Toe strategy, history, and more. Our blog is dedicated to helping you become a Tic-Tac-Toe master and learn about the game's fascinating background.
+          Explore original game strategy articles and gameplay tutorials from the DoStrike editorial team.
+          Our guides focus on practical tactics you can apply immediately across our game library.
         </p>
 
         {/* Search and Filter */}
@@ -239,8 +240,8 @@ const Blog: React.FC = () => {
         </div>
         
         <SocialShare 
-          title="Tic-Tac-Toe Blog - Strategies, History, and More"
-          description="Read articles about Tic-Tac-Toe strategies, history, game variations, and more. Become a Tic-Tac-Toe master!"
+          title="DoStrike Blog - Game Strategy, Guides, and Tutorials"
+          description="Read original strategy guides and practical tutorials for Tic-Tac-Toe, Connect 4, and Memory Game on DoStrike Gaming Portal."
         />
         
         <div style={{ 
