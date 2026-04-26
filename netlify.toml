@@ -13,6 +13,11 @@
   status = 200
 
 [[redirects]]
+  from = "/ads.txt"
+  to = "/ads.txt"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
@@ -25,6 +30,12 @@
 
 [[headers]]
   for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=UTF-8"
+    Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/ads.txt"
   [headers.values]
     Content-Type = "text/plain; charset=UTF-8"
     Cache-Control = "public, max-age=300"
