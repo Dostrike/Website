@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { FaArrowLeft, FaPlay, FaRobot, FaUsers, FaPalette, FaChartBar, FaLink } from 'react-icons/fa';
@@ -32,6 +32,24 @@ const TicTacToeSetup: React.FC = () => {
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState('');
   const [isConnected, setIsConnected] = useState(false);
+  const waitingRef = useRef(false);
+  const createRoomTimeoutRef = useRef<number | null>(null);
+  const joinRoomTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    waitingRef.current = waiting;
+  }, [waiting]);
+
+  useEffect(() => {
+    return () => {
+      if (createRoomTimeoutRef.current) {
+        window.clearTimeout(createRoomTimeoutRef.current);
+      }
+      if (joinRoomTimeoutRef.current) {
+        window.clearTimeout(joinRoomTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Socket connection status
   useEffect(() => {
@@ -129,20 +147,28 @@ const TicTacToeSetup: React.FC = () => {
     setWaiting(true);
     setError('');
     console.log('[SETUP] Creating room...');
+    if (createRoomTimeoutRef.current) {
+      window.clearTimeout(createRoomTimeoutRef.current);
+    }
     
     socket.emit('createRoom', (id: string) => {
       console.log('[SETUP] Room created with ID:', id);
       setRoomId(id);
       setWaiting(false);
+      if (createRoomTimeoutRef.current) {
+        window.clearTimeout(createRoomTimeoutRef.current);
+        createRoomTimeoutRef.current = null;
+      }
     });
 
     // Add timeout in case callback never comes
-    setTimeout(() => {
-      if (waiting) {
+    createRoomTimeoutRef.current = window.setTimeout(() => {
+      if (waitingRef.current) {
         console.log('[SETUP] Room creation timeout');
         setError('Room creation timed out. Please try again.');
         setWaiting(false);
       }
+      createRoomTimeoutRef.current = null;
     }, 5000);
   };
 
@@ -160,6 +186,9 @@ const TicTacToeSetup: React.FC = () => {
     setWaiting(true);
     setError('');
     console.log('[SETUP] Joining room:', joinRoomId.trim().toUpperCase());
+    if (joinRoomTimeoutRef.current) {
+      window.clearTimeout(joinRoomTimeoutRef.current);
+    }
     
     socket.emit('joinRoom', joinRoomId.trim().toUpperCase(), (res: JoinRoomResponse) => {
       console.log('[SETUP] Join room response:', res);
@@ -170,15 +199,20 @@ const TicTacToeSetup: React.FC = () => {
         setError(res.message || 'Failed to join room.');
         setWaiting(false);
       }
+      if (joinRoomTimeoutRef.current) {
+        window.clearTimeout(joinRoomTimeoutRef.current);
+        joinRoomTimeoutRef.current = null;
+      }
     });
 
     // Add timeout in case callback never comes
-    setTimeout(() => {
-      if (waiting) {
+    joinRoomTimeoutRef.current = window.setTimeout(() => {
+      if (waitingRef.current) {
         console.log('[SETUP] Join room timeout');
         setError('Join room timed out. Please try again.');
         setWaiting(false);
       }
+      joinRoomTimeoutRef.current = null;
     }, 5000);
   };
 

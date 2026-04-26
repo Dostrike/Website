@@ -149,7 +149,9 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
     } else if (gameState.gameStatus === 'DRAW') {
       return "It's a draw!";
     } else if (gameState.winner) {
-      const winnerName = gameState.winner === Player.X ? gameState.player1Name : gameState.player2Name;
+      const winnerName = gameState.gameMode === GameMode.AI
+        ? (gameState.winner === Player.X ? gameState.player1Name : 'AI')
+        : (gameState.winner === Player.X ? gameState.player1Name : gameState.player2Name);
       return `${winnerName} wins!`;
     }
     return '';

@@ -293,7 +293,7 @@ const PrivateTicTacToe: React.FC = () => {
       if (gameStatus === 'DRAW') {
         return { ...prev, draws: prev.draws + 1 };
       } else if (gameStatus === 'WIN') {
-        if (winner === playerSymbol) {
+        if (winner === playerSymbolRef.current) {
           return { ...prev, wins: prev.wins + 1 };
         } else {
           return { ...prev, losses: prev.losses + 1 };
@@ -301,6 +301,11 @@ const PrivateTicTacToe: React.FC = () => {
       }
       return prev;
     });
+  };
+
+  const getWinnerLabel = () => {
+    if (!gameState.winner) return '';
+    return gameState.winner === playerSymbolRef.current ? 'You win!' : 'Opponent wins!';
   };
 
   const handleCellClick = (row: number, col: number) => {
@@ -487,7 +492,7 @@ const PrivateTicTacToe: React.FC = () => {
                   </div>
                 ) : (
                   <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--primary)' }}>
-                    {gameState.gameStatus === 'WIN' ? `${gameState.winner} wins!` : 'It\'s a draw!'}
+                    {gameState.gameStatus === 'WIN' ? getWinnerLabel() : 'It\'s a draw!'}
                   </div>
                 )}
               </div>
@@ -647,7 +652,7 @@ const PrivateTicTacToe: React.FC = () => {
                 </div>
                 <div>Status: {gameState.gameStatus}</div>
                 <div>Turn: {gameState.currentPlayer}</div>
-                {gameState.winner && <div>Winner: {gameState.winner}</div>}
+                {gameState.winner && <div>Winner: {getWinnerLabel()}</div>}
               </div>
             </div>
           </div>
