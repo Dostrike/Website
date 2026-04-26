@@ -16,7 +16,8 @@ const GamingPortal: React.FC = () => {
       difficulty: 'Easy - Hard',
       visual: '❌⭕',
       available: true,
-      route: '/tictactoe-setup'
+      route: '/tictactoe-setup',
+      badge: 'Popular'
     },
     {
       id: 'connect4',
@@ -26,7 +27,8 @@ const GamingPortal: React.FC = () => {
       difficulty: 'Medium',
       visual: '🔴🟡',
       available: true,
-      route: '/connect4-setup'
+      route: '/connect4-setup',
+      badge: 'Trending'
     },
     {
       id: 'memory',
@@ -106,6 +108,20 @@ const GamingPortal: React.FC = () => {
             <p className="portal-subtitle">
               Your ultimate destination for online multiplayer games. Play classic games, create private rooms, and challenge friends!
             </p>
+            <div className="header-stats">
+              <div className="header-stat">
+                <strong>3</strong>
+                <span>Live Games</span>
+              </div>
+              <div className="header-stat">
+                <strong>Private Rooms</strong>
+                <span>Friend Matches</span>
+              </div>
+              <div className="header-stat">
+                <strong>Free</strong>
+                <span>No Signup Needed</span>
+              </div>
+            </div>
             <div className="header-features">
               <div className="feature-item">
                 <FaGamepad />
@@ -133,6 +149,7 @@ const GamingPortal: React.FC = () => {
                 className="game-card"
                 onClick={() => handleGameClick(game)}
               >
+                {game.badge && <span className="game-badge">{game.badge}</span>}
                 <div className="game-visual">{game.visual}</div>
                 <h3 className="game-name">{game.name}</h3>
                 <p className="game-description">{game.description}</p>
