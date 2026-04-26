@@ -54,34 +54,54 @@ export class Connect4AI {
   }
 
   /**
-   * Medium AI: Block opponent wins, try to win, otherwise random
+   * Try to find an immediate winning move for a given player
    */
-  private getMediumMove(gameState: Connect4GameState, validMoves: number[]): number {
-    // 1. Check if AI can win
+  private getImmediateWinningMove(
+    gameState: Connect4GameState,
+    validMoves: number[],
+    player: Connect4Player
+  ): number | null {
     for (const col of validMoves) {
-      const testState = Connect4Logic.makeMove(gameState, col);
-      if (testState.winner === this.player) {
+      const testState = Connect4Logic.makeMove({ ...gameState, currentPlayer: player }, col);
+      if (testState.winner === player) {
         return col;
       }
     }
+    return null;
+  }
 
-    // 2. Check if need to block opponent win
-    for (const col of validMoves) {
-      // Simulate opponent move
-      const tempState = { ...gameState, currentPlayer: this.opponent };
-      const testState = Connect4Logic.makeMove(tempState, col);
-      if (testState.winner === this.opponent) {
-        return col; // Block this winning move
-      }
+  /**
+   * Order moves from strongest positional value to weakest
+   */
+  private orderMoves(validMoves: number[]): number[] {
+    // Prefer center columns in Connect 4 for stronger branching.
+    const center = Math.floor(Connect4Logic.COLS / 2);
+    return [...validMoves].sort((a, b) => {
+      const distanceA = Math.abs(a - center);
+      const distanceB = Math.abs(b - center);
+      if (distanceA !== distanceB) return distanceA - distanceB;
+      return Math.random() - 0.5;
+    });
+  }
+
+  /**
+   * Medium AI: Block opponent wins, try to win, otherwise random
+   */
+  private getMediumMove(gameState: Connect4GameState, validMoves: number[]): number {
+    const winningMove = this.getImmediateWinningMove(gameState, validMoves, this.player);
+    if (winningMove !== null) return winningMove;
+
+    const blockingMove = this.getImmediateWinningMove(gameState, validMoves, this.opponent);
+    if (blockingMove !== null) return blockingMove;
+
+    const orderedMoves = this.orderMoves(validMoves);
+    const centerWeighted = orderedMoves.slice(0, Math.min(3, orderedMoves.length));
+
+    // Medium keeps some unpredictability while still preferring smart shape.
+    if (Math.random() < 0.8) {
+      return this.getRandomMove(centerWeighted);
     }
 
-    // 3. Prefer center columns
-    const centerCols = validMoves.filter(col => col >= 2 && col <= 4);
-    if (centerCols.length > 0) {
-      return centerCols[Math.floor(Math.random() * centerCols.length)];
-    }
-
-    // 4. Random move
     return this.getRandomMove(validMoves);
   }
 
@@ -89,12 +109,22 @@ export class Connect4AI {
    * Hard AI: Minimax algorithm with alpha-beta pruning
    */
   private getHardMove(gameState: Connect4GameState, validMoves: number[]): number {
-    let bestMove = validMoves[0];
+    const winningMove = this.getImmediateWinningMove(gameState, validMoves, this.player);
+    if (winningMove !== null) return winningMove;
+
+    const blockingMove = this.getImmediateWinningMove(gameState, validMoves, this.opponent);
+    if (blockingMove !== null) return blockingMove;
+
+    const orderedMoves = this.orderMoves(validMoves);
+    const filledCells = gameState.board.flat().filter(Boolean).length;
+    const searchDepth = filledCells >= 22 ? 6 : 5;
+
+    let bestMove = orderedMoves[0];
     let bestScore = -Infinity;
 
-    for (const col of validMoves) {
+    for (const col of orderedMoves) {
       const testState = Connect4Logic.makeMove(gameState, col);
-      const score = this.minimax(testState, 5, -Infinity, Infinity, false);
+      const score = this.minimax(testState, searchDepth, -Infinity, Infinity, false);
       
       if (score > bestScore) {
         bestScore = score;
@@ -122,7 +152,7 @@ export class Connect4AI {
       return this.evaluateBoard(gameState.board);
     }
 
-    const validMoves = this.getValidMoves(gameState.board);
+    const validMoves = this.orderMoves(this.getValidMoves(gameState.board));
     
     if (isMaximizing) {
       let maxScore = -Infinity;

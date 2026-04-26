@@ -127,7 +127,8 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
       className="c4-board-wrapper"
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      aria-label="Connect 4 game board"
+      role="application"
+      aria-label={`Connect 4 board. ${currentPlayer}'s turn. Use left and right arrows to choose a column, then press Enter to drop.`}
       style={{ outline: 'none', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
     >
       {/* ...existing code... */}
@@ -151,12 +152,12 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
                 <div
                   key={colIdx}
                   className={`c4-cell${cell ? ' ' + cell.toLowerCase() : ''}${isWinningCell(rowIdx, colIdx) ? ' winning' : ''}${winningLine && !isWinningCell(rowIdx, colIdx) ? ' faded' : ''}${hoverCol === colIdx && cell === null ? ` c4-col-hover ${currentPlayer.toLowerCase()}` : ''}${shake}`}
-                  aria-label={cell ? `${cell} disc` : 'empty'}
+                  aria-label={cell ? `${cell} disc at row ${rowIdx + 1} column ${colIdx + 1}` : `Empty slot at row ${rowIdx + 1} column ${colIdx + 1}`}
                   style={{ opacity: winningLine && !isWinningCell(rowIdx, colIdx) ? 0.5 : 1 }}
                   onMouseEnter={() => setHoverCol(colIdx)}
                   onMouseLeave={() => setHoverCol(null)}
                   onClick={() => handleColumnClick(colIdx)}
-                  role="button"
+                  role="gridcell"
                   tabIndex={-1}
                 >
                   {cell && (!droppingDisc || droppingDisc.row !== rowIdx || droppingDisc.col !== colIdx) && (

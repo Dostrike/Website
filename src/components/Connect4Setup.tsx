@@ -12,18 +12,11 @@ const DIFFICULTIES = [
   { key: 'MEDIUM', label: 'Medium', emoji: '😎' },
   { key: 'HARD', label: 'Hard', emoji: '🤖' },
 ];
-const TOURNAMENT_MODES = [
-  { key: 'SINGLE', label: 'Single Game', description: 'Play one game' },
-  { key: 'BEST_OF_3', label: 'Best of 3', description: 'First to 2 wins' },
-  { key: 'BEST_OF_5', label: 'Best of 5', description: 'First to 3 wins' },
-  { key: 'BEST_OF_7', label: 'Best of 7', description: 'First to 4 wins' },
-];
 
 const Connect4Setup: React.FC = () => {
   const navigate = useNavigate();
   const [gameMode, setGameMode] = useState('AI');
   const [difficulty, setDifficulty] = useState('MEDIUM');
-  const [tournamentMode, setTournamentMode] = useState('SINGLE');
   const [player1Name, setPlayer1Name] = useState('Player 1');
   const [player2Name, setPlayer2Name] = useState('Player 2');
 
@@ -31,7 +24,6 @@ const Connect4Setup: React.FC = () => {
     localStorage.setItem('connect4Settings', JSON.stringify({
       gameMode,
       difficulty,
-      tournamentMode,
       player1Name,
       player2Name
     }));
@@ -255,35 +247,6 @@ const Connect4Setup: React.FC = () => {
                   </div>
                 </div>
               )}
-              {/* Tournament Mode */}
-              <div className="option-group" style={{ marginBottom: 32 }}>
-                <label style={{ display: 'block', marginBottom: 16, fontWeight: 700, color: 'var(--text)', fontSize: '1.1em' }}>
-                  Tournament Mode
-                </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
-                  {TOURNAMENT_MODES.map(mode => (
-                    <button
-                      key={mode.key}
-                      onClick={() => setTournamentMode(mode.key)}
-                      style={{
-                        padding: '16px 12px',
-                        border: tournamentMode === mode.key ? '2px solid var(--primary)' : '2px solid var(--border)',
-                        borderRadius: 12,
-                        background: tournamentMode === mode.key ? 'var(--primary)' : 'var(--surface)',
-                        color: tournamentMode === mode.key ? 'white' : 'var(--text)',
-                        cursor: 'pointer',
-                        fontSize: '0.95em',
-                        fontWeight: 600,
-                        textAlign: 'center',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      <div style={{ fontWeight: 700, marginBottom: 4 }}>{mode.label}</div>
-                      <div style={{ fontSize: '0.85em', opacity: 0.8 }}>{mode.description}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
               {/* Player Names */}
               <div className="option-group" style={{ marginBottom: 32 }}>
                 <label style={{ display: 'block', marginBottom: 16, fontWeight: 700, color: 'var(--text)', fontSize: '1.1em' }}>

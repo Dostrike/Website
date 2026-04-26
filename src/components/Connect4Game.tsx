@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Connect4Logic } from '../utils/connect4Logic';
 import { Connect4AI, AIDifficulty } from '../utils/connect4AI';
 import { soundEffects } from '../utils/soundEffects';
@@ -62,6 +63,7 @@ function ConfettiBurst({ trigger }: { trigger: boolean }) {
 }
 
 const Connect4Game: React.FC = () => {
+  const navigate = useNavigate();
   // Load player names and settings from localStorage
   const settings = (() => {
     try {
@@ -231,7 +233,7 @@ const Connect4Game: React.FC = () => {
   };
 
   const handleReturnToPortal = () => {
-    window.location.href = '/';
+    navigate('/');
   };
 
   // Handle AI thinking indicator in UI
@@ -257,11 +259,11 @@ const Connect4Game: React.FC = () => {
       background: active ? (player === 'RED' ? 'linear-gradient(90deg, #e53935 0%, #ff8a80 100%)' : 'linear-gradient(90deg, #fbc02d 0%, #fff59d 100%)') : 'var(--surface)',
       color: active ? 'white' : 'var(--text)',
       fontWeight: 700,
-      fontSize: '1.08em',
+      fontSize: 'clamp(0.9rem, 2.8vw, 1.08rem)',
       boxShadow: active ? (player === 'RED' ? '0 0 16px 2px #e53935aa' : '0 0 16px 2px #fbc02daa') : '0 1px 6px rgba(60,80,180,0.08)',
       border: active ? (player === 'RED' ? '2.5px solid #e53935' : '2.5px solid #fbc02d') : '2.5px solid var(--border)',
       transition: 'all 0.2s',
-      minWidth: 160,
+      minWidth: 'clamp(120px, 40vw, 160px)',
       justifyContent: 'center',
       position: 'relative',
     }}>
@@ -271,9 +273,17 @@ const Connect4Game: React.FC = () => {
     </div>
   );
 
+  const gameAnnouncement =
+    gameState.gameStatus === Connect4GameStatus.WIN
+      ? `${gameState.winner === 'RED' ? player1Name : player2Name} wins`
+      : gameState.gameStatus === Connect4GameStatus.DRAW
+      ? "Game ended in a draw"
+      : `${getPlayerDisplayName(gameState.currentPlayer)} turn`;
+
   return (
     <div className="game-screen" style={{ minHeight: '100vh', background: 'var(--background)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <ConfettiBurst trigger={confetti} />
+      <div aria-live="polite" className="sr-only">{gameAnnouncement}</div>
       {/* Game Area Card */}
       <div style={{
         background: 'var(--surface)',
@@ -295,7 +305,8 @@ const Connect4Game: React.FC = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: 18,
-          gap: 12,
+          gap: 8,
+          flexWrap: 'wrap',
         }}>
           {playerPill('RED', gameState.currentPlayer === 'RED' && gameState.gameStatus === Connect4GameStatus.PLAYING, player1Name)}
           {playerPill('YELLOW', gameState.currentPlayer === 'YELLOW' && gameState.gameStatus === Connect4GameStatus.PLAYING, getPlayerDisplayName('YELLOW'))}
@@ -317,6 +328,7 @@ const Connect4Game: React.FC = () => {
         <div style={{ marginTop: 24, width: '100%', display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
           <button
             onClick={handlePlayAgain}
+            aria-label="Start a new game"
             style={{
               padding: '14px 36px',
               borderRadius: 14,
@@ -336,6 +348,7 @@ const Connect4Game: React.FC = () => {
           <button
             onClick={handleUndo}
             disabled={gameHistory.length <= 1 || gameState.gameStatus !== Connect4GameStatus.PLAYING || aiThinking}
+            aria-label="Undo last move"
             style={{
               padding: '14px 20px',
               borderRadius: 14,
@@ -353,6 +366,7 @@ const Connect4Game: React.FC = () => {
           </button>
           <button
             onClick={() => setShowStats(true)}
+            aria-label="Open game statistics"
             style={{
               padding: '14px 20px',
               borderRadius: 14,
@@ -370,6 +384,7 @@ const Connect4Game: React.FC = () => {
           </button>
           <button
             onClick={() => setShowThemes(true)}
+            aria-label="Open theme selector"
             style={{
               padding: '14px 20px',
               borderRadius: 14,
@@ -390,7 +405,7 @@ const Connect4Game: React.FC = () => {
       {/* Modal */}
       {showModal && (
         <div className="c4-modal-overlay">
-          <div className="c4-modal">
+          <div className="c4-modal" role="dialog" aria-modal="true" aria-label="Game result">
             {gameState.gameStatus === Connect4GameStatus.WIN && gameState.winner && (
               <>
                 <h2 style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '2em', marginBottom: 16 }}>{(gameState.winner === 'RED' ? player1Name : player2Name)} Wins!</h2>
@@ -403,6 +418,7 @@ const Connect4Game: React.FC = () => {
             <div className="c4-modal-actions">
               <button
                 onClick={handlePlayAgain}
+                aria-label="Play again"
                 style={{
                   padding: '16px 0',
                   borderRadius: 14,
@@ -422,6 +438,7 @@ const Connect4Game: React.FC = () => {
               </button>
               <button
                 onClick={handleReturnToPortal}
+                aria-label="Back to main menu"
                 style={{
                   padding: '16px 0',
                   borderRadius: 14,
@@ -433,7 +450,6 @@ const Connect4Game: React.FC = () => {
                   cursor: 'pointer',
                   marginTop: 8,
                   width: 180,
-                  marginLeft: 18,
                   transition: 'all 0.2s ease'
                 }}
               >
@@ -447,7 +463,7 @@ const Connect4Game: React.FC = () => {
       {/* Statistics Modal */}
       {showStats && (
         <div className="c4-modal-overlay">
-          <div className="c4-modal" style={{ maxWidth: 500, width: '90%' }}>
+          <div className="c4-modal" role="dialog" aria-modal="true" aria-label="Game statistics" style={{ maxWidth: 500, width: '90%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <FaTrophy style={{ color: '#ffd600', fontSize: '1.5em' }} />
               <h2 style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.8em', margin: 0 }}>Game Statistics</h2>
@@ -493,6 +509,7 @@ const Connect4Game: React.FC = () => {
             <div className="c4-modal-actions">
               <button
                 onClick={() => setShowStats(false)}
+                aria-label="Close statistics"
                 style={{
                   padding: '12px 24px',
                   borderRadius: 12,
@@ -514,6 +531,7 @@ const Connect4Game: React.FC = () => {
                     setGameStats(Connect4Stats.loadStats());
                   }
                 }}
+                aria-label="Reset statistics"
                 style={{
                   padding: '12px 24px',
                   borderRadius: 12,
@@ -537,7 +555,7 @@ const Connect4Game: React.FC = () => {
       {/* Theme Selection Modal */}
       {showThemes && (
         <div className="c4-modal-overlay">
-          <div className="c4-modal" style={{ maxWidth: 600, width: '90%' }}>
+          <div className="c4-modal" role="dialog" aria-modal="true" aria-label="Choose board theme" style={{ maxWidth: 600, width: '90%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <FaPalette style={{ color: 'var(--primary)', fontSize: '1.5em' }} />
               <h2 style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.8em', margin: 0 }}>Choose Theme</h2>
@@ -551,6 +569,17 @@ const Connect4Game: React.FC = () => {
                     const newTheme = ThemeManager.setTheme(theme.id);
                     setCurrentTheme(newTheme);
                     soundEffects.playClick();
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Select ${theme.name} theme`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      const newTheme = ThemeManager.setTheme(theme.id);
+                      setCurrentTheme(newTheme);
+                      soundEffects.playClick();
+                    }
                   }}
                   style={{
                     padding: 16,
@@ -632,6 +661,7 @@ const Connect4Game: React.FC = () => {
             <div className="c4-modal-actions">
               <button
                 onClick={() => setShowThemes(false)}
+                aria-label="Done choosing theme"
                 style={{
                   padding: '12px 24px',
                   borderRadius: 12,

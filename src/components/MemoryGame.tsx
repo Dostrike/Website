@@ -3,7 +3,50 @@ import "./MemoryGame.css";
 import { FaRocket } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const symbols = ["🚀", "🪐", "👾", "🌟", "🛰️", "🌙", "🛸", "☄️"];
+const symbols = ["🚀", "🪐", "👾", "🌟", "🛰️", "🌙", "🛸", "☄️", "🌌", "🔭"];
+
+type MemoryDifficulty = "EASY" | "MEDIUM" | "HARD";
+
+const MEMORY_LEVELS: Record<MemoryDifficulty, { label: string; pairs: number; columns: number }> = {
+  EASY: { label: "Easy", pairs: 6, columns: 4 },
+  MEDIUM: { label: "Medium", pairs: 8, columns: 4 },
+  HARD: { label: "Hard", pairs: 10, columns: 5 }
+};
+
+type DifficultyStats = {
+  gamesPlayed: number;
+  wins: number;
+  bestMoves: number | null;
+  bestTime: number | null;
+};
+
+type MemoryStats = Record<MemoryDifficulty, DifficultyStats>;
+
+const MEMORY_STATS_KEY = "memoryGameStats";
+
+const createDefaultStats = (): MemoryStats => ({
+  EASY: { gamesPlayed: 0, wins: 0, bestMoves: null, bestTime: null },
+  MEDIUM: { gamesPlayed: 0, wins: 0, bestMoves: null, bestTime: null },
+  HARD: { gamesPlayed: 0, wins: 0, bestMoves: null, bestTime: null }
+});
+
+const loadStats = (): MemoryStats => {
+  try {
+    const stored = localStorage.getItem(MEMORY_STATS_KEY);
+    if (!stored) return createDefaultStats();
+    const parsed = JSON.parse(stored) as Partial<MemoryStats>;
+    return {
+      ...createDefaultStats(),
+      ...parsed
+    };
+  } catch {
+    return createDefaultStats();
+  }
+};
+
+const saveStats = (stats: MemoryStats) => {
+  localStorage.setItem(MEMORY_STATS_KEY, JSON.stringify(stats));
+};
 
 function shuffle<T>(array: T[]): T[] {
   const arr = [...array];
@@ -30,12 +73,30 @@ const MemoryGame: React.FC = () => {
   const [timer, setTimer] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [difficulty, setDifficulty] = useState<MemoryDifficulty>("MEDIUM");
+  const [stats, setStats] = useState<MemoryStats>(() => loadStats());
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const pendingTimeoutsRef = useRef<number[]>([]);
+  const hasRecordedWinRef = useRef(false);
   const navigate = useNavigate();
+
+  const trackTimeout = (callback: () => void, delay: number) => {
+    const timeoutId = window.setTimeout(callback, delay);
+    pendingTimeoutsRef.current.push(timeoutId);
+    return timeoutId;
+  };
+
+  const clearPendingTimeouts = () => {
+    pendingTimeoutsRef.current.forEach(window.clearTimeout);
+    pendingTimeoutsRef.current = [];
+  };
 
   // Initialize cards
   useEffect(() => {
-    resetGame();
+    resetGame("MEDIUM");
+    return () => {
+      clearPendingTimeouts();
+    };
   }, []);
 
   // Timer effect
@@ -50,47 +111,90 @@ const MemoryGame: React.FC = () => {
 
   // Card flip/match logic
   useEffect(() => {
-    if (flippedIndices.length === 2) {
-      setIsBusy(true);
-      const [i, j] = flippedIndices;
-      const newCards = [...cards];
-      if (newCards[i].symbol === newCards[j].symbol) {
-        // Matched: pulse, then remove
-        setTimeout(() => {
-          setCards((prev) => prev.map((c, idx) =>
-            idx === i || idx === j ? { ...c, removing: true } : c
-          ));
-          setTimeout(() => {
-            setCards((prev) => prev.filter((_, idx) => idx !== i && idx !== j));
-            setFlippedIndices([]);
-            setIsBusy(false);
-          }, 400); // fade out duration
-        }, 600); // pulse duration
-      } else {
-        // Mismatched: shake, then flip back
-        newCards[i].mismatched = true;
-        newCards[j].mismatched = true;
-        setCards(newCards);
-        setTimeout(() => {
-          newCards[i].flipped = false;
-          newCards[j].flipped = false;
-          newCards[i].mismatched = false;
-          newCards[j].mismatched = false;
-          setCards([...newCards]);
+    if (flippedIndices.length !== 2) return;
+
+    const [firstIndex, secondIndex] = flippedIndices;
+    const firstCard = cards[firstIndex];
+    const secondCard = cards[secondIndex];
+    if (!firstCard || !secondCard) {
+      setFlippedIndices([]);
+      setIsBusy(false);
+      return;
+    }
+
+    const firstId = firstCard.id;
+    const secondId = secondCard.id;
+    const isMatch = firstCard.symbol === secondCard.symbol;
+
+    setIsBusy(true);
+    setMoves((m) => m + 1); // Only increment after a pair attempt
+
+    if (isMatch) {
+      // Matched: pulse, then remove by card id (safe even if list changes)
+      trackTimeout(() => {
+        setCards((prev) =>
+          prev.map((card) =>
+            card.id === firstId || card.id === secondId
+              ? { ...card, removing: true }
+              : card
+          )
+        );
+        trackTimeout(() => {
+          setCards((prev) =>
+            prev.filter((card) => card.id !== firstId && card.id !== secondId)
+          );
           setFlippedIndices([]);
           setIsBusy(false);
-        }, 1100);
-      }
-      setMoves((m) => m + 1); // Only increment after a pair attempt
+        }, 400);
+      }, 600);
+      return;
     }
-  }, [flippedIndices, cards]);
+
+    // Mismatched: shake, then flip both back
+    setCards((prev) =>
+      prev.map((card) =>
+        card.id === firstId || card.id === secondId
+          ? { ...card, mismatched: true }
+          : card
+      )
+    );
+
+    trackTimeout(() => {
+      setCards((prev) =>
+        prev.map((card) =>
+          card.id === firstId || card.id === secondId
+            ? { ...card, flipped: false, mismatched: false }
+            : card
+        )
+      );
+      setFlippedIndices([]);
+      setIsBusy(false);
+    }, 1100);
+  }, [flippedIndices]);
 
   // End game modal
   useEffect(() => {
     if (cards.length === 0 && gameStarted) {
-      setTimeout(() => setShowModal(true), 500);
+      if (!hasRecordedWinRef.current) {
+        hasRecordedWinRef.current = true;
+        setStats((prev) => {
+          const current = prev[difficulty];
+          const updated: MemoryStats = {
+            ...prev,
+            [difficulty]: {
+              gamesPlayed: current.gamesPlayed + 1,
+              wins: current.wins + 1,
+              bestMoves: current.bestMoves === null ? moves : Math.min(current.bestMoves, moves),
+              bestTime: current.bestTime === null ? timer : Math.min(current.bestTime, timer)
+            }
+          };
+          saveStats(updated);
+          return updated;
+        });
+      }
+      trackTimeout(() => setShowModal(true), 500);
     }
-  }, [cards, gameStarted]);
+  }, [cards, gameStarted, difficulty, moves, timer]);
 
   const handleCardClick = (idx: number) => {
     if (isBusy || cards[idx].flipped || cards[idx].removing || flippedIndices.length === 2) return;
@@ -110,9 +214,14 @@ const MemoryGame: React.FC = () => {
     }
   };
 
-  const resetGame = () => {
-    const doubled = [...symbols, ...symbols];
+  const resetGame = (nextDifficulty: MemoryDifficulty = difficulty) => {
+    clearPendingTimeouts();
+    hasRecordedWinRef.current = false;
+    const { pairs } = MEMORY_LEVELS[nextDifficulty];
+    const selectedSymbols = shuffle(symbols).slice(0, pairs);
+    const doubled = [...selectedSymbols, ...selectedSymbols];
     const shuffled = shuffle(doubled);
+    setDifficulty(nextDifficulty);
     setCards(
       shuffled.map((symbol, idx) => ({
         id: idx,
@@ -130,8 +239,13 @@ const MemoryGame: React.FC = () => {
     setShowModal(false);
   };
 
-  const pairsFound = (16 - cards.length) / 2;
-  const totalPairs = 8;
+  const totalPairs = MEMORY_LEVELS[difficulty].pairs;
+  const boardColumns = MEMORY_LEVELS[difficulty].columns;
+  const pairsFound = (totalPairs * 2 - cards.length) / 2;
+  const currentStats = stats[difficulty];
+  const currentWinRate = currentStats.gamesPlayed === 0
+    ? 0
+    : Math.round((currentStats.wins / currentStats.gamesPlayed) * 100);
   const formatTime = (t: number) => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
 
   return (
@@ -139,23 +253,53 @@ const MemoryGame: React.FC = () => {
       {/* Portal Header */}
       <div className="memory-game-header">
         <div className="memory-game-logo"><FaRocket style={{ color: '#ff6b35', fontSize: '1.5em' }} /> DoStrike Gaming Portal</div>
-        <button className="memory-game-private-btn" onClick={() => navigate('/rooms')}><FaRocket /> Private Rooms</button>
+        <button className="memory-game-private-btn" onClick={() => navigate('/')}><FaRocket /> Back to Portal</button>
       </div>
       <div>
         <h2 className="memory-game-title">Memory Game</h2>
+        <div className="memory-difficulty-row">
+          {(Object.keys(MEMORY_LEVELS) as MemoryDifficulty[]).map((level) => (
+            <button
+              key={level}
+              className={`memory-difficulty-btn${difficulty === level ? " active" : ""}`}
+              onClick={() => resetGame(level)}
+              aria-label={`Switch to ${MEMORY_LEVELS[level].label} difficulty`}
+              aria-pressed={difficulty === level}
+            >
+              {MEMORY_LEVELS[level].label}
+            </button>
+          ))}
+        </div>
         <div className="memory-game-info" style={{ gap: '2.5rem' }}>
           <span>Moves: {moves}</span>
           <span>Pairs: {pairsFound} / {totalPairs}</span>
           <span>Time: {formatTime(timer)}</span>
         </div>
-        <div className="memory-game-board" style={{ gridTemplateColumns: "repeat(4, 1fr)", gap: '18px', background: 'rgba(255,255,255,0.85)', boxShadow: '0 4px 32px rgba(30,136,229,0.10)', borderRadius: '20px', padding: '2.5rem 2rem', margin: '0 auto 2rem auto', maxWidth: 520 }}>
+        <div className="memory-stats-row">
+          <span>Best Moves ({MEMORY_LEVELS[difficulty].label}): {currentStats.bestMoves ?? "-"}</span>
+          <span>Best Time: {currentStats.bestTime !== null ? formatTime(currentStats.bestTime) : "-"}</span>
+          <span>Win Rate: {currentWinRate}%</span>
+        </div>
+        <div
+          className="memory-game-board"
+          style={{
+            gridTemplateColumns: `repeat(${boardColumns}, 1fr)`,
+            gap: '18px',
+            background: 'rgba(255,255,255,0.85)',
+            boxShadow: '0 4px 32px rgba(30,136,229,0.10)',
+            borderRadius: '20px',
+            padding: '2.5rem 2rem',
+            margin: '0 auto 2rem auto',
+            maxWidth: boardColumns === 5 ? 640 : 520
+          }}
+        >
           {cards.map((card, idx) => (
             <button
               key={card.id}
               className={`memory-card${card.flipped ? " flipped" : ""}${card.removing ? " removing" : ""}${card.mismatched ? " mismatched" : ""}`}
               onClick={() => handleCardClick(idx)}
               disabled={card.flipped || card.removing || isBusy}
-              aria-label={card.flipped ? card.symbol : "Hidden card"}
+              aria-label={card.flipped ? `Revealed card ${card.symbol}` : "Hidden card"}
               style={{
                 pointerEvents: card.removing ? 'none' : undefined,
                 opacity: card.removing ? 0 : 1,
@@ -199,21 +343,23 @@ const MemoryGame: React.FC = () => {
           ))}
         </div>
         <div style={{ marginTop: 24, textAlign: 'center' }}>
-          <button className="memory-game-modal-btn" onClick={resetGame}>Restart</button>
+          <button className="memory-game-modal-btn" onClick={() => resetGame()}>Restart</button>
         </div>
       </div>
       {/* End Game Modal */}
       {showModal && (
         <div className="memory-game-modal">
-          <div className="memory-game-modal-content">
+          <div className="memory-game-modal-content" role="dialog" aria-modal="true" aria-label="Memory game results">
             <div className="memory-game-modal-title">Congratulations!</div>
             <div className="memory-game-modal-stats">
               You found all pairs!<br />
               Moves: <b>{moves}</b><br />
-              Time: <b>{formatTime(timer)}</b>
+              Time: <b>{formatTime(timer)}</b><br />
+              Best ({MEMORY_LEVELS[difficulty].label}):{" "}
+              <b>{currentStats.bestMoves ?? "-"} moves / {currentStats.bestTime !== null ? formatTime(currentStats.bestTime) : "-"}</b>
             </div>
             <div className="memory-game-modal-btns">
-              <button className="memory-game-modal-btn" onClick={resetGame}>Play Again</button>
+              <button className="memory-game-modal-btn" onClick={() => resetGame()}>Play Again</button>
               <button className="memory-game-modal-btn" onClick={() => navigate("/")}>Back to Portal</button>
             </div>
           </div>

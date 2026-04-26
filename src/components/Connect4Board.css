@@ -13,6 +13,10 @@
   position: relative;
   overflow: visible;
 }
+.c4-board-wrapper:focus-visible {
+  outline: 3px solid var(--primary, #1976d2);
+  outline-offset: 4px;
+}
 
 .c4-board-grid {
   display: grid;
@@ -55,6 +59,7 @@
   transition: box-shadow 0.2s, background 0.2s;
   z-index: 2;
   overflow: visible;
+  touch-action: manipulation;
 }
 
 .c4-cell.red .c4-disc {
@@ -288,6 +293,9 @@
 /* Responsive */
 @media (max-width: 600px) {
   .c4-board-wrapper {
+    --c4-cell-size: 42px;
+  }
+  .c4-board-wrapper {
     max-width: 99vw;
     padding: 0.7rem 0;
     border-radius: 18px;
@@ -308,8 +316,22 @@
   .c4-modal {
     padding: 1.2rem 0.5rem;
     border-radius: 10px;
+    max-width: 92vw;
+  }
+  .c4-modal-actions {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 } 
+
+@media (prefers-reduced-motion: reduce) {
+  .c4-disc-drop-anim,
+  .c4-disc.preview.bounce,
+  .c4-cell.shake,
+  .c4-cell.winning {
+    animation: none !important;
+  }
+}
 
 .c4-col-hover {
   background: linear-gradient(180deg, rgba(67,233,123,0.13) 0%, rgba(25,118,210,0.10) 100%);
@@ -349,4 +371,9 @@
   30%, 50%, 70% { transform: translateX(-8px); }
   40%, 60% { transform: translateX(8px); }
   100% { transform: none; }
+}
+
+.c4-modal button:focus-visible {
+  outline: 3px solid var(--primary, #1976d2);
+  outline-offset: 2px;
 }
