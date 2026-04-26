@@ -325,7 +325,7 @@ const MemoryGame: React.FC = () => {
                   justifyContent: 'center',
                   height: '100%'
                 }}>
-                  {card.flipped ? card.symbol : null}
+                  <FaRocket style={{ fontSize: '2em' }} />
                 </div>
                 <div className="memory-card-back" style={{
                   background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
@@ -337,7 +337,9 @@ const MemoryGame: React.FC = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '100%'
-                }}><FaRocket style={{ fontSize: '2em' }} /></div>
+                }}>
+                  {card.symbol}
+                </div>
               </div>
             </button>
           ))}
