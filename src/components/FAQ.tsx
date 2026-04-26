@@ -24,7 +24,7 @@ const FAQ: React.FC = () => (
     <div style={{ marginBottom: '1.5em' }}>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em' }}>Is this site free to use?</h2>
       <p>
-        Absolutely! Ultimate Tic-Tac-Toe is free to play. You can enjoy all features without any cost.
+        Absolutely! DoStrike Gaming Portal is free to play. You can enjoy all features without any cost.
       </p>
     </div>
     <div style={{ marginBottom: '1.5em' }}>

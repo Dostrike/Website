@@ -5,13 +5,13 @@ import AdSenseAd from './AdSenseAd';
 const About: React.FC = () => (
   <>
     <Helmet>
-      <title>About - Ultimate Tic-Tac-Toe</title>
-      <meta name="description" content="Learn about the mission, story, and team behind Ultimate Tic-Tac-Toe. Our commitment to fun, learning, and user experience." />
+      <title>About - DoStrike Gaming Portal</title>
+      <meta name="description" content="Learn about the mission, story, and team behind DoStrike Gaming Portal. Our commitment to fun, learning, and user experience." />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>About This Site</h1>
       <p style={{ fontSize: '1.1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
-        Welcome to Ultimate Tic-Tac-Toe! Our mission is to provide a fun, educational, and accessible way for everyone to enjoy the classic game of Tic-Tac-Toe—whether you’re a casual player, a strategy enthusiast, or just looking to pass the time.
+        Welcome to DoStrike Gaming Portal! Our mission is to provide a fun, educational, and accessible way for everyone to enjoy the classic game of Tic-Tac-Toe—whether you’re a casual player, a strategy enthusiast, or just looking to pass the time.
       </p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Our Mission</h2>
       <p>
@@ -59,7 +59,7 @@ const About: React.FC = () => (
 
       {/* AdSense Ad */}
       <div style={{ marginTop: '2em', textAlign: 'center' }}>
-        <AdSenseAd slot="8488726423" style={{ display: 'inline-block', width: 728, height: 90 }} />
+        <AdSenseAd slot="8488726423" style={{ display: 'block', width: '100%', minHeight: 90 }} />
       </div>
     </div>
   </>

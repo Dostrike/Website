@@ -11,12 +11,14 @@ import PrivateTicTacToe from './components/PrivateTicTacToe';
 import HomeScreen from './components/HomeScreen';
 import About from './components/About';
 import Blog from './components/Blog';
+import Article from './components/Article';
 import Contact from './components/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import FAQ from './components/FAQ';
 import TermsOfService from './components/TermsOfService';
 import CookiePolicy from './components/CookiePolicy';
 import HowToPlay from './components/HowToPlay';
+import CookieConsent from './components/CookieConsent';
 import './App.css';
 
 
@@ -72,6 +74,7 @@ function App() {
               {/* Static Pages */}
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<Article />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/faq" element={<FAQ />} />
@@ -79,6 +82,7 @@ function App() {
               <Route path="/cookies" element={<CookiePolicy />} />
               <Route path="/how-to-play" element={<HowToPlay />} />
             </Routes>
+            <CookieConsent />
       </div>
         </Router>
       </ThemeProvider>

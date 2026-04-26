@@ -7,7 +7,7 @@ interface SocialShareProps {
 }
 
 const SocialShare: React.FC<SocialShareProps> = ({ 
-  title = 'Ultimate Tic-Tac-Toe', 
+  title = 'DoStrike Gaming Portal', 
   url = window.location.href,
   description = 'Play the classic game with AI or friends. Learn strategies and improve your skills!'
 }) => {

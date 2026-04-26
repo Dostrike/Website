@@ -4,22 +4,50 @@ import { Helmet } from 'react-helmet-async';
 const Contact: React.FC = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: '', email: '', message: '' });
+    setSubmitted(false);
+    setError('');
+    setSubmitting(true);
+
+    try {
+      const payload = new URLSearchParams();
+      payload.append('form-name', 'contact');
+      payload.append('name', form.name);
+      payload.append('email', form.email);
+      payload.append('message', form.message);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      setSubmitted(true);
+      setForm({ name: '', email: '', message: '' });
+    } catch {
+      setError('We could not send your message right now. Please email us at dostrike0@gmail.com.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <>
       <Helmet>
-        <title>Contact - Ultimate Tic-Tac-Toe</title>
-        <meta name="description" content="Contact the Ultimate Tic-Tac-Toe team with questions, feedback, or suggestions. Use our contact form or email us directly." />
+        <title>Contact - DoStrike Gaming Portal</title>
+        <meta name="description" content="Contact the DoStrike Gaming Portal team with questions, feedback, or suggestions. Use our contact form or email us directly." />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Contact Us</h1>
@@ -32,7 +60,7 @@ const Contact: React.FC = () => {
           Eastwood, NSW, 2122<br />
           Australia
         </div>
-        <form onSubmit={handleSubmit} style={{ maxWidth: 500, margin: '0 auto' }}>
+        <form onSubmit={handleSubmit} name="contact" style={{ maxWidth: 500, margin: '0 auto' }}>
           <label style={{ display: 'block', marginBottom: 8, fontWeight: 500 }}>
             Name
             <input
@@ -68,10 +96,16 @@ const Contact: React.FC = () => {
           </label>
           <button
             type="submit"
+            disabled={submitting}
             style={{ background: 'var(--primary)', color: 'white', padding: '0.75em 2em', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: '1em', cursor: 'pointer' }}
           >
-            Send Message
+            {submitting ? 'Sending...' : 'Send Message'}
           </button>
+          {error && (
+            <div style={{ marginTop: 24, color: '#c53030', fontWeight: 500, fontSize: '1em' }}>
+              {error}
+            </div>
+          )}
           {submitted && (
             <div style={{ marginTop: 24, color: 'var(--primary)', fontWeight: 500, fontSize: '1.1em' }}>
               Thank you for contacting us! We’ll get back to you soon.

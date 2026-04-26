@@ -13,11 +13,13 @@ const CookieConsent: React.FC = () => {
 
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'true');
+    window.dispatchEvent(new Event('cookieConsentChanged'));
     setShowBanner(false);
   };
 
   const declineCookies = () => {
     localStorage.setItem('cookieConsent', 'false');
+    window.dispatchEvent(new Event('cookieConsentChanged'));
     setShowBanner(false);
   };
 
@@ -60,7 +62,7 @@ const CookieConsent: React.FC = () => {
           }}>
             We use cookies to enhance your experience and display personalized ads via Google AdSense. 
             By continuing to use this site, you consent to our use of cookies. 
-            See our <a href="/cookiepolicy" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Cookie Policy</a> for more details.
+            See our <a href="/cookies" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Cookie Policy</a> for more details.
           </p>
         </div>
         <div style={{

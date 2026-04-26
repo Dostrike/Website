@@ -5,7 +5,7 @@ const PrivacyPolicy: React.FC = () => (
     <h1 style={{ color: 'var(--primary)', fontSize: '2.2em', marginBottom: '0.2em' }}>Privacy Policy</h1>
     <p><strong>Effective Date:</strong> June 1, 2025</p>
     <p>
-      Thank you for choosing Ultimate Tic-Tac-Toe. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our <strong>website</strong>.
+      Thank you for choosing DoStrike Gaming Portal. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our <strong>website</strong>.
     </p>
     <h2 style={{ color: 'var(--secondary)', fontSize: '1.3em', marginTop: '1.6em' }}>1. Information We Collect</h2>
     <ul>
@@ -58,7 +58,7 @@ const PrivacyPolicy: React.FC = () => (
       <li><strong>Address:</strong> 33 Raimonde Road,<br />Eastwood, NSW, 2122<br />Australia </li>
     </ul>
     <p style={{ marginTop: '2em' }}>
-      <em>By using Ultimate Tic-Tac-Toe, you consent to the practices described in this Privacy Policy.</em>
+      <em>By using DoStrike Gaming Portal, you consent to the practices described in this Privacy Policy.</em>
     </p>
   </div>
 );

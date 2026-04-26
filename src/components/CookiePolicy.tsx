@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet-async';
 const CookiePolicy: React.FC = () => (
   <>
     <Helmet>
-      <title>Cookie Policy - Ultimate Tic-Tac-Toe</title>
-      <meta name="description" content="Learn how Ultimate Tic-Tac-Toe uses cookies, including for Google AdSense and analytics. Manage your cookie preferences here." />
+      <title>Cookie Policy - DoStrike Gaming Portal</title>
+      <meta name="description" content="Learn how DoStrike Gaming Portal uses cookies, including for Google AdSense and analytics. Manage your cookie preferences here." />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Cookie Policy</h1>

@@ -35,7 +35,7 @@ const GamingPortal: React.FC = () => {
       players: '2 Players',
       difficulty: 'Easy',
       visual: '✊✋',
-      available: true,
+      available: false,
       route: '/rockpaperscissors'
     },
     {

@@ -111,7 +111,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onStartGame }) => {
               Start Game
             </button>
             <div style={{ marginTop: 16, marginBottom: 16 }}>
-              <AdSenseAd slot="8488726421" style={{ display: 'inline-block', width: 728, height: 90 }} />
+              <AdSenseAd slot="8488726421" style={{ display: 'block', width: '100%', minHeight: 90 }} />
             </div>
           </div>
 

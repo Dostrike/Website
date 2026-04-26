@@ -53,8 +53,8 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
 
   useEffect(() => {
     // Handle AI turn
-    if (gameState.gameMode === GameMode.AI && 
-        gameState.isAiTurn && 
+    if (gameState.gameMode === GameMode.AI &&
+        gameState.isAiTurn &&
         gameState.gameStatus === 'PLAYING') {
       const timer = setTimeout(() => {
         const aiMove = GameLogic.getAiMove(gameState);
@@ -62,7 +62,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
           const [row, col] = aiMove;
           const newGameState = GameLogic.makeMove(gameState, row, col, gameState.gameMode);
           setGameState(newGameState);
-          
+
           // Update score if game ended
           if (newGameState.gameStatus !== 'PLAYING') {
             updateScore(newGameState);
@@ -72,7 +72,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
 
       return () => clearTimeout(timer);
     }
-  }, [gameState.isAiTurn, gameState.gameStatus]);
+  }, [gameState]);
 
   const handleCellClick = (row: number, col: number) => {
     if (gameState.gameStatus !== 'PLAYING' || 
@@ -135,29 +135,6 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
     setNextStarter(isHumanStarting ? 'ai' : 'human');
   };
 
-  // If AI is set to start, trigger its move on new game
-  useEffect(() => {
-    if (
-      gameState.gameMode === GameMode.AI &&
-      gameState.isAiTurn &&
-      gameState.gameStatus === 'PLAYING' &&
-      GameLogic.getEmptyCells(gameState.board).length === 9
-    ) {
-      const timer = setTimeout(() => {
-        const aiMove = GameLogic.getAiMove(gameState);
-        if (aiMove) {
-          const [row, col] = aiMove;
-          const newGameState = GameLogic.makeMove(gameState, row, col, gameState.gameMode);
-          setGameState(newGameState);
-          if (newGameState.gameStatus !== 'PLAYING') {
-            updateScore(newGameState);
-          }
-        }
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [gameState.isAiTurn, gameState.gameStatus, gameState.board]);
-
   const getCurrentPlayerName = () => {
     if (gameState.gameMode === GameMode.AI) {
       return gameState.currentPlayer === Player.X ? gameState.player1Name : 'AI';
@@ -172,7 +149,8 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
     } else if (gameState.gameStatus === 'DRAW') {
       return "It's a draw!";
     } else if (gameState.winner) {
-      return `${getCurrentPlayerName()} wins!`;
+      const winnerName = gameState.winner === Player.X ? gameState.player1Name : gameState.player2Name;
+      return `${winnerName} wins!`;
     }
     return '';
   };

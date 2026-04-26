@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet-async';
 const TermsOfService: React.FC = () => (
   <>
     <Helmet>
-      <title>Terms of Service - Ultimate Tic-Tac-Toe</title>
-      <meta name="description" content="Read the Terms of Service for Ultimate Tic-Tac-Toe. Learn about your rights, responsibilities, and our policies." />
+      <title>Terms of Service - DoStrike Gaming Portal</title>
+      <meta name="description" content="Read the Terms of Service for DoStrike Gaming Portal. Learn about your rights, responsibilities, and our policies." />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Terms of Service</h1>

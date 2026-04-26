@@ -116,7 +116,7 @@ const Blog: React.FC = () => {
 
         {/* AdSense Ad */}
         <div style={{ marginBottom: '2em', textAlign: 'center' }}>
-          <AdSenseAd slot="8488726422" style={{ display: 'inline-block', width: 728, height: 90 }} />
+          <AdSenseAd slot="8488726422" style={{ display: 'block', width: '100%', minHeight: 90 }} />
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2em' }}>
