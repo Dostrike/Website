@@ -1343,6 +1343,123 @@ If you want to stop losing random games:
 
 These habits make your decisions more consistent against both human players and AI.
     `
+  },
+  {
+    title: 'Connect 4 Endgame Guide: Convert Winning Positions and Save Lost Boards',
+    excerpt: 'Learn practical Connect 4 endgame technique: forcing lines, block priorities, parity awareness, and draw-saving defense under pressure.',
+    slug: 'connect4-endgame-guide',
+    date: '2026-05-01',
+    readTime: '10 min read',
+    category: 'Strategy',
+    content: `
+Many players improve in the opening but still throw winning games in the last 8-12 moves. Endgame skill is what turns good positions into consistent results.
+
+## Endgame Objective
+
+In Connect 4 endgames, your goal is not "play a good move." Your goal is:
+
+- Force a sequence the opponent must answer
+- Limit their counterplay choices
+- Convert advantage without giving tactical shots
+
+When behind, the goal changes to:
+- Remove fork threats
+- Force predictable blocks
+- Hold for a draw if a win is gone
+
+## First Endgame Checklist
+
+Before every move in a crowded board:
+
+1. Do I have an immediate win?
+2. Does the opponent have an immediate win?
+3. Can either side create a two-threat fork next turn?
+4. Which move keeps the most safe replies available?
+
+This checklist prevents panic blunders.
+
+## Forcing Line Basics
+
+A forcing line is a sequence where each move demands a response.
+
+### Why it works
+If you keep asking one clear tactical question each turn, your opponent has no time to build their own attack.
+
+### Practical pattern
+- Create one must-block threat.
+- After the block, play a second threat that improves your structure.
+- Repeat until the final winning drop appears.
+
+Do not break a forcing line for a "nice-looking" move unless it wins immediately.
+
+## Block Priority in Tight Positions
+
+### Priority 1: Direct win prevention
+Always block immediate losses first.
+
+### Priority 2: Fork denial
+If opponent can create two winning threats with one move, prevent that square now.
+
+### Priority 3: Central control
+If no urgent tactics exist, deny central columns to reduce their line options.
+
+This order keeps defense disciplined.
+
+## Parity Awareness (Simple Version)
+
+In late boards, the row a threat lands on matters. Some threats become reachable for one side first because of move order.
+
+Simple practical rule:
+- If a key winning cell is one move away but opponent reaches it first, treat that line as unsafe and switch plans.
+
+You do not need advanced math to benefit from parity awareness. Just track who reaches critical cells first.
+
+## Common Endgame Throw Patterns
+
+### Throw 1: Ignoring opponent's one-move win while building your own setup
+Fix: Immediate threats always come first.
+
+### Throw 2: Playing the only move that reduces your own safe replies
+Fix: Prefer moves that preserve multiple defensive answers.
+
+### Throw 3: Rushing when ahead
+Fix: If you are winning, force the board. Do not gamble.
+
+### Throw 4: Resigning mentally in bad positions
+Fix: Many "lost" boards can still be drawn by removing fork squares and forcing blocks.
+
+## How to Save a Worse Position
+
+If you are behind:
+- Identify the opponent's best winning route.
+- Spend moves removing the entry points of that route.
+- Force them into single-line attacks.
+- Trade activity for safety until no direct conversion remains.
+
+Saving half-points (draws) improves long-term win rate over many games.
+
+## 15-Minute Endgame Training Plan
+
+1. Play one full game focused only on endgame checklist discipline.
+2. Replay a previous loss from move 24 onward and find first tactical miss.
+3. Play one game where your goal is "no immediate threat misses."
+
+Track:
+- Missed immediate wins
+- Missed immediate blocks
+- Games converted from winning positions
+- Draws saved from worse positions
+
+## Final Takeaway
+
+To get stronger in Connect 4 endgames:
+- Use a strict tactical checklist
+- Build and maintain forcing lines
+- Defend by priority, not emotion
+- Preserve safe replies when under pressure
+
+Endgame discipline turns unstable games into reliable results against both humans and AI.
+    `
   }
 ];
 
