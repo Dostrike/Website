@@ -41,6 +41,7 @@ const Blog: React.FC = () => {
       <Helmet>
         <title>DoStrike Blog - Game Strategy, Guides, and Tutorials</title>
         <meta name="description" content="Read original strategy guides and practical tutorials for Tic-Tac-Toe, Connect 4, and Memory Game on DoStrike Gaming Portal." />
+        <link rel="canonical" href="https://dostrike.com/blog" />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Blog</h1>

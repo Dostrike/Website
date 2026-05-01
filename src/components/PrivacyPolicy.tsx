@@ -1,6 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy: React.FC = () => (
+  <>
+  <Helmet>
+    <title>Privacy Policy - DoStrike Gaming Portal</title>
+    <meta name="description" content="Read the DoStrike Gaming Portal Privacy Policy, including how we use cookies, analytics, and advertising services." />
+    <link rel="canonical" href="https://dostrike.com/privacy" />
+  </Helmet>
   <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
     <h1 style={{ color: 'var(--primary)', fontSize: '2.2em', marginBottom: '0.2em' }}>Privacy Policy</h1>
     <p><strong>Effective Date:</strong> June 1, 2025</p>
@@ -61,6 +68,7 @@ const PrivacyPolicy: React.FC = () => (
       <em>By using DoStrike Gaming Portal, you consent to the practices described in this Privacy Policy.</em>
     </p>
   </div>
+  </>
 );
 
 export default PrivacyPolicy; 

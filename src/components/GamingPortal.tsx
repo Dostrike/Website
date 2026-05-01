@@ -111,6 +111,7 @@ const GamingPortal: React.FC = () => {
       <Helmet>
         <title>DoStrike Gaming Portal - Your Ultimate Destination for Online Multiplayer Games</title>
         <meta name="description" content="Play classic games, create private rooms, and challenge friends on DoStrike Gaming Portal. Multiple games including Tic Tac Toe, Connect 4, Memory Game, and more!" />
+        <link rel="canonical" href="https://dostrike.com/" />
       </Helmet>
       
       <div className="gaming-portal">

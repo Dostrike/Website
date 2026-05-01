@@ -48,6 +48,7 @@ const Contact: React.FC = () => {
       <Helmet>
         <title>Contact - DoStrike Gaming Portal</title>
         <meta name="description" content="Contact the DoStrike Gaming Portal team with questions, feedback, or suggestions. Use our contact form or email us directly." />
+        <link rel="canonical" href="https://dostrike.com/contact" />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Contact Us</h1>

@@ -61,6 +61,7 @@ const Article: React.FC = () => {
         <title>{article.title} | DoStrike Blog</title>
         <meta name="description" content={article.excerpt} />
         <meta name="author" content={ARTICLE_AUTHOR} />
+        <link rel="canonical" href={url} />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
         {/* Breadcrumb Navigation */}

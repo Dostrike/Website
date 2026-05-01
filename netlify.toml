@@ -3,6 +3,30 @@
   command = "npm run build"
 
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.dostrike.com/*"
+  to = "https://dostrike.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.dostrike.com/*"
+  to = "https://dostrike.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://dostrike.com/*"
+  to = "https://dostrike.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
