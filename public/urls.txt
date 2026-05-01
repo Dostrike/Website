@@ -19,3 +19,4 @@ https://dostrike.com/blog/how-to-never-lose-tic-tac-toe
 https://dostrike.com/blog/advanced-tactics-tic-tac-toe
 https://dostrike.com/blog/connect4-strategy-blueprint
 https://dostrike.com/blog/memory-game-improvement-guide
+https://dostrike.com/blog/tic-tac-toe-pattern-playbook
