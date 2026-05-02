@@ -86,7 +86,8 @@
   margin-bottom: 0;
 }
 
-.back-to-portal {
+.back-to-portal,
+.btn-primary-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -96,12 +97,29 @@
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.95rem;
-  text-decoration: none;
   color: #fff;
   border: 1px solid var(--primary);
   background: var(--primary);
-  transition: filter 0.2s ease, box-shadow 0.2s ease;
+  transition: filter 0.2s ease;
   box-sizing: border-box;
+}
+
+.back-to-portal {
+  text-decoration: none;
+}
+
+button.btn-primary-action {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary-action:hover:not(:disabled) {
+  filter: brightness(1.08);
+  color: #fff;
+}
+
+.btn-primary-action:active:not(:disabled) {
+  filter: brightness(0.96);
 }
 
 .back-to-portal:hover {
@@ -113,18 +131,42 @@
   filter: brightness(0.96);
 }
 
-.back-to-portal:focus-visible {
+.back-to-portal:focus-visible,
+.btn-primary-action:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-.back-to-portal-icon {
+.btn-primary-action:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.back-to-portal-icon,
+.btn-primary-action-icon {
   font-size: 1rem;
   flex-shrink: 0;
 }
 
+.contact-form-actions {
+  margin-top: 0.25rem;
+}
+
+.contact-form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .back-to-portal {
+  .back-to-portal,
+  .btn-primary-action {
     transition: none;
   }
 } 

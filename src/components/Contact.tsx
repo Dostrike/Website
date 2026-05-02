@@ -1,64 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useSearchParams } from 'react-router-dom';
+import { FaPaperPlane } from 'react-icons/fa';
 import BackToPortal from './BackToPortal';
 
+/**
+ * Netlify Forms: registered via hidden form in root index.html at build time.
+ * Native POST is used instead of fetch so submissions are handled at the CDN edge
+ * (fetch/AJAX often fails or mis-reports with SPA fallbacks).
+ */
 const Contact: React.FC = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sent = searchParams.get('sent') === '1';
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(false);
-    setError('');
-    setSubmitting(true);
-
-    try {
-      const payload = new URLSearchParams();
-      payload.append('form-name', 'contact');
-      payload.append('name', form.name.trim());
-      payload.append('email', form.email.trim());
-      payload.append('message', form.message.trim());
-      payload.append('bot-field', '');
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Accept: 'application/json',
-        },
-        body: payload.toString(),
-      });
-
-      let data: { error?: string } | null = null;
-      const ct = response.headers.get('content-type');
-      if (ct?.includes('application/json')) {
-        try {
-          data = (await response.json()) as { error?: string };
-        } catch {
-          data = null;
-        }
-      }
-
-      if (!response.ok || data?.error) {
-        throw new Error(data?.error || `Submission failed (${response.status})`);
-      }
-
-      setSubmitted(true);
-      setForm({ name: '', email: '', message: '' });
-    } catch (err) {
-      console.error('[contact]', err);
-      setError(
-        'We could not deliver the form just now (network or server). Please email us directly at dostrike0@gmail.com and we will respond from there.'
-      );
-    } finally {
-      setSubmitting(false);
-    }
+  const dismissSent = () => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete('sent');
+        return next;
+      },
+      { replace: true }
+    );
   };
 
   return (
@@ -87,14 +50,41 @@ const Contact: React.FC = () => {
           <br />
           Australia
         </div>
-        <form onSubmit={handleSubmit} name="contact" style={{ maxWidth: 500, margin: '0 auto' }}>
+
+        {sent && (
+          <div
+            role="status"
+            style={{
+              marginBottom: '1.5em',
+              padding: '1rem 1.25rem',
+              borderRadius: 8,
+              background: 'var(--background)',
+              border: '1px solid var(--primary)',
+              color: 'var(--text)',
+              lineHeight: 1.6,
+            }}
+          >
+            <strong style={{ color: 'var(--primary)' }}>Thank you.</strong> Your message was submitted. We’ll reply by email when we can.
+            <button type="button" onClick={dismissSent} style={{ marginLeft: 12, background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', fontWeight: 600, textDecoration: 'underline' }}>
+              Dismiss
+            </button>
+          </div>
+        )}
+
+        <form name="contact" method="POST" action="/" style={{ maxWidth: 500, margin: '0 auto', position: 'relative' }}>
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="redirect" value="/contact?sent=1" />
+
+          <div className="contact-form-honeypot" aria-hidden="true">
+            <label htmlFor="contact-bot-field">Leave empty</label>
+            <input id="contact-bot-field" name="bot-field" tabIndex={-1} autoComplete="off" defaultValue="" />
+          </div>
+
           <label style={{ display: 'block', marginBottom: 8, fontWeight: 500 }}>
             Name
             <input
               type="text"
               name="name"
-              value={form.name}
-              onChange={handleChange}
               required
               autoComplete="name"
               style={{ width: '100%', padding: '0.75em', marginTop: 4, marginBottom: 16, border: '1px solid var(--border)', borderRadius: 8, background: 'var(--surface)', color: 'var(--text)', fontSize: '1em' }}
@@ -105,8 +95,6 @@ const Contact: React.FC = () => {
             <input
               type="email"
               name="email"
-              value={form.email}
-              onChange={handleChange}
               required
               autoComplete="email"
               style={{ width: '100%', padding: '0.75em', marginTop: 4, marginBottom: 16, border: '1px solid var(--border)', borderRadius: 8, background: 'var(--surface)', color: 'var(--text)', fontSize: '1em' }}
@@ -116,41 +104,24 @@ const Contact: React.FC = () => {
             Message
             <textarea
               name="message"
-              value={form.message}
-              onChange={handleChange}
               required
               rows={5}
               style={{ width: '100%', padding: '0.75em', marginTop: 4, marginBottom: 16, border: '1px solid var(--border)', borderRadius: 8, background: 'var(--surface)', color: 'var(--text)', fontSize: '1em', resize: 'vertical' }}
             />
           </label>
-          <button
-            type="submit"
-            disabled={submitting}
-            style={{
-              background: 'var(--primary)',
-              color: 'white',
-              padding: '0.75em 2em',
-              border: 'none',
-              borderRadius: 8,
-              fontWeight: 600,
-              fontSize: '1em',
-              cursor: submitting ? 'wait' : 'pointer',
-              minHeight: 44,
-              opacity: submitting ? 0.85 : 1,
-            }}
-          >
-            {submitting ? 'Sending…' : 'Send message'}
-          </button>
-          {error && (
-            <div style={{ marginTop: 24, color: '#c53030', fontWeight: 500, fontSize: '1em', lineHeight: 1.5 }}>
-              {error}
-            </div>
-          )}
-          {submitted && (
-            <div style={{ marginTop: 24, color: 'var(--primary)', fontWeight: 500, fontSize: '1.1em' }}>
-              Thank you—your message was sent. We’ll get back to you soon.
-            </div>
-          )}
+
+          <div className="contact-form-actions">
+            <button type="submit" className="btn-primary-action">
+              <FaPaperPlane className="btn-primary-action-icon" aria-hidden />
+              Send message
+            </button>
+          </div>
+          <p style={{ marginTop: '1rem', fontSize: '0.9em', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+            Prefer email?{' '}
+            <a href="mailto:dostrike0@gmail.com" style={{ color: 'var(--primary)' }}>
+              dostrike0@gmail.com
+            </a>
+          </p>
         </form>
       </div>
     </>
