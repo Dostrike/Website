@@ -21,24 +21,41 @@ const Contact: React.FC = () => {
     try {
       const payload = new URLSearchParams();
       payload.append('form-name', 'contact');
-      payload.append('name', form.name);
-      payload.append('email', form.email);
-      payload.append('message', form.message);
+      payload.append('name', form.name.trim());
+      payload.append('email', form.email.trim());
+      payload.append('message', form.message.trim());
+      payload.append('bot-field', '');
 
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Accept: 'application/json',
+        },
         body: payload.toString(),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit');
+      let data: { error?: string } | null = null;
+      const ct = response.headers.get('content-type');
+      if (ct?.includes('application/json')) {
+        try {
+          data = (await response.json()) as { error?: string };
+        } catch {
+          data = null;
+        }
+      }
+
+      if (!response.ok || data?.error) {
+        throw new Error(data?.error || `Submission failed (${response.status})`);
       }
 
       setSubmitted(true);
       setForm({ name: '', email: '', message: '' });
-    } catch {
-      setError('We could not send your message right now. Please email us at dostrike0@gmail.com.');
+    } catch (err) {
+      console.error('[contact]', err);
+      setError(
+        'We could not deliver the form just now (network or server). Please email us directly at dostrike0@gmail.com and we will respond from there.'
+      );
     } finally {
       setSubmitting(false);
     }
@@ -55,12 +72,19 @@ const Contact: React.FC = () => {
         <BackToPortal />
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Contact Us</h1>
         <p style={{ fontSize: '1.1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
-          Have a question, suggestion, or feedback? Fill out the form below or email us directly at <a href="mailto:dostrike0@gmail.com" style={{ color: 'var(--primary)' }}>dostrike0@gmail.com</a>.
+          Have a question, suggestion, or feedback? Send the form below—we read every message. You can also email us directly at{' '}
+          <a href="mailto:dostrike0@gmail.com" style={{ color: 'var(--primary)' }}>
+            dostrike0@gmail.com
+          </a>
+          .
         </p>
         <div style={{ marginBottom: '2em' }}>
-          <strong>Address:</strong><br />
-          33 Raimonde Road,<br />
-          Eastwood, NSW, 2122<br />
+          <strong>Address:</strong>
+          <br />
+          33 Raimonde Road,
+          <br />
+          Eastwood, NSW, 2122
+          <br />
           Australia
         </div>
         <form onSubmit={handleSubmit} name="contact" style={{ maxWidth: 500, margin: '0 auto' }}>
@@ -72,6 +96,7 @@ const Contact: React.FC = () => {
               value={form.name}
               onChange={handleChange}
               required
+              autoComplete="name"
               style={{ width: '100%', padding: '0.75em', marginTop: 4, marginBottom: 16, border: '1px solid var(--border)', borderRadius: 8, background: 'var(--surface)', color: 'var(--text)', fontSize: '1em' }}
             />
           </label>
@@ -83,6 +108,7 @@ const Contact: React.FC = () => {
               value={form.email}
               onChange={handleChange}
               required
+              autoComplete="email"
               style={{ width: '100%', padding: '0.75em', marginTop: 4, marginBottom: 16, border: '1px solid var(--border)', borderRadius: 8, background: 'var(--surface)', color: 'var(--text)', fontSize: '1em' }}
             />
           </label>
@@ -100,18 +126,29 @@ const Contact: React.FC = () => {
           <button
             type="submit"
             disabled={submitting}
-            style={{ background: 'var(--primary)', color: 'white', padding: '0.75em 2em', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: '1em', cursor: 'pointer' }}
+            style={{
+              background: 'var(--primary)',
+              color: 'white',
+              padding: '0.75em 2em',
+              border: 'none',
+              borderRadius: 8,
+              fontWeight: 600,
+              fontSize: '1em',
+              cursor: submitting ? 'wait' : 'pointer',
+              minHeight: 44,
+              opacity: submitting ? 0.85 : 1,
+            }}
           >
-            {submitting ? 'Sending...' : 'Send Message'}
+            {submitting ? 'Sending…' : 'Send message'}
           </button>
           {error && (
-            <div style={{ marginTop: 24, color: '#c53030', fontWeight: 500, fontSize: '1em' }}>
+            <div style={{ marginTop: 24, color: '#c53030', fontWeight: 500, fontSize: '1em', lineHeight: 1.5 }}>
               {error}
             </div>
           )}
           {submitted && (
             <div style={{ marginTop: 24, color: 'var(--primary)', fontWeight: 500, fontSize: '1.1em' }}>
-              Thank you for contacting us! We’ll get back to you soon.
+              Thank you—your message was sent. We’ll get back to you soon.
             </div>
           )}
         </form>
@@ -120,4 +157,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaArrowLeft, FaUser, FaUserFriends, FaTrophy, FaChartBar, FaSpinner } from 'react-icons/fa';
+import { FaUser, FaUserFriends, FaTrophy, FaChartBar, FaSpinner } from 'react-icons/fa';
+import BackToPortal from './BackToPortal';
 import { socket } from '../socket';
 import './GameScreen.css';
 
@@ -374,15 +375,6 @@ const PrivateTicTacToe: React.FC = () => {
     });
   };
 
-  const handleBackToPortal = () => {
-    // Properly disconnect from the room before leaving
-    if (roomId) {
-      console.log('[PRIVATE GAME] Leaving room:', roomId);
-      socket.emit('leaveRoom', roomId);
-    }
-    navigate('/');
-  };
-
   const handleNewGame = () => {
     if (isNewGameRequested) return; // Prevent duplicate requests
     console.log('[PRIVATE GAME] Requesting new game...');
@@ -407,25 +399,15 @@ const PrivateTicTacToe: React.FC = () => {
         {/* Header */}
         <div style={{ padding: '20px', background: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <button
-              onClick={handleBackToPortal}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '12px 16px',
-                background: 'var(--primary)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600'
+            <BackToPortal
+              variant="inline"
+              beforeNavigate={() => {
+                if (roomId) {
+                  console.log('[PRIVATE GAME] Leaving room:', roomId);
+                  socket.emit('leaveRoom', roomId);
+                }
               }}
-            >
-              <FaArrowLeft />
-              Back to Portal
-            </button>
+            />
             
             <div style={{ textAlign: 'center' }}>
               <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text)', margin: '0 0 4px 0' }}>

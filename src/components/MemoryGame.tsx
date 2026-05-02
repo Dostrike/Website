@@ -373,7 +373,7 @@ const MemoryGame: React.FC = () => {
             </div>
             <div className="memory-game-modal-btns">
               <button className="memory-game-modal-btn" onClick={() => resetGame()}>Play Again</button>
-              <button type="button" className="memory-game-modal-btn" onClick={() => navigate("/")}>Back to portal</button>
+              <button type="button" className="memory-game-modal-btn" onClick={() => navigate("/")}>Back to home</button>
             </div>
           </div>
         </div>
