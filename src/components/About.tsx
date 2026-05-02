@@ -49,9 +49,10 @@ const About: React.FC = () => (
         <li><strong>Quality:</strong> We maintain high standards in everything we create</li>
       </ul>
 
-      <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Our Achievements</h2>
+      <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Where We Are Today</h2>
       <p>
-        Since our launch, we've helped thousands of players improve their strategic thinking skills. Our platform has been used in classrooms, community centers, and homes around the world. We're proud to have created a space where learning and fun go hand in hand.
+        DoStrike is a small, independent portal: three browser games, difficulty options where they matter, and a growing library of strategy articles we publish ourselves.
+        We don’t claim classroom adoption statistics or global reach—we focus on reliable gameplay, clear policies, and content that genuinely explains tactics and history behind these classics.
       </p>
 
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Contact & Address</h2>

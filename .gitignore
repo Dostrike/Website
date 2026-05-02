@@ -29,6 +29,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Archives (do not commit accidental exports)
+src.zip
+
 # Environment variables
 .env
 .env.local

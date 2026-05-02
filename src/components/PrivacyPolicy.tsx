@@ -25,7 +25,7 @@ const PrivacyPolicy: React.FC = () => (
     </p>
     <h2 style={{ color: 'var(--secondary)', fontSize: '1.3em', marginTop: '1.6em' }}>1. Information We Collect</h2>
     <ul>
-      <li><strong>Personal Data:</strong> We do not require you to provide personal information to use our website. If you contact us, we may collect your email address and name for support purposes only.</li>
+      <li><strong>Personal Data:</strong> We do not require personal information to play games or read content on this website, and we do not operate a contact form that uploads messages through the site. If you choose to email us (via the address on our Contact page), anything you send—such as your email address, name, or other details you include—is ordinary email correspondence handled for support purposes only.</li>
       <li><strong>Cookies & Usage Data:</strong> We use cookies and similar technologies to analyze website traffic and usage. Third-party services, including Google AdSense, may use cookies to serve personalized ads and measure ad performance. See <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google’s Advertising Policy</a> for more details.</li>
       <li><strong>Advertising Data:</strong> Google AdSense and its partners may collect data (including advertising identifiers and cookies) to show you personalized ads.</li>
     </ul>
@@ -50,7 +50,7 @@ const PrivacyPolicy: React.FC = () => (
     <h2 style={{ color: 'var(--secondary)', fontSize: '1.3em', marginTop: '1.6em' }}>5. User Rights and Choices</h2>
     <ul>
       <li><strong>Ad Personalization:</strong> You can opt out of personalized ads via your browser settings. See <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>.</li>
-      <li><strong>Access and Deletion:</strong> If you wish to access or delete your data, please contact us at the email below. We will comply with applicable data protection laws.</li>
+      <li><strong>Access and Deletion:</strong> If you wish to access or delete personal information tied to correspondence with us, email us at dostrike0@gmail.com. We will comply with applicable data protection laws.</li>
     </ul>
     <h2 style={{ color: 'var(--secondary)', fontSize: '1.3em', marginTop: '1.6em' }}>6. Children’s Privacy</h2>
     <p>
@@ -62,16 +62,13 @@ const PrivacyPolicy: React.FC = () => (
     </p>
     <h2 style={{ color: 'var(--secondary)', fontSize: '1.3em', marginTop: '1.6em' }}>8. Contact Us</h2>
     <p>
-      If you have any questions or concerns about this Privacy Policy or your data, please contact us at:
+      If you have any questions or concerns about this Privacy Policy or your data, please contact us:
     </p>
-    <p>
-      <strong>Email:</strong> support@dostrike.com<br/>
-      <strong>Website:</strong> https://dostrike.com/contact
-    </p>
-    <ul>
-      <li><strong>Developer:</strong> Do Strike </li>
-      <li><strong>Email:</strong> dostrike0@gmail.com </li>
-      <li><strong>Address:</strong> 33 Raimonde Road,<br />Eastwood, NSW, 2122<br />Australia </li>
+    <ul style={{ marginLeft: '1.5em', marginBottom: '1em' }}>
+      <li><strong>Email:</strong>{' '}<a href="mailto:dostrike0@gmail.com" style={{ color: 'var(--primary)' }}>dostrike0@gmail.com</a></li>
+      <li><strong>Contact page:</strong>{' '}<a href="https://dostrike.com/contact" style={{ color: 'var(--primary)' }}>dostrike.com/contact</a></li>
+      <li><strong>Publisher:</strong> DoStrike Gaming Portal</li>
+      <li><strong>Address:</strong> 33 Raimonde Road,<br />Eastwood, NSW, 2122<br />Australia</li>
     </ul>
     <p style={{ marginTop: '2em' }}>
       <em>By using DoStrike Gaming Portal, you consent to the practices described in this Privacy Policy.</em>
