@@ -35,9 +35,10 @@ const About: React.FC = () => (
       <p>
         We are committed to providing a safe, enjoyable, and ad-compliant experience. We respect your privacy and strive to be transparent about how we use data and ads. If you have feedback or suggestions, please <a href="/contact" style={{ color: 'var(--primary)' }}>contact us</a>.
       </p>
-      <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Our Team</h2>
+      <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Who Builds DoStrike</h2>
       <p>
-        Our team consists of passionate developers, educators, and game enthusiasts who believe in the power of simple games to teach complex concepts. We come from diverse backgrounds in computer science, education, and game design, united by our love for strategic thinking and learning.
+        DoStrike is a small indie project: one publisher maintaining the site, games, and blog content with outside help only where noted (for example hosting or payments).
+        We describe ourselves this way on purpose—transparency beats invented “big team” bios when reviewers and players decide whether to trust a portal.
       </p>
       
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Our Values</h2>
