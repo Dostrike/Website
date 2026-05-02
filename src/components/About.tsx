@@ -6,20 +6,28 @@ const About: React.FC = () => (
   <>
     <Helmet>
       <title>About - DoStrike Gaming Portal</title>
-      <meta name="description" content="Learn about the mission, story, and team behind DoStrike Gaming Portal. Our commitment to fun, learning, and user experience." />
+      <meta name="description" content="Learn who publishes DoStrike: classic browser games (Tic-Tac-Toe, Connect 4, Memory), original strategy guides, privacy-first ads, and how to reach us." />
+      <link rel="canonical" href="https://dostrike.com/about" />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>About This Site</h1>
       <p style={{ fontSize: '1.1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
-        Welcome to DoStrike Gaming Portal! Our mission is to provide a fun, educational, and accessible way for everyone to enjoy the classic game of Tic-Tac-Toe—whether you’re a casual player, a strategy enthusiast, or just looking to pass the time.
+        Welcome to DoStrike Gaming Portal. We publish fast, accessible browser games—Tic-Tac-Toe, Connect 4, and Memory—together with original strategy articles so players can learn while they play.
+      </p>
+      <p style={{ fontSize: '1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
+        For how we handle editorial independence and advertising (Google AdSense), see our{' '}
+        <a href="/editorial" style={{ color: 'var(--primary)' }}>
+          Editorial standards &amp; advertising disclosure
+        </a>
+        .
       </p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Our Mission</h2>
       <p>
-        We believe in making simple games engaging and accessible for all ages. Our goal is to help users learn, play, and master Tic-Tac-Toe through interactive gameplay, strategy guides, and educational content.
+        We believe simple games stay engaging when the rules are clear and improvement feels achievable. Our goal is to help visitors practice tactics, read honest guides, and enjoy reliable gameplay on phones and desktops—without needing an account for casual play.
       </p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Development Story</h2>
       <p>
-        This site was created by a small, passionate team of developers and game lovers. We wanted to build a platform that not only lets you play Tic-Tac-Toe, but also helps you understand the strategies and history behind the game. We’re always working to improve the experience and add new features.
+        DoStrike began as a focused Tic-Tac-Toe project and grew into a small portal: multiple games, difficulty options where it matters (AI and Memory levels), and a blog maintained by our editorial label. We iterate based on accessibility, mobile usability, and transparent privacy choices.
       </p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Our Commitment</h2>
       <p>

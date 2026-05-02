@@ -17,6 +17,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import FAQ from './components/FAQ';
 import TermsOfService from './components/TermsOfService';
 import CookiePolicy from './components/CookiePolicy';
+import EditorialDisclosure from './components/EditorialDisclosure';
 import HowToPlay from './components/HowToPlay';
 import CookieConsent from './components/CookieConsent';
 import './App.css';
@@ -80,6 +81,7 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/cookies" element={<CookiePolicy />} />
+              <Route path="/editorial" element={<EditorialDisclosure />} />
               <Route path="/how-to-play" element={<HowToPlay />} />
             </Routes>
             <CookieConsent />

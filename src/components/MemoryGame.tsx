@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./MemoryGame.css";
 import { FaRocket } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const symbols = ["🚀", "🪐", "👾", "🌟", "🛰️", "🌙", "🛸", "☄️", "🌌", "🔭"];
 
@@ -249,6 +250,15 @@ const MemoryGame: React.FC = () => {
   const formatTime = (t: number) => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
 
   return (
+    <>
+    <Helmet>
+      <title>Memory Game - DoStrike Gaming Portal</title>
+      <meta
+        name="description"
+        content="Play the DoStrike Memory card-matching game with easy, medium, and hard layouts. Track your best time and moves."
+      />
+      <link rel="canonical" href="https://dostrike.com/memory" />
+    </Helmet>
     <div className="memory-game-bg">
       {/* Portal Header */}
       <div className="memory-game-header">
@@ -368,6 +378,7 @@ const MemoryGame: React.FC = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -272,6 +272,7 @@ const GamingPortal: React.FC = () => {
               <p><a href="/privacy">Privacy Policy</a></p>
               <p><a href="/terms">Terms of Service</a></p>
               <p><a href="/cookies">Cookie Policy</a></p>
+              <p><a href="/editorial">Editorial &amp; ads disclosure</a></p>
             </div>
             <div className="trust-card">
               <h3>Content</h3>
@@ -292,6 +293,7 @@ const GamingPortal: React.FC = () => {
             <a href="/faq">FAQ</a>
             <a href="/terms">Terms of Service</a>
             <a href="/cookies">Cookie Policy</a>
+            <a href="/editorial">Editorial disclosure</a>
             <a href="/how-to-play">How to Play</a>
           </nav>
         </footer>

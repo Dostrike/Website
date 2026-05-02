@@ -6,6 +6,7 @@ const CookiePolicy: React.FC = () => (
     <Helmet>
       <title>Cookie Policy - DoStrike Gaming Portal</title>
       <meta name="description" content="Learn how DoStrike Gaming Portal uses cookies, including for Google AdSense and analytics. Manage your cookie preferences here." />
+      <link rel="canonical" href="https://dostrike.com/cookies" />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Cookie Policy</h1>
@@ -24,6 +25,13 @@ const CookiePolicy: React.FC = () => (
       <p>You can control or delete cookies through your browser settings. Most browsers allow you to block or delete cookies, but this may affect your experience on our site.</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>More Information</h2>
       <p>For more details about cookies and how to manage them, visit <a href="https://www.allaboutcookies.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>allaboutcookies.org</a>.</p>
+      <p style={{ marginBottom: '1.5em', lineHeight: 1.7 }}>
+        For how ads relate to editorial pages on DoStrike, see our{' '}
+        <a href="/editorial" style={{ color: 'var(--primary)' }}>
+          Editorial standards &amp; advertising disclosure
+        </a>
+        .
+      </p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Contact</h2>
       <p>If you have questions about our Cookie Policy, please <a href="/contact" style={{ color: 'var(--primary)' }}>contact us</a>.</p>
     </div>

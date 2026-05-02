@@ -39,6 +39,7 @@ const Connect4Setup: React.FC = () => {
       <Helmet>
         <title>Connect 4 Setup - DoStrike Gaming Portal</title>
         <meta name="description" content="Configure your Connect 4 game settings. Choose AI or Player vs Player mode, difficulty level, and player names." />
+        <link rel="canonical" href="https://dostrike.com/connect4-setup" />
       </Helmet>
       <div className="home-screen" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--background)' }}>
         {/* Header */}

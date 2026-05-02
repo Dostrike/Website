@@ -6,7 +6,11 @@ https://dostrike.com/faq
 https://dostrike.com/blog
 https://dostrike.com/terms
 https://dostrike.com/cookies
+https://dostrike.com/editorial
 https://dostrike.com/how-to-play
+https://dostrike.com/tictactoe-setup
+https://dostrike.com/connect4-setup
+https://dostrike.com/memory
 https://dostrike.com/blog/minimax-algorithm-tic-tac-toe
 https://dostrike.com/blog/tic-tac-toe-variations
 https://dostrike.com/blog/history-of-tic-tac-toe
@@ -21,3 +25,5 @@ https://dostrike.com/blog/connect4-strategy-blueprint
 https://dostrike.com/blog/memory-game-improvement-guide
 https://dostrike.com/blog/tic-tac-toe-pattern-playbook
 https://dostrike.com/blog/connect4-endgame-guide
+https://dostrike.com/blog/memory-game-advanced-drills
+https://dostrike.com/blog/dostrike-portal-player-guide

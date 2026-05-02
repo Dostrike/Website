@@ -6,6 +6,7 @@ const HowToPlay: React.FC = () => (
     <Helmet>
       <title>How to Play Tic-Tac-Toe - Ultimate Guide</title>
       <meta name="description" content="Learn how to play Tic-Tac-Toe with step-by-step instructions, rules, tips, and strategies. Master the classic game!" />
+      <link rel="canonical" href="https://dostrike.com/how-to-play" />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>How to Play Tic-Tac-Toe</h1>

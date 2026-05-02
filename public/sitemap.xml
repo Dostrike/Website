@@ -28,6 +28,18 @@
     <loc>https://dostrike.com/how-to-play</loc>
   </url>
   <url>
+    <loc>https://dostrike.com/tictactoe-setup</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/connect4-setup</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/memory</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/editorial</loc>
+  </url>
+  <url>
     <loc>https://dostrike.com/blog/minimax-algorithm-tic-tac-toe</loc>
   </url>
   <url>
@@ -62,5 +74,17 @@
   </url>
   <url>
     <loc>https://dostrike.com/blog/memory-game-improvement-guide</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/blog/tic-tac-toe-pattern-playbook</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/blog/connect4-endgame-guide</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/blog/memory-game-advanced-drills</loc>
+  </url>
+  <url>
+    <loc>https://dostrike.com/blog/dostrike-portal-player-guide</loc>
   </url>
 </urlset> 

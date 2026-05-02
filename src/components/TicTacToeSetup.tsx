@@ -221,6 +221,7 @@ const TicTacToeSetup: React.FC = () => {
       <Helmet>
         <title>Tic-Tac-Toe Setup - DoStrike Gaming Portal</title>
         <meta name="description" content="Configure your Tic-Tac-Toe game settings. Choose AI or Player vs Player mode, difficulty level, and player names." />
+        <link rel="canonical" href="https://dostrike.com/tictactoe-setup" />
       </Helmet>
       <div className="home-screen" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--background)' }}>
         {/* Header */}

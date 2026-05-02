@@ -1460,6 +1460,152 @@ To get stronger in Connect 4 endgames:
 
 Endgame discipline turns unstable games into reliable results against both humans and AI.
     `
+  },
+  {
+    title: 'Memory Game Advanced Drills: Chunking, Narratives, and Mistake Tracking',
+    excerpt: 'Go beyond basics with repeatable memory drills: chunk sizes, verbal anchors, fatigue management, and how to shave moves off your average round.',
+    slug: 'memory-game-advanced-drills',
+    date: '2026-05-01',
+    readTime: '11 min read',
+    category: 'Training',
+    content: `
+Once your scan pattern is stable, improvement comes from deliberate drills—not more random clicks.
+
+## Drill 1: Fixed Chunk Sizes
+
+Pick a chunk size (for example 4 cards) and complete the board using only that window mentally before expanding.
+
+Why it works:
+- Trains precision under limited working memory
+- Reduces panic flips late in the round
+
+Progress by shrinking rest time between chunks, not by speeding up individual clicks first.
+
+## Drill 2: One-Word Narratives
+
+After each mismatch, attach one short word to each card location (not the symbol):
+
+- "high-left pair"
+- "bridge middle"
+
+Avoid long stories. One word per card is enough to survive the next loop.
+
+## Drill 3: Mistake Ledger
+
+Keep a tally for ten rounds:
+
+- Repeated mismatch clicks
+- Forgotten known pairs
+- Out-of-order scans
+
+Pick only one category to fix next session. Narrow focus beats vague goals.
+
+## Drill 4: Fatigue Training
+
+Play two rounds back-to-back:
+
+- Round 1: accuracy priority
+- Round 2: maintain accuracy with 10 percent faster pacing
+
+If accuracy drops, return to single-round practice until stable.
+
+## Drill 5: Worst-Pair Spotlight
+
+Identify the symbol type you confuse most. Spend five minutes pairing only those symbols across sessions.
+
+This removes your largest error bucket fastest.
+
+## Difficulty Scaling
+
+### Easy boards
+Optimize move count before time.
+
+### Medium boards
+Combine zones with verbal anchors.
+
+### Hard boards
+Shrink chunk size and slow the first minute of play.
+
+## Final Takeaway
+
+Advanced memory play is boring on purpose:
+- Controlled chunks
+- Minimal narratives
+- Measured mistakes
+
+Repeat weekly and your median moves should trend down without sacrificing accuracy.
+    `
+  },
+  {
+    title: 'DoStrike Portal Guide: Games, Difficulty Settings, and Where to Learn Next',
+    excerpt: 'A clear tour of dostrike.com: which game fits your goal, how AI and difficulty options work, and the best articles to read first.',
+    slug: 'dostrike-portal-player-guide',
+    date: '2026-05-01',
+    readTime: '9 min read',
+    category: 'Guides',
+    content: `
+DoStrike is built for short sessions with real strategic depth. This guide explains how to use the portal efficiently.
+
+## Start Here
+
+### Home portal
+From the homepage you can jump into each game card. Everything runs in the browser—ideal for desktop or mobile breaks.
+
+### Blog
+Strategy articles are grouped by topic. Use search and categories when you want a deep dive rather than casual play.
+
+## Tic-Tac-Toe Path
+
+Best for:
+- Learning forks and forced draws quickly
+- Private-style matches with friends
+
+Suggested reading order:
+1. Opening fundamentals on the blog
+2. Pattern playbook for fork discipline
+3. Minimax explainer if you like theory
+
+If you only have five minutes, play one perfect-defense game against AI and note every missed threat.
+
+## Connect 4 Path
+
+Best for:
+- Planning multiple drops ahead
+- Practicing tactical defense under pressure
+
+Suggested reading order:
+1. Strategy blueprint (center control and threats)
+2. Endgame guide (conversion and saves)
+
+Training tip: after each loss, identify whether the mistake was opening, mid-game structure, or endgame tactics.
+
+## Memory Path
+
+Best for:
+- Working memory training and calm pacing
+
+Suggested reading order:
+1. Improvement guide (zones and scan rhythm)
+2. Advanced drills (chunking and mistake tracking)
+
+Use difficulty steps as progression gates—do not rush to hard until medium rounds feel routine.
+
+## Difficulty and AI Notes
+
+Where difficulty exists, treat it as curriculum:
+- Lower difficulty reinforces accuracy and pattern habits.
+- Higher difficulty exposes weak recall or rushed scanning.
+
+AI opponents reward consistent threat scanning more than risky gambits.
+
+## Policies and Transparency
+
+Privacy, cookies, and terms are linked in the site footer. For editorial independence and how ads may appear, read the editorial disclosure page linked from About and FAQ.
+
+## Final Takeaway
+
+Pick one game for the week, pair it with one article series, and measure one statistic (wins, moves, or mistakes). Small measurements create fast improvement loops on DoStrike.
+    `
   }
 ];
 

@@ -14,6 +14,13 @@ const PrivacyPolicy: React.FC = () => (
     <p>
       Thank you for choosing DoStrike Gaming Portal. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our <strong>website</strong>.
     </p>
+    <p>
+      For how we separate editorial content from advertising and how Google AdSense may appear on the site, see our{' '}
+      <a href="/editorial" style={{ color: 'var(--primary)' }}>
+        Editorial standards &amp; advertising disclosure
+      </a>
+      .
+    </p>
     <h2 style={{ color: 'var(--secondary)', fontSize: '1.3em', marginTop: '1.6em' }}>1. Information We Collect</h2>
     <ul>
       <li><strong>Personal Data:</strong> We do not require you to provide personal information to use our website. If you contact us, we may collect your email address and name for support purposes only.</li>
