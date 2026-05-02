@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaGamepad, FaArrowLeft, FaPlay, FaRobot, FaUsers, FaPalette, FaChartBar } from 'react-icons/fa';
+import { FaGamepad, FaPlay, FaRobot, FaUsers, FaPalette, FaChartBar } from 'react-icons/fa';
+import BackToPortal from './BackToPortal';
 
 const GAME_MODES = [
   { key: 'AI', label: 'vs AI', icon: <FaRobot /> },
@@ -30,10 +31,6 @@ const Connect4Setup: React.FC = () => {
     navigate('/connect4');
   };
 
-  const handleBackToPortal = () => {
-    navigate('/');
-  };
-
   return (
     <>
       <Helmet>
@@ -57,34 +54,7 @@ const Connect4Setup: React.FC = () => {
             justifyContent: 'space-between'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-              <button 
-                onClick={handleBackToPortal}
-                style={{
-                  background: 'var(--primary)',
-                  border: 'none',
-                  borderRadius: 10,
-                  padding: '12px 20px',
-                  color: 'white',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  fontSize: '0.95em',
-                  fontWeight: 600,
-                  transition: 'all 0.2s ease',
-                  boxShadow: '0 2px 8px rgba(30,136,229,0.3)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(30,136,229,0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(30,136,229,0.3)';
-                }}
-              >
-                <FaArrowLeft /> Back to Portal
-              </button>
+              <BackToPortal variant="inline" />
               <div>
                 <h1 style={{ color: 'var(--primary)', fontSize: '2.2em', fontWeight: 800, margin: 0, display: 'flex', alignItems: 'center', gap: 12 }}>
                   <FaGamepad />

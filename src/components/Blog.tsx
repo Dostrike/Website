@@ -4,6 +4,7 @@ import { articles } from '../data/articles';
 import { Helmet } from 'react-helmet-async';
 import AdSenseAd from './AdSenseAd';
 import SocialShare from './SocialShare';
+import BackToPortal from './BackToPortal';
 
 const Blog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -44,6 +45,7 @@ const Blog: React.FC = () => {
         <link rel="canonical" href="https://dostrike.com/blog" />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+        <BackToPortal />
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Blog</h1>
         <p style={{ marginBottom: '2em', color: 'var(--text)', fontSize: '1.1em', lineHeight: 1.6 }}>
           Explore original game strategy articles and gameplay tutorials from the DoStrike editorial team.

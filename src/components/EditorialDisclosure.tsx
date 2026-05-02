@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import BackToPortal from './BackToPortal';
 
 const EditorialDisclosure: React.FC = () => (
   <>
@@ -24,6 +25,7 @@ const EditorialDisclosure: React.FC = () => (
         borderRadius: 10,
       }}
     >
+      <BackToPortal />
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '0.75em', fontWeight: 700 }}>
         Editorial Standards & Advertising Disclosure
       </h1>

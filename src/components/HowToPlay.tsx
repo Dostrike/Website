@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import BackToPortal from './BackToPortal';
 
 const HowToPlay: React.FC = () => (
   <>
@@ -9,6 +10,7 @@ const HowToPlay: React.FC = () => (
       <link rel="canonical" href="https://dostrike.com/how-to-play" />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+      <BackToPortal />
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>How to Play Tic-Tac-Toe</h1>
       <p style={{ fontSize: '1.1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
         Tic-Tac-Toe is a simple yet strategic game for two players. The goal is to be the first to get three of your marks in a row—horizontally, vertically, or diagonally—on a 3x3 grid.

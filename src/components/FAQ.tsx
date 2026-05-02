@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import BackToPortal from './BackToPortal';
 
 const FAQ: React.FC = () => (
   <>
@@ -23,6 +24,7 @@ const FAQ: React.FC = () => (
         borderRadius: 10,
       }}
     >
+      <BackToPortal />
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em' }}>Frequently Asked Questions</h1>
       <p style={{ marginBottom: '2em', lineHeight: 1.6, color: 'var(--text-muted)' }}>
         Quick answers about DoStrike. For privacy, cookies, and how we use advertising, see our policy pages and{' '}

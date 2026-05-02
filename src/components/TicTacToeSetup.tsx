@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FaArrowLeft, FaPlay, FaRobot, FaUsers, FaPalette, FaChartBar, FaLink } from 'react-icons/fa';
+import { FaPlay, FaRobot, FaUsers, FaPalette, FaChartBar, FaLink } from 'react-icons/fa';
+import BackToPortal from './BackToPortal';
 import { socket } from '../socket';
 import { useEffect } from 'react';
 
@@ -133,10 +134,6 @@ const TicTacToeSetup: React.FC = () => {
     }
   };
 
-  const handleBackToPortal = () => {
-    navigate('/');
-  };
-
   // Private room logic
   const handleCreateRoom = () => {
     if (!isConnected) {
@@ -227,26 +224,7 @@ const TicTacToeSetup: React.FC = () => {
         {/* Header */}
         <div style={{ padding: '24px 20px', background: 'var(--surface)', borderBottom: '1px solid var(--border)', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <button
-              onClick={handleBackToPortal}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '12px 16px',
-                background: 'var(--primary)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <FaArrowLeft />
-              Back to Portal
-            </button>
+            <BackToPortal variant="inline" />
             <div style={{ textAlign: 'center' }}>
               <h1 style={{ fontSize: '28px', fontWeight: '700', color: 'var(--text)', margin: '0 0 4px 0' }}>
                 Tic-Tac-Toe

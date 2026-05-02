@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import BackToPortal from './BackToPortal';
 
 const TermsOfService: React.FC = () => (
   <>
@@ -9,6 +10,7 @@ const TermsOfService: React.FC = () => (
       <link rel="canonical" href="https://dostrike.com/terms" />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+      <BackToPortal />
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Terms of Service</h1>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.95em', marginBottom: '2em' }}>Last updated: June 2024</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>1. Acceptance of Terms</h2>

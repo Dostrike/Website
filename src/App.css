@@ -76,4 +76,52 @@
     top: 0.5rem;
     right: 0.5rem;
   }
+}
+
+.back-to-portal-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.back-to-portal-wrap--inline {
+  margin-bottom: 0;
+}
+
+.back-to-portal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--primary);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.back-to-portal:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.back-to-portal:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.back-to-portal-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-portal {
+    transition: none;
+  }
 } 

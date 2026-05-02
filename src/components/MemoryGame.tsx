@@ -3,6 +3,7 @@ import "./MemoryGame.css";
 import { FaRocket } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import BackToPortal from "./BackToPortal";
 
 const symbols = ["🚀", "🪐", "👾", "🌟", "🛰️", "🌙", "🛸", "☄️", "🌌", "🔭"];
 
@@ -263,7 +264,7 @@ const MemoryGame: React.FC = () => {
       {/* Portal Header */}
       <div className="memory-game-header">
         <div className="memory-game-logo"><FaRocket style={{ color: '#ff6b35', fontSize: '1.5em' }} /> DoStrike Gaming Portal</div>
-        <button className="memory-game-private-btn" onClick={() => navigate('/')}><FaRocket /> Back to Portal</button>
+        <BackToPortal variant="inline" />
       </div>
       <div>
         <h2 className="memory-game-title">Memory Game</h2>
@@ -372,7 +373,7 @@ const MemoryGame: React.FC = () => {
             </div>
             <div className="memory-game-modal-btns">
               <button className="memory-game-modal-btn" onClick={() => resetGame()}>Play Again</button>
-              <button className="memory-game-modal-btn" onClick={() => navigate("/")}>Back to Portal</button>
+              <button type="button" className="memory-game-modal-btn" onClick={() => navigate("/")}>Back to portal</button>
             </div>
           </div>
         </div>

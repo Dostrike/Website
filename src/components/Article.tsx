@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getArticleBySlug, articles } from '../data/articles';
 import { Helmet } from 'react-helmet-async';
 import SocialShare from './SocialShare';
+import BackToPortal from './BackToPortal';
 
 const ARTICLE_AUTHOR = 'DoStrike Editorial Team';
 
@@ -13,6 +14,7 @@ const Article: React.FC = () => {
   if (!article) {
     return (
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+        <BackToPortal />
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em' }}>Article Not Found</h1>
         <p style={{ marginBottom: '2em', color: 'var(--text)' }}>
           The article you're looking for doesn't exist.
@@ -64,10 +66,9 @@ const Article: React.FC = () => {
         <link rel="canonical" href={url} />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+        <BackToPortal />
         {/* Breadcrumb Navigation */}
         <nav style={{ marginBottom: '2em', fontSize: '0.9em', color: 'var(--text-muted)' }}>
-          <Link to="/" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Home</Link>
-          {' > '}
           <Link to="/blog" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Blog</Link>
           {' > '}
           <span style={{ color: 'var(--text-muted)' }}>{article.title}</span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import AdSenseAd from './AdSenseAd';
+import BackToPortal from './BackToPortal';
 
 const About: React.FC = () => (
   <>
@@ -10,6 +11,7 @@ const About: React.FC = () => (
       <link rel="canonical" href="https://dostrike.com/about" />
     </Helmet>
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+      <BackToPortal />
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>About This Site</h1>
       <p style={{ fontSize: '1.1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
         Welcome to DoStrike Gaming Portal. We publish fast, accessible browser games—Tic-Tac-Toe, Connect 4, and Memory—together with original strategy articles so players can learn while they play.

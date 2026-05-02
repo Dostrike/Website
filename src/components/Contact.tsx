@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import BackToPortal from './BackToPortal';
 
 const Contact: React.FC = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -51,6 +52,7 @@ const Contact: React.FC = () => {
         <link rel="canonical" href="https://dostrike.com/contact" />
       </Helmet>
       <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
+        <BackToPortal />
         <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Contact Us</h1>
         <p style={{ fontSize: '1.1em', color: 'var(--text)', marginBottom: '2em', lineHeight: 1.6 }}>
           Have a question, suggestion, or feedback? Fill out the form below or email us directly at <a href="mailto:dostrike0@gmail.com" style={{ color: 'var(--primary)' }}>dostrike0@gmail.com</a>.
