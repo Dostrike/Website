@@ -12,7 +12,7 @@ const PrivacyPolicy: React.FC = () => (
   <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
     <BackToPortal />
     <h1 style={{ color: 'var(--primary)', fontSize: '2.2em', marginBottom: '0.2em' }}>Privacy Policy</h1>
-    <p><strong>Effective Date:</strong> June 1, 2025</p>
+    <p><strong>Effective Date:</strong> May 3, 2026</p>
     <p>
       Thank you for choosing DoStrike Gaming Portal. Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our <strong>website</strong>.
     </p>
