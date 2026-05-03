@@ -83,17 +83,17 @@ const GamingPortal: React.FC = () => {
 
   const features = [
     {
-      icon: <FaGamepad />,
+      icon: <FaGamepad aria-hidden />,
       title: 'Multiple Games',
       description: 'Wide variety of classic and modern games.'
     },
     {
-      icon: <FaUsers />,
+      icon: <FaUsers aria-hidden />,
       title: 'Private Rooms',
       description: 'Create rooms and invite friends to play.'
     },
     {
-      icon: <FaTrophy />,
+      icon: <FaTrophy aria-hidden />,
       title: 'Competitive',
       description: 'Track scores and compete with others.'
     }
@@ -120,7 +120,7 @@ const GamingPortal: React.FC = () => {
           <div className="header-content">
             <div className="header-top">
               <h1 className="portal-title">
-                <FaRocket className="rocket-icon" />
+                <FaRocket className="rocket-icon" aria-hidden />
                 DoStrike Gaming Portal
               </h1>
             </div>
@@ -147,15 +147,15 @@ const GamingPortal: React.FC = () => {
             </div>
             <div className="header-features">
               <div className="feature-item">
-                <FaGamepad />
+                <FaGamepad aria-hidden />
                 <span>Multiple Games</span>
               </div>
               <div className="feature-item">
-                <FaUsers />
+                <FaUsers aria-hidden />
                 <span>Private Rooms</span>
               </div>
               <div className="feature-item">
-                <FaTrophy />
+                <FaTrophy aria-hidden />
                 <span>Play with Friends</span>
               </div>
             </div>
@@ -167,20 +167,31 @@ const GamingPortal: React.FC = () => {
           <h2 className="section-title">Choose Your Game</h2>
           <div className="games-grid">
             {games.map((game) => (
-              <div 
-                key={game.id} 
+              <div
+                key={game.id}
                 className="game-card"
+                role="button"
+                tabIndex={0}
+                aria-label={`Play ${game.name}. ${game.description} ${game.players}, ${game.difficulty}.`}
                 onClick={() => handleGameClick(game)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleGameClick(game);
+                  }
+                }}
               >
                 {game.badge && <span className="game-badge">{game.badge}</span>}
-                <div className="game-visual">{game.visual}</div>
+                <div className="game-visual" aria-hidden="true">
+                  {game.visual}
+                </div>
                 <h3 className="game-name">{game.name}</h3>
                 <p className="game-description">{game.description}</p>
                 <div className="game-details">
                   <span className="game-players">{game.players}</span>
                   <span className="game-difficulty">{game.difficulty}</span>
                 </div>
-                <button className="play-button">Play Now</button>
+                <span className="play-button">Play Now</span>
               </div>
             ))}
           </div>

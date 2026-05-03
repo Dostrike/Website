@@ -74,6 +74,8 @@ const SocialShare: React.FC<SocialShareProps> = ({
       }}>
         {'share' in navigator ? (
           <button
+            type="button"
+            aria-label="Share using your device"
             onClick={handleNativeShare}
             style={{
               background: 'var(--primary)',
@@ -89,11 +91,13 @@ const SocialShare: React.FC<SocialShareProps> = ({
               gap: '0.5em'
             }}
           >
-            📱 Share
+            <span aria-hidden>📱</span> Share
           </button>
         ) : null}
         
         <button
+          type="button"
+          aria-label="Share on X (Twitter)"
           onClick={handleTwitterShare}
           style={{
             background: '#1DA1F2',
@@ -109,10 +113,12 @@ const SocialShare: React.FC<SocialShareProps> = ({
             gap: '0.5em'
           }}
         >
-          🐦 Twitter
+          <span aria-hidden>🐦</span> Twitter
         </button>
         
         <button
+          type="button"
+          aria-label="Share on Facebook"
           onClick={handleFacebookShare}
           style={{
             background: '#4267B2',
@@ -128,10 +134,12 @@ const SocialShare: React.FC<SocialShareProps> = ({
             gap: '0.5em'
           }}
         >
-          📘 Facebook
+          <span aria-hidden>📘</span> Facebook
         </button>
         
         <button
+          type="button"
+          aria-label="Share on LinkedIn"
           onClick={handleLinkedInShare}
           style={{
             background: '#0077B5',
@@ -147,10 +155,12 @@ const SocialShare: React.FC<SocialShareProps> = ({
             gap: '0.5em'
           }}
         >
-          💼 LinkedIn
+          <span aria-hidden>💼</span> LinkedIn
         </button>
         
         <button
+          type="button"
+          aria-label="Share by email"
           onClick={handleEmailShare}
           style={{
             background: '#EA4335',
@@ -166,7 +176,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
             gap: '0.5em'
           }}
         >
-          📧 Email
+          <span aria-hidden>📧</span> Email
         </button>
       </div>
       

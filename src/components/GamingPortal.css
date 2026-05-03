@@ -187,6 +187,11 @@
   border-color: var(--primary);
 }
 
+.game-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
 .game-visual {
   font-size: 2.5rem;
   margin-bottom: 0.75rem;
@@ -243,6 +248,8 @@
 }
 
 .play-button {
+  display: block;
+  box-sizing: border-box;
   background: linear-gradient(135deg, #ff6b35 0%, #f0833a 100%);
   color: white;
   border: none;
@@ -254,6 +261,7 @@
   transition: all 0.3s ease;
   width: 100%;
   letter-spacing: 0.01em;
+  text-align: center;
 }
 
 .play-button:hover {
