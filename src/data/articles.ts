@@ -1918,7 +1918,7 @@ Repeat weekly and your median moves should trend down without sacrificing accura
     excerpt: 'A clear tour of dostrike.com: which game fits your goal, how AI and difficulty options work, and the best articles to read first.',
     slug: 'dostrike-portal-player-guide',
     date: '2026-05-01',
-    readTime: '9 min read',
+    readTime: '11 min read',
     category: 'Guides',
     content: `
 DoStrike is built for short sessions with real strategic depth. This guide explains how to use the portal efficiently.
@@ -1928,14 +1928,31 @@ DoStrike is built for short sessions with real strategic depth. This guide expla
 ### Home portal
 From the homepage you can jump into each game card. Everything runs in the browser—ideal for desktop or mobile breaks.
 
+No account is required for casual play—open a game, pick a mode, and start. That keeps lunch-break practice friction low.
+
 ### Blog
 Strategy articles are grouped by topic. Use search and categories when you want a deep dive rather than casual play.
+
+## What Each Blog Category Is For
+
+Skim labels before you commit to a long read:
+
+- **Strategy** — Openings, forks, forcing sequences, Connect 4 threats, Memory scan habits.
+- **History & fun** — Cultural context and lighter trivia that still rewards curious players.
+- **Education & psychology** — Teaching kids, classroom flows, and how humans decide under small-board pressure.
+- **Mathematics** — Draw proofs, counting games, and why “solved” does not mean boring.
+- **Training** — Repeatable drills, difficulty ladders, and how to measure improvement without grinding randomly.
+- **Technology & community** — Broader trends (AI demos, tournaments); use these when you want big-picture context after you know the basics.
+
+If you are new, start with one **Strategy** piece plus this guide, then branch by whatever game you play most.
 
 ## Tic-Tac-Toe Path
 
 Best for:
 - Learning forks and forced draws quickly
 - Private-style matches with friends
+
+**Difficulty:** Where AI strength is offered, treat lower levels as “training wheels”—they forgive missed blocks so you can rehearse patterns. Crank difficulty up once your three-scan habit (block loss, take win, prevent fork) feels automatic, not before.
 
 Suggested reading order:
 1. Opening fundamentals on the blog
@@ -1950,6 +1967,8 @@ Best for:
 - Planning multiple drops ahead
 - Practicing tactical defense under pressure
 
+**Difficulty:** Stronger AI or tighter time pressure punishes “one-move tunnel vision.” If you keep losing, slow down and ask whether each drop answered center control, an immediate threat, or a fork setup—our blueprint and endgame articles map those layers explicitly.
+
 Suggested reading order:
 1. Strategy blueprint (center control and threats)
 2. Endgame guide (conversion and saves)
@@ -1960,6 +1979,8 @@ Training tip: after each loss, identify whether the mistake was opening, mid-gam
 
 Best for:
 - Working memory training and calm pacing
+
+**Difficulty:** Larger pair counts and harder decks increase cognitive load faster than raw “speed.” Move up one step only when your move count and repeat-mistake rate stay stable on the current tier—see the improvement and advanced-drills articles for concrete checklists.
 
 Suggested reading order:
 1. Improvement guide (zones and scan rhythm)
@@ -1974,6 +1995,14 @@ Where difficulty exists, treat it as curriculum:
 - Higher difficulty exposes weak recall or rushed scanning.
 
 AI opponents reward consistent threat scanning more than risky gambits.
+
+If a session feels “unfair,” log whether losses came from rule misunderstandings or from tactics—only the second kind means you should raise difficulty.
+
+## Mobile, Links, and Deep Routes
+
+Bookmark specific blog URLs when you find an article you want to revisit; the footer always links back to policies and the editorial disclosure if you need them in a hurry.
+
+On small screens, rotate to landscape for Connect 4 if columns feel cramped—layout comfort matters as much as theory when you are practicing under time pressure.
 
 ## Policies and Transparency
 
