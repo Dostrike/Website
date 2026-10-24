@@ -85,10 +85,28 @@ You can inspect the public implementation in the DoStrike Website repository, in
 `,
   },
   'future-tic-tac-toe-ai-vr-innovation': {
-    title: 'What a useful Tic-Tac-Toe learning tool should explain',
-    excerpt: 'A practical design guide: show the threatened line, explain forks, distinguish random opponents from search, and measure mistakes instead of promising learning outcomes.',
+    title: 'Review your Tic-Tac-Toe round: find the move that changed the result',
+    excerpt: 'Replay your actual DoStrike round, spot a missed block, and compare a stronger move. See a worked example and understand what perfect-play analysis can tell you.',
     content: `
-A Tic-Tac-Toe learning tool is useful when a player can explain a decision after using it. Adding a futuristic setting does not automatically teach strategy. For a nine-square game, the most valuable feedback can be small: identify the line a player overlooked and let them try again.
+A Tic-Tac-Toe learning tool is useful when a player can explain a decision after using it. DoStrike now offers a review of each completed computer or local two-player round. Open “Review this round” beneath the result to replay the positions that actually occurred, rather than studying an unrelated example.
+
+## A missed block from an actual playable sequence
+
+Try this sequence against Hard: play X in top-left, let O take the center, then play X in bottom-right. Hard replies at top-middle. The position is X O empty / empty O empty / empty empty X, with X to move.
+
+The urgent square is bottom-middle. O already has top-middle and center, so any move that fails to win immediately or stop that column allows O to finish it. Choosing bottom-left may look like a fork because X would threaten the left column and bottom row, but O wins at bottom-middle before either threat matters.
+
+If you choose bottom-left and lose, the round review starts at X’s fifth move. The dotted square shows bottom-left, the move played. Reveal the explanation to outline bottom-middle, a move that keeps a draw available with correct replies. Count O’s two marks in the middle column before looking at X’s possible attacks.
+
+## How to read the review
+
+Use the previous and next buttons to move through the round. Each diagram shows the position before the selected turn, with the move played marked separately. “Explain this move” reveals one strongest suggestion and why the available result matters. There may be other equally strong squares.
+
+In a computer game, the review initially selects the first human turn that gave up an available win or draw. In local two-player play, it checks both players. If no turn gave up an available result, it says so. A win is not proof that every earlier move was strong: an opponent may have missed a reply.
+
+The solver assumes perfect replies. It distinguishes a forced win, an available draw, and a forced loss; it cannot predict a human’s next choice or a random Easy move. A forced-loss position cannot always be rescued. The review does not blame a later move for a loss that was already unavoidable.
+
+Round positions are held in the current game session. Starting the next round clears that review, and the positions are not uploaded to a review server. If you want to study a position later, write down its nine squares and whose turn it was.
 
 ## Explain the decision, not just the result
 

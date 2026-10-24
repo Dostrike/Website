@@ -166,7 +166,7 @@ export default function GameSetup(p: Props) {
             {isTtt
               ? p.mode === "PRIVATE"
                 ? "Share a room code to play online. Both players request a rematch to start the next round, and take turns going first."
-                : "X starts each round. Watch for wins, blocks and forks. Draws keep the match alive."
+                : "X starts each round. Review your moves after the result to spot missed wins and blocks. Draws keep the match alive."
               : "Discs fall to the lowest empty space. Connect four horizontally, vertically or diagonally."}
           </p>
           <Link to={isTtt ? "/practice" : "/blog/connect4-strategy-blueprint"}>

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import './ArcadeHome.css';
 
 const games = [
-  { id: 'tictactoe', title: 'Tic-Tac-Toe', label: 'The quick rematch', description: 'Three in a row. A well-timed fork. One more round. Play the computer or pass the screen to a friend.', players: 'Solo or 2 players', route: '/tictactoe-setup', action: 'Choose your opponent' },
+  { id: 'tictactoe', title: 'Tic-Tac-Toe', label: 'The quick rematch', description: 'Play the computer or a friend. After each round, replay your moves and learn from a missed win or block.', players: 'Solo or 2 players', route: '/tictactoe-setup', action: 'Choose your opponent' },
   { id: 'connect4', title: 'Connect 4', label: 'Think one move ahead', description: 'Drop a disc, build a threat, and watch the diagonals. Choose a computer opponent or a local two-player match.', players: 'Solo or 2 players', route: '/connect4-setup', action: 'Choose your difficulty' },
   { id: 'memory', title: 'Memory', label: 'Chase your personal best', description: 'Find every pair with fewer moves. Start with six pairs, then take on a bigger board when you are ready.', players: 'Solo · 3 difficulty levels', route: '/memory', action: 'How to improve', guide: '/blog/memory-game-improvement-guide' },
 ];

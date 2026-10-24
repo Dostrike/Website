@@ -1,4 +1,5 @@
 import ResultMark from './ResultMark';
+import RoundReview from './RoundReview';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -62,8 +63,9 @@ export default function MatchGame({
   onBackToHome: () => void;
 }) {
   const [settings] = useState(loadSettings);
-  const [game, setGame] = useState<GameState>(() => ({
+  const [game, setGame] = useState<GameState & { roundMoves: number[] }>(() => ({
     ...GameLogic.createInitialGameState(),
+    roundMoves: [],
     ...(settings
       ? {
           ...settings,
@@ -99,9 +101,9 @@ export default function MatchGame({
     const timer = window.setTimeout(() => {
       const move = GameLogic.getAiMove(game);
       if (!move) return;
-      const next = scoreRound(
+      const next = { ...scoreRound(
         GameLogic.makeMove(game, move[0], move[1], game.gameMode),
-      );
+      ), roundMoves: [...game.roundMoves, move[0] * 3 + move[1]] };
       setGame((current) => (current === game ? next : current));
     }, 450);
     return () => window.clearTimeout(timer);
@@ -114,7 +116,7 @@ export default function MatchGame({
       )
         return current;
       const next = GameLogic.makeMove(current, row, column, current.gameMode);
-      return next === current ? current : scoreRound(next);
+      return next === current ? current : { ...scoreRound(next), roundMoves: [...current.roundMoves, row * 3 + column] };
     });
   };
   const playAgain = () => {
@@ -122,6 +124,7 @@ export default function MatchGame({
     setHint(null);
     setGame((current) => ({
       ...GameLogic.createInitialGameState(),
+      roundMoves: [],
       gameMode: current.gameMode,
       difficulty: current.difficulty,
       player1Name: current.player1Name,
@@ -251,6 +254,7 @@ export default function MatchGame({
           <Link to="/practice">Learn the pattern →</Link>
         </p>
       )}
+      {ended && <RoundReview moves={game.roundMoves} computerGame={isAi} />}
       <details className="match-details">
         <summary>Round statistics</summary>
         <ScoreBoard
