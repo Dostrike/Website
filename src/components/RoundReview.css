@@ -1,4 +1,7 @@
 .round-review { line-height:1.8; }
+.app .match-game { padding-inline:20px; }
+@media(max-width:600px) { .app .match-game { padding-inline:16px; } }
+@media(min-width:960px) { .app .match-game { padding-inline:36px; } }
 .review-intro,.round-review>p { font-size:13px; margin:12px 0; color:var(--text-muted); }
 .review-steps { display:flex; justify-content:space-between; align-items:center; gap:8px; margin:18px 0 12px; }
 .review-steps strong { font-size:12px; }
