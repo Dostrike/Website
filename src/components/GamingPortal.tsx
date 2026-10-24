@@ -1,11 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { FaRocket, FaGamepad, FaUsers, FaTrophy } from 'react-icons/fa';
 import './GamingPortal.css';
 
 const GamingPortal: React.FC = () => {
-  const navigate = useNavigate();
 
   const games = [
     {
@@ -99,11 +97,6 @@ const GamingPortal: React.FC = () => {
     }
   ];
 
-  const handleGameClick = (game: typeof games[0]) => {
-    if (game.available) {
-      navigate(game.route);
-    }
-  };
 
 
   return (
@@ -167,19 +160,12 @@ const GamingPortal: React.FC = () => {
           <h2 className="section-title">Choose Your Game</h2>
           <div className="games-grid">
             {games.map((game) => (
-              <div
+              <a
                 key={game.id}
                 className="game-card"
-                role="button"
-                tabIndex={0}
+                href={game.route}
+                style={{ color: 'inherit', textDecoration: 'none' }}
                 aria-label={`Play ${game.name}. ${game.description} ${game.players}, ${game.difficulty}.`}
-                onClick={() => handleGameClick(game)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleGameClick(game);
-                  }
-                }}
               >
                 {game.badge && <span className="game-badge">{game.badge}</span>}
                 <div className="game-visual" aria-hidden="true">
@@ -192,7 +178,7 @@ const GamingPortal: React.FC = () => {
                   <span className="game-difficulty">{game.difficulty}</span>
                 </div>
                 <span className="play-button">Play Now</span>
-              </div>
+              </a>
             ))}
           </div>
         </section>

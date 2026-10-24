@@ -269,7 +269,7 @@ const MemoryGame: React.FC = () => {
       <div>
         <h1 className="memory-game-title">Memory Game</h1>
         <section style={{ maxWidth: 640, margin: '0 auto 24px', padding: '0 16px', lineHeight: 1.7 }} aria-label="How to play Memory">
-          <p>Turn over two cards to find a matching pair. A match stays revealed; a mismatch turns back over. Clear every pair to finish. Each two-card attempt counts as one move.</p>
+          <p>Turn over two cards to find a matching pair. Matched cards fade away; a mismatch turns back over. Clear every pair to finish. Each two-card attempt counts as one move.</p>
           <p>Easy uses 6 pairs, Medium 8, and Hard 10. Start with Easy and use a steady left-to-right scan so you can remember where each symbol appeared. Your best moves and times are saved on this device.</p>
           <a href="/blog/memory-game-improvement-guide">Read the Memory practice guide</a>
         </section>
