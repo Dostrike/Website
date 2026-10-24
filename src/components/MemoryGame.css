@@ -53,6 +53,11 @@
   text-align: center;
   letter-spacing: 1px;
 }
+.memory-round-goal { text-align:center; font-size:12px; margin:12px 16px; line-height:1.7; }
+.memory-rules { max-width:640px; margin:0 auto 20px; padding:0 16px; font-size:12px; line-height:1.8; }
+.memory-rules summary { text-align:center; cursor:pointer; margin-bottom:12px; }
+.memory-rules p { margin-bottom:12px; }
+.memory-game-modal-btns { flex-wrap:wrap; }
 .memory-difficulty-row {
   display: flex;
   justify-content: center;

@@ -7,9 +7,10 @@ interface GameBoardProps {
   winningLine: Position[] | null;
   onCellClick: (row: number, col: number) => void;
   disabled: boolean;
+  hint?: Position | null;
 }
 
-const GameBoard: React.FC<GameBoardProps> = ({ board, winningLine, onCellClick, disabled }) => {
+const GameBoard: React.FC<GameBoardProps> = ({ board, winningLine, onCellClick, disabled, hint }) => {
   const isWinningCell = (row: number, col: number) => {
     return winningLine?.some(([r, c]) => r === row && c === col) || false;
   };
@@ -30,10 +31,10 @@ const GameBoard: React.FC<GameBoardProps> = ({ board, winningLine, onCellClick, 
           row.map((cell, colIndex) => (
             <button
               key={`${rowIndex}-${colIndex}`}
-              className={`board-cell ${isWinningCell(rowIndex, colIndex) ? 'winning' : ''}`}
+              className={`board-cell ${isWinningCell(rowIndex, colIndex) ? 'winning' : ''} ${hint?.[0] === rowIndex && hint?.[1] === colIndex ? 'hinted' : ''}`}
               onClick={() => onCellClick(rowIndex, colIndex)}
               disabled={disabled || cell !== null}
-              aria-label={`Cell ${rowIndex + 1}, ${colIndex + 1}`}
+              aria-label={`Row ${rowIndex + 1}, column ${colIndex + 1}: ${cell || 'empty'}`}
             >
               {getCellContent(cell)}
             </button>
@@ -44,4 +45,4 @@ const GameBoard: React.FC<GameBoardProps> = ({ board, winningLine, onCellClick, 
   );
 };
 
-export default GameBoard; 
+export default GameBoard;

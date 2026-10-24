@@ -75,6 +75,7 @@ const MemoryGame: React.FC = () => {
   const [timer, setTimer] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [personalBest, setPersonalBest] = useState(false);
   const [difficulty, setDifficulty] = useState<MemoryDifficulty>("MEDIUM");
   const [stats, setStats] = useState<MemoryStats>(() => loadStats());
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -103,13 +104,13 @@ const MemoryGame: React.FC = () => {
 
   // Timer effect
   useEffect(() => {
-    if (gameStarted && !showModal) {
+    if (gameStarted && !showModal && cards.length > 0) {
       timerRef.current = setInterval(() => setTimer((t) => t + 1), 1000);
     } else if (timerRef.current) {
       clearInterval(timerRef.current);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [gameStarted, showModal]);
+  }, [gameStarted, showModal, cards.length === 0]);
 
   // Card flip/match logic
   useEffect(() => {
@@ -179,6 +180,7 @@ const MemoryGame: React.FC = () => {
     if (cards.length === 0 && gameStarted) {
       if (!hasRecordedWinRef.current) {
         hasRecordedWinRef.current = true;
+        setPersonalBest(stats[difficulty].bestMoves === null || moves < (stats[difficulty].bestMoves as number));
         setStats((prev) => {
           const current = prev[difficulty];
           const updated: MemoryStats = {
@@ -239,6 +241,7 @@ const MemoryGame: React.FC = () => {
     setTimer(0);
     setGameStarted(false);
     setShowModal(false);
+    setPersonalBest(false);
   };
 
   const totalPairs = MEMORY_LEVELS[difficulty].pairs;
@@ -268,11 +271,12 @@ const MemoryGame: React.FC = () => {
       </div>
       <div>
         <h1 className="memory-game-title">Memory Game</h1>
-        <section style={{ maxWidth: 640, margin: '0 auto 24px', padding: '0 16px', lineHeight: 1.7 }} aria-label="How to play Memory">
+        <p className="memory-round-goal">Match every pair. Make fewer guesses. Beat your best.</p>
+        <details className="memory-rules" aria-label="How to play Memory"><summary>How to play &amp; strategy tips</summary>
           <p>Turn over two cards to find a matching pair. Matched cards fade away; a mismatch turns back over. Clear every pair to finish. Each two-card attempt counts as one move.</p>
           <p>Easy uses 6 pairs, Medium 8, and Hard 10. Start with Easy and use a steady left-to-right scan so you can remember where each symbol appeared. Your best moves and times are saved on this device.</p>
           <a href="/blog/memory-game-improvement-guide">Read the Memory practice guide</a>
-        </section>
+        </details>
         <div className="memory-difficulty-row">
           {(Object.keys(MEMORY_LEVELS) as MemoryDifficulty[]).map((level) => (
             <button
@@ -368,16 +372,18 @@ const MemoryGame: React.FC = () => {
       {showModal && (
         <div className="memory-game-modal">
           <div className="memory-game-modal-content" role="dialog" aria-modal="true" aria-label="Memory game results">
-            <div className="memory-game-modal-title">Congratulations!</div>
+            <h2 className="memory-game-modal-title">{personalBest ? 'New personal best!' : 'Board cleared!'}</h2>
             <div className="memory-game-modal-stats">
               You found all pairs!<br />
               Moves: <b>{moves}</b><br />
               Time: <b>{formatTime(timer)}</b><br />
               Best ({MEMORY_LEVELS[difficulty].label}):{" "}
               <b>{currentStats.bestMoves ?? "-"} moves / {currentStats.bestTime !== null ? formatTime(currentStats.bestTime) : "-"}</b>
+              <p style={{ marginTop: 12 }}>{moves === totalPairs ? 'A perfect clear: one move for every pair.' : `${Math.round(totalPairs / moves * 100)}% pair efficiency. Remember one more location next round to reduce guesses.`}</p>
             </div>
             <div className="memory-game-modal-btns">
               <button className="memory-game-modal-btn" onClick={() => resetGame()}>Play Again</button>
+              {difficulty !== 'HARD' && <button className="memory-game-modal-btn" onClick={() => resetGame(difficulty === 'EASY' ? 'MEDIUM' : 'HARD')}>Try {difficulty === 'EASY' ? 'Medium · 8 pairs' : 'Hard · 10 pairs'}</button>}
               <button type="button" className="memory-game-modal-btn" onClick={() => navigate("/")}>Back to home</button>
             </div>
           </div>
