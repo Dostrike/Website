@@ -315,7 +315,7 @@ const MemoryGame: React.FC = () => {
               className={`memory-card${card.flipped ? " flipped" : ""}${card.removing ? " removing" : ""}${card.mismatched ? " mismatched" : ""}`}
               onClick={() => handleCardClick(idx)}
               disabled={card.flipped || card.removing || isBusy}
-              aria-label={card.flipped ? `Revealed card ${card.symbol}` : "Hidden card"}
+              aria-label={card.flipped ? `Revealed card ${card.symbol}` : `Hidden card ${idx + 1}`}
               style={{
                 pointerEvents: card.removing ? 'none' : undefined,
                 opacity: card.removing ? 0 : 1,
@@ -328,7 +328,7 @@ const MemoryGame: React.FC = () => {
                 zIndex: card.flipped ? 2 : 1
               }}
             >
-              <div className="memory-card-inner">
+              <div className="memory-card-inner" aria-hidden="true">
                 <div className="memory-card-front" style={{
                   background: 'linear-gradient(135deg, #fff 60%, #e3e8f0 100%)',
                   color: '#222',

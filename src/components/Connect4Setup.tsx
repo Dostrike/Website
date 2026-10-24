@@ -229,8 +229,10 @@ const Connect4Setup: React.FC = () => {
                     value={player1Name}
                     onChange={e => setPlayer1Name(e.target.value)}
                     placeholder="Player 1"
+                    aria-label="Player 1 name"
                     style={{
                       flex: 1,
+                      minWidth: 0,
                       padding: '14px 16px',
                       border: '2px solid var(--border)',
                       borderRadius: 12,
@@ -247,9 +249,11 @@ const Connect4Setup: React.FC = () => {
                     value={player2Name}
                     onChange={e => setPlayer2Name(e.target.value)}
                     placeholder={gameMode === 'AI' ? 'AI' : 'Player 2'}
+                    aria-label="Player 2 name"
                     disabled={gameMode === 'AI'}
                     style={{
                       flex: 1,
+                      minWidth: 0,
                       padding: '14px 16px',
                       border: '2px solid var(--border)',
                       borderRadius: 12,

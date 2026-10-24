@@ -49,7 +49,7 @@ export default function StrategyPractice() {
     <section aria-labelledby="lesson-title">
       <h2 id="lesson-title">{lesson.title}</h2><p>{lesson.prompt}</p>
       <div className="practice-board" role="group" aria-label="Tic-Tac-Toe puzzle board, rows read from top to bottom">
-        {lesson.board.map((mark, index) => <button key={index} disabled={Boolean(mark) || showExplanation} aria-label={`Row ${Math.floor(index / 3) + 1}, column ${index % 3 + 1}: ${mark || 'empty'}`} className={showExplanation && index === lesson.answer ? 'practice-answer' : ''} onClick={() => setChoice(index)}>{mark || (showExplanation && index === lesson.answer ? 'X' : '')}</button>)}
+        {lesson.board.map((mark, index) => <button key={index} disabled={Boolean(mark) || showExplanation} aria-label={`Row ${Math.floor(index / 3) + 1}, column ${index % 3 + 1}: ${mark || (showExplanation && index === lesson.answer ? 'X, answer' : 'empty')}`} className={showExplanation && index === lesson.answer ? 'practice-answer' : ''} onClick={() => setChoice(index)}>{mark || (showExplanation && index === lesson.answer ? 'X' : '')}</button>)}
       </div>
       <div aria-live="polite" className="practice-feedback">
         {choice !== null && !showExplanation && <p>Look again. {lessonIndex === 0 ? 'Can X finish a row immediately?' : 'Which line could O finish on the next turn?'} Try another empty square.</p>}

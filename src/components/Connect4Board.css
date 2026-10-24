@@ -293,7 +293,7 @@
 /* Responsive */
 @media (max-width: 600px) {
   .c4-board-wrapper {
-    --c4-cell-size: 42px;
+    --c4-cell-size: min(42px, calc((100vw - 120px) / 7));
   }
   .c4-board-wrapper {
     max-width: 99vw;

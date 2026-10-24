@@ -342,7 +342,7 @@ const TicTacToeSetup: React.FC = () => {
                           value={mode.key}
                           checked={gameMode === mode.key}
                           onChange={(e) => setGameMode(e.target.value)}
-                          style={{ display: 'none' }}
+                          style={{ accentColor: 'var(--secondary)' }}
                         />
                         {mode.icon}
                         <span style={{ fontWeight: '500' }}>{mode.label}</span>

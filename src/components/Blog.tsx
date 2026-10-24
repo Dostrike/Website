@@ -260,7 +260,7 @@ const Blog: React.FC = () => {
             Put your knowledge to the test with our interactive Tic-Tac-Toe game!
           </p>
           <Link 
-            to="/tictactoe" 
+              to="/tictactoe-setup"
             style={{ 
               background: 'white', 
               color: 'var(--primary)', 

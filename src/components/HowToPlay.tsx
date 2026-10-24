@@ -72,7 +72,7 @@ const HowToPlay: React.FC = () => (
             <strong>Center control:</strong> the middle square joins the most winning lines—fight for it when it fits your plan.
           </li>
           <li>
-            <strong>Threats first:</strong> block any opponent line that would win on their next move before building your own trap.
+            <strong>Wins, then threats:</strong> take an immediate win if one is available. Otherwise block any opponent line that would win on their next move before building your own trap.
           </li>
           <li>
             <strong>Forks:</strong> create two winning threats at once so your opponent can only block one.

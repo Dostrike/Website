@@ -23,14 +23,14 @@ const PrivateTicTacToe: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { roomId, isPrivate } = location.state || {};
-  
+
   const [gameState, setGameState] = useState<GameState>({
     board: Array(3).fill(null).map(() => Array(3).fill(null)),
     currentPlayer: 'X',
     gameStatus: 'PLAYING',
     winner: null
   });
-  
+
   const [playerSymbol, setPlayerSymbol] = useState<'X' | 'O' | null>(null);
   const [isMyTurn, setIsMyTurn] = useState(false);
   const [opponentConnected, setOpponentConnected] = useState(false);
@@ -50,7 +50,7 @@ const PrivateTicTacToe: React.FC = () => {
         console.log('[PRIVATE GAME] Safety timeout: clearing waiting state after 30 seconds');
         setIsNewGameRequested(false);
       }, 30000);
-      
+
       return () => clearTimeout(timeoutId);
     }
   }, [isNewGameRequested]);
@@ -66,23 +66,23 @@ const PrivateTicTacToe: React.FC = () => {
     // Only set up event listeners once globally
     if (!eventListenersSetup.current) {
       console.log('[PRIVATE GAME] Setting up global event listeners');
-      
+
       // Listen for opponent moves
       socket.on('opponentMove', (move: { row: number; col: number; symbol: string }) => {
         console.log('[PRIVATE GAME] Opponent move:', move);
         setGameState(prev => {
           const newBoard = [...prev.board];
           newBoard[move.row][move.col] = move.symbol;
-          
+
           // Determine the next player
           const nextPlayer = move.symbol === 'X' ? 'O' : 'X';
-          
+
           const newGameState = {
             ...prev,
             board: newBoard,
             currentPlayer: nextPlayer as 'X' | 'O'
           };
-          
+
           // Check for win/draw
           const gameStatus = checkGameStatus(newBoard, move.symbol);
           if (gameStatus === 'WIN') {
@@ -94,16 +94,16 @@ const PrivateTicTacToe: React.FC = () => {
             newGameState.winner = null;
             updateGameStats('DRAW', null);
           }
-          
+
           return newGameState;
         });
-        
+
         // The opponent just moved, so now it should be this player's turn
         const nextPlayer = move.symbol === 'X' ? 'O' : 'X';
         const shouldBeMyTurn = playerSymbolRef.current === nextPlayer;
         console.log('[PRIVATE GAME] Opponent moved, setting isMyTurn to:', shouldBeMyTurn, 'for player:', playerSymbolRef.current, 'next player:', nextPlayer);
         setIsMyTurn(shouldBeMyTurn);
-        
+
         // Additional check to ensure turn is set correctly
         if (shouldBeMyTurn) {
           console.log('[PRIVATE GAME] ✅ It is now my turn to play');
@@ -131,7 +131,7 @@ const PrivateTicTacToe: React.FC = () => {
       socket.on('waitingForNewGame', ({ roomId: gameRoomId, waitingPlayer, readyPlayers }: { roomId: string, waitingPlayer: string, readyPlayers: string[] }) => {
         console.log('[PRIVATE GAME] Received waitingForNewGame event for room:', gameRoomId);
         console.log('[PRIVATE GAME] Waiting player:', waitingPlayer, 'Ready players:', readyPlayers);
-        
+
         // If this player is not the one waiting, show a message that opponent is waiting
         if (waitingPlayer !== socket.id) {
           setError('Opponent is ready. Click New Game to start.');
@@ -169,22 +169,22 @@ const PrivateTicTacToe: React.FC = () => {
         setGameStarted(true);
         setOpponentConnected(true);
         setError('');
-        
+
         // Initialize game number for first game (X goes first)
         gameNumberRef.current = 0;
-        
+
         // Make sure X goes first for the first game
         const shouldBeMyTurn = playerSymbolRef.current === 'X';
         console.log('[PRIVATE GAME] Setting isMyTurn to:', shouldBeMyTurn, 'for player:', playerSymbolRef.current);
         setIsMyTurn(shouldBeMyTurn);
-        
+
         // Also update the game state to ensure currentPlayer is set correctly
         setGameState(prev => ({
           ...prev,
           currentPlayer: 'X' as 'X' | 'O'
         }));
       });
-      
+
       eventListenersSetup.current = true;
     }
 
@@ -196,7 +196,7 @@ const PrivateTicTacToe: React.FC = () => {
       console.log('[PRIVATE GAME] Set playerSymbolRef to:', info.symbol);
       setIsMyTurn(info.symbol === 'X');
       console.log('[PRIVATE GAME] Set isMyTurn to:', info.symbol === 'X');
-      
+
       // Check if both players are in the room
       socket.emit('checkRoomStatus', roomId, (status: { playerCount: number }) => {
         console.log('[PRIVATE GAME] Room status check:', status);
@@ -205,10 +205,10 @@ const PrivateTicTacToe: React.FC = () => {
           setGameStarted(true);
           setOpponentConnected(true);
           setError('');
-          
+
           // Initialize game number for first game (X goes first)
           gameNumberRef.current = 0;
-          
+
           // Make sure X goes first for the first game
           const shouldBeMyTurn = playerSymbolRef.current === 'X';
           console.log('[PRIVATE GAME] Setting isMyTurn to:', shouldBeMyTurn, 'for player:', playerSymbolRef.current);
@@ -228,10 +228,10 @@ const PrivateTicTacToe: React.FC = () => {
             setGameStarted(true);
             setOpponentConnected(true);
             setError('');
-            
+
             // Initialize game number for first game (X goes first)
             gameNumberRef.current = 0;
-            
+
             // Make sure X goes first for the first game
             const shouldBeMyTurn = playerSymbolRef.current === 'X';
             console.log('[PRIVATE GAME] Immediate check - Setting isMyTurn to:', shouldBeMyTurn, 'for player:', playerSymbolRef.current);
@@ -265,14 +265,14 @@ const PrivateTicTacToe: React.FC = () => {
         return 'WIN';
       }
     }
-    
+
     // Check columns
     for (let i = 0; i < 3; i++) {
       if (board[0][i] === lastMove && board[1][i] === lastMove && board[2][i] === lastMove) {
         return 'WIN';
       }
     }
-    
+
     // Check diagonals
     if (board[0][0] === lastMove && board[1][1] === lastMove && board[2][2] === lastMove) {
       return 'WIN';
@@ -280,12 +280,12 @@ const PrivateTicTacToe: React.FC = () => {
     if (board[0][2] === lastMove && board[1][1] === lastMove && board[2][0] === lastMove) {
       return 'WIN';
     }
-    
+
     // Check for draw
     if (board.every(row => row.every(cell => cell !== null))) {
       return 'DRAW';
     }
-    
+
     return 'PLAYING';
   };
 
@@ -317,7 +317,7 @@ const PrivateTicTacToe: React.FC = () => {
     console.log('[PRIVATE GAME] cell is empty:', gameState.board[row][col] === null);
     console.log('[PRIVATE GAME] currentPlayer:', gameState.currentPlayer);
     console.log('[PRIVATE GAME] isNewGameRequested:', isNewGameRequested);
-    
+
     if (!isMyTurn || gameState.board[row][col] !== null || gameState.gameStatus !== 'PLAYING' || isNewGameRequested) {
       console.log('[PRIVATE GAME] Move blocked - isMyTurn:', isMyTurn, 'cell empty:', gameState.board[row][col] === null, 'gameStatus:', gameState.gameStatus, 'isNewGameRequested:', isNewGameRequested);
       if (!isMyTurn) {
@@ -345,13 +345,13 @@ const PrivateTicTacToe: React.FC = () => {
 
     const newBoard = gameState.board.map(r => [...r]);
     newBoard[row][col] = currentPlayerSymbol;
-    
+
     const newGameStatus = checkGameStatus(newBoard, currentPlayerSymbol);
     const newWinner = newGameStatus === 'WIN' ? currentPlayerSymbol : null;
-    
+
     // Determine the next player
     const nextPlayer = currentPlayerSymbol === 'X' ? 'O' : 'X';
-    
+
     const newGameState = {
       ...gameState,
       board: newBoard,
@@ -359,15 +359,15 @@ const PrivateTicTacToe: React.FC = () => {
       gameStatus: newGameStatus,
       winner: newWinner
     };
-    
+
     setGameState(newGameState);
     setIsMyTurn(false); // It's no longer my turn after I make a move
-    
+
     // Update stats if game ended
     if (newGameStatus !== 'PLAYING') {
       updateGameStats(newGameStatus, newWinner);
     }
-    
+
     // Send move to opponent
     socket.emit('makeMove', {
       roomId,
@@ -393,12 +393,13 @@ const PrivateTicTacToe: React.FC = () => {
       <Helmet>
         <title>Private Tic-Tac-Toe - DoStrike Gaming Portal</title>
         <meta name="description" content="Play Tic-Tac-Toe with friends in a private room." />
+        <meta name="robots" content="noindex" />
       </Helmet>
-      
+
       <div className="game-screen" style={{ minHeight: '100vh', background: 'var(--background)' }}>
         {/* Header */}
         <div style={{ padding: '20px', background: 'var(--surface)', borderBottom: '1px solid var(--border)' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'space-between' }}>
             <BackToPortal
               variant="inline"
               beforeNavigate={() => {
@@ -408,7 +409,7 @@ const PrivateTicTacToe: React.FC = () => {
                 }
               }}
             />
-            
+
             <div style={{ textAlign: 'center' }}>
               <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text)', margin: '0 0 4px 0' }}>
                 Private Tic-Tac-Toe
@@ -417,7 +418,7 @@ const PrivateTicTacToe: React.FC = () => {
                 Room: {roomId}
               </p>
             </div>
-            
+
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <FaUser style={{ color: playerSymbol === 'X' ? '#e53e3e' : '#3182ce' }} />
@@ -452,11 +453,11 @@ const PrivateTicTacToe: React.FC = () => {
 
         {/* Game Content */}
         <div style={{ flex: 1, padding: '40px 20px' }}>
-          <div style={{ maxWidth: 800, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 300px', gap: '32px' }}>
-            
+          <div style={{ maxWidth: 800, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '32px' }}>
+
             {/* Main Game Area */}
             <div style={{ textAlign: 'center' }}>
-              
+
               {/* Game Status */}
               <div style={{ marginBottom: '32px' }}>
                 {!gameStarted ? (
@@ -494,11 +495,12 @@ const PrivateTicTacToe: React.FC = () => {
                   row.map((cell, colIndex) => (
                     <button
                       key={`${rowIndex}-${colIndex}`}
+                      aria-label={`Row ${rowIndex + 1}, column ${colIndex + 1}: ${cell || 'empty'}`}
                       onClick={() => handleCellClick(rowIndex, colIndex)}
                       disabled={!isMyTurn || cell !== null || gameState.gameStatus !== 'PLAYING' || isNewGameRequested}
                       style={{
-                        width: '80px',
-                        height: '80px',
+                        width: '100%',
+                        aspectRatio: '1',
                         background: 'var(--surface)',
                         border: 'none',
                         borderRadius: '8px',
@@ -563,10 +565,10 @@ const PrivateTicTacToe: React.FC = () => {
               border: '1px solid var(--border)',
               height: 'fit-content'
             }}>
-              <h3 style={{ 
-                fontSize: '18px', 
-                fontWeight: '700', 
-                color: 'var(--text)', 
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '700',
+                color: 'var(--text)',
                 margin: '0 0 20px 0',
                 display: 'flex',
                 alignItems: 'center',
@@ -575,11 +577,11 @@ const PrivateTicTacToe: React.FC = () => {
                 <FaChartBar style={{ color: 'var(--primary)' }} />
                 Game Statistics
               </h3>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: '8px 12px',
                   background: '#d4edda',
@@ -592,10 +594,10 @@ const PrivateTicTacToe: React.FC = () => {
                   </span>
                   <span style={{ fontWeight: '600' }}>{gameStats.wins}</span>
                 </div>
-                
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
+
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: '8px 12px',
                   background: '#f8d7da',
@@ -605,10 +607,10 @@ const PrivateTicTacToe: React.FC = () => {
                   <span>Losses</span>
                   <span style={{ fontWeight: '600' }}>{gameStats.losses}</span>
                 </div>
-                
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
+
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: '8px 12px',
                   background: '#fff3cd',
@@ -619,11 +621,11 @@ const PrivateTicTacToe: React.FC = () => {
                   <span style={{ fontWeight: '600' }}>{gameStats.draws}</span>
                 </div>
               </div>
-              
-              <div style={{ 
-                marginTop: '16px', 
-                padding: '12px', 
-                background: 'var(--background)', 
+
+              <div style={{
+                marginTop: '16px',
+                padding: '12px',
+                background: 'var(--background)',
                 borderRadius: '8px',
                 fontSize: '14px',
                 color: 'var(--text)',
@@ -644,4 +646,4 @@ const PrivateTicTacToe: React.FC = () => {
   );
 };
 
-export default PrivateTicTacToe; 
+export default PrivateTicTacToe;

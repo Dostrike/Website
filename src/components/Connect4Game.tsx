@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { Connect4Logic } from '../utils/connect4Logic';
 import { Connect4AI, AIDifficulty } from '../utils/connect4AI';
@@ -101,12 +102,12 @@ const Connect4Game: React.FC = () => {
           setGameState(aiState);
           setGameHistory(prev => [...prev, aiState]);
           setAiThinking(false);
-          
+
           if (aiState.gameStatus !== Connect4GameStatus.PLAYING) {
             const result = aiState.gameStatus === Connect4GameStatus.WIN ? 'loss' : 'draw';
             const updatedStats = Connect4Stats.recordGame(result, 'AI', settings.difficulty);
             setGameStats(updatedStats);
-            
+
             setTimeout(() => {
               setShowModal(true);
               if (aiState.gameStatus === Connect4GameStatus.WIN) {
@@ -119,23 +120,23 @@ const Connect4Game: React.FC = () => {
           }
         }
       }, 800);
-      
+
       return () => clearTimeout(timer);
     }
   }, [gameState.currentPlayer, gameHistory.length, ai, gameMode, settings.difficulty]);
 
   const handleColumnClick = (col: number) => {
     if (gameState.gameStatus !== Connect4GameStatus.PLAYING || aiThinking) return;
-    
+
     // Play chip drop sound
     soundEffects.playChipDrop();
-    
+
     const newState = Connect4Logic.makeMove(gameState, col);
     setGameState(newState);
-    
+
     // Add to history for undo functionality
     setGameHistory(prev => [...prev, newState]);
-    
+
     if (newState.gameStatus !== Connect4GameStatus.PLAYING) {
       // Record game result
       let result: 'win' | 'loss' | 'draw';
@@ -146,7 +147,7 @@ const Connect4Game: React.FC = () => {
       }
       const updatedStats = Connect4Stats.recordGame(result, gameMode as 'AI' | 'PVP', settings.difficulty);
       setGameStats(updatedStats);
-      
+
       setTimeout(() => {
         setShowModal(true);
         if (newState.gameStatus === Connect4GameStatus.WIN) {
@@ -165,10 +166,10 @@ const Connect4Game: React.FC = () => {
         const aiState = Connect4Logic.makeMove(newState, aiMove);
         setGameState(aiState);
         setAiThinking(false);
-        
+
         // Add AI move to history
         setGameHistory(prev => [...prev, aiState]);
-        
+
         if (aiState.gameStatus !== Connect4GameStatus.PLAYING) {
           // Record AI game result
           let result: 'win' | 'loss' | 'draw';
@@ -179,7 +180,7 @@ const Connect4Game: React.FC = () => {
           }
           const updatedStats = Connect4Stats.recordGame(result, 'AI', settings.difficulty);
           setGameStats(updatedStats);
-          
+
           setTimeout(() => {
             setShowModal(true);
             if (aiState.gameStatus === Connect4GameStatus.WIN) {
@@ -208,12 +209,12 @@ const Connect4Game: React.FC = () => {
     setGameState(newGameState);
     setGameHistory([newGameState]); // Reset history for new game
   };
-  
+
   const handleUndo = () => {
     if (gameHistory.length <= 1 || gameState.gameStatus !== Connect4GameStatus.PLAYING || aiThinking) return;
-    
+
     soundEffects.playClick();
-    
+
     // For AI mode, we need to undo both player and AI moves
     let newHistoryLength = gameHistory.length - 1;
     if (gameMode === 'AI' && gameHistory.length > 2) {
@@ -224,10 +225,10 @@ const Connect4Game: React.FC = () => {
         newHistoryLength = gameHistory.length - 2; // Undo both AI and player moves
       }
     }
-    
+
     const newHistory = gameHistory.slice(0, newHistoryLength);
     const previousState = newHistory[newHistory.length - 1];
-    
+
     setGameHistory(newHistory);
     setGameState(previousState);
   };
@@ -282,6 +283,8 @@ const Connect4Game: React.FC = () => {
 
   return (
     <div className="game-screen" style={{ minHeight: '100vh', background: 'var(--background)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <Helmet><title>Connect 4 game | DoStrike</title><meta name="robots" content="noindex" /></Helmet>
+      <h1 style={{ marginTop: 16, color: 'var(--primary)' }}>Connect 4</h1>
       <ConfettiBurst trigger={confetti} />
       <div aria-live="polite" className="sr-only">{gameAnnouncement}</div>
       {/* Game Area Card */}
@@ -289,7 +292,7 @@ const Connect4Game: React.FC = () => {
         background: 'var(--surface)',
         borderRadius: 28,
         boxShadow: '0 8px 32px rgba(60,80,180,0.10)',
-        padding: '36px 32px 32px 32px',
+        padding: '36px clamp(12px, 4vw, 32px) 32px',
         maxWidth: 520,
         width: '100%',
         margin: '48px 0 0 0',
@@ -459,7 +462,7 @@ const Connect4Game: React.FC = () => {
           </div>
         </div>
       )}
-      
+
       {/* Statistics Modal */}
       {showStats && (
         <div className="c4-modal-overlay">
@@ -468,7 +471,7 @@ const Connect4Game: React.FC = () => {
               <FaTrophy style={{ color: '#ffd600', fontSize: '1.5em' }} />
               <h2 style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.8em', margin: 0 }}>Game Statistics</h2>
             </div>
-            
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 24 }}>
               <div style={{ background: 'var(--background)', padding: 16, borderRadius: 12, textAlign: 'center' }}>
                 <div style={{ fontSize: '2em', fontWeight: 800, color: 'var(--primary)' }}>{gameStats.totalGames}</div>
@@ -487,7 +490,7 @@ const Connect4Game: React.FC = () => {
                 <div style={{ color: 'var(--text-secondary)', fontSize: '0.9em' }}>Best Streak</div>
               </div>
             </div>
-            
+
             <div style={{ marginBottom: 24 }}>
               <h3 style={{ color: 'var(--primary)', marginBottom: 12, fontSize: '1.2em' }}>vs AI Performance</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
@@ -505,7 +508,7 @@ const Connect4Game: React.FC = () => {
                 })}
               </div>
             </div>
-            
+
             <div className="c4-modal-actions">
               <button
                 onClick={() => setShowStats(false)}
@@ -551,7 +554,7 @@ const Connect4Game: React.FC = () => {
           </div>
         </div>
       )}
-      
+
       {/* Theme Selection Modal */}
       {showThemes && (
         <div className="c4-modal-overlay">
@@ -560,7 +563,7 @@ const Connect4Game: React.FC = () => {
               <FaPalette style={{ color: 'var(--primary)', fontSize: '1.5em' }} />
               <h2 style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.8em', margin: 0 }}>Choose Theme</h2>
             </div>
-            
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 16, marginBottom: 24 }}>
               {CONNECT4_THEMES.map(theme => (
                 <div
@@ -625,7 +628,7 @@ const Connect4Game: React.FC = () => {
                       }} />
                     </div>
                   </div>
-                  
+
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ fontWeight: 700, fontSize: '1.1em', marginBottom: 4, color: 'var(--text)' }}>
                       {theme.name}
@@ -634,7 +637,7 @@ const Connect4Game: React.FC = () => {
                       {theme.description}
                     </div>
                   </div>
-                  
+
                   {currentTheme.id === theme.id && (
                     <div style={{
                       position: 'absolute',
@@ -657,7 +660,7 @@ const Connect4Game: React.FC = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="c4-modal-actions">
               <button
                 onClick={() => setShowThemes(false)}
@@ -684,4 +687,4 @@ const Connect4Game: React.FC = () => {
   );
 };
 
-export default Connect4Game; 
+export default Connect4Game;
