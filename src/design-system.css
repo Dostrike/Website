@@ -951,3 +951,57 @@ button:disabled {
     margin: 24px auto;
   }
 }
+
+/* Readability and result feedback */
+.site-header nav a,.lobby-nav>div { font-size:14px; }
+.site-footer nav a,.site-footer nav button { font-size:13px!important; }
+.app .match-top a,.app .match-top button { font-size:13px; }
+.app .match-turn>span { font-size:12px; }
+.app .match-next a,.app .match-details summary { font-size:13px; }
+.app .match-heading>p:last-child { font-size:14px; }
+.app .match-eyebrow,.app .eyebrow { font-size:11px; }
+.app .setup-option strong,.app .difficulty-options button { font-size:14px; }
+.app .setup-option small,.app .difficulty-options small { font-size:12px; }
+.app .guide-card .eyebrow { font-size:11px; letter-spacing:.6px; }
+.app .guide-card-copy>p:not(.eyebrow),.app .setup-note>p:not(.eyebrow) { font-size:14px; }
+.app .guide-card-copy>strong,.app .guide-count,.app .guide-categories button { font-size:13px; }
+.arcade-home .lobby-game-copy>.lobby-eyebrow,.arcade-home .lobby-game-meta,.arcade-home .lobby-quick-note { font-size:11px; }
+.arcade-home .lobby-game-copy>p:not(.lobby-eyebrow):not(.lobby-quick-note) { font-size:14px; }
+.arcade-home .lobby-secondary-link,.arcade-home .lobby-guide-list strong,.arcade-home .lobby-about>a { font-size:13px; }
+.arcade-home .lobby-guide-list p,.arcade-home .lobby-about p { font-size:14px; }
+.result-mark { position:relative; display:grid; place-items:center; width:68px; height:68px; margin:0 auto 18px; border-radius:50%; background:#e8efba; color:#35634e; animation:result-arrive .4s ease-out both; }
+.result-mark svg { width:40px; height:40px; }.result-mark>span { font-size:38px; line-height:1; font-weight:650; }
+.result-mark-loss { background:#eee6d4; color:#775c32; }.result-mark-draw { background:#e6e5ed; color:#625a79; }
+.result-sparks { position:absolute; inset:0; pointer-events:none; }.result-sparks i { position:absolute; left:50%; top:50%; width:5px; height:10px; background:#c88743; border-radius:2px; transform:rotate(calc(var(--spark)*60deg)) translateY(-48px); animation:result-spark .65s ease-out both; }
+.result-sparks i:nth-child(even) { background:#648e61; }
+.app .match-result[data-outcome=win] { border-color:#b8c99c; background:#f4f7e9; }
+.app .match-result { animation:result-panel .25s ease-out both; }
+@keyframes result-arrive { from { opacity:0; transform:scale(.75) rotate(-12deg); } to { opacity:1; transform:scale(1) rotate(0); } }
+@keyframes result-spark { from { opacity:0; transform:rotate(calc(var(--spark)*60deg)) translateY(-26px) scale(.5); } 40% { opacity:1; } to { opacity:0; transform:rotate(calc(var(--spark)*60deg)) translateY(-62px) scale(.7); } }
+@keyframes result-panel { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+/* A dedicated play area and companion panel use wide screens deliberately. */
+@media(min-width:960px) {
+  .app .match-game { max-width:1080px; display:grid; grid-template-columns:minmax(0,1fr) 340px; column-gap:48px; align-items:start; padding:28px 36px 60px; }
+  .app .match-game>.match-top { grid-column:1/-1; }
+  .app .match-game>.match-heading { grid-column:1/-1; text-align:left; margin:6px 0 28px; }
+  .app .match-game>.match-heading h1 { font-size:40px; }
+  .app .match-game>.game-board,.app .match-game>.connect4-board-area { grid-column:1; grid-row:3/span 8; width:100%; min-height:430px; margin:0; padding:32px; background:#e9eddf; border:1px solid #d7dfcf; border-radius:24px; display:flex; align-items:center; justify-content:center; }
+  .app .match-game .board-grid { width:360px; max-width:360px; height:360px; }
+  .app .match-game>.match-score { grid-column:2; grid-row:3; width:100%; margin:0 0 18px; }
+  .app .match-game>.match-turn { grid-column:2; grid-row:4; text-align:left; padding:0 0 18px; font-size:18px; }
+  .app .match-game>.match-controls { grid-column:2; grid-row:5; justify-content:stretch; padding-bottom:16px; }
+  .app .match-game>.match-controls button { flex:1; }
+  .app .match-game>.match-result { grid-column:2; grid-row:5/span 3; width:100%; margin:0 0 16px; padding:24px 20px; }
+  .app .match-game>.match-details,.app .match-game>.match-hint,.app .match-game>.board-help,.app .match-game>.form-error { grid-column:2; width:100%; margin:0 0 12px; }
+  .app .match-game>.match-details summary { text-align:left; border-top:1px solid var(--border); padding:12px 0; }
+  .app .connect4-match .c4-board-wrapper { --c4-cell-size:48px; max-width:420px; }
+  .app .connect4-match>.connect4-board-area { max-width:none; padding:24px 16px; }
+  .app .match-game>.board-help { text-align:left; font-size:13px; padding:0 0 10px; }
+  .app .private-match>.match-turn { margin-bottom:8px; }
+}
+@media(max-width:600px) {
+  .site-header nav a,.lobby-nav>div { font-size:13px; }
+  .app .match-heading>p:last-child { font-size:13px; }
+  .app .difficulty-options small,.app .setup-option small { font-size:11px; }
+}
+@media(prefers-reduced-motion:reduce) { .result-mark,.result-sparks i,.app .match-result { animation:none; }.result-sparks { display:none; } }

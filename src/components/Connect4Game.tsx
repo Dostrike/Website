@@ -1,3 +1,4 @@
+import ResultMark from './ResultMark';
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -199,7 +200,8 @@ export default function Connect4Game() {
         />
       </div>
       {ended ? (
-        <section className="match-result" aria-label="Round result">
+        <section className="match-result" aria-label="Round result" data-outcome={game.gameStatus === Connect4GameStatus.DRAW ? "draw" : isAi && game.winner === "YELLOW" ? "loss" : "win"}>
+          <ResultMark outcome={game.gameStatus === Connect4GameStatus.DRAW ? "draw" : isAi && game.winner === "YELLOW" ? "loss" : "win"} />
           <p className="match-eyebrow">
             {matchOver ? "MATCH COMPLETE" : "ROUND COMPLETE"}
           </p>

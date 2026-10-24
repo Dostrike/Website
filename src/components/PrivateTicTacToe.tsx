@@ -1,3 +1,4 @@
+import ResultMark from './ResultMark';
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -648,7 +649,8 @@ const PrivateTicTacToe: React.FC = () => {
         </p>
       )}
       {gameState.gameStatus !== "PLAYING" && (
-        <section className="match-result" aria-label="Round result">
+        <section className="match-result" aria-label="Round result" data-outcome={gameState.gameStatus === "DRAW" ? "draw" : gameState.winner === playerSymbol ? "win" : "loss"}>
+          <ResultMark outcome={gameState.gameStatus === "DRAW" ? "draw" : gameState.winner === playerSymbol ? "win" : "loss"} />
           <h2>
             {gameState.gameStatus === "WIN"
               ? getWinnerLabel()

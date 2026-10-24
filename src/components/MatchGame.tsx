@@ -1,3 +1,4 @@
+import ResultMark from './ResultMark';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -210,7 +211,8 @@ export default function MatchGame({
         hint={hint}
       />
       {ended ? (
-        <section className="match-result" aria-label="Round result">
+        <section className="match-result" aria-label="Round result" data-outcome={game.gameStatus === GameStatus.DRAW ? "draw" : isAi && game.winner === Player.O ? "loss" : "win"}>
+          <ResultMark outcome={game.gameStatus === GameStatus.DRAW ? "draw" : isAi && game.winner === Player.O ? "loss" : "win"} />
           <p className="match-eyebrow">
             {matchOver
               ? "MATCH COMPLETE"

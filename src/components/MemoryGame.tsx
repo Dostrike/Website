@@ -1,3 +1,4 @@
+import ResultMark from './ResultMark';
 import React, { useState, useEffect, useRef } from "react";
 import "./MemoryGame.css";
 import "./MatchGame.css";
@@ -378,7 +379,8 @@ const MemoryGame: React.FC = () => {
                 aria-label="Memory game results"
                 aria-live="polite"
               >
-                <h2 className="memory-game-modal-title">
+                <ResultMark outcome="win" />
+              <h2 className="memory-game-modal-title">
                   {personalBest ? "New personal best!" : "Board cleared!"}
                 </h2>
                 <div className="memory-game-modal-stats">
