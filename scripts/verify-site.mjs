@@ -10,8 +10,10 @@ for (const url of urls) {
   const file = path.join(dist, url.pathname.replace(/^\//, ''), 'index.html');
   const html = await fs.readFile(file, 'utf8');
   assert(html.includes('<h1'), `No heading on ${url.pathname}`);
+  assert(!html.includes('data-route-error'), `Failed route was saved on ${url.pathname}`);
   assert.equal((html.match(/name="description"/g) || []).length, 1, `Duplicate descriptions on ${url.pathname}`);
   assert(!html.includes('http://127.0.0.1:'), `Local address leaked on ${url.pathname}`);
+  assert(!html.includes('http%3A%2F%2F127.0.0.1'), `Local address leaked in a share link on ${url.pathname}`);
   assert(html.includes('name="google-adsense-account"'), `Missing ownership tag on ${url.pathname}`);
   const canonical = html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/);
   assert.equal(canonical?.[1], `https://dostrike.com${url.pathname}`, `Wrong canonical on ${url.pathname}`);

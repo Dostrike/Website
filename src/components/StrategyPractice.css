@@ -13,4 +13,9 @@
 .practice-board .practice-answer { border-color: var(--primary); background: var(--primary); color: white; }
 .practice-feedback { min-height: 48px; }
 .practice-page footer { border-top: 1px solid var(--border); padding-top: 20px; margin-top: 32px; }
+.daily-challenge { border: 2px solid var(--primary); border-radius: 16px; padding: clamp(16px, 4vw, 28px); margin: 28px 0; background: var(--background); }
+.daily-eyebrow { color: var(--secondary); font-weight: 700; font-size: 0.9rem; }
+.daily-progress { display: flex; flex-wrap: wrap; gap: 10px; }
+.daily-progress span { background: var(--surface); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; }
+.daily-note { font-size: 0.85rem; margin-top: 20px; color: var(--text); }
 @media (max-width: 480px) { .practice-page { margin: 0; padding: 20px 16px; } }

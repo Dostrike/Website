@@ -77,7 +77,7 @@ const Article: React.FC = () => {
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
             style={{ lineHeight: 1.7 }}
           />
-          {article.updated && <p>Implementation reference: <a href="https://github.com/Dostrike/Website/blob/main/src/utils/gameLogic.ts">DoStrike Tic-Tac-Toe game logic</a>. <Link to="/contact">Report a correction</Link>.</p>}
+          {article.updated && <p>Implementation reference: <a href={`https://github.com/Dostrike/Website/blob/main/src/utils/${article.slug === 'mathematical-proof-tic-tac-toe-draw' ? 'practiceEngine' : 'gameLogic'}.ts`}>DoStrike Tic-Tac-Toe game logic</a>. <Link to="/contact">Report a correction</Link>.</p>}
         </article>
 
         {/* Related Articles */}
@@ -143,7 +143,7 @@ const Article: React.FC = () => {
             <div style={{ display: 'flex', gap: '1em', fontSize: '0.9em', color: 'var(--text-muted)' }}>
               <span>Share:</span>
               <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(url)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: 'var(--primary)', textDecoration: 'none' }}
@@ -151,7 +151,7 @@ const Article: React.FC = () => {
                 Twitter
               </a>
               <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: 'var(--primary)', textDecoration: 'none' }}

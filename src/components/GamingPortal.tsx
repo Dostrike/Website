@@ -22,7 +22,7 @@ const GamingPortal: React.FC = () => {
       name: 'Connect 4',
       description: 'Drop checkers to get four in a row!',
       players: '1-2 Players',
-      difficulty: 'Medium',
+      difficulty: 'Easy - Hard',
       visual: '🔴🟡',
       available: true,
       route: '/connect4-setup',
@@ -33,7 +33,7 @@ const GamingPortal: React.FC = () => {
       name: 'Memory Game',
       description: 'Test your memory with card matching!',
       players: '1 Player',
-      difficulty: 'Medium',
+      difficulty: '6-10 Pairs',
       visual: '❓❓',
       available: true,
       route: '/memory'
@@ -122,7 +122,7 @@ const GamingPortal: React.FC = () => {
             </p>
             <div className="hero-cta-row">
               <a className="hero-primary-cta" href="#games-start">Start Playing</a>
-              <a className="hero-secondary-cta" href="/practice">Practice Strategy</a>
+              <a className="hero-secondary-cta" href="/practice">Play the Daily Challenge</a>
             </div>
             <div className="header-stats">
               <div className="header-stat">

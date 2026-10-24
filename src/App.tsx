@@ -1,29 +1,32 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import GamingPortal from './components/GamingPortal';
-import TicTacToeSetup from './components/TicTacToeSetup';
-import Connect4Setup from './components/Connect4Setup';
-import Connect4Game from './components/Connect4Game';
-import MemoryGame from './components/MemoryGame';
-import GameScreen from './components/GameScreen';
-import PrivateTicTacToe from './components/PrivateTicTacToe';
-import HomeScreen from './components/HomeScreen';
-import About from './components/About';
-import Blog from './components/Blog';
-import Article from './components/Article';
-import Contact from './components/Contact';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import FAQ from './components/FAQ';
-import TermsOfService from './components/TermsOfService';
-import CookiePolicy from './components/CookiePolicy';
-import EditorialDisclosure from './components/EditorialDisclosure';
-import HowToPlay from './components/HowToPlay';
 import CookieConsent from './components/CookieConsent';
 import NotFound from './components/NotFound';
-import StrategyPractice from './components/StrategyPractice';
 import SiteNavigation from './components/SiteNavigation';
 import './App.css';
+import PageBoundary from './components/PageBoundary';
+
+const TicTacToeSetup = lazy(() => import('./components/TicTacToeSetup'));
+const Connect4Setup = lazy(() => import('./components/Connect4Setup'));
+const Connect4Game = lazy(() => import('./components/Connect4Game'));
+const MemoryGame = lazy(() => import('./components/MemoryGame'));
+const GameScreen = lazy(() => import('./components/GameScreen'));
+const PrivateTicTacToe = lazy(() => import('./components/PrivateTicTacToe'));
+const HomeScreen = lazy(() => import('./components/HomeScreen'));
+const About = lazy(() => import('./components/About'));
+const Blog = lazy(() => import('./components/Blog'));
+const Article = lazy(() => import('./components/Article'));
+const Contact = lazy(() => import('./components/Contact'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const TermsOfService = lazy(() => import('./components/TermsOfService'));
+const CookiePolicy = lazy(() => import('./components/CookiePolicy'));
+const EditorialDisclosure = lazy(() => import('./components/EditorialDisclosure'));
+const HowToPlay = lazy(() => import('./components/HowToPlay'));
+const StrategyPractice = lazy(() => import('./components/StrategyPractice'));
 
 
 // Wrapper components for legacy components that need props
@@ -59,6 +62,7 @@ function App() {
       <ThemeProvider>
         <Router>
           <div className="app">
+            <PageBoundary><Suspense fallback={<p role="status" style={{ padding: 32 }}>Loading your game or guide…</p>}>
             <Routes>
               {/* Main Portal */}
               <Route path="/" element={<GamingPortal />} />
@@ -89,6 +93,7 @@ function App() {
               <Route path="/practice" element={<StrategyPractice />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense></PageBoundary>
             <SiteNavigation />
             <CookieConsent />
       </div>

@@ -1,5 +1,48 @@
 // Materially revised guides. Dates describe these edits, not the original publication.
 export const reviewedGuides: Record<string, { title: string; excerpt: string; content: string }> = {
+  'mathematical-proof-tic-tac-toe-draw': {
+    title: 'Why perfect Tic-Tac-Toe is a draw: an exhaustive check you can reproduce',
+    excerpt: 'Explore all 5,478 reachable boards with a small solver. See why an empty board evaluates to a draw, how legal positions are counted, and what the result does and does not prove.',
+    content: `
+“Perfect play leads to a draw” is a claim about every possible reply, not a claim about how a few people played. To check it, we can enumerate the standard game and evaluate each position from the end backwards. DoStrike now includes an inspectable solver for its daily strategy puzzles and a verification script that performs this check.
+
+## State the rules before counting
+
+The board has nine squares. X moves first, then X and O alternate. A move fills exactly one empty square. A player wins by completing a row, column or diagonal of three marks. The game stops immediately after a win; no later moves are legal. If all squares fill without a winning line, the game is a draw.
+
+These rules matter. Continuing to place marks after a win produces boards that cannot occur in a real game. Counting every assignment of X, O or empty to nine squares also includes positions with impossible turn counts. Neither method gives the number of reachable game positions.
+
+## Enumerate positions from the empty board
+
+Start with nine empty squares and X to move. For every legal empty square, create the board after X plays, then explore O’s replies. Repeat until the game ends. Store each board in a set so that reaching the same arrangement through a different move order does not count it twice.
+
+Our verification script finds **5,478 distinct reachable boards**, including the empty board. **958 are terminal boards**: a winning line has been completed or the board is full. Rotations and reflections are counted separately here. We are counting board arrangements, not distinct move sequences; two different games can arrive at the same arrangement.
+
+## Evaluate the terminal boards first
+
+From the perspective of the player whose move we are evaluating, a win is positive, a loss is negative and a draw is zero. For an unfinished board, try every legal move. Evaluate the resulting position for the opponent, reverse the sign, and choose the highest result. The sign reversal makes the opponent choose their strongest reply rather than cooperate with a trap.
+
+For example, if one move permits an opponent to force a draw and another permits an opponent to force a win, choose the drawing move. The presence of one tempting opponent mistake does not make a move a forced win. Every opponent reply must be accounted for.
+
+DoStrike’s practice solver also prefers quicker wins and, when all moves lose, a longer defense. This affects which losing or winning move is selected, but the meaning of zero remains a draw. The source function is evaluatePosition in src/utils/practiceEngine.ts.
+
+## What happens at the empty board?
+
+The empty board evaluates to **zero**. Because the solver checks every legal move and reply through the terminal positions, this means X cannot force a win against correct defense, and O cannot force a win against correct play by X. Both players can preserve a draw under the stated rules.
+
+This does not mean every opening reply is safe. A player can still choose a move that changes a drawable position into a forced loss. Nor does it say that every mid-game board is a draw: the daily challenge deliberately includes positions with forced wins and positions that require accurate defense.
+
+## Reproduce the check
+
+In the public DoStrike Website repository, install the project dependencies and run **node scripts/verify-daily.mjs** from the repository folder. The script checks the empty-board result, the 5,478-position count, the 958 terminal positions, legal move counts and the fact that analyzing a board does not mutate it. It also validates the daily puzzle rotations and date boundaries.
+
+The code and the count depend on the rules above. A four-by-four board, a different line length or allowing moves after a win would be a different game requiring a different check. Treat this as a reproducible exhaustive argument for standard 3×3 Tic-Tac-Toe, rather than evidence about larger games.
+
+## Practice the distinction between a threat and a forced win
+
+Open Strategy Practice and compare the immediate-win puzzle with the opposite-corners defense. In the first, one move ends the game. In the second, O must choose an edge to preserve a draw. Before looking at the explanation, ask which reply your opponent would choose if they were trying their hardest to defeat your plan. That is the question the solver answers at every branch.
+`,
+  },
   'minimax-algorithm-tic-tac-toe': {
     title: 'How DoStrike’s Tic-Tac-Toe AI chooses a move',
     excerpt: 'Follow an actual board position through wins, blocks and minimax. Learn what Easy, Medium and Hard do in DoStrike, and why perfect play can still end in a draw.',

@@ -106,7 +106,7 @@ async function main() {
         const page = await context.newPage();
         try {
           await page.goto(`${BASE}${route}`, { waitUntil: 'load', timeout: 120000 });
-          await page.waitForFunction(() => document.querySelector('#root')?.textContent?.trim().length > 0, { timeout: 45000 });
+          await page.waitForSelector('#root h1', { timeout: 45000 });
           await delay(600);
           const html = await page.content();
           if (html.includes('http://127.0.0.1:4789/blog/')) throw new Error(`Local canonical leaked on ${route}`);

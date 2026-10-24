@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import './StrategyPractice.css';
+import DailyChallenge from './DailyChallenge';
 
 const lessons = [
   {
@@ -13,7 +14,7 @@ const lessons = [
   },
   {
     title: '2. Recognize the forced block',
-    board: ['O', 'O', '', 'X', '', '', 'X', '', ''], answer: 2,
+    board: ['O', 'O', '', 'X', '', '', '', '', 'X'], answer: 2,
     prompt: 'X to move. There is no immediate X win. Where must X play to keep the game alive?',
     explanation: 'Play top-right to stop O completing the top row. Taking the center looks attractive, but O would win on the very next move. A strong-looking square cannot compensate for ignoring an immediate threat.',
     exercise: 'After checking your own wins, pretend it is your opponent’s turn. Find every square that would let them win in one move.',
@@ -36,12 +37,14 @@ export default function StrategyPractice() {
   const showExplanation = solved || revealed;
   return <main className="practice-page">
     <Helmet>
-      <title>Tic-Tac-Toe Strategy Practice: Wins, Blocks & Forks | DoStrike</title>
-      <meta name="description" content="Solve three playable Tic-Tac-Toe positions. Choose a move, get feedback, and learn why immediate wins, forced blocks and forks matter." />
+      <title>Daily Tic-Tac-Toe Challenge & Strategy Practice | DoStrike</title>
+      <meta name="description" content="Solve a daily Tic-Tac-Toe puzzle, build your streak, and practice wins, forced blocks and forks with explained moves. Free, with no account needed." />
       <link rel="canonical" href="https://dostrike.com/practice" />
     </Helmet>
     <nav aria-label="Practice navigation"><Link to="/">Home</Link> · <Link to="/blog">Strategy guides</Link> · <Link to="/how-to-play">Game rules</Link></nav>
     <h1>Find the next move</h1>
+    <DailyChallenge />
+    <h2>Learn the patterns</h2>
     <p>Practice the decisions that change a Tic-Tac-Toe game. These three positions use standard rules: X starts, players alternate, and three marks in a row win. You play X in every puzzle. There is no timer; explain your move to yourself before choosing.</p>
     <div className="practice-tabs" role="group" aria-label="Choose a lesson">
       {lessons.map((item, index) => <button key={item.title} aria-pressed={index === lessonIndex} onClick={() => { setLessonIndex(index); setChoice(null); setRevealed(false); }}>{item.title}</button>)}

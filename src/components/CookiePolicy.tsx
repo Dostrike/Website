@@ -25,7 +25,7 @@ const CookiePolicy: React.FC = () => (
       <p>We use Google AdSense, which may set cookies to personalize ads and measure their effectiveness. These cookies are managed by Google and subject to their privacy policies.</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Managing Cookies</h2>
       <p><button onClick={() => window.dispatchEvent(new Event('openCookiePreferences'))}>Change optional cookie preferences</button></p>
-      <p>Your consent choice, theme, game settings and Memory scores are stored locally in your browser. Optional ad requests are disabled by default while the site is being prepared for advertising. A preference saved here does not replace any consent message required by an advertising provider.</p>
+      <p>Your consent choice, theme, game settings, Memory scores and daily challenge progress are stored locally in your browser. Daily progress includes the puzzle date, attempts, solved status and streak; it is not uploaded to an account. Optional ad requests are disabled by default while the site is being prepared for advertising. A preference saved here does not replace any consent message required by an advertising provider.</p>
       <p>You can control or delete cookies through your browser settings. Most browsers allow you to block or delete cookies, but this may affect your experience on our site.</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>More Information</h2>
       <p>For more details about cookies and how to manage them, visit <a href="https://www.allaboutcookies.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>allaboutcookies.org</a>.</p>
