@@ -123,7 +123,7 @@ const TicTacToeSetup: React.FC = () => {
       player1Name,
       player2Name
     }));
-    
+
     // Navigate to different routes based on game mode
     if (gameMode === 'PRIVATE') {
       // Private room games use the PrivateTicTacToe component
@@ -147,7 +147,7 @@ const TicTacToeSetup: React.FC = () => {
     if (createRoomTimeoutRef.current) {
       window.clearTimeout(createRoomTimeoutRef.current);
     }
-    
+
     socket.emit('createRoom', (id: string) => {
       console.log('[SETUP] Room created with ID:', id);
       setRoomId(id);
@@ -186,7 +186,7 @@ const TicTacToeSetup: React.FC = () => {
     if (joinRoomTimeoutRef.current) {
       window.clearTimeout(joinRoomTimeoutRef.current);
     }
-    
+
     socket.emit('joinRoom', joinRoomId.trim().toUpperCase(), (res: JoinRoomResponse) => {
       console.log('[SETUP] Join room response:', res);
       if (res.success) {
@@ -241,7 +241,7 @@ const TicTacToeSetup: React.FC = () => {
         <div style={{ flex: 1, padding: '40px 20px', background: 'var(--background)' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '32px', alignItems: 'start' }}>
-              
+
               {/* About Tic-Tac-Toe Card */}
               <div style={{
                 background: 'var(--surface)',
@@ -253,7 +253,7 @@ const TicTacToeSetup: React.FC = () => {
                 <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text)', margin: '0 0 24px 0' }}>
                   About Tic-Tac-Toe
                 </h2>
-                
+
                 {/* Game Board Preview */}
                 <div style={{
                   display: 'grid',
@@ -280,11 +280,11 @@ const TicTacToeSetup: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <p style={{ fontSize: '16px', color: 'var(--text)', lineHeight: '1.6', margin: '0 0 24px 0' }}>
                   The classic strategy game where you need to get three in a row. Challenge the AI or play against a friend!
                 </p>
-                
+
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text)' }}>
                     <FaRobot style={{ color: 'var(--primary)' }} />
@@ -428,12 +428,12 @@ const TicTacToeSetup: React.FC = () => {
                     <label style={{ display: 'block', fontSize: '16px', fontWeight: '600', color: 'var(--text)', marginBottom: '12px' }}>
                       Room Code
                     </label>
-                    
+
                     {/* Connection Status */}
-                    <div style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '8px', 
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                       marginBottom: '12px',
                       padding: '8px 12px',
                       background: isConnected ? '#d4edda' : '#f8d7da',

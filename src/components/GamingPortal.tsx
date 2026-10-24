@@ -113,7 +113,7 @@ const GamingPortal: React.FC = () => {
         <meta name="description" content="Play classic games, create private rooms, and challenge friends on DoStrike Gaming Portal. Multiple games including Tic Tac Toe, Connect 4, Memory Game, and more!" />
         <link rel="canonical" href="https://dostrike.com/" />
       </Helmet>
-      
+
       <div className="gaming-portal">
         {/* Header */}
         <header className="portal-header">
@@ -314,4 +314,4 @@ const GamingPortal: React.FC = () => {
   );
 };
 
-export default GamingPortal; 
+export default GamingPortal;

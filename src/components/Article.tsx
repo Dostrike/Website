@@ -72,7 +72,8 @@ const Article: React.FC = () => {
         <article style={{ marginBottom: '3em' }}>
           <p><Link to="/practice">Try the interactive wins, blocks and forks practice</Link> to apply a strategy before starting a full game.</p>
           <SocialShare url={url} title={article.title} />
-          <div 
+          <div
+            className="article-copy"
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
             style={{ lineHeight: 1.7 }}
           />
@@ -87,10 +88,10 @@ const Article: React.FC = () => {
               .filter(a => a.slug !== article.slug)
               .slice(0, 3)
               .map(relatedArticle => (
-                <Link 
+                <Link
                   key={relatedArticle.slug}
                   to={`/blog/${relatedArticle.slug}`}
-                  style={{ 
+                  style={{
                     display: 'block',
                     padding: '1em',
                     border: '1px solid var(--border)',
@@ -126,11 +127,11 @@ const Article: React.FC = () => {
         {/* Article Footer */}
         <footer style={{ borderTop: '1px solid var(--border)', paddingTop: '2em', marginTop: '2em' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1em' }}>
-            <Link 
-              to="/blog" 
-              style={{ 
-                color: 'var(--primary)', 
-                textDecoration: 'none', 
+            <Link
+              to="/blog"
+              style={{
+                color: 'var(--primary)',
+                textDecoration: 'none',
                 fontWeight: 500,
                 display: 'flex',
                 alignItems: 'center',
@@ -141,7 +142,7 @@ const Article: React.FC = () => {
             </Link>
             <div style={{ display: 'flex', gap: '1em', fontSize: '0.9em', color: 'var(--text-muted)' }}>
               <span>Share:</span>
-              <a 
+              <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -149,7 +150,7 @@ const Article: React.FC = () => {
               >
                 Twitter
               </a>
-              <a 
+              <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -165,4 +166,4 @@ const Article: React.FC = () => {
   );
 };
 
-export default Article; 
+export default Article;

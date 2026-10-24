@@ -34,7 +34,7 @@ const HomeScreenWrapper = () => {
   };
 
   return (
-        <HomeScreen 
+        <HomeScreen
           onStartGame={handleStartGame}
         />
   );
@@ -47,7 +47,7 @@ const GameScreenWrapper = () => {
   };
 
   return (
-        <><Helmet><title>Tic-Tac-Toe game | DoStrike</title><meta name="robots" content="noindex" /></Helmet><GameScreen 
+        <><Helmet><title>Tic-Tac-Toe game | DoStrike</title><meta name="robots" content="noindex" /></Helmet><GameScreen
           onBackToHome={handleBackToHome}
         /></>
   );
@@ -62,7 +62,7 @@ function App() {
             <Routes>
               {/* Main Portal */}
               <Route path="/" element={<GamingPortal />} />
-              
+
               {/* Game Routes */}
               <Route path="/tictactoe-setup" element={<TicTacToeSetup />} />
               <Route path="/connect4-setup" element={<Connect4Setup />} />
@@ -70,11 +70,11 @@ function App() {
               <Route path="/tictactoe" element={<GameScreenWrapper />} />
               <Route path="/tictactoe-private" element={<PrivateTicTacToe />} />
               <Route path="/connect4" element={<Connect4Game />} />
-              
+
               {/* Legacy Routes (for backward compatibility) */}
               <Route path="/home" element={<HomeScreenWrapper />} />
               <Route path="/game" element={<GameScreenWrapper />} />
-              
+
               {/* Static Pages */}
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
@@ -98,4 +98,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

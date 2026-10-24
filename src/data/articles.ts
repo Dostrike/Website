@@ -2024,4 +2024,4 @@ Pick one game for the week, pair it with one article series, and measure one sta
 
 export const getArticleBySlug = (slug: string): Article | undefined => {
   return articles.find(article => article.slug === slug);
-}; 
+};

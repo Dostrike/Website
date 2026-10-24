@@ -40,17 +40,17 @@ const Connect4Setup: React.FC = () => {
       </Helmet>
       <div className="home-screen" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--background)' }}>
         {/* Header */}
-        <div style={{ 
-          padding: '24px 20px', 
-          background: 'var(--surface)', 
+        <div style={{
+          padding: '24px 20px',
+          background: 'var(--surface)',
           borderBottom: '1px solid var(--border)',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
-          <div style={{ 
-            maxWidth: 1200, 
-            margin: '0 auto', 
-            display: 'flex', 
-            alignItems: 'center', 
+          <div style={{
+            maxWidth: 1200,
+            margin: '0 auto',
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'space-between'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -292,4 +292,4 @@ const Connect4Setup: React.FC = () => {
   );
 };
 
-export default Connect4Setup; 
+export default Connect4Setup;

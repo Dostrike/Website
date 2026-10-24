@@ -42,4 +42,4 @@ const CookiePolicy: React.FC = () => (
   </>
 );
 
-export default CookiePolicy; 
+export default CookiePolicy;

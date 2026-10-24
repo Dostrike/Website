@@ -75,4 +75,4 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
   );
 };
 
-export default AdSenseAd; 
+export default AdSenseAd;

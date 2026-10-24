@@ -76,7 +76,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
   }, [gameState]);
 
   const handleCellClick = (row: number, col: number) => {
-    if (gameState.gameStatus !== 'PLAYING' || 
+    if (gameState.gameStatus !== 'PLAYING' ||
         (gameState.gameMode === GameMode.AI && gameState.isAiTurn)) {
       return;
     }
@@ -93,7 +93,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
   const updateScore = (finalGameState: GameState) => {
     setGameState(prevState => {
       const newScore = { ...prevState.score };
-      
+
       if (finalGameState.gameStatus === 'DRAW') {
         newScore.draws += 1;
       } else if (finalGameState.winner) {
@@ -111,7 +111,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
           }
         }
       }
-      
+
       return {
         ...prevState,
         score: newScore
@@ -187,7 +187,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
               board={gameState.board}
               winningLine={gameState.winningLine}
               onCellClick={handleCellClick}
-              disabled={gameState.gameStatus !== 'PLAYING' || 
+              disabled={gameState.gameStatus !== 'PLAYING' ||
                        (gameState.gameMode === GameMode.AI && gameState.isAiTurn)}
             />
 
@@ -210,4 +210,4 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
   );
 };
 
-export default GameScreen; 
+export default GameScreen;
