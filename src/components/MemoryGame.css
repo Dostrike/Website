@@ -6,7 +6,7 @@
   background: var(--surface);
   padding: 1.5rem 2rem 1rem 2rem;
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 .memory-game-logo {
   font-size: 2.1rem;
@@ -30,7 +30,7 @@
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(255,107,53,0.18);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.18);
   min-height: 44px;
 }
 .memory-game-private-btn:focus-visible {
@@ -40,7 +40,11 @@
 .memory-game-bg {
   min-height: 100vh;
   background: var(--background, #f7f8fa);
-  background-image: repeating-linear-gradient(135deg, rgba(30,136,229,0.03) 0 2px, transparent 2px 40px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(30, 136, 229, 0.03) 0 2px,
+    transparent 2px 40px
+  );
   color: var(--text, #222);
   padding-bottom: 2rem;
 }
@@ -53,11 +57,30 @@
   text-align: center;
   letter-spacing: 1px;
 }
-.memory-round-goal { text-align:center; font-size:12px; margin:12px 16px; line-height:1.7; }
-.memory-rules { max-width:640px; margin:0 auto 20px; padding:0 16px; font-size:12px; line-height:1.8; }
-.memory-rules summary { text-align:center; cursor:pointer; margin-bottom:12px; }
-.memory-rules p { margin-bottom:12px; }
-.memory-game-modal-btns { flex-wrap:wrap; }
+.memory-round-goal {
+  text-align: center;
+  font-size: 12px;
+  margin: 12px 16px;
+  line-height: 1.7;
+}
+.memory-rules {
+  max-width: 640px;
+  margin: 0 auto 20px;
+  padding: 0 16px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.memory-rules summary {
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.memory-rules p {
+  margin-bottom: 12px;
+}
+.memory-game-modal-btns {
+  flex-wrap: wrap;
+}
 .memory-difficulty-row {
   display: flex;
   justify-content: center;
@@ -80,7 +103,7 @@
   border-color: #ff6b35;
   background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(255,107,53,0.2);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
 }
 .memory-difficulty-btn:focus-visible {
   outline: 3px solid #1976d2;
@@ -117,9 +140,9 @@
   align-items: center;
   gap: 14px;
   margin: 0 auto 1.5rem auto;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 18px;
-  box-shadow: 0 2px 16px rgba(30,136,229,0.07);
+  box-shadow: 0 2px 16px rgba(30, 136, 229, 0.07);
   padding: 2rem 1.5rem;
   max-width: 480px;
 }
@@ -128,7 +151,7 @@
   height: clamp(76px, 20vw, 88px);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(30,136,229,0.10);
+  box-shadow: 0 2px 8px rgba(30, 136, 229, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +166,7 @@
   transition: box-shadow 0.2s;
 }
 .memory-card:active {
-  box-shadow: 0 4px 16px rgba(30,136,229,0.18);
+  box-shadow: 0 4px 16px rgba(30, 136, 229, 0.18);
 }
 .memory-card:focus-visible {
   outline: 3px solid #1976d2;
@@ -153,18 +176,21 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0; left: 0;
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  top: 0;
+  left: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 .memory-card.flipped .memory-card-inner {
   transform: rotateY(180deg);
 }
-.memory-card-front, .memory-card-back {
+.memory-card-front,
+.memory-card-back {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,7 +202,7 @@
   color: #222;
   font-size: 2.1rem;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(30,136,229,0.10);
+  box-shadow: 0 2px 8px rgba(30, 136, 229, 0.1);
 }
 .memory-card-back {
   background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
@@ -187,32 +213,53 @@
   align-items: center;
   justify-content: center;
   transform: rotateY(180deg);
-  box-shadow: 0 2px 8px rgba(255,107,53,0.10);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.1);
 }
 .memory-card.matched .memory-card-inner {
   filter: grayscale(0.7) brightness(1.2);
   animation: match-glow 0.7s;
 }
 @keyframes match-glow {
-  0% { box-shadow: 0 0 0 0 #ff6b35; }
-  60% { box-shadow: 0 0 16px 8px #ff6b35; }
-  100% { box-shadow: 0 0 0 0 #ff6b35; }
+  0% {
+    box-shadow: 0 0 0 0 #ff6b35;
+  }
+  60% {
+    box-shadow: 0 0 16px 8px #ff6b35;
+  }
+  100% {
+    box-shadow: 0 0 0 0 #ff6b35;
+  }
 }
 .memory-card.mismatched .memory-card-inner {
   animation: shake 0.4s;
 }
 @keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }
-  40% { transform: translateX(8px); }
-  60% { transform: translateX(-8px); }
-  80% { transform: translateX(8px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .memory-game-modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(30,136,229,0.10);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 136, 229, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,7 +268,7 @@
 .memory-game-modal-content {
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(30,136,229,0.18);
+  box-shadow: 0 8px 32px rgba(30, 136, 229, 0.18);
   padding: 2.5rem 2rem 2rem 2rem;
   text-align: center;
   max-width: 340px;
@@ -317,4 +364,193 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Shared DoStrike game presentation */
+.memory-game-bg {
+  --memory-card-height: 80px;
+  max-width: 760px;
+  margin: auto;
+  padding: 28px 20px 48px;
+  min-height: 0;
+  background-image: none;
+}
+.memory-game-bg .match-top {
+  margin-bottom: 32px;
+}
+.memory-game-title {
+  font-size: 38px;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.memory-round-goal {
+  font-size: 12px;
+  margin: 0 0 18px;
+  color: var(--text-muted);
+}
+.memory-rules {
+  font-size: 12px;
+  margin: 12px auto 24px;
+}
+.memory-difficulty-btn {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 12px;
+  padding: 9px 20px;
+}
+.memory-difficulty-btn.active {
+  background: #e9efdf;
+  color: var(--ink);
+  border-color: var(--primary);
+  box-shadow: none;
+}
+.memory-game-info {
+  font-size: 13px;
+  gap: 24px !important;
+  margin: 22px 0 18px;
+}
+.memory-stats-row {
+  font-size: 10px;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.memory-stats-row span {
+  border-radius: 8px;
+  background: var(--surface);
+}
+.memory-game-board {
+  padding: 20px;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: none;
+  background: #e9eddf;
+  min-height: 0;
+}
+.memory-card {
+  width: 100%;
+  height: var(--memory-card-height);
+  border: 0 !important;
+  border-radius: 10px;
+  box-shadow: none !important;
+}
+.memory-card-front {
+  background: #35695c;
+  color: #e7f0c7;
+  box-shadow: inset 0 0 0 1px #234d4340;
+  border-radius: 10px;
+}
+.memory-card-back {
+  background: #fffef9;
+  color: var(--ink);
+  border: 2px solid #dcb67c;
+  box-shadow: none;
+  border-radius: 10px;
+  font-size: 28px;
+}
+.memory-card-emblem {
+  font-size: 30px;
+  letter-spacing: -3px;
+}
+.memory-restart {
+  text-align: center;
+  margin-top: 20px;
+}
+.memory-game-modal-btn {
+  background: var(--ink);
+  color: white;
+  font-size: 13px;
+  padding: 12px 20px;
+  border-radius: 9px;
+  box-shadow: none;
+}
+.memory-game-modal-btn:hover {
+  background: var(--secondary);
+}
+.memory-game-modal {
+  position: static;
+  background: none;
+  margin: 24px auto 0;
+}
+.memory-game-modal-content {
+  max-width: 480px;
+  width: 100%;
+  background: var(--surface);
+  padding: 26px;
+  box-shadow: none;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.memory-game-modal-title {
+  font-size: 25px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+}
+.memory-game-modal-stats {
+  font-size: 13px;
+}
+.memory-game-modal-btns {
+  flex-direction: column;
+  gap: 8px;
+}
+.memory-game-modal-btns button:not(:first-child) {
+  background: var(--paper);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+@media (max-width: 650px) {
+  .memory-game-bg {
+    padding: 22px 16px 36px;
+    --memory-card-height: 66px;
+  }
+  .memory-game-title {
+    font-size: 32px;
+  }
+  .memory-game-board {
+    padding: 14px 12px;
+    gap: 9px;
+  }
+  .memory-card-emblem {
+    font-size: 26px;
+  }
+  .memory-card-back {
+    font-size: 24px;
+  }
+  .memory-game-bg .match-top {
+    margin-bottom: 24px;
+  }
+}
+
+.memory-rules {
+  margin: 24px auto 12px;
+  padding: 0;
+  max-width: 440px;
+}
+.memory-rules summary {
+  padding: 10px;
+  margin: 0;
+}
+.memory-records {
+  max-width: 440px;
+  margin: 0 auto;
+  font-size: 12px;
+}
+.memory-records summary {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.memory-stats-row {
+  margin: 14px 0;
+}
+.memory-game-info {
+  margin: 18px 0;
+}
+.memory-game-board {
+  margin-bottom: 18px;
+}
+
+.memory-game-board[hidden] {
+  display: none;
 }

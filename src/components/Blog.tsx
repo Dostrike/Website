@@ -1,285 +1,126 @@
-import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { articles } from '../data/articles';
-import { Helmet } from 'react-helmet-async';
-import AdSenseAd from './AdSenseAd';
-import SocialShare from './SocialShare';
-import BackToPortal from './BackToPortal';
-
-const Blog: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-
-  // Get unique categories
-  const categories = useMemo(() => {
-    const cats = ['All', ...new Set(articles.map(article => article.category))];
-    return cats;
-  }, []);
-
-  // Filter articles based on selected category and search query
-  const filteredArticles = useMemo(() => {
-    let filtered = articles;
-    
-    // Filter by category
-    if (selectedCategory !== 'All') {
-      filtered = filtered.filter(article => article.category === selectedCategory);
-    }
-    
-    // Filter by search query
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(article => 
-        article.title.toLowerCase().includes(query) ||
-        article.excerpt.toLowerCase().includes(query) ||
-        article.content.toLowerCase().includes(query)
-      );
-    }
-    
-    return filtered;
-  }, [selectedCategory, searchQuery]);
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { articles } from "../data/articles";
+export default function Blog() {
+  const [category, setCategory] = useState("All");
+  const [query, setQuery] = useState("");
+  const categories = ["All", "Tic-Tac-Toe", "Connect 4", "Memory"];
+  const filtered = articles.filter(
+    (a) =>
+      (category === "All" ||
+        (category === "Connect 4"
+          ? a.slug.includes("connect4")
+          : category === "Memory"
+            ? a.slug.includes("memory")
+            : a.slug.includes("tic-tac-toe"))) &&
+      `${a.title} ${a.excerpt} ${a.content}`
+        .toLowerCase()
+        .includes(query.trim().toLowerCase()),
+  );
   return (
-    <>
+    <main className="guides-page">
       <Helmet>
         <title>DoStrike Blog - Game Strategy, Guides, and Tutorials</title>
-        <meta name="description" content="Read original strategy guides and practical tutorials for Tic-Tac-Toe, Connect 4, and Memory Game on DoStrike Gaming Portal." />
+        <meta
+          name="description"
+          content="Read original strategy guides and practical tutorials for Tic-Tac-Toe, Connect 4, and Memory Game on DoStrike Gaming Portal."
+        />
         <link rel="canonical" href="https://dostrike.com/blog" />
       </Helmet>
-      <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
-        <BackToPortal />
-        <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Blog</h1>
-        <p style={{ marginBottom: '2em', color: 'var(--text)', fontSize: '1.1em', lineHeight: 1.6 }}>
-          Explore original game strategy articles and gameplay tutorials from the DoStrike editorial team.
-          Our guides focus on practical tactics you can apply immediately across our game library.
+      <header className="page-intro">
+        <p className="eyebrow">MAKE THE NEXT ROUND YOURS</p>
+        <h1>A better move starts here.</h1>
+        <p>
+          Practical guides for the games you play. Learn a pattern, try it on a
+          board, then come back stronger.
         </p>
-
-        {/* Search and Filter */}
-        <div style={{ marginBottom: '2em' }}>
-          {/* Search Bar */}
-          <div style={{ marginBottom: '1em' }}>
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.75em 1em',
-                border: '1px solid var(--border)',
-                borderRadius: 8,
-                background: 'var(--surface)',
-                color: 'var(--text)',
-                fontSize: '1em',
-                outline: 'none'
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = 'var(--primary)';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = 'var(--border)';
-              }}
-            />
-          </div>
-          
-          {/* Category Filter */}
-          <div style={{ display: 'flex', gap: '0.5em', flexWrap: 'wrap' }}>
-            {categories.map(category => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                style={{
-                  padding: '0.5em 1em',
-                  border: '1px solid var(--border)',
-                  borderRadius: 20,
-                  background: selectedCategory === category ? 'var(--primary)' : 'transparent',
-                  color: selectedCategory === category ? 'white' : 'var(--text)',
-                  cursor: 'pointer',
-                  fontSize: '0.9em',
-                  fontWeight: 500,
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  if (selectedCategory !== category) {
-                    e.currentTarget.style.background = 'var(--primary)';
-                    e.currentTarget.style.color = 'white';
-                    e.currentTarget.style.opacity = '0.8';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedCategory !== category) {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = 'var(--text)';
-                    e.currentTarget.style.opacity = '1';
-                  }
-                }}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* AdSense Ad */}
-        <div style={{ marginBottom: '2em', textAlign: 'center' }}>
-          <AdSenseAd slot="8488726422" style={{ display: 'block', width: '100%', minHeight: 90 }} />
-        </div>
-        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2em' }}>
-          {filteredArticles.length === 0 ? (
-            <div style={{ 
-              textAlign: 'center', 
-              padding: '3em 1em', 
-              color: 'var(--text-muted)',
-              background: 'var(--surface)',
-              border: '1px solid var(--border)',
-              borderRadius: 12
-            }}>
-              <h3 style={{ marginBottom: '1em', color: 'var(--text)' }}>No articles found</h3>
-              <p style={{ marginBottom: '1.5em' }}>
-                {searchQuery.trim() 
-                  ? `No articles match "${searchQuery}" in ${selectedCategory === 'All' ? 'all categories' : selectedCategory}`
-                  : `No articles found in ${selectedCategory}`
-                }
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('All');
-                }}
-                style={{
-                  padding: '0.75em 1.5em',
-                  background: 'var(--primary)',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: 8,
-                  cursor: 'pointer',
-                  fontSize: '1em',
-                  fontWeight: 500
-                }}
-              >
-                Clear Filters
-              </button>
-            </div>
-          ) : (
-            filteredArticles.map(article => (
-            <article key={article.slug} style={{ 
-              background: 'var(--surface)', 
-              border: '1px solid var(--border)', 
-              borderRadius: 12, 
-              padding: '2em', 
-              boxShadow: '0 2px 8px rgba(30,136,229,0.05)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 4px 16px rgba(30,136,229,0.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(30,136,229,0.05)';
-            }}
+      </header>
+      <section className="guide-filters" aria-label="Find a guide">
+        <label>
+          Search the guides
+          <input
+            type="search"
+            placeholder="Try forks, openings or memory…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </label>
+        <div
+          className="guide-categories"
+          role="group"
+          aria-label="Filter by game"
+        >
+          {categories.map((c) => (
+            <button
+              key={c}
+              aria-pressed={category === c}
+              onClick={() => setCategory(c)}
             >
-              <Link to={`/blog/${article.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1em', flexWrap: 'wrap', gap: '1em' }}>
-                  <div style={{ flex: 1 }}>
-                    <span style={{ 
-                      background: 'var(--primary)', 
-                      color: 'white', 
-                      padding: '0.25em 0.75em', 
-                      borderRadius: 20, 
-                      fontSize: '0.8em', 
-                      fontWeight: 500,
-                      display: 'inline-block',
-                      marginBottom: '0.5em'
-                    }}>
-                      {article.category}
-                    </span>
-                    <h2 style={{ 
-                      color: 'var(--secondary)', 
-                      fontSize: '1.4em', 
-                      fontWeight: 600, 
-                      marginBottom: '0.75em',
-                      lineHeight: 1.3
-                    }}>
-                      {article.title}
-                    </h2>
-                    <p style={{ 
-                      color: 'var(--text)', 
-                      marginBottom: '1em',
-                      lineHeight: 1.6,
-                      fontSize: '1em'
-                    }}>
-                      {article.excerpt}
-                    </p>
-                  </div>
-                </div>
-                
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'space-between', 
-                  alignItems: 'center',
-                  fontSize: '0.9em',
-                  color: 'var(--text-muted)'
-                }}>
-                  <div style={{ display: 'flex', gap: '1em', alignItems: 'center' }}>
-                    <span>{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                    <span>•</span>
-                    <span>{article.readTime}</span>
-                  </div>
-                  <span style={{ 
-                    color: 'var(--primary)', 
-                    fontWeight: 500,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25em'
-                  }}>
-                    Read Article →
-                  </span>
-                </div>
-              </Link>
-            </article>
-            ))
-          )}
+              {c}
+            </button>
+          ))}
         </div>
-        
-        <SocialShare 
-          title="DoStrike Blog - Game Strategy, Guides, and Tutorials"
-          description="Read original strategy guides and practical tutorials for Tic-Tac-Toe, Connect 4, and Memory Game on DoStrike Gaming Portal."
-        />
-        
-        <div style={{ 
-          marginTop: '3em', 
-          padding: '2em', 
-          background: 'var(--primary)', 
-          color: 'white', 
-          borderRadius: 12, 
-          textAlign: 'center' 
-        }}>
-          <h3 style={{ marginBottom: '1em', fontSize: '1.3em' }}>Want to Play While You Read?</h3>
-          <p style={{ marginBottom: '1.5em', opacity: 0.9 }}>
-            Put your knowledge to the test with our interactive Tic-Tac-Toe game!
-          </p>
-          <Link 
-              to="/tictactoe-setup"
-            style={{ 
-              background: 'white', 
-              color: 'var(--primary)', 
-              padding: '0.75em 1.5em', 
-              borderRadius: 8, 
-              textDecoration: 'none', 
-              fontWeight: 600,
-              display: 'inline-block',
-              transition: 'transform 0.2s ease'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            Start Playing Now
-          </Link>
-        </div>
+      </section>
+      <p className="guide-count" role="status">
+        {filtered.length} {filtered.length === 1 ? "guide" : "guides"}
+        {query.trim() ? ` matching “${query.trim()}”` : " to explore"}
+      </p>
+      <div className="guide-grid">
+        {filtered.map((a, index) => (
+          <article className="guide-card" key={a.slug}>
+            <Link to={`/blog/${a.slug}`}>
+              <div
+                className={`guide-card-art guide-art-${index % 3}`}
+                aria-hidden="true"
+              >
+                <span>
+                  {a.slug.includes("memory")
+                    ? "✦"
+                    : a.slug.includes("connect4")
+                      ? "● ● ● ○"
+                      : "× ○"}
+                </span>
+              </div>
+              <div className="guide-card-copy">
+                <p className="eyebrow">
+                  {a.category} <span>· {a.readTime}</span>
+                </p>
+                <h2>{a.title}</h2>
+                <p>{a.excerpt}</p>
+                <strong>Read the guide →</strong>
+              </div>
+            </Link>
+          </article>
+        ))}
       </div>
-    </>
+      {filtered.length === 0 && (
+        <section className="guide-empty">
+          <h2>No guides found.</h2>
+          <p>Try a game name or a shorter search.</p>
+          <button
+            className="ds-button"
+            onClick={() => {
+              setQuery("");
+              setCategory("All");
+            }}
+          >
+            Clear filters
+          </button>
+        </section>
+      )}
+      <aside className="guide-practice">
+        <div>
+          <p className="eyebrow">PUT THE IDEA INTO PLAY</p>
+          <h2>Reading is the first move.</h2>
+          <p>
+            Try a short strategy puzzle with an explanation for every answer.
+          </p>
+        </div>
+        <Link className="ds-button ds-button-primary" to="/practice">
+          Practice a pattern ↗
+        </Link>
+      </aside>
+    </main>
   );
-};
-
-export default Blog; 
+}

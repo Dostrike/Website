@@ -7,12 +7,12 @@
   --classic-text: #1e293b;
   --classic-border: #e2e8f0;
 
-  --ocean-primary: #0891b2;
-  --ocean-secondary: #0e7490;
-  --ocean-background: #f0fdfa;
-  --ocean-surface: #ecfeff;
-  --ocean-text: #164e63;
-  --ocean-border: #a7f3d0;
+  --ocean-primary: #35695c;
+  --ocean-secondary: #234d43;
+  --ocean-background: #f6f5ef;
+  --ocean-surface: #fffef9;
+  --ocean-text: #173331;
+  --ocean-border: #d8dfd4;
 
   --sunset-primary: #f97316;
   --sunset-secondary: #ea580c;
@@ -50,12 +50,12 @@
   --pastel-border: #fde68a;
 
   /* Default theme */
-  --primary: var(--classic-primary);
-  --secondary: var(--classic-secondary);
-  --background: var(--classic-background);
-  --surface: var(--classic-surface);
-  --text: var(--classic-text);
-  --border: var(--classic-border);
+  --primary: var(--ocean-primary);
+  --secondary: var(--ocean-secondary);
+  --background: var(--ocean-background);
+  --surface: var(--ocean-surface);
+  --text: var(--ocean-text);
+  --border: var(--ocean-border);
   --shadow: rgba(0, 0, 0, 0.1);
   --shadow-hover: rgba(0, 0, 0, 0.15);
 }
@@ -67,8 +67,18 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -220,8 +230,8 @@ body {
   .container {
     padding: 0 0.5rem;
   }
-  
+
   .card {
     padding: 1.5rem;
   }
-} 
+}

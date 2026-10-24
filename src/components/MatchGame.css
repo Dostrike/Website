@@ -1,36 +1,264 @@
-.match-game { max-width:760px; width:100%; margin:0 auto; padding:24px 20px 40px; }
-.match-top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:32px; }
-.match-top button { background:none; border:0; font:inherit; color:var(--text); cursor:pointer; }
-.match-top a { font-size:12px; color:var(--primary); }
-.match-heading { text-align:center; }
-.match-eyebrow { font-size:10px; font-weight:750; letter-spacing:1.5px; color:var(--secondary); margin-bottom:12px; }
-.match-heading h1 { font-size:38px; letter-spacing:-1px; color:var(--text); margin-bottom:12px; }
-.match-heading>p:last-child { font-size:12px; line-height:1.7; color:var(--text); }
-.match-score { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; max-width:480px; margin:26px auto 20px; }
-.match-score>div { display:flex; flex-wrap:wrap; gap:10px; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px; }
-.match-score>div.is-current { border-color:var(--primary); box-shadow:0 0 0 1px var(--primary); }
-.match-score strong { font-size:13px; overflow-wrap:anywhere; }
-.match-mark { font-size:18px; font-weight:800; }
-.mark-x { color:#b64a32; }.mark-o { color:#226457; }
-.match-pips { display:flex; gap:6px; width:100%; padding-left:23px; }
-.match-pips i { display:block; width:12px; height:12px; border:1px solid var(--primary); border-radius:50%; }
-.match-pips .is-filled { background:var(--primary); }
-.match-turn { text-align:center; font-weight:650; font-size:14px; }
-.match-turn>span { display:block; font-size:10px; font-weight:400; margin-top:6px; text-transform:capitalize; }
-.match-game .game-board { padding:20px 0; }
-.match-controls { display:flex; justify-content:center; gap:14px; }
-.match-controls button,.match-primary { padding:12px 20px; min-height:44px; border-radius:9px; background:var(--surface); color:var(--text); border:1px solid var(--border); font:650 13px Inter,system-ui,sans-serif; cursor:pointer; }
-.match-controls button:disabled { opacity:.5; cursor:default; }
-.match-controls button:focus-visible,.match-primary:focus-visible { outline:3px solid var(--primary); outline-offset:4px; }
-.match-result { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:26px; text-align:center; max-width:480px; margin:8px auto 0; }
-.match-result h2 { font-size:25px; line-height:1.25; margin-bottom:12px; letter-spacing:-.5px; }
-.match-result>p:not(.match-eyebrow) { font-size:13px; line-height:1.8; margin-bottom:20px; }
-.match-primary { background:var(--secondary); border-color:var(--secondary); color:#fff; width:100%; }
-.match-next { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:18px; }
-.match-next a { color:var(--secondary); font-size:11px; }
-.match-hint { max-width:400px; margin:18px auto; padding:14px; background:var(--surface); border:1px dashed var(--primary); border-radius:9px; font-size:12px; line-height:1.75; }
-.match-hint a { color:var(--primary); }
-.match-details { max-width:480px; margin:28px auto 0; }
-.match-details summary { cursor:pointer; text-align:center; font-size:12px; padding:12px; }
-.board-cell.hinted { outline:3px dashed var(--secondary); outline-offset:2px; }
-@media(max-width:480px) { .match-game { padding:18px 16px 32px; }.match-heading h1 { font-size:32px; }.match-top { margin-bottom:24px; }.match-result { padding:22px 18px; }.match-score>div { padding:13px; }.match-game .board-grid { width:min(300px,82vw); height:auto; aspect-ratio:1; } }
+.match-game {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+.match-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.match-top button {
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+.match-top a {
+  font-size: 12px;
+  color: var(--secondary);
+  text-decoration: none;
+}
+.match-heading {
+  text-align: center;
+}
+.match-eyebrow {
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+  color: var(--secondary);
+  margin-bottom: 12px;
+}
+.match-heading h1 {
+  font-size: 38px;
+  letter-spacing: -1px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.match-heading > p:last-child {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.match-score {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 480px;
+  margin: 26px auto 20px;
+}
+.match-score > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+.match-score > div.is-current {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+.match-score strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.match-mark {
+  font-size: 18px;
+  font-weight: 800;
+}
+.mark-x {
+  color: #b64a32;
+}
+.mark-o {
+  color: #226457;
+}
+.match-pips {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  padding-left: 23px;
+}
+.match-pips i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+}
+.match-pips .is-filled {
+  background: var(--primary);
+}
+.match-turn {
+  text-align: center;
+  font-weight: 650;
+  font-size: 14px;
+}
+.match-turn > span {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 6px;
+  text-transform: capitalize;
+}
+.match-game .game-board {
+  padding: 20px 0;
+}
+.match-controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+.match-controls button,
+.match-primary {
+  padding: 12px 20px;
+  min-height: 44px;
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font:
+    650 13px Inter,
+    system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+.match-controls button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.match-controls button:focus-visible,
+.match-primary:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+.match-result {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px;
+  text-align: center;
+  max-width: 480px;
+  margin: 8px auto 0;
+}
+.match-result h2 {
+  font-size: 25px;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.match-result > p:not(.match-eyebrow) {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.match-primary {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+  width: 100%;
+}
+.match-next {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+.match-next a {
+  color: var(--secondary);
+  font-size: 11px;
+}
+.match-hint {
+  max-width: 400px;
+  margin: 18px auto;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px dashed var(--primary);
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.75;
+}
+.match-hint a {
+  color: var(--primary);
+}
+.match-details {
+  max-width: 480px;
+  margin: 28px auto 0;
+}
+.match-details summary {
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  padding: 12px;
+}
+.board-cell.hinted {
+  outline: 3px dashed var(--secondary);
+  outline-offset: 2px;
+}
+@media (max-width: 480px) {
+  .match-game {
+    padding: 18px 16px 32px;
+  }
+  .match-heading h1 {
+    font-size: 32px;
+  }
+  .match-top {
+    margin-bottom: 24px;
+  }
+  .match-result {
+    padding: 22px 18px;
+  }
+  .match-score > div {
+    padding: 13px;
+  }
+  .match-game .board-grid {
+    width: min(300px, 82vw);
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
+
+.match-game {
+  padding-top: 20px;
+}
+.match-top {
+  margin-bottom: 18px;
+}
+.match-heading h1 {
+  font-size: 32px;
+  margin: 4px 0 8px;
+}
+.match-eyebrow {
+  margin-bottom: 6px;
+}
+.match-score {
+  margin: 16px auto 12px;
+}
+.match-score > div {
+  padding: 10px 14px;
+  gap: 6px 10px;
+}
+.match-turn > span {
+  margin-top: 3px;
+}
+.match-game .game-board {
+  padding: 16px 0;
+}
+.match-details {
+  margin-top: 18px;
+}
+
+.match-game .board-grid {
+  width: min(300px, 82vw);
+  height: auto;
+  max-width: 300px;
+  max-height: none;
+  aspect-ratio: 1;
+}

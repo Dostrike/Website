@@ -1,20 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaRocket } from 'react-icons/fa';
+import React from "react";
+import { Link } from "react-router-dom";
 
 type BackToPortalProps = {
   /** Use in dense headers (game setup) so outer spacing does not stack */
-  variant?: 'default' | 'inline';
+  variant?: "default" | "inline";
   /** Runs before navigation (e.g. socket cleanup in private games) */
   beforeNavigate?: () => void;
 };
 
-const BackToPortal: React.FC<BackToPortalProps> = ({ variant = 'default', beforeNavigate }) => (
+const BackToPortal: React.FC<BackToPortalProps> = ({
+  variant = "default",
+  beforeNavigate,
+}) => (
   <div
     className={
-      variant === 'inline'
-        ? 'back-to-portal-wrap back-to-portal-wrap--inline'
-        : 'back-to-portal-wrap'
+      variant === "inline"
+        ? "back-to-portal-wrap back-to-portal-wrap--inline"
+        : "back-to-portal-wrap"
     }
   >
     <Link
@@ -24,8 +26,8 @@ const BackToPortal: React.FC<BackToPortalProps> = ({ variant = 'default', before
         beforeNavigate?.();
       }}
     >
-      <FaRocket className="back-to-portal-icon" aria-hidden />
-      Back to home
+      <span aria-hidden="true">←</span>
+      Game lobby
     </Link>
   </div>
 );

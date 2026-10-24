@@ -1,0 +1,121 @@
+.connect4-match {
+  max-width: 760px;
+}
+.connect4-board-area {
+  max-width: 480px;
+  margin: 24px auto 16px;
+  padding: 0 4px;
+}
+.player-disc {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid #17333130;
+}
+.disc-red {
+  background: #df7855;
+}
+.disc-yellow {
+  background: #e5c365;
+}
+.board-help,
+.stats-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 12px 0 20px;
+}
+.compact-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  text-align: center;
+  margin: 20px 0;
+}
+.compact-stats span {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 12px 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.compact-stats strong {
+  display: block;
+  font-size: 22px;
+  color: var(--text);
+}
+.connect4-match .match-details p,
+.connect4-match .match-details > a {
+  font-size: 12px;
+  line-height: 1.8;
+}
+.connect4-match .c4-board-grid {
+  background: #486b60;
+  box-shadow: 0 6px 0 #304e44;
+  border: 0;
+  border-radius: 16px;
+}
+.connect4-match .c4-cell {
+  background: #edf0df;
+  box-shadow: inset 0 2px 3px #17333135;
+}
+.connect4-match .c4-disc.red {
+  background: #df7855;
+  border: 3px solid #bd5e40;
+  box-shadow: inset 0 0 0 3px #ed9c7e;
+}
+.connect4-match .c4-disc.yellow {
+  background: #e6c66c;
+  border: 3px solid #c6a54e;
+  box-shadow: inset 0 0 0 3px #f2da91;
+}
+.connect4-match .c4-disc.preview {
+  opacity: 0.45 !important;
+  border: 2px dashed var(--ink) !important;
+  box-shadow: none !important;
+  animation: none;
+}
+.connect4-match .c4-cell.winning {
+  outline: 3px solid #173331;
+  outline-offset: 1px;
+}
+.connect4-match .c4-board-wrapper:focus-visible {
+  outline: 3px solid #b75334 !important;
+  outline-offset: 8px;
+  border-radius: 12px;
+}
+
+.connect4-match .c4-board-wrapper {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  max-width: 380px;
+  --c4-cell-size: 42px;
+}
+.connect4-match .c4-board-grid {
+  grid-template-columns: repeat(7, var(--c4-cell-size));
+  grid-template-rows: repeat(6, var(--c4-cell-size));
+  gap: 6px;
+  padding: 14px;
+}
+.connect4-match .c4-board-grid::before {
+  display: none;
+}
+.connect4-match .c4-disc {
+  width: calc(var(--c4-cell-size) - 5px);
+  height: calc(var(--c4-cell-size) - 5px);
+}
+.connect4-board-area {
+  margin: 16px auto;
+}
+@media (max-width: 480px) {
+  .connect4-match .c4-board-wrapper {
+    --c4-cell-size: clamp(29px, 9vw, 38px);
+  }
+  .connect4-match .c4-board-grid {
+    padding: 10px;
+    gap: 5px;
+  }
+}
