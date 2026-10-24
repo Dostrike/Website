@@ -1,3 +1,2 @@
-# SPA fallback — ensures client routes and "/" always serve index.html (avoids Netlify generic 404)
-/              /index.html   200
-/*             /index.html   200
+# Routing is managed in netlify.toml. Do not add a blanket 200 rewrite here:
+# _redirects takes precedence and would turn unknown URLs into soft 404s.

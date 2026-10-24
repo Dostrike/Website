@@ -26,4 +26,5 @@ for (const url of urls) {
 assert((await fs.readFile(path.join(dist, '404.html'), 'utf8')).includes('content="noindex"'));
 assert((await fs.readFile(path.join(dist, 'ads.txt'), 'utf8')).includes('pub-4621807979883911'));
 assert((await fs.readFile(path.join(dist, 'robots.txt'), 'utf8')).includes('https://dostrike.com/sitemap.xml'));
+assert(!(await fs.readFile(path.join(dist, '_redirects'), 'utf8')).split('\n').some(line => /^\s*\/\*\s+.*\s200\s*$/.test(line)), 'Blanket 200 rewrite overrides real 404 responses');
 console.log(`Verified ${checks} sitemap pages: canonical URLs, ownership tags, headings and internal links; 404, ads.txt and robots.txt passed.`);
