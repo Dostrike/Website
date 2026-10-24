@@ -71,7 +71,7 @@ const PrivacyPolicy: React.FC = () => (
       <li><strong>Address:</strong> 33 Raimonde Road,<br />Eastwood, NSW, 2122<br />Australia</li>
     </ul>
     <p style={{ marginTop: '2em' }}>
-      <em>By using DoStrike Gaming Portal, you consent to the practices described in this Privacy Policy.</em>
+      <em>Optional advertising cookie choices can be changed through Cookie preferences in the site navigation. Browsing the site alone does not grant consent to optional cookies.</em>
     </p>
   </div>
   </>

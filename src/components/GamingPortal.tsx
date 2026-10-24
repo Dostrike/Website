@@ -17,7 +17,7 @@ const GamingPortal: React.FC = () => {
       visual: '❌⭕',
       available: true,
       route: '/tictactoe-setup',
-      badge: 'Popular'
+      badge: 'Classic'
     },
     {
       id: 'connect4',
@@ -28,7 +28,7 @@ const GamingPortal: React.FC = () => {
       visual: '🔴🟡',
       available: true,
       route: '/connect4-setup',
-      badge: 'Trending'
+      badge: 'Strategy'
     },
     {
       id: 'memory',
@@ -85,7 +85,7 @@ const GamingPortal: React.FC = () => {
     {
       icon: <FaGamepad aria-hidden />,
       title: 'Multiple Games',
-      description: 'Wide variety of classic and modern games.'
+      description: 'Three classic games: Tic-Tac-Toe, Connect 4 and Memory.'
     },
     {
       icon: <FaUsers aria-hidden />,
@@ -94,8 +94,8 @@ const GamingPortal: React.FC = () => {
     },
     {
       icon: <FaTrophy aria-hidden />,
-      title: 'Competitive',
-      description: 'Track scores and compete with others.'
+      title: 'Practice',
+      description: 'Learn wins, blocks and forks with interactive strategy puzzles.'
     }
   ];
 
@@ -129,7 +129,7 @@ const GamingPortal: React.FC = () => {
             </p>
             <div className="hero-cta-row">
               <a className="hero-primary-cta" href="#games-start">Start Playing</a>
-              <a className="hero-secondary-cta" href="/how-to-play">Learn Strategy</a>
+              <a className="hero-secondary-cta" href="/practice">Practice Strategy</a>
             </div>
             <div className="header-stats">
               <div className="header-stat">
@@ -306,6 +306,7 @@ const GamingPortal: React.FC = () => {
             <a href="/cookies">Cookie Policy</a>
             <a href="/editorial">Editorial disclosure</a>
             <a href="/how-to-play">How to Play</a>
+            <a href="/practice">Strategy Practice</a>
           </nav>
         </footer>
       </div>

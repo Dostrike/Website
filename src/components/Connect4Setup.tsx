@@ -69,7 +69,7 @@ const Connect4Setup: React.FC = () => {
         </div>
         {/* Main Content */}
         <div style={{ flex: 1, padding: '40px 20px', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ maxWidth: 1000, width: '100%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'start' }}>
+          <div style={{ maxWidth: 1000, width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 40, alignItems: 'start' }}>
             {/* About Card */}
             <div style={{
               background: 'var(--surface)',

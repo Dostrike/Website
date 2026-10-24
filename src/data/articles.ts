@@ -1,3 +1,5 @@
+import { reviewedGuides } from './reviewedGuides';
+
 export interface Article {
   title: string;
   excerpt: string;
@@ -6,6 +8,7 @@ export interface Article {
   readTime: string;
   category: string;
   content: string;
+  updated?: string;
 }
 
 export const articles: Article[] = [
@@ -2013,7 +2016,11 @@ Privacy, cookies, and terms are linked in the site footer. For editorial indepen
 Pick one game for the week, pair it with one article series, and measure one statistic (wins, moves, or mistakes). Small measurements create fast improvement loops on DoStrike.
     `
   }
-];
+].map(article => {
+  const revision = reviewedGuides[article.slug];
+  const reviewed = { ...article, ...revision, ...(revision ? { updated: '2026-10-24' } : {}) };
+  return { ...reviewed, readTime: `${Math.max(1, Math.ceil(reviewed.content.trim().split(/\s+/).length / 200))} min read` };
+});
 
 export const getArticleBySlug = (slug: string): Article | undefined => {
   return articles.find(article => article.slug === slug);

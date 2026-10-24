@@ -29,16 +29,19 @@ const CookieConsent: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
+    const reopen = () => setShowBanner(true);
+    window.addEventListener('openCookiePreferences', reopen);
     // Check if user has already accepted cookies
     const storedConsent = localStorage.getItem('cookieConsent') as ConsentValue | null;
     if (!storedConsent) {
       // Consent Mode v2 default state before user action.
       applyConsentMode('false');
       setShowBanner(true);
-      return;
+      return () => window.removeEventListener('openCookiePreferences', reopen);
     }
 
     applyConsentMode(storedConsent);
+    return () => window.removeEventListener('openCookiePreferences', reopen);
   }, []);
 
   const acceptCookies = () => {
@@ -92,8 +95,8 @@ const CookieConsent: React.FC = () => {
             color: 'var(--text)',
             lineHeight: 1.4
           }}>
-            We use cookies to enhance your experience and display personalized ads via Google AdSense. 
-            By continuing to use this site, you consent to our use of cookies. 
+            Choose whether to allow optional advertising cookies. Games work with either choice.
+            Continuing to browse does not give consent. Your choice is saved on this device.
             See our <a href="/cookies" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Cookie Policy</a> for more details.
           </p>
         </div>

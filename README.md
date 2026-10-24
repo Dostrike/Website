@@ -50,3 +50,16 @@ The redirect rules are configured in `netlify.toml`.
 - `npm run build` - create production build
 - `npm run preview` - preview production build locally
 - `npm run lint` - run ESLint
+
+## Advertising and release verification
+
+AdSense ownership is declared with the publisher meta tag in `index.html` and `public/ads.txt`.
+Optional ad requests are disabled by default. Set `VITE_ADS_ENABLED=true` in the build
+environment only after site approval and after publishing and testing Google's certified
+consent messaging (AdSense Privacy & messaging) for applicable visitors. The local cookie
+preference banner alone is not a certified CMP.
+
+Run `npm run build`, `npm run lint`, then `node scripts/verify-site.mjs` before deployment.
+`node scripts/inspect-live.mjs` checks the public deployment. Netlify serves prerendered
+route directories and returns `404.html` with HTTP 404 for unknown URLs. Keep every public
+route in `scripts/prerender.mjs`; its sitemap is generated from that route list and the articles.

@@ -30,7 +30,7 @@ const EditorialDisclosure: React.FC = () => (
         Editorial Standards & Advertising Disclosure
       </h1>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.95em', marginBottom: '2em' }}>
-        Last updated: May 1, 2026 · Publisher: DoStrike Gaming Portal (Australia)
+        Last updated: October 24, 2026 · Publisher: DoStrike Gaming Portal (Australia)
       </p>
 
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.25em', margin: '1.5em 0 0.5em', fontWeight: 600 }}>
@@ -96,8 +96,9 @@ const EditorialDisclosure: React.FC = () => (
       </p>
       <p style={{ lineHeight: 1.7 }}>
         <strong>Your choice:</strong> When you first visit, you can accept or decline non-essential cookies through
-        our banner. We also use consent-related signals consistent with Google&apos;s requirements for ad serving.
-        Declining personalization may result in fewer tailored ads, but core site playability should remain available.
+        our banner and change that choice on the Cookie Policy page. Optional ad requests are disabled by default
+        while advertising is being prepared. The local preference banner is not a certified advertising consent platform.
+        Games remain available when optional cookies are declined.
       </p>
 
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.25em', margin: '1.5em 0 0.5em', fontWeight: 600 }}>

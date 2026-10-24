@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import GamingPortal from './components/GamingPortal';
 import TicTacToeSetup from './components/TicTacToeSetup';
@@ -20,6 +20,9 @@ import CookiePolicy from './components/CookiePolicy';
 import EditorialDisclosure from './components/EditorialDisclosure';
 import HowToPlay from './components/HowToPlay';
 import CookieConsent from './components/CookieConsent';
+import NotFound from './components/NotFound';
+import StrategyPractice from './components/StrategyPractice';
+import SiteNavigation from './components/SiteNavigation';
 import './App.css';
 
 
@@ -44,9 +47,9 @@ const GameScreenWrapper = () => {
   };
 
   return (
-        <GameScreen 
+        <><Helmet><title>Tic-Tac-Toe game | DoStrike</title><meta name="robots" content="noindex" /></Helmet><GameScreen 
           onBackToHome={handleBackToHome}
-        />
+        /></>
   );
 };
 
@@ -83,7 +86,10 @@ function App() {
               <Route path="/cookies" element={<CookiePolicy />} />
               <Route path="/editorial" element={<EditorialDisclosure />} />
               <Route path="/how-to-play" element={<HowToPlay />} />
+              <Route path="/practice" element={<StrategyPractice />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
+            <SiteNavigation />
             <CookieConsent />
       </div>
         </Router>

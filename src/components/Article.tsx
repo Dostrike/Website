@@ -4,6 +4,7 @@ import { getArticleBySlug, articles } from '../data/articles';
 import { Helmet } from 'react-helmet-async';
 import SocialShare from './SocialShare';
 import BackToPortal from './BackToPortal';
+import NotFound from './NotFound';
 
 const ARTICLE_AUTHOR = 'DoStrike Editorial Team';
 
@@ -11,50 +12,23 @@ const Article: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = getArticleBySlug(slug || '');
 
-  if (!article) {
-    return (
-      <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
-        <BackToPortal />
-        <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em' }}>Article Not Found</h1>
-        <p style={{ marginBottom: '2em', color: 'var(--text)' }}>
-          The article you're looking for doesn't exist.
-        </p>
-        <Link to="/blog" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 500 }}>
-          ← Back to Blog
-        </Link>
-      </div>
-    );
-  }
-
-  const url = typeof window !== 'undefined' ? `${window.location.origin}/blog/${article.slug}` : '';
+  if (!article) return <NotFound />;
+  const url = `https://dostrike.com/blog/${article.slug}`;
 
   // Convert markdown-like content to HTML
   const formatContent = (content: string) => {
-    return content
-      .split('\n')
-      .map((line) => {
-        if (line.startsWith('## ')) {
-          return `<h2 style="color: var(--secondary); font-size: 1.5em; margin: 1.5em 0 0.5em 0; font-weight: 600;">${line.substring(3)}</h2>`;
-        }
-        if (line.startsWith('### ')) {
-          return `<h3 style="color: var(--secondary); font-size: 1.25em; margin: 1.25em 0 0.5em 0; font-weight: 600;">${line.substring(4)}</h3>`;
-        }
-        if (line.startsWith('- ')) {
-          return `<li style="margin: 0.5em 0; color: var(--text);">${line.substring(2)}</li>`;
-        }
-        if (line.startsWith('1. ')) {
-          return `<li style="margin: 0.5em 0; color: var(--text);">${line.substring(3)}</li>`;
-        }
-        if (line.trim() === '') {
-          return '<br>';
-        }
-        if (line.includes('**') && line.includes('**')) {
-          const formatted = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-          return `<p style="margin: 1em 0; color: var(--text); line-height: 1.7;">${formatted}</p>`;
-        }
-        return `<p style="margin: 1em 0; color: var(--text); line-height: 1.7;">${line}</p>`;
-      })
-      .join('');
+    const inline = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    return content.trim().split(/\n\s*\n/).map(block => {
+      const lines = block.trim().split('\n');
+      if (lines.every(line => /^- /.test(line))) return `<ul>${lines.map(line => `<li>${inline(line.slice(2))}</li>`).join('')}</ul>`;
+      if (lines.every(line => /^\d+\. /.test(line))) return `<ol>${lines.map(line => `<li>${inline(line.replace(/^\d+\. /, ''))}</li>`).join('')}</ol>`;
+      return lines.map(line => {
+        if (line.startsWith('### ')) return `<h3>${inline(line.slice(4))}</h3>`;
+        if (line.startsWith('## ')) return `<h2>${inline(line.slice(3))}</h2>`;
+        return `<p>${inline(line)}</p>`;
+      }).join('');
+    }).join('');
   };
 
   return (
@@ -87,7 +61,7 @@ const Article: React.FC = () => {
           <div style={{ display: 'flex', gap: '1em', alignItems: 'center', marginBottom: '1em', fontSize: '0.9em', color: 'var(--text-muted)' }}>
             <span>By {ARTICLE_AUTHOR}</span>
             <span>•</span>
-            <span>Last updated: {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            <span>Last updated: {new Date(article.updated || article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
           </div>
           <p style={{ fontSize: '1.1em', color: 'var(--text)', lineHeight: 1.6, fontStyle: 'italic' }}>
             {article.excerpt}
@@ -96,11 +70,13 @@ const Article: React.FC = () => {
 
         {/* Article Content */}
         <article style={{ marginBottom: '3em' }}>
+          <p><Link to="/practice">Try the interactive wins, blocks and forks practice</Link> to apply a strategy before starting a full game.</p>
           <SocialShare url={url} title={article.title} />
           <div 
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
             style={{ lineHeight: 1.7 }}
           />
+          {article.updated && <p>Implementation reference: <a href="https://github.com/Dostrike/Website/blob/main/src/utils/gameLogic.ts">DoStrike Tic-Tac-Toe game logic</a>. <Link to="/contact">Report a correction</Link>.</p>}
         </article>
 
         {/* Related Articles */}

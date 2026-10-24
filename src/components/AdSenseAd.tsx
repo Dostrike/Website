@@ -28,6 +28,8 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
   }, []);
 
   useEffect(() => {
+    // Enable only after account approval and certified consent messaging are configured.
+    if (import.meta.env.VITE_ADS_ENABLED !== 'true') return;
     if (consent === 'false') {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.requestNonPersonalizedAds = 1;
@@ -58,7 +60,7 @@ const AdSenseAd: React.FC<AdSenseAdProps> = ({ slot, style }) => {
     }
   }, [consent]);
 
-  if (consent !== 'true') {
+  if (import.meta.env.VITE_ADS_ENABLED !== 'true' || consent !== 'true') {
     return null;
   }
 

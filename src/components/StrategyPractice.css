@@ -1,0 +1,16 @@
+.practice-page { max-width: 850px; margin: 32px auto; padding: 24px; color: var(--text); background: var(--surface); border-radius: 12px; line-height: 1.75; }
+.practice-page h1, .practice-page h2 { line-height: 1.25; margin: 24px 0 16px; }
+.practice-page p, .practice-page ol { margin-bottom: 20px; }
+.practice-page ol { padding-left: 24px; }
+.practice-page a { color: var(--primary); text-decoration: underline; }
+.practice-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.practice-page button { font: inherit; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; color: var(--text); background: var(--background); cursor: pointer; }
+.practice-page button:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+.practice-tabs button[aria-pressed=true] { border-color: var(--primary); }
+.practice-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: min(100%, 300px); margin: 24px auto; }
+.practice-board button { aspect-ratio: 1; font-size: 2rem; font-weight: 700; padding: 0; }
+.practice-board button:disabled { opacity: 1; cursor: default; }
+.practice-board .practice-answer { border-color: var(--primary); background: var(--primary); color: white; }
+.practice-feedback { min-height: 48px; }
+.practice-page footer { border-top: 1px solid var(--border); padding-top: 20px; margin-top: 32px; }
+@media (max-width: 480px) { .practice-page { margin: 0; padding: 20px 16px; } }

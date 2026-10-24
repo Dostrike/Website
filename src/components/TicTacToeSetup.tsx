@@ -240,7 +240,7 @@ const TicTacToeSetup: React.FC = () => {
         {/* Main Content */}
         <div style={{ flex: 1, padding: '40px 20px', background: 'var(--background)' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'start' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '32px', alignItems: 'start' }}>
               
               {/* About Tic-Tac-Toe Card */}
               <div style={{

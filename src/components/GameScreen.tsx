@@ -4,6 +4,7 @@ import { GameLogic } from '../utils/gameLogic';
 import GameBoard from './GameBoard';
 import ScoreBoard from './ScoreBoard';
 import './GameScreen.css';
+import { Link } from 'react-router-dom';
 
 interface GameScreenProps {
   onBackToHome: () => void;
@@ -158,7 +159,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ onBackToHome }) => {
   };
 
   if (!gameSettings) {
-    return <div>Loading...</div>;
+    return <main className="container" style={{ maxWidth: 700, margin: '40px auto', padding: 24 }}><h1>Choose your Tic-Tac-Toe game</h1><p>Select an opponent and difficulty before starting a round. Your settings are saved on this device.</p><Link to="/tictactoe-setup">Set up a game</Link></main>;
   }
 
   return (

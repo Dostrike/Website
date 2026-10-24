@@ -12,7 +12,7 @@ const CookiePolicy: React.FC = () => (
     <div className="container" style={{ maxWidth: 800, margin: '40px auto', background: 'var(--surface)', color: 'var(--text)', padding: '32px 24px', boxShadow: '0 4px 16px rgba(30,136,229,0.07)', borderRadius: 10 }}>
       <BackToPortal />
       <h1 style={{ color: 'var(--primary)', fontSize: '2em', marginBottom: '1em', fontWeight: 700 }}>Cookie Policy</h1>
-      <p style={{ color: 'var(--text-muted)', fontSize: '0.95em', marginBottom: '2em' }}>Last updated: May 3, 2026</p>
+      <p style={{ color: 'var(--text-muted)', fontSize: '0.95em', marginBottom: '2em' }}>Last updated: October 24, 2026</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>What Are Cookies?</h2>
       <p>Cookies are small text files stored on your device by your browser. They help websites remember your preferences, improve your experience, and provide analytics and advertising.</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>How We Use Cookies</h2>
@@ -24,6 +24,8 @@ const CookiePolicy: React.FC = () => (
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Third-Party Cookies</h2>
       <p>We use Google AdSense, which may set cookies to personalize ads and measure their effectiveness. These cookies are managed by Google and subject to their privacy policies.</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>Managing Cookies</h2>
+      <p><button onClick={() => window.dispatchEvent(new Event('openCookiePreferences'))}>Change optional cookie preferences</button></p>
+      <p>Your consent choice, theme, game settings and Memory scores are stored locally in your browser. Optional ad requests are disabled by default while the site is being prepared for advertising. A preference saved here does not replace any consent message required by an advertising provider.</p>
       <p>You can control or delete cookies through your browser settings. Most browsers allow you to block or delete cookies, but this may affect your experience on our site.</p>
       <h2 style={{ color: 'var(--secondary)', fontSize: '1.2em', margin: '1.5em 0 0.5em 0', fontWeight: 600 }}>More Information</h2>
       <p>For more details about cookies and how to manage them, visit <a href="https://www.allaboutcookies.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>allaboutcookies.org</a>.</p>

@@ -26,18 +26,11 @@
   status = 301
   force = true
 
-# Bare "/" must rewrite to index.html (some Netlify setups don't treat "/*" as matching "/").
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-  force = true
-
+# Serve prerendered files before the fallback. Unknown URLs are real 404s.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+  to = "/404.html"
+  status = 404
 
 [build.environment]
   NODE_VERSION = "20"
