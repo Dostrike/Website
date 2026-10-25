@@ -16,6 +16,10 @@ Build a useful game portal with returning players and sustainable ad revenue. Ap
 - Working tree was clean before this log update. Live verification passed all 35 public pages, metadata, HTTPS/domain redirects, real 404 responses and publisher/crawler files. Latest published gameplay release remains f899a41 (phone margins after lazy stylesheet loading).
 - No new gameplay change justified by overnight evidence. Preserve the tested release while collecting search and engagement evidence; avoid adding games or redesigning solely to generate activity.
 
+## 2026-10-26
+- Fresh signed-in AdSense check remains Getting ready / Review requested; the account still shows the October 24, 11:49 AM AEDT update. No approval or rejection, and no account declaration made.
+- Working tree clean before logging. Live verification again passed all 35 public pages, metadata, real 404s, HTTPS/domain redirects and crawler/publisher files. No new failure or evidence justifying a gameplay release; existing measurement and indexing backlog remains the priority. Ads stay disabled.
+
 ## Priorities
 1. Verify AdSense's actual decision in the signed-in account. If rejected, capture the exact stated issue and address evidence, not guesses. If access expires, report the access requirement once.
 2. Use the connected Search Console property to track discovery and investigate indexing exclusions against the recent canonical/redirect fixes. Establish aggregate engagement measurement when an authorized analytics property is available. Do not invent a measurement ID or claim browser-local records represent all players. Track starts, completed rounds, rematches, daily completions and returning visitors; use privacy controls appropriate to the chosen implementation. Do not purchase Netlify analytics.
