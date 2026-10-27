@@ -42,7 +42,7 @@ const CookiePolicy: React.FC = () => (
           marginBottom: "2em",
         }}
       >
-        Last updated: October 24, 2026
+        Last updated: October 27, 2026
       </p>
       <h2
         style={{
@@ -70,10 +70,15 @@ const CookiePolicy: React.FC = () => (
         How We Use Cookies
       </h2>
       <ul style={{ marginLeft: "1.5em", marginBottom: "1em" }}>
-        <li>To remember your preferences and settings</li>
-        <li>To analyze site traffic and usage</li>
-        <li>To display personalized ads via Google AdSense</li>
+        <li>Browser local storage remembers your preferences and game settings.</li>
+        <li>Scores and daily challenge progress are saved on this device.</li>
+        <li>Your optional-cookie choice is also saved in local storage.</li>
       </ul>
+      <p>
+        Google Analytics and Netlify Web Analytics are not enabled in the current
+        release. Ad requests are disabled while the site is under review; accepting
+        optional cookies does not switch advertising on.
+      </p>
       <h2
         style={{
           color: "var(--secondary)",
@@ -85,9 +90,13 @@ const CookiePolicy: React.FC = () => (
         Third-Party Cookies
       </h2>
       <p>
-        We use Google AdSense, which may set cookies to personalize ads and
-        measure their effectiveness. These cookies are managed by Google and
-        subject to their privacy policies.
+        If Google AdSense is enabled in a future release, Google and its partners
+        may set cookies to personalize ads and measure their effectiveness,
+        subject to applicable consent choices. See{" "}
+        <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">
+          how Google uses advertising cookies
+        </a>
+        . These cookies differ from the browser-local game records described here.
       </p>
       <h2
         style={{
@@ -118,9 +127,11 @@ const CookiePolicy: React.FC = () => (
         an advertising provider.
       </p>
       <p>
-        You can control or delete cookies through your browser settings. Most
-        browsers allow you to block or delete cookies, but this may affect your
-        experience on our site.
+        You can control or delete cookies and site data through your browser
+        settings. Clear this site's stored data to remove local records; this
+        resets saved settings, scores, daily progress and cookie preferences in
+        that browser. Blocking site storage may prevent preferences or progress
+        from being saved.
       </p>
       <h2
         style={{

@@ -35,7 +35,7 @@ const PrivacyPolicy: React.FC = () => (
         Privacy Policy
       </h1>
       <p>
-        <strong>Effective Date:</strong> May 3, 2026
+        <strong>Last updated:</strong> October 27, 2026
       </p>
       <p>
         Thank you for choosing DoStrike Gaming Portal. Your privacy is important
@@ -69,10 +69,14 @@ const PrivacyPolicy: React.FC = () => (
           email correspondence handled for support purposes only.
         </li>
         <li>
-          <strong>Cookies & Usage Data:</strong> We use cookies and similar
-          technologies to analyze website traffic and usage. Third-party
-          services, including Google AdSense, may use cookies to serve
-          personalized ads and measure ad performance. See{" "}
+          <strong>Browser storage:</strong> Game settings, theme, scores, daily
+          challenge progress and cookie preferences are saved locally on your
+          device. These records are not an aggregate visitor tracking service.
+          Google Analytics and Netlify Web Analytics are not enabled in the
+          current release. If advertising is enabled in a future release,
+          Google and its partners may use cookies and other identifiers to
+          personalize ads and measure performance, subject to applicable consent
+          choices. See{" "}
           <a
             href="https://policies.google.com/technologies/ads"
             target="_blank"
@@ -83,9 +87,11 @@ const PrivacyPolicy: React.FC = () => (
           for more details.
         </li>
         <li>
-          <strong>Advertising Data:</strong> Google AdSense and its partners may
-          collect data (including advertising identifiers and cookies) to show
-          you personalized ads.
+          <strong>Service connections:</strong> Our hosting provider processes
+          connection information, such as IP addresses and requested pages, to
+          deliver the website. Private online games send room identifiers and
+          moves through our game server to the other player; this differs from
+          local play against the computer or on the same device.
         </li>
       </ul>
       <h2
@@ -101,8 +107,8 @@ const PrivacyPolicy: React.FC = () => (
         <li>
           Provide and improve the website’s functionality and user experience.
         </li>
-        <li>Display relevant advertisements.</li>
-        <li>Analyze usage to improve features and resolve bugs.</li>
+        <li>Connect players who choose a private online game.</li>
+        <li>Respond to support emails and investigate reported bugs.</li>
         <li>Comply with legal obligations.</li>
       </ul>
       <h2
@@ -116,8 +122,10 @@ const PrivacyPolicy: React.FC = () => (
       </h2>
       <ul>
         <li>
-          <strong>Google AdSense:</strong> We use Google AdSense to display ads
-          on our website. AdSense and its partners may collect and use data
+          <strong>Advertising status:</strong> Ad requests are disabled in the
+          current release while the site is under review. Accepting optional
+          cookies does not enable ads while this restriction is in place. If
+          Google AdSense is enabled later, Google and its partners may collect and use data
           (including cookies and advertising identifiers) to show you
           personalized ads. For more information, see{" "}
           <a
@@ -145,6 +153,11 @@ const PrivacyPolicy: React.FC = () => (
       </h2>
       <ul>
         <li>
+          Browser-local records remain until you clear this site's stored data
+          or your browser removes them. Clearing them resets saved settings,
+          scores, daily progress and cookie preferences on that browser.
+        </li>
+        <li>
           We retain your data only as long as necessary to provide our services
           and for legitimate business purposes.
         </li>
@@ -168,8 +181,11 @@ const PrivacyPolicy: React.FC = () => (
       </h2>
       <ul>
         <li>
-          <strong>Ad Personalization:</strong> You can opt out of personalized
-          ads via your browser settings. See{" "}
+          <strong>Advertising choices:</strong> Use Cookie preferences in the
+          site navigation to change the saved optional-cookie choice. This
+          control does not replace a certified consent message where required
+          before advertising is enabled. You can also manage Google's ad
+          personalization settings at{" "}
           <a
             href="https://adssettings.google.com/"
             target="_blank"
