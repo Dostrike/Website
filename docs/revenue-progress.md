@@ -81,6 +81,11 @@ Build a useful game portal with returning players and sustainable ad revenue. Ap
 - Working tree clean before logging. All 35 live-page checks and live multiplayer protocol checks passed. Render still shows patched commit d3893bc Deploy succeeded / Live; current runtime logs show today's synthetic room rematch, empty-room deletion and both clients disconnecting. No new application error observed in the inspected recent log excerpt; no restart or redeploy justified.
 - Rechecked [Google ads.txt crawl guidance](https://support.google.com/adsense/answer/7679060?hl=en) November 2. Public publisher/crawler checks still pass; maintain the current correctly served file and monitor actual account status. No new approval-related defect established today. Next implementation remains a targeted compatible update for the remaining Express-transitive/router advisories, with separate regression and deployment checks.
 
+## 2026-11-03
+- **Meaningful account change:** freshly reloaded signed-in AdSense now shows ads.txt **Authorized**, resolving the previous Not found mismatch. Approval status remains **Getting ready**; no approval or rejection. Retained the in-app tab and saved screenshot E:/Web App/review-evidence/ads-txt-authorized-2026-11-03.png. Ads remain disabled.
+- Working tree clean before logging. All 35 live public-page checks and the live two-client multiplayer protocol checks passed, including roles/join, move relay, rematch and room cleanup. No redeployment needed for this account-side crawl-status change.
+- Rechecked [Google's site-status definitions](https://support.google.com/adsense/answer/12170222?hl=en) November 3: ads.txt authorization is distinct from site approval. Continue monitoring actual review status; do not interpret Authorized as permission to enable ads. Remaining targeted dependency work stays in the backlog.
+
 ## Priorities
 1. Verify AdSense's actual decision in the signed-in account. If rejected, capture the exact stated issue and address evidence, not guesses. If access expires, report the access requirement once.
 2. Prioritize approval-readiness audits: original useful content, complete functional games, clear navigation, crawlability and accurate publisher disclosures. Investigate evidence-based issues; defer general expansion and speculative redesign while review is pending.
