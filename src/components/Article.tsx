@@ -16,6 +16,7 @@ const IMPLEMENTATION_REFERENCES: Record<string, string> = {
   'tic-tac-toe-education-teaching-resource': 'practiceEngine',
   'connect4-strategy-blueprint': 'connect4Logic',
   'connect4-endgame-guide': 'connect4Logic',
+  'checkers-captures-kings-and-complete-jumps': 'checkersEngine',
   'mancala-extra-turns-captures-and-counting': 'mancalaEngine',
 };
 
@@ -170,7 +171,7 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug.includes("mancala")
+                article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
                   ? "/mancala-setup"
                   : article.slug.includes("reversi")
                   ? "/reversi-setup"
@@ -183,7 +184,7 @@ const Article: React.FC = () => {
                     : "/practice"
               }
             >
-              {article.slug.includes("mancala")
+              {article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
                 ? "Play Mancala"
                 : article.slug.includes("reversi")
                 ? "Play Reversi"
@@ -215,6 +216,7 @@ const Article: React.FC = () => {
             </p>
           )}
           {article.slug === "mancala-extra-turns-captures-and-counting" && <p>Rules reference: <a href="https://publikace.k.utb.cz/bitstream/handle/10563/1009973/Fulltext_1009973.pdf?sequence=1">Published Kalah rules, section 3.1</a>. This version requires a non-empty opposite pit for capture.</p>}
+          {article.slug === "checkers-captures-kings-and-complete-jumps" && <p>Rules reference: <a href="https://wcdf.net/rules/rules_of_checkers_english.pdf">WCDF English draughts rules</a>. Automatic draw adjudication is described above.</p>}
           {implementationReference && (
             <p>
               Implementation reference:{" "}

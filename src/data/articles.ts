@@ -13,6 +13,60 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Checkers: compulsory captures, complete jumps and kings',
+    excerpt: 'Worked English draughts positions explain why a quiet move can be illegal, when you may choose a shorter capture, and why crowning ends a chain.',
+    slug: 'checkers-captures-kings-and-complete-jumps',
+    date: '2026-11-04', readTime: '4 min read', category: 'Checkers',
+    content: `
+## Know the variant before choosing a move
+
+DoStrike plays English draughts on an 8 by 8 board. Dark starts. Men move one square diagonally forward and capture forward over an adjacent opponent into the empty square beyond. Kings move or jump in both diagonal directions, one step or one adjacent opponent at a time. They do not fly across several empty squares.
+
+Our coordinates keep A1 at the lower left when Dark is at the bottom. Choosing Light turns the view, while square names stay attached to the board. A star marks a king. The ring around a piece means it has a legal move; when a capture is available, quiet moves disappear for every piece on that side.
+
+## Example 1: the whole side must respect a capture
+
+Use this counting position: Dark men on A3 and E3; Light men on B4, D6 and H8. All other squares are empty. Dark to move.
+
+A3 must jump over B4 to C5. From C5, the same man must jump over D6 to E7. The legal complete route is A3 → C5 → E7, capturing two pieces. A3 → C5 alone is incomplete. E3 → D4 is also illegal, even though its destination is empty: a different piece on the same side can capture.
+
+The interface lets you choose a piece and preview a whole route before confirming. Read the complete move buttons when several paths are possible. Undo removes a whole turn, so it never strands you halfway through a capture.
+
+## Example 2: you need not take the most pieces
+
+Now put a Dark man on C3, with Light men on B4, D4, F6 and H8. Dark has two complete choices: C3 → A5 takes B4; C3 → E5 → G7 takes D4 and F6.
+
+Both routes are legal. English draughts requires completion of the chain you choose, but does not require the route that captures the most pieces. Compare the resulting positions as well as the immediate material. A longer jump can leave a piece exposed; a shorter one can preserve an important square. Neither is always better simply because of its length.
+
+## Example 3: a new king stops for this turn
+
+Put a Dark man on B6 and Light men on C7, E7 and H2. Dark jumps B6 → D8, taking C7. Reaching the far row crowns the man. The turn ends immediately.
+
+Although a king on D8 could jump backward over E7 to F6, it cannot do that as part of its crowning turn. Light moves next. This differs from variants where promotion can extend a chain, so check the rule instead of relying on a household version.
+
+## Winning is about legal moves
+
+You win when the other side has no legal move, either because its pieces are gone or because all remaining pieces are blocked. Piece totals alone do not decide the result. For example, a Light man on H2 cannot move when its only forward destination G1 is occupied by a Dark king; if those are the only pieces and Light is to move, Dark has won.
+
+The records therefore use the actual game result. A winning piece margin is only a descriptive statistic, not the rule used to award the win.
+
+## Draws and the progress counter
+
+This casual browser implementation automatically draws on the third occurrence of the same board with the same side to move. It also draws after 80 consecutive individual turns with no capture and no man moving: 40 moves by each side. Any man move resets that counter, even when it does not promote. A capture also resets it. A position where the next side has no legal move is a loss before the draw check.
+
+The published federation rules describe referee claims for these draws. Automatic adjudication is a practical adaptation for this untimed browser game; tournament clocks, touch-move penalties and arbiter procedures are not simulated.
+
+## Computer play, hints and daily openings
+
+Easy, Medium and Hard use bounded searches up to 2, 4 and 7 complete moves, with material and positional evaluation. Easy sometimes selects a random legal move. The levels are not calibrated ratings and no perfect-play or guaranteed-win claim is made. Hints use the Hard search; computer work runs in a cancellable worker. Restart and navigation cancel pending work.
+
+The daily is a website-generated position after eight legal moves, with Dark to move against Hard. It is a full game with many possible continuations. It does not promise a single puzzle answer or the phone app’s exact opening.
+
+Unfinished rounds and casual records stay in your browser. Completed games include free hints, undo and daily openings. A daily win advances the local streak only when completed on that board’s own date. Clearing browser data removes those records; there is no cross-device account sync.
+`
+  },
+
+  {
     title: 'Mancala: count extra turns, captures and the final sweep',
     excerpt: 'Three worked Kalah examples explain the last seed, a six-seed capture and why an extra turn does not override the end of the game.',
     slug: 'mancala-extra-turns-captures-and-counting',

@@ -9,7 +9,7 @@ const About: React.FC = () => (
       <title>About - DoStrike Gaming Portal</title>
       <meta
         name="description"
-        content="Learn who publishes DoStrike: classic browser games (Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, Memory), original strategy guides, privacy-first ads, and how to reach us."
+        content="Learn who publishes DoStrike: classic browser games (Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, Memory), original strategy guides, privacy-first ads, and how to reach us."
       />
       <link rel="canonical" href="https://dostrike.com/about" />
     </Helmet>
@@ -45,7 +45,7 @@ const About: React.FC = () => (
         }}
       >
         Welcome to DoStrike Gaming Portal. We publish fast, accessible browser
-        games—Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, and Memory—together with original strategy
+        games—Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, and Memory—together with original strategy
         articles so players can learn while they play.
       </p>
       <p
@@ -176,7 +176,7 @@ const About: React.FC = () => (
         Where We Are Today
       </h2>
       <p>
-        DoStrike is a small, independent portal: six browser games, difficulty
+        DoStrike is a small, independent portal: seven browser games, difficulty
         options where they matter, and a growing library of strategy articles we
         publish ourselves. We don’t claim classroom adoption statistics or
         global reach—we focus on reliable gameplay, clear policies, and content

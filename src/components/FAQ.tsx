@@ -8,7 +8,7 @@ const FAQ: React.FC = () => (
       <title>FAQ - DoStrike Gaming Portal</title>
       <meta
         name="description"
-        content="Answers about DoStrike games (Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, Memory), AI modes, privacy, ads, and how to contact us."
+        content="Answers about DoStrike games (Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, Memory), AI modes, privacy, ads, and how to contact us."
       />
       <link rel="canonical" href="https://dostrike.com/faq" />
     </Helmet>
@@ -110,7 +110,7 @@ const FAQ: React.FC = () => (
           Can I play against the computer?
         </h2>
         <p style={{ lineHeight: 1.7 }}>
-          Yes. Mancala, Reversi, Gomoku, Tic-Tac-Toe and Connect 4 support AI opponents at different skill
+          Yes. Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe and Connect 4 support AI opponents at different skill
           levels so you can practice tactics without a second person.
         </p>
       </div>
