@@ -13,6 +13,71 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Mancala: count extra turns, captures and the final sweep',
+    excerpt: 'Three worked Kalah examples explain the last seed, a six-seed capture and why an extra turn does not override the end of the game.',
+    slug: 'mancala-extra-turns-captures-and-counting',
+    date: '2026-11-03',
+    readTime: '4 min read',
+    category: 'Mancala',
+    content: `
+## Know which Mancala you are playing
+
+Mancala names a family of sowing games. DoStrike uses Kalah: six pits per side, one store per player, counter-clockwise sowing and extra turns when the last seed lands in your own store. You can start with 3, 4, 5 or 6 seeds in each pit. We use no empty capture: a capture requires seeds in the opposite pit. There is no relay sowing or opening swap.
+
+Your pits are numbered 1 to 6 in sowing order, ending at your store. On a wide screen your store is at the right of your row. On a phone your pits run down the left to your bottom store, then the route continues up the other side. The opponent’s store is always skipped.
+
+The numeric counts are exact. Drawn pebbles are an illustration, with a limited number shown so a full pit remains readable. Use the count rather than trying to count the artwork.
+
+## Example 1: count the last seed, not just the starting pit
+
+In a normal four-seed opening, your pit 3 has four seeds. Sowing it puts one in pit 4, one in pit 5, one in pit 6 and one in your store. The final seed is in your store, so you play again.
+
+The important calculation is the number of drops to your store. With a different starting seed count, the same pit can finish elsewhere. For example, pit 3 with three seeds ends at pit 6, not the store. Do not memorise “always pit 3” independently of the count.
+
+Preview a pit in DoStrike before confirming. The interface identifies the last landing place and tells you whether that sow would give another turn. An extra turn is useful, but it does not prove that a particular opening is the best against all replies.
+
+## Example 2: the empty pit must belong to you
+
+Consider a counting diagram where your pit 1 contains one seed, your pit 2 is empty, and the opposite pit — North pit 5 when you are South — contains five. You also have seeds elsewhere, and the opponent has other non-empty pits, so neither side is about to finish.
+
+Sow pit 1. Its one seed lands in your empty pit 2. You bank that seed plus the five opposite seeds: six captured seeds go into your store, and both pits become empty.
+
+Now change only the opposite pit to empty. In this version, there is no capture. The last seed stays in your pit 2. Some household Mancala rules bank even that single seed; that is not the variant implemented here.
+
+Ending in an opponent’s empty pit also does not capture. Check both the ownership of the landing pit and the opposite count before choosing a move for a capture.
+
+## Example 3: the sweep can end an apparent extra turn
+
+Imagine South’s only pit seed is one seed in pit 6. South has 20 in its store. North has one seed in each of its six pits and 21 in its store. There are 48 seeds altogether.
+
+South sows pit 6 into its store, reaching 21. Normally a last seed in the store would earn another turn. But South now has no seeds in any pit, so the game ends immediately. North banks its remaining six seeds and finishes on 27, winning 27–21.
+
+This example is why the final count matters more than the words “extra turn.” Before clearing your last pit, count the seeds that the other side would bank. The game handles the sweep automatically and reports the collected amounts.
+
+## Longer sows: skip the other store on every lap
+
+A pit can hold enough seeds to travel around the board more than once. Continue one seed at a time, including your store and skipping the other store on every circuit. The starting pit becomes empty when you pick up its seeds; it can receive a seed again on a later lap.
+
+Do not stop and pick up the contents of a pit where the last seed lands. That would be a relay-sowing variation, not this Kalah game.
+
+## Understand the computer and free assistance
+
+Easy uses a short search with occasional random legal choices. Medium searches up to four turn changes, and Hard up to eight, within fixed node budgets. Extra turns keep the search at the same turn-change depth. The opponents evaluate banked seeds and the remaining position; they are not claimed to play perfectly or to have a calibrated rating.
+
+Hints use the Hard search, and undo returns to before your most recent decision, including later computer extra turns. If you had two extra turns of your own, undo removes the latest decision rather than every choice from that entire run. Search happens in a cancellable worker so navigation and restart remain usable.
+
+## Records and a daily board
+
+The daily starts with 48 seeds allocated unevenly, using the same six-pit pattern from each player’s perspective. You go first against Hard. It is a full game with many legal continuations, not a puzzle with one required answer, and it does not promise the phone app’s exact board.
+
+Completed computer games contribute to browser-local wins, losses, draws, win streaks and the largest winning margin. Local two-player games have a separate count. Free hints and undo, every starting seed setting and daily boards are included in these casual records; they are not a competitive leaderboard.
+
+A win completed on the daily board’s own calendar date advances the local daily streak at most once that day. You can continue an older saved game, but winning it later does not backdate a streak. Clearing browser data or using another device can remove the local record.
+
+For your next round, use a small routine: predict the final drop, check for a capture, and count a possible sweep. Then confirm the sow and compare your prediction with what happened.
+    `
+  },
+  {
     title: 'Reversi: legal flips, corners and the turn you must pass',
     excerpt: 'Work through the first move, a two-direction flip and a forced-pass diagram. Learn why disc count matters at the end, not as an early score to chase.',
     slug: 'reversi-legal-moves-corners-and-passes',
@@ -1583,7 +1648,7 @@ Repeat weekly and your median moves should trend down without sacrificing accura
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers five free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers six free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1619,9 +1684,15 @@ Start with four central discs and find an empty square that encloses a line of o
 
 The larger final count wins when neither colour can move, even if empty squares remain. An early lead is not permanent. Use the Reversi guide for worked legal-move and pass examples; the daily opening gives a different legal position after six placements.
 
+## Mancala: count the last seed
+
+Play Kalah with 3–6 seeds in each of six pits per side. Sow counter-clockwise, skip the other store and earn another turn by finishing in your own store. A last seed in your own empty pit captures only when the opposite pit contains seeds. The empty-side sweep ends the game and banks remaining pit seeds.
+
+Preview a sow before committing. The phone layout turns vertically to keep pits large. A worker runs the computer and hints, and saved rounds can be continued. The daily is a symmetric 48-seed distribution; browser records include assisted games and all seed settings.
+
 ## Daily formats, with different goals
 
-The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the Gomoku and Reversi daily openings.
+The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the Gomoku and Reversi daily openings and the Mancala daily board.
 
 Gomoku’s daily starts with four placed stones and continues as a full game against Hard. It has no single prescribed answer. The website generates this opening; matching a phone app’s daily is not promised.
 
