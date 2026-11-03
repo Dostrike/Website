@@ -24,7 +24,7 @@ These are sequencing candidates, not commitments to unverified app features. Rev
 
 ## Content consolidation
 
-Current inventory: 21 guides. Preserve the three reviewed site-specific guides explaining the actual AI, exhaustive draw check and completed-round review.
+Original inventory: 21 guides; Gomoku added one. The targeted consolidation now retains 17 guides after retiring five overlapping entries. Preserve the three reviewed site-specific guides explaining the actual AI, exhaustive draw check and completed-round review.
 
 First audit group: opening moves, never-lose advice, advanced tactics, pattern playbook and complete strategy guide. Compare actual content and preserve useful distinct material in one strong strategy destination before removing any page. Second group: the two teaching/education guides. Compare the two Memory guides for distinct practical exercises rather than merging by title alone.
 

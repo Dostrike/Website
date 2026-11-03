@@ -19,3 +19,7 @@ teaching-kids-tic-tac-toe and tic-tac-toe-education-teaching-resource overlap in
 ## Required implementation
 
 Rewrite destinations before retiring sources. Move useful topics, add verified positions, remove unsupported filler and update editorial dates accurately. Add explicit permanent host redirects before the Netlify 404 fallback and matching client-side redirects for in-app navigation. Update all internal links, sitemap and prerender source so retired pages are not published as competing 200s. Verify live status/location and absence of redirect chains. Keep the original routes mapped so bookmarks continue working.
+
+## Implementation — 2026-11-03
+
+Rewrote both destinations and added playable solver-checked examples. Removed the five retired article entries, added explicit permanent Netlify redirects for slash/no-slash variants and matching client redirects, updated internal links and synchronized all sitemap formats. Also corrected the same immediate-win priority in Connect 4 guides and replaced stale portal guidance with actual game features. Preserve the three reviewed implementation/draw/replay guides. Local build/tests/browser checks pass; live publication evidence belongs in revenue-progress.md. A separate review of the two Memory guides and remaining history/factual claims remains open rather than assumed complete.

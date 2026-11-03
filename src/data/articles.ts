@@ -271,61 +271,6 @@ Archivists note the same diagrams resurfacing inside refugee-learning kits decad
     `
   },
   {
-    title: 'Teaching Kids Logic and Strategy with Tic-Tac-Toe',
-    excerpt: 'Tic-Tac-Toe is more than a game—it\'s a great way to teach children about logic, planning, and fair play. Here\'s how to use it as an educational tool.',
-    slug: 'teaching-kids-tic-tac-toe',
-    date: '2024-01-01',
-    readTime: '10 min read',
-    category: 'Education',
-    content: `
-Tic-Tac-Toe is an unusually honest classroom game: mistakes show up as obvious losses or forks on the board, which makes it easier for adults to coach without turning every round into a lecture.
-
-## What Children Practice Without Worksheets
-
-**Logic and “what if.”** Before each move, prompt: “Where could they win next turn?” then “Can I win this turn?” Those two checks alone prevent most beginner disasters.
-
-**Planning depth.** Ask kids to describe their move one step ahead (“If I play here, what should they fear?”). Older students can sketch tiny diagrams on scrap paper—spatial reasoning grows faster when speech and sketch align.
-
-**Fair play.** Short turns and visible boards teach negotiation (“tie counts as honorable”), shaking hands or thumbs-ups rituals reduce sore-winner dynamics without banning competitiveness.
-
-## Three Lesson Flows That Work
-
-**Lesson 1 — Threat vocabulary.** Demonstrate an immediate loss pattern slowly; label it “danger square.” Have learners shout discoveries before touching pieces so everyone hears the reasoning chain aloud.
-
-**Lesson 2 — Fork spotting.** Present almost-complete boards where one side could create two threats next move. Teams redesign the prior move that handed over the fork—reflection beats punishment.
-
-**Lesson 3 — Micro journals.** After three rounds, students write four sentences: best decision, missed threat, emotion note (frustrated/excited/calm), goal for tomorrow. Tiny reflections compound faster than tournament brackets during bell schedules.
-
-## Differentiation Without Chaos
-
-Strong players explore misère rules or Ultimate boards once vanilla tactics bore them.
-
-Emergent readers pair emoji anchors (“⚠️ danger”) beside symbolic grids until notation feels friendly.
-
-Older buddies rotate “coach badges,” rotating roles each round so dominance hierarchies soften naturally.
-
-## Classroom Logistics Perks
-
-Matches finish quickly—perfect for rotations, rainy-day bins, or waiting-parent pickup zones.
-
-Establish tie etiquette upfront (“replay optional”) so educators referee fewer disputes mid-lesson.
-
-## Parent Co-Play Scripts
-
-Caregivers modeling aloud (“I block because you almost had three here”) teach causal narration faster than silent wins ever demonstrate.
-
-Rotate who plays X each night so siblings internalize both aggressive and defensive responsibilities symmetrically—empathy for each role lowers sibling rivalry spikes measurably during long holidays indoors.
-
-## Takeaway
-
-Treat each grid like a miniature lab: propose a move, defend it against an imaginary critic, compare with real outcomes.
-
-Celebrate explanations at least as loudly as victories—strategy literacy sticks when reasoning earns warmth, not only points.
-
-Finally: invite variation invention once fundamentals stabilize—ownership motivates persistence longer than mandated drills alone ever could.
-    `
-  },
-  {
     title: 'A Mathematical Proof: Why a Perfect Tic-Tac-Toe Game Always Ends in a Draw',
     excerpt: 'Explore the math behind Tic-Tac-Toe and see why, with perfect play, neither player can win. Includes a step-by-step proof and game tree analysis.',
     slug: 'mathematical-proof-tic-tac-toe-draw',
@@ -375,61 +320,6 @@ Even if you never formalize lemmas, believing the draw theorem explains why hust
 Play our AI at its strongest setting: if you never miss a forced block, you’ll feel the asymptote—**wins imply your opponent slipped**, not that the board hid a secret tactic.
 
 Enjoy the serenity of provable fairness: tiny grid, gigantic lesson in honest limits.
-    `
-  },
-  {
-    title: 'Tic-Tac-Toe Opening Moves: Best Ways to Start',
-    excerpt: 'Learn the most effective opening moves in Tic-Tac-Toe and how they set the stage for victory or draw.',
-    slug: 'tic-tac-toe-opening-moves',
-    date: '2024-06-10',
-    readTime: '9 min read',
-    category: 'Strategy',
-    content: `
-Openings matter on 3×3 boards because mistakes echo louder when the solution space is shallow. If both players respect basic threat tables you will draw—but casual games are won when one side grants the other a second chance.
-
-## Going First: Center Still Reigns
-
-The center square touches **four lines** (two diagonals, one row, one column). Occupying it early keeps your tactical options symmetric: you answer edge incursions without immediately committing to a brittle lane.
-
-Against humans, central first also shrinks visually “weird” losses where you never saw a fork coming—the geometry is forgiving.
-
-### When people say “always center”
-
-Mathematically there are equivalent first moves under symmetry, yet **center is the simplest correct default** if you dislike memorizing conjugate cases. Deviating invites bookkeeping you may not enjoy.
-
-## Corners vs Edges as First Moves
-
-Corners participate in **three lines** each—stronger than edges (only two lines). Classic tables show unprepared edge openings hand X initiative to a trained O player who seizes central control and counter-forks.
-
-If you insist on stylistic corners, rehearse responses to an immediate central reply: know your drawing resource lines beforehand, or you’ll donate a teachable moment.
-
-## Playing Second: Equalize Without Panic
-
-If X claims center, **take a corner** in mainstream solutions—edges can be punished. If X opens corner, central reply is canonical. If X opens edge, central O still steadies the ship; from there live in the threat checklist every turn.
-
-Do not rush “clever” traps that ignore immediate two-in-a-rows; humility here is Elo-preserving against all skill levels.
-
-## Micro-Heuristics After Move One
-
-Run the triple scan each ply: **(1)** block loss, **(2)** take win, **(3)** prevent fork creation. If none apply, prefer moves that preserve double threats next turn without breaking parity heuristics you already committed to.
-
-Track *tempo*: sometimes a quiet consolidation move that looks boring is what keeps a draw inevitable.
-
-## Training Drill (10 minutes)
-
-Play five games enforcing a mechanical rule: verbalize the three-scan before your finger lifts. Notice how many would-be blunders evaporate—openings matter less once midgame discipline stiffens.
-
-## Digital Quick-Play Openings
-
-Browser implementations sometimes randomize who moves first—track whether UI labels “Player 1” clearly so siblings stop arguing about fairness before strategy even begins.
-
-If the app highlights legal cells, disable highlights occasionally during practice so mental visualization strengthens before tournament modes return assistance automatically.
-
-## Takeaway
-
-Center control is doctrine because it minimizes regret. Corners trail closely; edges demand homework.
-
-Memorize less, **audit threats more**—but when in doubt on move one, slam the middle and smile: you chose the textbook path grownups still preach for a reason.
     `
   },
   {
@@ -553,395 +443,136 @@ Share these trivia sparks during lobby waits—you bond faster dissecting folklo
     `
   },
   {
-    title: 'How to Never Lose at Tic-Tac-Toe',
-    excerpt: 'Follow these simple rules and you’ll never lose a game of Tic-Tac-Toe again—even against experienced players.',
-    slug: 'how-to-never-lose-tic-tac-toe',
-    date: '2024-06-07',
-    readTime: '9 min read',
-    category: 'Strategy',
-    content: `
-On the classic 3×3 board, disciplined replies mean **you never give away a loss**: against optimal opponents you should expect draws—wins only appear after they miss a threat.
-
-Marketing slogans promise invincibility; math trades that for steadier humility.
-
-## Three Checks Before Your Finger Lifts
-
-**Block losses first.** If they can finish three in a row next move, answering anywhere else loses instantly—geometry ignores ego.
-
-**Take wins immediately.** Fancy forks dazzle beginners, yet plain three-in-a-rows decide most casual games—claim obvious wins without apology.
-
-**Prevent forks.** Two lethal lanes at once collapse defense—notice quiet setups early and spoil them before glamour traps appear.
-
-## Opening Defaults Worth Memorizing
-
-Centers dominate initiative on an empty board; corners trail closely; edges demand homework unless you enjoy repairing fragile positions afterward.
-
-Playing second? Prefer textbook replies from threat tables instead of improvised gambits.
-
-## Ten-Minute Drill
-
-Play five games where you say aloud “loss / win / fork” before touching the board—measure how many blunders disappear once the habit sticks.
-
-## Playing as X vs Playing as O
-
-First-move privilege is real but narrow: X presses for initiative while O equalizes through disciplined replies.
-
-If you keep losing as O, audit whether you treat corners as optional—tables disagree harshly with that habit once X owns center tempo.
-
-## Tablebase Mindset Without Memorizing Tables
-
-Think like a tiny endgame database: classify each reply as “only move,” “comfortable choice among equals,” or “creative gamble.”
-
-Gamblers donate forks; comfort-seekers drift into passive losses; only-move discipline survives longest—label your own clicks aloud for ten minutes and notice which bucket dominates.
-
-## When “Never Lose” Really Means Draw
-
-Against engines or attentive humans, prideful hunting for wins often creates the exact fork you feared—accepting draws preserves rating dignity across long sessions.
-
-Online etiquette still matters: offering a rematch after a clean draw signals respect faster than trash talk ever could.
-
-## Sandbox Bad Habits Before Ranked Sessions
-
-If you drill exclusively against novices, you may develop theatrical openings that collapse versus disciplined replies—rotate opponents weekly.
-
-Parents coaching kids should model narrated scans aloud; children mimic vocalized reasoning faster than silent demonstrations alone ever teach.
-
-## Scorekeeping Without Toxicity
-
-House rules like “draw streaks earn ice cream decisions” keep motivation high when perfect play stalemates appear repeatedly—celebrate defensive streaks as achievements, not annoyances.
-
-## Takeaway
-
-“Never lose” is honest shorthand for **never beating yourself**. Against sharp humans or strong AI, draws are dignity preserved—take them proudly.
-    `
-  },
-  {
-    title: 'Advanced Tactics for Experienced Players',
-    excerpt: 'Ready to take your Tic-Tac-Toe game to the next level? Learn advanced tactics and mind games.',
-    slug: 'advanced-tactics-tic-tac-toe',
-    date: '2024-06-06',
-    readTime: '10 min read',
-    category: 'Strategy',
-    content: `
-Basics stop gross blunders; advanced play squeezes mileage from tempo, denial moves, and fork hygiene once both sides respect immediate threats.
-
-## Fork Geometry Done Properly
-
-A fork threatens **two distinct wins next turn**. Strong forks hide behind quiet squares—often corners interacting with center leverage—until both lanes ignite simultaneously.
-
-Defensively, cancel forks early by occupying one setup square even if it feels passive; reactive blocking after the fork appears is frequently too late.
-
-## Zugzwang Lite on Tiny Boards
-
-Classic grids rarely trap opponents like Chess endgames, yet **forcing sequences** appear: chains where each reply must answer an immediate threat while your flexibility quietly improves.
-
-Practice reconstructing miniature forcing ladders—three-move sequences forcing predictable blocks—to recognize when “only moves” accumulate advantage without flashy traps.
-
-## Anti-Patterns Strong Players Punish
-
-Tunnel vision on one diagonal while ignoring opposite-edge threats causes silent losses—scan four directions plus both diagonals every ply mechanically until subconscious.
-
-Over-attacking while ignoring parity heuristics hands opponents stabilizing moves they should never receive gratis midgame.
-
-## Psychological Tempo Without Toxicity
-
-Deliberate pacing can unsettle impatient rivals—pair it with crisp threats rather than stall tactics. Online clocks keep sessions fair; offline, agree pace norms upfront before chalk meets pavement.
-
-Against analytic opponents, predictable rhythms leak intentions; occasional benign hesitation after stable stretches keeps reads noisy without crossing bad sportsmanship.
-
-## Candidate Move Shortlists (Even on Nine Squares)
-
-Before touching the board, silently list two candidate moves and eliminate the worse one using the fork/loss scan—this prevents impulse taps born from boredom.
-
-Shortlists also expose when both moves are equivalent under symmetry: pick either confidently instead of burning clock doubting identical geometry.
-
-## Correspondence Pace and Classroom Clocks
-
-Slow chess clocks rarely appear on kitchen tables, yet timed casual games teach proportionality—five-second budgets punish dithering without encouraging reckless blitz mistakes.
-
-Teachers can run “thirty seconds per move” weeks: students learn that thinking deeper beats thinking faster once scans become automatic.
-
-## Spectator Coaching Etiquette
-
-When friends kibitz behind players, insist they phrase suggestions as questions—“Did you see diagonal pressure?”—rather than imperative spoilers that rob learners of discovery.
-
-Good coaching normalizes drawing lines through hypothetical continuations on scratch paper between rounds, keeping the actual board sacred for committed moves only.
-
-## Training Scaffold
-
-Replay losses from one move **before** the fork appeared—label the quiet square you should have claimed. Three focused reviews weekly rewires vigilance faster than stacking blind matches alone.
-
-## Takeaway
-
-Advanced Tic-Tac-Toe rewards hygiene: widen scans, spoil setups early, respect forcing chains. Psychology accents tactics—it never replaces the arithmetic underneath honest grids.
-    `
-  },
-  {
-    title: 'The Complete Guide to Tic-Tac-Toe Strategy: From Beginner to Expert',
-    excerpt: 'Master every aspect of Tic-Tac-Toe strategy with this comprehensive guide. Learn opening moves, mid-game tactics, endgame techniques, and psychological warfare.',
+    title: "Tic-Tac-Toe strategy: win, block, then look for forks",
+    excerpt: "A practical strategy guide with four playable, solver-checked positions: immediate wins, forced blocks, forks and opposite-corner defence.",
     slug: 'complete-tic-tac-toe-strategy-guide',
     date: '2024-01-20',
-    readTime: '15 min read',
-    category: 'Strategy',
+    updated: '2026-11-03',
+    readTime: '1 min read',
+    category: 'Tic-Tac-Toe',
     content: `
-Tic-Tac-Toe may seem simple, but mastering it requires understanding multiple layers of strategy. This comprehensive guide will take you from beginner to expert level, covering every aspect of the game.
+## Use a decision order, not a slogan
 
-## Understanding the Game Tree
+On DoStrike’s standard board, X starts, players alternate, and three marks in a row end the round immediately. A full board without a line is a draw. The useful question is not whether you prefer the centre or a corner: it is what the current board lets each player do.
 
-Before diving into specific strategies, it's crucial to understand that Tic-Tac-Toe is a solved game with 255,168 possible games. However, there are only 138 terminal board positions, making it manageable to learn optimal play.
+Before placing a mark, work through this order:
 
-### The Three Game Phases
+1. Can I complete three now? Take that win: the opponent never gets another move.
+2. If I cannot win now, can the opponent complete three on their next turn? Block that threat if a saving move exists.
+3. Can I create a fork, or must I stop one? Compare the actual follow-up moves, not just how promising a square looks.
+4. If there is no forcing tactic, choose a move that keeps a draw or win available against the opponent’s best reply.
 
-**Opening Phase (Moves 1-2):** This is where the game's direction is set. The first move is critical, and the second move can either equalize or create an advantage.
+Earlier overlapping versions of our guides placed blocking before winning. This revision corrects that order. If both players threaten a line, completing your own line ends the game; blocking instead can throw away the win.
 
-**Mid-Game Phase (Moves 3-6):** This is where most of the strategic thinking occurs. Players must balance between creating their own opportunities and blocking their opponent's threats.
+## Read the board with square numbers
 
-**Endgame Phase (Moves 7-9):** The final moves where players either capitalize on their advantage or fight for a draw.
+For the examples and playable boards below, number the top row 1, 2, 3; the middle row 4, 5, 6; and the bottom row 7, 8, 9. A winning line is one of the three rows, three columns or two diagonals. There are eight lines to scan.
 
-## Optimal Opening Strategy
+## Position 1: finish before you defend
 
-### First Move Analysis
+X occupies squares 1 and 2. O occupies 4 and 5. All other squares are empty, and X is to move.
 
-**Center (Position 5):** This is the strongest opening move. It gives you control of four possible winning lines and forces your opponent to respond defensively.
+Square 3 wins immediately along the top row. Square 6 would block O’s middle row but miss the available win. This position is a useful reminder that seeing an opponent’s threat is not the same thing as choosing the right priority. Try both choices on the first board below and compare the explanation.
 
-**Corner Positions (1, 3, 7, 9):** These are the second-best options. They control three winning lines and can lead to interesting tactical play.
+## Position 2: the block really is forced
 
-**Edge Positions (2, 4, 6, 8):** These are the weakest opening moves, controlling only two winning lines and often leading to a disadvantage.
+O occupies 1 and 2. X occupies 4 and 9. X is to move. X has no immediate winning line, so square 3 is the only move that avoids an immediate loss.
 
-### Second Move Responses
+Taking the centre might look sensible in isolation, but O would then finish the top row. After blocking, reassess the new board; a necessary defensive move does not mean you should stop looking for attacks.
 
-If your opponent takes the center, you must take a corner. Taking an edge will lead to a forced loss.
+## Position 3: a defensive move can create a fork
 
-If your opponent takes a corner, taking the center is optimal, followed by strategic corner play.
+X occupies 1 and 9. O occupies 3 and 5. X must answer O’s diagonal through 3, 5 and 7.
 
-If your opponent takes an edge, taking the center gives you a significant advantage.
+Playing 7 does two jobs. It stops that diagonal and gives X threats at 4 (the left column) and 8 (the bottom row). O has no immediate win and cannot cover both points with one move. X can finish on the following turn.
 
-## Advanced Tactical Concepts
+That is a fork: two distinct winning squares after one move. Two marks that merely look active do not establish a fork. Name both finishing squares before deciding you have one.
 
-### The Fork
+## Position 4: the centre is not a complete defence
 
-A fork occurs when you create two simultaneous threats to win. This is one of the most powerful tactical weapons in Tic-Tac-Toe.
+X occupies opposite corners 1 and 9; O occupies 5. O is to move. A corner reply at 3 or 7 allows X to create a fork. The four edges, 2, 4, 6 and 8, can each preserve a draw with correct later replies.
 
-**Creating Forks:** Look for opportunities to place your mark where it creates two potential winning lines.
+For example, after O chooses 2, X has to watch the middle column. The edge creates a threat that changes what X can safely do next. Preventing a fork can require a forcing move, rather than simply occupying a square where the fork might appear.
 
-**Blocking Forks:** Always be aware of your opponent's fork opportunities and block them immediately.
+## Openings: useful defaults, with limits
 
-### The Block
+An empty board has three kinds of square under rotation and reflection: centre, corner and edge. They are not all geometrically equivalent. Our solver evaluates all nine first moves as draws against perfect replies, so an edge opening is not automatically a lost position.
 
-Blocking is fundamental to Tic-Tac-Toe. You must always be aware of your opponent's immediate winning threats.
+The centre is a convenient beginner’s default because it participates in four winning lines; a corner participates in three and an edge in two. Those counts describe geometry, not a promise of victory. If X starts in the centre, O should choose a corner. If X starts in a corner, O should take the centre to preserve a draw against perfect play. Continue checking tactics after that first reply.
 
-**Immediate Blocks:** When your opponent is one move away from winning, you must block.
+## Practise the explanation, not just the answer
 
-**Strategic Blocks:** Sometimes blocking a potential threat early can prevent more serious problems later.
+Use the four boards below without a timer. Choose a move, read why it works, then identify the opponent’s next threat. There can be more than one correct move: the opposite-corner defence accepts all four saving edges. The exercises use the same exact standard-board solver as DoStrike’s daily challenge.
 
-## Psychological Warfare
+After a normal Tic-Tac-Toe round, open the move review. Inspect the board before the missed win or saving reply. The review evaluates best possible responses; it does not predict that a human opponent would necessarily find them.
 
-### Timing and Tempo
+A short routine is enough: solve one position, play a round, inspect one decision and replay. Count missed wins and missed blocks separately. These are personal practice observations, not an online ranking or proof of a learning benefit.
 
-The speed at which you make your moves can affect your opponent's psychology. Quick moves can intimidate, while deliberate moves can create pressure.
+## What to expect against the computer
 
-### Pattern Recognition
+Hard uses the solved standard-board strategy, so accurate play from both sides ends in a draw. You do not need to manufacture a risky attack just to avoid another draw. Lower levels are useful for noticing opportunities, but beating them does not demonstrate that every move you made was safe.
 
-Humans naturally look for patterns. You can use this to your advantage by creating false patterns or breaking expected sequences.
-
-## Common Mistakes to Avoid
-
-1. **Ignoring Immediate Threats:** Always check for your opponent's winning moves first.
-2. **Missing Fork Opportunities:** Look for ways to create multiple threats.
-3. **Poor Opening Moves:** Avoid starting on edges unless you have a specific strategy.
-4. **Not Thinking Ahead:** Always consider the consequences of your moves.
-
-## Practice Techniques
-
-### Solo Practice
-- Play against yourself, alternating between X and O
-- Analyze each game to understand what went wrong
-- Practice specific scenarios repeatedly
-
-### Computer Practice
-- Use our AI to practice different difficulty levels
-- Start with easy AI and gradually increase difficulty
-- Focus on understanding why the AI makes certain moves
-
-## Conclusion
-
-Mastering Tic-Tac-Toe requires understanding both the mathematical and psychological aspects of the game. While the game is solved and perfect play leads to a draw, the journey to understanding optimal strategy is fascinating and educational.
-
-Remember: The goal isn't always to win—sometimes forcing a draw against a stronger opponent is a significant achievement. Use this guide as a foundation, but continue to practice and develop your own understanding of the game's nuances.
+The goal of this guide is a repeatable decision process: take the win, stop a real threat, check the fork, and explain what the next player can do.
     `
   },
   {
-    title: 'Tic-Tac-Toe in Education: A Comprehensive Teaching Resource',
-    excerpt: 'Discover how Tic-Tac-Toe can be used as a powerful educational tool across multiple subjects and age groups. Includes lesson plans, activities, and assessment strategies.',
+    title: "Teach Tic-Tac-Toe: a 15-minute lesson with playable examples",
+    excerpt: "A practical lesson for parents and teachers: introduce winning lines, compare an immediate win with a forced block, and ask learners to explain a move.",
     slug: 'tic-tac-toe-education-teaching-resource',
     date: '2024-01-18',
-    readTime: '12 min read',
+    updated: '2026-11-03',
+    readTime: '1 min read',
     category: 'Education',
     content: `
-Tic-Tac-Toe is more than just a simple game—it's a versatile educational tool that can enhance learning across multiple subjects and age groups. This comprehensive guide provides educators with practical strategies for integrating Tic-Tac-Toe into their curriculum.
+## A small lesson with a concrete objective
 
-## Mathematical Applications
+Use this lesson to practise explaining a decision on a standard 3 by 3 board. The observable objective is simple: the learner can name a winning line and explain whether a move wins now or blocks an immediate loss. This is a suggested activity, not a claim that Tic-Tac-Toe produces measured academic or social improvements.
 
-### Probability and Statistics
-Tic-Tac-Toe provides an excellent foundation for teaching probability concepts. Students can calculate the probability of winning from different board positions and analyze game outcomes.
+You need two players and either paper with nine counters or DoStrike’s local two-player mode. No account or timer is required. The browser’s complete match ends when one player wins two rounds; for this lesson, pause after an individual round to discuss its moves.
 
-**Activity: Probability Analysis**
-- Have students calculate the probability of winning after the first move
-- Analyze the probability of different game outcomes (win, lose, draw)
-- Create probability trees for different game scenarios
+## Minutes 0–3: name what counts as a win
 
-### Logic and Reasoning
-The game naturally teaches logical thinking and deductive reasoning. Students must analyze multiple possibilities and make informed decisions.
+Show the three rows, three columns and two diagonals. Ask the learner to point to each: there are eight winning lines. Explain that X moves first and players alternate, placing only on empty squares. Three in a row ends a round; filling the board without a line is a draw.
 
-**Activity: Logical Deduction**
-- Present students with partial game boards and ask them to determine the best move
-- Have students explain their reasoning process
-- Create scenarios where students must identify forced wins or draws
+For square numbers, read left to right: 1–3 at the top, 4–6 in the middle, 7–9 at the bottom. Let the learner describe a location aloud, point or use the keyboard. Larger paper counters can be more comfortable than a screen for some learners.
 
-### Pattern Recognition
-Tic-Tac-Toe helps develop pattern recognition skills, which are crucial for mathematics and problem-solving.
+## Minutes 3–7: compare winning and blocking
 
-**Activity: Pattern Discovery**
-- Ask students to identify all possible winning patterns
-- Have them create variations with different winning conditions
-- Explore how patterns change with different board sizes
+First use the playable board below with X in 1 and 2 and O in 4 and 5. Ask: “Can X finish three on this turn?” The answer is 3. Even though O threatens square 6, the round ends as soon as X completes the top row. Winning now comes before blocking.
 
-## Language Arts Integration
+Then use the second board: O is in 1 and 2; X is in 4 and 9. Ask: “Does X have a win now? If not, what would O do next?” X must choose 3 to stop O’s top row. Have the learner explain why taking 5 does not solve that problem.
 
-### Vocabulary Development
-Use Tic-Tac-Toe to teach new vocabulary words. Create boards where students must use words in sentences or provide definitions.
+Use the same questions each time rather than praising a guess: “Which three squares form the line?” and “Whose next turn are we considering?” Reveal the answer if the learner wants help, then retry without a penalty.
 
-**Activity: Vocabulary Tic-Tac-Toe**
-- Create a 3x3 grid with vocabulary words
-- Students must use each word correctly in a sentence to claim that square
-- First to get three in a row wins
+## Minutes 7–12: play, stop and explain
 
-### Reading Comprehension
-Use Tic-Tac-Toe to check reading comprehension by creating questions for each square.
+Play one or two rounds together. Before each placement, let the current player complete a sentence: “I choose this square because…” A useful answer identifies an immediate win, a specific threat or a planned follow-up. A vague answer such as “corners are good” is an invitation to examine the board, not a reason to mark the move wrong.
 
-**Activity: Comprehension Check**
-- Create questions about a reading passage
-- Students answer questions to claim squares
-- This makes assessment more engaging and interactive
+Ask a partner to describe the other player’s strongest reply. Keep coaching suggestions between turns and avoid moving a learner’s piece for them. A learner can also observe a round and point out a line, or use the same board without competition.
 
-### Creative Writing
-Use Tic-Tac-Toe as a story structure or character development tool.
+## Minutes 12–15: record one decision
 
-**Activity: Story Elements**
-- Create a grid with story elements (character, setting, conflict, etc.)
-- Students must incorporate these elements in their writing
-- This helps structure creative writing assignments
+Choose one round to review. On DoStrike, open its move review before starting the next round. On paper, redraw the position one move before the decisive threat. Ask what could have been done differently.
 
-## Science Applications
+A short exit response can use three statements:
 
-### Scientific Method
-Use Tic-Tac-Toe to teach the scientific method through game analysis and experimentation.
+1. The winning or threatened line was ___.
+2. The important move was ___ because ___.
+3. Next round I will check ___ before placing.
 
-**Activity: Game Theory Experiment**
-- Students hypothesize about optimal strategies
-- They test their hypotheses through gameplay
-- Results are analyzed and conclusions drawn
+Treat a draw as a completed outcome, not a failed attempt to win. Rotate who plays X when starting another activity; do not assume player labels make the roles alternate automatically in the current match.
 
-### Data Collection and Analysis
-Students can collect data on game outcomes and analyze patterns.
+## Adapt the activity without changing what you measure
 
-**Activity: Statistical Analysis**
-- Record the results of multiple games
-- Create graphs and charts of the data
-- Analyze trends and patterns in the results
+For an introduction, discuss only rows before adding columns and diagonals. For a more experienced learner, use the strategy guide’s fork example: ask them to name two separate winning squares after one move. For a reader who prefers pictures, point to the lines instead of requiring written sentences. These are optional teaching choices; adapt them to the person rather than assuming a fixed age band.
 
-## Social Studies Integration
+A language activity can ask learners to describe a move in a complete sentence. A subject-review variation can put questions in paper squares, but that changes how squares are earned and is not a mode implemented by DoStrike. Agree on the altered rules before playing.
 
-### Historical Context
-Explore the history of Tic-Tac-Toe and its cultural significance across different societies.
+## If you collect class results, state the limits
 
-**Activity: Cultural Comparison**
-- Research how different cultures play similar games
-- Compare rules and strategies across cultures
-- Discuss why the game has remained popular throughout history
+You can record the number of rounds, who played first and whether each ended in an X win, O win or draw. State the actual sample and how opponents chose moves. A class’s observed result frequency is not the universal probability of winning Tic-Tac-Toe; it depends on the players and their decisions. Do not compare learners as though a few game outcomes measure a general ability.
 
-### Geography
-Use Tic-Tac-Toe to teach geographical concepts.
-
-**Activity: Geographic Tic-Tac-Toe**
-- Create boards with countries, capitals, or geographical features
-- Students must provide information about each location
-- This makes geography learning interactive and fun
-
-## Assessment Strategies
-
-### Formative Assessment
-Use Tic-Tac-Toe as a quick check for understanding during lessons.
-
-**Implementation:**
-- Create quick review questions
-- Students answer to claim squares
-- Provides immediate feedback on comprehension
-
-### Summative Assessment
-Use Tic-Tac-Toe as part of larger assessment projects.
-
-**Implementation:**
-- Create comprehensive review boards
-- Students must demonstrate mastery of multiple concepts
-- Makes assessment more engaging than traditional tests
-
-## Special Education Applications
-
-### Individualized Learning
-Tic-Tac-Toe can be adapted for students with different learning needs and abilities.
-
-**Adaptations:**
-- Modify board size for different skill levels
-- Use visual aids and manipulatives
-- Provide additional support and scaffolding
-
-### Social Skills Development
-The game naturally teaches important social skills.
-
-**Skills Developed:**
-- Turn-taking and patience
-- Good sportsmanship
-- Strategic thinking and planning
-- Communication and explanation
-
-## Technology Integration
-
-### Digital Tic-Tac-Toe
-Use online versions to teach digital literacy and computer skills.
-
-**Activities:**
-- Compare digital vs. physical gameplay
-- Discuss advantages and disadvantages of each
-- Explore programming concepts through game logic
-
-### Data Analysis Tools
-Use spreadsheet software to analyze game data and create visualizations.
-
-**Skills Taught:**
-- Data entry and organization
-- Chart and graph creation
-- Statistical analysis
-- Presentation of findings
-
-## Cross-Curricular Projects
-
-### Multi-Subject Integration
-Create projects that combine multiple subjects using Tic-Tac-Toe as a central theme.
-
-**Example Project:**
-- Math: Calculate probabilities and analyze game theory
-- Language Arts: Write about game strategies and experiences
-- Science: Conduct experiments on optimal play
-- Social Studies: Research the game's history and cultural impact
-
-## Conclusion
-
-Tic-Tac-Toe is an incredibly versatile educational tool that can enhance learning across multiple subjects and age groups. Its simplicity makes it accessible to all students, while its strategic depth provides opportunities for advanced learning and analysis.
-
-By integrating Tic-Tac-Toe into your curriculum, you can make learning more engaging, interactive, and effective. The game's universal appeal ensures that students will be motivated to participate and learn.
-
-Remember: The key to successful integration is to be creative and adapt the game to meet your specific educational objectives. Start with simple applications and gradually increase complexity as students become more comfortable with the concepts.
+The two boards below provide reproducible examples for the lesson. They are checked by the game solver, work without a time limit and allow you to retry or reveal an explanation.
     `
   },
   {
@@ -1470,6 +1101,7 @@ As we look to the future, let us remember that technology is a tool to enhance h
     excerpt: 'A practical Connect 4 guide that covers openings, mid-game plans, defensive priorities, and endgame conversion. Learn how to win more consistently against humans and AI.',
     slug: 'connect4-strategy-blueprint',
     date: '2026-04-26',
+    updated: '2026-11-03',
     readTime: '11 min read',
     category: 'Strategy',
     content: `
@@ -1512,7 +1144,7 @@ The best move often improves your attack and blocks or limits the opponent.
 ## Defense: What to Block First
 
 ### Priority 1: Immediate loss prevention
-If opponent has a direct winning move next turn, block it first. Never ignore this for your own setup move.
+First check whether you can complete four now: a winning drop ends the round immediately. If you have no immediate win and the opponent does, block that threat if a saving move exists. Do not ignore it for a setup move.
 
 ### Priority 2: Fork prevention
 If they can create two threats with one move, prevent that shape before it appears.
@@ -1665,103 +1297,11 @@ If you apply these habits daily for a week, your move count and completion time 
     `
   },
   {
-    title: 'Tic-Tac-Toe Pattern Playbook: Fork Traps, Safe Defenses, and Draw Control',
-    excerpt: 'A practical Tic-Tac-Toe training guide focused on repeatable patterns: forcing forks, avoiding traps, and converting risky positions into safe draws.',
-    slug: 'tic-tac-toe-pattern-playbook',
-    date: '2026-05-01',
-    readTime: '10 min read',
-    category: 'Strategy',
-    content: `
-Most Tic-Tac-Toe losses happen from pattern mistakes, not bad luck. If you learn a few high-value patterns and apply them consistently, your results improve immediately.
-
-## First Rule: Never Skip Threat Check
-
-Before every move, run this sequence:
-
-1. Can my opponent win next move?
-2. Can I win right now?
-3. Can either side create a fork next turn?
-
-This 3-step scan prevents most avoidable losses.
-
-## Opening Priorities That Stay Reliable
-
-### If you play first
-- Center is strongest.
-- Corner is second-best.
-- Edge starts are usually weaker and harder to recover.
-
-### If you play second
-- If opponent takes center, take a corner.
-- If opponent takes a corner, take center.
-- If opponent starts edge, center usually gives control.
-
-These rules keep your position stable and reduce tactical risk.
-
-## The Fork: Your Best Winning Weapon
-
-A fork is when one move creates two winning threats. Your opponent can block only one.
-
-### How to create forks
-- Control center plus a supporting corner.
-- Keep two future lines alive instead of committing too early to one line.
-- Use quiet setup moves that do not look dangerous immediately.
-
-### How to stop forks
-- Block early setup squares, not just final winning squares.
-- When unsure, choose the move that reduces your opponent to one active line.
-
-## Safe Defense When You Are Under Pressure
-
-Strong defense is not passive. It should remove danger while preserving your own counterplay.
-
-### Defensive checklist
-- Block immediate wins first.
-- Avoid moves that hand over center control.
-- Prefer blocks that also create your own threat.
-
-If no winning route exists, aim for a controlled draw. Draw control is a skill, not a fallback.
-
-## Common Pattern Mistakes
-
-### Mistake 1: Chasing your own line while opponent has a direct threat
-Fix: Always resolve immediate threats first.
-
-### Mistake 2: Giving opponent the second corner they need
-Fix: Track corner combinations that enable forks.
-
-### Mistake 3: Playing too fast in move 5-7
-Fix: Mid-game is where forks appear; take extra time here.
-
-## Practical Training Routine (12 Minutes)
-
-Run three short drills:
-
-1. **Threat-only drill (4 min):** In each turn, call out immediate threats aloud before moving.
-2. **Fork drill (4 min):** Play games where your only goal is to create or prevent forks.
-3. **Draw conversion drill (4 min):** Start from a slightly worse board and practice forcing draws.
-
-Track:
-- Games with zero tactical blunders
-- Forks created
-- Forks allowed
-
-## Final Takeaway
-
-If you want to stop losing random games:
-- Use the 3-step threat scan every turn
-- Prioritize center and corner logic
-- Learn fork creation and fork prevention
-- Treat draw control as part of strong play
-
-These habits make your decisions more consistent against both human players and AI.
-    `
-  },
-  {
     title: 'Connect 4 Endgame Guide: Convert Winning Positions and Save Lost Boards',
     excerpt: 'Learn practical Connect 4 endgame technique: forcing lines, block priorities, parity awareness, and draw-saving defense under pressure.',
     slug: 'connect4-endgame-guide',
     date: '2026-05-01',
+    updated: '2026-11-03',
     readTime: '10 min read',
     category: 'Strategy',
     content: `
@@ -1808,7 +1348,7 @@ Do not break a forcing line for a "nice-looking" move unless it wins immediately
 ## Block Priority in Tight Positions
 
 ### Priority 1: Direct win prevention
-Always block immediate losses first.
+Take an immediate winning drop first, because it ends the round before the opponent can reply. If you cannot win now, block an immediate loss if a saving move exists.
 
 ### Priority 2: Fork denial
 If opponent can create two winning threats with one move, prevent that square now.
@@ -1978,99 +1518,53 @@ Repeat weekly and your median moves should trend down without sacrificing accura
     excerpt: 'A clear tour of dostrike.com: which game fits your goal, how AI and difficulty options work, and the best articles to read first.',
     slug: 'dostrike-portal-player-guide',
     date: '2026-05-01',
+    updated: '2026-11-03',
     readTime: '11 min read',
     category: 'Guides',
     content: `
-DoStrike is built for short sessions with real strategic depth. This guide explains how to use the portal efficiently.
+## Pick a game for the break you have
 
-## Start Here
+DoStrike currently offers four free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
-### Home portal
-From the homepage you can jump into each game card. Everything runs in the browser—ideal for desktop or mobile breaks.
+## Tic-Tac-Toe: a quick round with a useful review
 
-No account is required for casual play—open a game, pick a mode, and start. That keeps lunch-break practice friction low.
+Choose a computer level or two players on the same device. A match ends when one player wins two rounds; drawn rounds do not award a win. X starts each round in this version. A separate private-room mode lets you invite someone using a room code; it is not public matchmaking.
 
-### Blog
-Strategy articles are grouped by topic. Use search and categories when you want a deep dive rather than casual play.
+After a completed local or computer round, open its move review before moving on. The review reconstructs the actual positions and compares available moves against best possible replies. It is useful for locating a missed win, saving block or fork. It does not prove which move another person would have played.
 
-## What Each Blog Category Is For
+Start with the consolidated Tic-Tac-Toe strategy guide. Its four playable boards teach this order: win now, block an immediate loss if you have no win, then evaluate forks and other replies. The AI explainer and draw-proof guide cover the underlying implementation separately.
 
-Skim labels before you commit to a long read:
+## Connect 4: a different kind of threat
 
-- **Strategy** — Openings, forks, forcing sequences, Connect 4 threats, Memory scan habits.
-- **History & fun** — Cultural context and lighter trivia that still rewards curious players.
-- **Education & psychology** — Teaching kids, classroom flows, and how humans decide under small-board pressure.
-- **Mathematics** — Draw proofs, counting games, and why “solved” does not mean boring.
-- **Training** — Repeatable drills, difficulty ladders, and how to measure improvement without grinding randomly.
-- **Technology & community** — Broader trends (AI demos, tournaments); use these when you want big-picture context after you know the basics.
+Choose a computer opponent or a local two-player match. Discs fall to the lowest empty point in a column, so an attractive empty square is not necessarily playable yet. Four connected discs horizontally, vertically or diagonally win a round.
 
-If you are new, start with one **Strategy** piece plus this guide, then branch by whatever game you play most.
+Use the strategy blueprint for supported threats and the endgame guide for tight positions. In either case, check for your own immediate win before a defensive drop. A move that completes four ends the round, even when the opponent also had a threat.
 
-## Tic-Tac-Toe Path
+## Memory: practise places as well as symbols
 
-Best for:
-- Learning forks and forced draws quickly
-- Private-style matches with friends
+Pick a difficulty, reveal cards in pairs and find every match. The larger boards contain more pairs to remember. Keep a steady scan, and use a mismatch to record two locations rather than immediately guessing again.
 
-**Difficulty:** Where AI strength is offered, treat lower levels as “training wheels”—they forgive missed blocks so you can rehearse patterns. Crank difficulty up once your three-scan habit (block loss, take win, prevent fork) feels automatic, not before.
+The improvement guide introduces a repeatable scanning method; the advanced drills offer optional ways to compare your own attempts. Browser bests are personal records. A faster time or lower move count in one attempt is not evidence of a general improvement in memory.
 
-Suggested reading order:
-1. Opening fundamentals on the blog
-2. Pattern playbook for fork discipline
-3. Minimax explainer if you like theory
+## Gomoku: a bigger board and a saved round
 
-If you only have five minutes, play one perfect-defense game against AI and note every missed threat.
+Gomoku uses a 15 by 15 board. Black goes first and five or more connected stones win. Choose three heuristic computer levels, play either colour or share the device with a friend. Freestyle rules mean there are no forbidden double-threes or opening swaps.
 
-## Connect 4 Path
+Preview confirmation helps avoid accidental placements. Intersections stay large on a phone; scroll within the board to reach the edges. Arrow keys move between points, and Enter selects and confirms. Free undo and move suggestions are available during play. These are casual assisted games; records include that assistance.
 
-Best for:
-- Planning multiple drops ahead
-- Practicing tactical defense under pressure
+An unfinished round can be continued from Gomoku setup when browser storage is available. Its guide works through open fours and forced blocks using the board’s coordinates. The computer is not claimed to play perfectly.
 
-**Difficulty:** Stronger AI or tighter time pressure punishes “one-move tunnel vision.” If you keep losing, slow down and ask whether each drop answered center control, an immediate threat, or a fork setup—our blueprint and endgame articles map those layers explicitly.
+## Two daily formats, with different goals
 
-Suggested reading order:
-1. Strategy blueprint (center control and threats)
-2. Endgame guide (conversion and saves)
+The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the Gomoku daily opening.
 
-Training tip: after each loss, identify whether the mistake was opening, mid-game structure, or endgame tactics.
+Gomoku’s daily starts with four placed stones and continues as a full game against Hard. It has no single prescribed answer. The website generates this opening; matching a phone app’s daily is not promised.
 
-## Memory Path
+## Finding help and understanding storage
 
-Best for:
-- Working memory training and calm pacing
+Rules, contact details and policies are linked in the footer. Use the contact page to report a problem, including the game and what you expected to happen. Do not send account passwords or private room conversations.
 
-**Difficulty:** Larger pair counts and harder decks increase cognitive load faster than raw “speed.” Move up one step only when your move count and repeat-mistake rate stay stable on the current tier—see the improvement and advanced-drills articles for concrete checklists.
-
-Suggested reading order:
-1. Improvement guide (zones and scan rhythm)
-2. Advanced drills (chunking and mistake tracking)
-
-Use difficulty steps as progression gates—do not rush to hard until medium rounds feel routine.
-
-## Difficulty and AI Notes
-
-Where difficulty exists, treat it as curriculum:
-- Lower difficulty reinforces accuracy and pattern habits.
-- Higher difficulty exposes weak recall or rushed scanning.
-
-AI opponents reward consistent threat scanning more than risky gambits.
-
-If a session feels “unfair,” log whether losses came from rule misunderstandings or from tactics—only the second kind means you should raise difficulty.
-
-## Mobile, Links, and Deep Routes
-
-Bookmark specific blog URLs when you find an article you want to revisit; the footer always links back to policies and the editorial disclosure if you need them in a hurry.
-
-On small screens, rotate to landscape for Connect 4 if columns feel cramped—layout comfort matters as much as theory when you are practicing under time pressure.
-
-## Policies and Transparency
-
-Privacy, cookies, and terms are linked in the site footer. For editorial independence and how ads may appear, read the editorial disclosure page linked from About and FAQ.
-
-## Final Takeaway
-
-Pick one game for the week, pair it with one article series, and measure one statistic (wins, moves, or mistakes). Small measurements create fast improvement loops on DoStrike.
+Records can disappear when browser storage is cleared, unavailable or used on another device. There is no cross-device progress sync. Optional ad requests remain disabled while advertising is being prepared; consult the current privacy and editorial disclosures for service details rather than assuming a permanent ad-free promise.
     `
   }
 ].map(article => {

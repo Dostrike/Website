@@ -26,6 +26,67 @@
   status = 301
   force = true
 
+# Consolidated guides: preserve bookmarks and search links without duplicate pages.
+[[redirects]]
+  from = "/blog/tic-tac-toe-opening-moves"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/tic-tac-toe-opening-moves/"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/how-to-never-lose-tic-tac-toe"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/how-to-never-lose-tic-tac-toe/"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/advanced-tactics-tic-tac-toe"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/advanced-tactics-tic-tac-toe/"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/tic-tac-toe-pattern-playbook"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/tic-tac-toe-pattern-playbook/"
+  to = "/blog/complete-tic-tac-toe-strategy-guide/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/teaching-kids-tic-tac-toe"
+  to = "/blog/tic-tac-toe-education-teaching-resource/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/teaching-kids-tic-tac-toe/"
+  to = "/blog/tic-tac-toe-education-teaching-resource/"
+  status = 301
+  force = true
+
 # Serve prerendered files before the fallback. Unknown URLs are real 404s.
 [[redirects]]
   from = "/*"

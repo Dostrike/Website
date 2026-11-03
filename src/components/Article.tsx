@@ -1,18 +1,33 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate, useLocation } from "react-router-dom";
 import { getArticleBySlug, articles } from "../data/articles";
 import { Helmet } from "react-helmet-async";
 import BackToPortal from "./BackToPortal";
 import NotFound from "./NotFound";
+import { articleRedirects } from "../data/articleRedirects";
+import GuideExercises from "./GuideExercises";
 
 const ARTICLE_AUTHOR = "DoStrike Editorial Team";
+const IMPLEMENTATION_REFERENCES: Record<string, string> = {
+  'minimax-algorithm-tic-tac-toe': 'gameLogic',
+  'mathematical-proof-tic-tac-toe-draw': 'practiceEngine',
+  'future-tic-tac-toe-ai-vr-innovation': 'roundReview',
+  'complete-tic-tac-toe-strategy-guide': 'practiceEngine',
+  'tic-tac-toe-education-teaching-resource': 'practiceEngine',
+  'connect4-strategy-blueprint': 'connect4Logic',
+  'connect4-endgame-guide': 'connect4Logic',
+};
 
 const Article: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
   const article = getArticleBySlug(slug || "");
 
+  const destination = slug && Object.prototype.hasOwnProperty.call(articleRedirects, slug) ? articleRedirects[slug] : null;
+  if (destination) return <Navigate replace to={`/blog/${destination}${location.search}${location.hash}`} />;
   if (!article) return <NotFound />;
   const url = `https://dostrike.com/blog/${article.slug}`;
+  const implementationReference = IMPLEMENTATION_REFERENCES[article.slug];
 
   // Convert markdown-like content to HTML
   const formatContent = (content: string) => {
@@ -172,6 +187,7 @@ const Article: React.FC = () => {
                   : "Practice wins, blocks and forks"}{" "}
               →
             </Link>
+            {["complete-tic-tac-toe-strategy-guide", "tic-tac-toe-education-teaching-resource"].includes(article.slug) && <a href="#guide-exercises-title">Try the playable examples ↓</a>}
           </aside>
 
           <div
@@ -179,13 +195,14 @@ const Article: React.FC = () => {
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
             style={{ lineHeight: 1.7 }}
           />
-          {article.updated && (
+          <GuideExercises key={article.slug} slug={article.slug} />
+          {implementationReference && (
             <p>
               Implementation reference:{" "}
               <a
-                href={`https://github.com/Dostrike/Website/blob/main/src/utils/${article.slug === "mathematical-proof-tic-tac-toe-draw" ? "practiceEngine" : "gameLogic"}.ts`}
+                href={`https://github.com/Dostrike/Website/blob/main/src/utils/${implementationReference}.ts`}
               >
-                DoStrike Tic-Tac-Toe game logic
+                DoStrike implementation
               </a>
               . <Link to="/contact">Report a correction</Link>.
             </p>

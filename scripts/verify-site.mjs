@@ -11,6 +11,7 @@ for (const url of urls) {
   const html = await fs.readFile(file, 'utf8');
   assert(html.includes('<h1'), `No heading on ${url.pathname}`);
   assert(!html.includes('data-route-error'), `Failed route was saved on ${url.pathname}`);
+  assert(!/<meta[^>]*name="robots"[^>]*content="[^"]*noindex/.test(html), `Noindex page included in sitemap: ${url.pathname}`);
   assert.equal((html.match(/name="description"/g) || []).length, 1, `Duplicate descriptions on ${url.pathname}`);
   assert(!html.includes('http://127.0.0.1:'), `Local address leaked on ${url.pathname}`);
   assert(!html.includes('http%3A%2F%2F127.0.0.1'), `Local address leaked in a share link on ${url.pathname}`);
@@ -29,4 +30,14 @@ assert((await fs.readFile(path.join(dist, '404.html'), 'utf8')).includes('conten
 assert((await fs.readFile(path.join(dist, 'ads.txt'), 'utf8')).includes('pub-4621807979883911'));
 assert((await fs.readFile(path.join(dist, 'robots.txt'), 'utf8')).includes('https://dostrike.com/sitemap.xml'));
 assert(!(await fs.readFile(path.join(dist, '_redirects'), 'utf8')).split('\n').some(line => /^\s*\/\*\s+.*\s200\s*$/.test(line)), 'Blanket 200 rewrite overrides real 404 responses');
+const redirects = [...(await fs.readFile('src/data/articleRedirects.ts', 'utf8')).matchAll(/'([^']+)': '([^']+)'/g)];
+for (const [, retired, destination] of redirects) {
+  assert(!await fs.stat(path.join(dist, 'blog', retired)).catch(() => null), `Retired guide is still published: ${retired}`);
+  assert(urls.some(url => url.pathname === `/blog/${destination}`), `Redirect destination missing from sitemap: ${destination}`);
+}
+for (const alias of ['sitemap_index.xml', 'sitemap.txt', 'urls.txt']) {
+  const content = await fs.readFile(path.join(dist, alias), 'utf8');
+  const aliasUrls = alias.endsWith('.xml') ? [...content.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]) : content.trim().split(/\r?\n/);
+  assert.deepEqual(aliasUrls, urls.map(url => url.href), `Sitemap alias drift: ${alias}`);
+}
 console.log(`Verified ${checks} sitemap pages: canonical URLs, ownership tags, headings and internal links; 404, ads.txt and robots.txt passed.`);
