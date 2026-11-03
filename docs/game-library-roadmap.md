@@ -50,3 +50,7 @@ Last confirmed November 3: Needs attention / Low value content; ads.txt Authoriz
 ## First release evidence — 2026-11-03
 
 Gomoku is published at /gomoku-setup. Code release 866e845 plus trailing-slash correction f6805e5. Engine tests, existing game regressions, lint/build/static checks, mobile browser checks and a completed public keyboard game passed; live assets match the tested build and all 38 public pages pass HTTP checks. Save/continue, three heuristic levels, local two-player, free assistance, browser records, a website-generated daily opening and original worked guide are included. This completes the pilot, not the full 20-game objective. Next: guide consolidation and Reversi.
+
+## Consolidation release evidence — 2026-11-03
+
+Published df8a726: two rewritten strategy/teaching destinations with playable verified exercises; five retired URLs permanently redirect; all sitemap formats agree and exclude runtime/noindex routes. All 32 public-page checks and ten slash-variant redirect checks passed live; published assets match the tested build. Memory-guide overlap and remaining factual claims need separate review. Next game: Reversi, using docs/reversi-implementation-brief.md.
