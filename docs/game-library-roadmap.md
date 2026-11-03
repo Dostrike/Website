@@ -54,3 +54,7 @@ Gomoku is published at /gomoku-setup. Code release 866e845 plus trailing-slash c
 ## Consolidation release evidence — 2026-11-03
 
 Published df8a726: two rewritten strategy/teaching destinations with playable verified exercises; five retired URLs permanently redirect; all sitemap formats agree and exclude runtime/noindex routes. All 32 public-page checks and ten slash-variant redirect checks passed live; published assets match the tested build. Memory-guide overlap and remaining factual claims need separate review. Next game: Reversi, using docs/reversi-implementation-brief.md.
+
+## Reversi release evidence — 2026-11-03
+
+Published f4c8605 at /reversi-setup: complete independent 8×8 rules, compulsory passes, three bounded worker opponents, either colour/local two-player, preview/keyboard/hints/undo, move history, save/continue, casual records and a six-placement website daily. Original worked guide and navigation are published. Local complete games, 33 engine games with genuine passes, storage/reload regressions, lint/build and all 34 public-page live checks passed; production worker, save/reload and undo verified interactively. Gomoku reload restoration is corrected with existing records retained. Two additional games shipped; eighteen remain. Next: Mancala. Remaining content factual/overlap audits remain in the backlog.
