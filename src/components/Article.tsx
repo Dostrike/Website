@@ -169,7 +169,9 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug.includes("gomoku")
+                article.slug.includes("reversi")
+                  ? "/reversi-setup"
+                  : article.slug.includes("gomoku")
                   ? "/gomoku-setup"
                   : article.slug.includes("connect4")
                   ? "/connect4-setup"
@@ -178,7 +180,9 @@ const Article: React.FC = () => {
                     : "/practice"
               }
             >
-              {article.slug.includes("gomoku")
+              {article.slug.includes("reversi")
+                ? "Play Reversi"
+                : article.slug.includes("gomoku")
                 ? "Play Gomoku"
                 : article.slug.includes("connect4")
                 ? "Play Connect 4"
@@ -196,6 +200,15 @@ const Article: React.FC = () => {
             style={{ lineHeight: 1.7 }}
           />
           <GuideExercises key={article.slug} slug={article.slug} />
+          {article.slug === "reversi-legal-moves-corners-and-passes" && (
+            <p>
+              Rules reference:{" "}
+              <a href="https://worldothello.org/about/about-othello/othello-rules/official-rules/english">
+                World Othello Federation playing rules
+              </a>
+              . DoStrike is an independent Reversi implementation.
+            </p>
+          )}
           {implementationReference && (
             <p>
               Implementation reference:{" "}

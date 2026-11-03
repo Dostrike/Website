@@ -51,11 +51,11 @@ export default function StrategyPractice() {
     <main className="practice-page">
       <Helmet>
         <title>
-          Daily Tic-Tac-Toe Challenge & Strategy Practice | DoStrike
+          Daily Games & Strategy Practice | DoStrike
         </title>
         <meta
           name="description"
-          content="Solve a daily Tic-Tac-Toe puzzle, build your streak, and practice wins, forced blocks and forks with explained moves. Free, with no account needed."
+          content="Solve a daily Tic-Tac-Toe puzzle or try Gomoku and Reversi daily openings. Practice wins, forced blocks and forks with explained moves. Free to play."
         />
         <link rel="canonical" href="https://dostrike.com/practice" />
       </Helmet>
@@ -63,6 +63,7 @@ export default function StrategyPractice() {
       <h1>Find the next move</h1>
       <DailyChallenge />
       <aside className="gomoku-daily-link" style={{ margin: '24px 0', border: '1px solid var(--border)', borderRadius: 16, padding: 20 }}><h2>Try a bigger board</h2><p>Gomoku has a daily four-stone opening against the Hard computer. Unlike the Tic-Tac-Toe puzzle, it is a full game with no single prescribed answer.</p><Link to="/gomoku-setup">Choose today’s Gomoku opening →</Link></aside>
+      <aside style={{ margin: '24px 0', border: '1px solid var(--border)', borderRadius: 16, padding: 20 }}><h2>A new position to turn around</h2><p>Reversi’s daily opening plays six legal placements before you take Black against Hard. It is a full game with many possible continuations.</p><Link to="/reversi-setup">Choose today’s Reversi opening →</Link></aside>
       <h2>Learn the patterns</h2>
       <p>
         Practice the decisions that change a Tic-Tac-Toe game. These three

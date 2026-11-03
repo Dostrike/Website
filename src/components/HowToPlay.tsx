@@ -6,10 +6,10 @@ import BackToPortal from "./BackToPortal";
 const HowToPlay: React.FC = () => (
   <>
     <Helmet>
-      <title>How to Play Gomoku, Tic-Tac-Toe, Connect 4 & Memory | DoStrike</title>
+      <title>DoStrike Game Rules & Strategy Tips | DoStrike</title>
       <meta
         name="description"
-        content="Official how-to-play guides for DoStrike: Gomoku five-in-a-row rules, Tic-Tac-Toe rules and tactics, Connect 4 gravity and four-in-a-row wins, Memory matching game tips and difficulty levels."
+        content="Official how-to-play guides for DoStrike: Reversi flips and mandatory passes, Gomoku five-in-a-row rules, Tic-Tac-Toe rules and tactics, Connect 4 gravity and four-in-a-row wins, Memory matching game tips and difficulty levels."
       />
       <link rel="canonical" href="https://dostrike.com/how-to-play" />
     </Helmet>
@@ -342,6 +342,9 @@ const HowToPlay: React.FC = () => (
       </section>
 
       <section style={{ marginTop: "2em" }}>
+        <h2>Reversi: flip the line</h2>
+        <p>Black starts on an 8 by 8 board with four centre discs. Place on an empty square that encloses at least one line of opposing discs; all directly enclosed lines flip. A colour with no legal move passes automatically. When neither colour can move, the larger disc count wins, even if the board has empty squares.</p>
+        <p><Link to="/reversi-setup">Choose your Reversi game →</Link>{" · "}<Link to="/blog/reversi-legal-moves-corners-and-passes">Learn legal flips and passes →</Link></p>
         <h2>Gomoku: five in a row</h2>
         <p>Place stones on a 15 by 15 board. Black goes first. Five or more connected stones horizontally, vertically or diagonally win. This freestyle version has no forbidden moves. Play a friend on the same device or choose from three computer levels.</p>
         <p>Preview a point before placing, or use the arrow keys and Enter. On phones, scroll the board to reach the edges. Hints and undo are free.</p>

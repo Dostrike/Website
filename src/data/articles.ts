@@ -13,6 +13,65 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Reversi: legal flips, corners and the turn you must pass',
+    excerpt: 'Work through the first move, a two-direction flip and a forced-pass diagram. Learn why disc count matters at the end, not as an early score to chase.',
+    slug: 'reversi-legal-moves-corners-and-passes',
+    date: '2026-11-03',
+    readTime: '4 min read',
+    category: 'Reversi',
+    content: `
+## Start with a legal line
+
+DoStrike Reversi uses an 8 by 8 board with four discs in the centre. Black moves first. The grid uses columns A–H and rows 1–8, with A1 at the top left. A legal placement traps an unbroken line of opposing discs between your new disc and one already showing your colour. Lines may run horizontally, vertically or diagonally. Every line directly trapped by the placement flips.
+
+The score you see during play is the current number of discs, not a lead that cannot be overturned. The final count decides the result. That makes finding a useful legal placement more important than flipping the largest number immediately.
+
+## Example 1: why C4 is legal in the opening
+
+The initial White discs are D4 and E5; Black has E4 and D5. Black may open at C4, D3, E6 or F5. Consider C4: the new Black disc and the existing Black disc at E4 enclose White’s D4. D4 flips to Black. The board now has four Black discs and one White disc.
+
+After that C4 opening, White may play C3, E3 or C5. Placing White at C3 encloses D4 on the diagonal ending at E5, so D4 flips back. A disc can change colour repeatedly; it never moves to another square.
+
+The game highlights legal empty squares. Preview mode shows which discs would flip before you confirm, so you can trace the actual line instead of guessing from the colour of a nearby disc.
+
+## Example 2: one move can flip several directions
+
+For a line-reading exercise, imagine an empty D4. White occupies C4 and D3; Black occupies B4 and D2. Other squares in those two lines are empty. Black can place at D4 and flip both C4, along the row towards B4, and D3, along the column towards D2.
+
+This is an isolated teaching diagram, not a complete opening position. Its purpose is to check that you examine every direction through the placed disc. You must flip all directly enclosed lines; you cannot choose to keep one White. A disc flipped in this way does not create another wave of flips elsewhere on the board.
+
+## Example 3: a pass is a rule, not a resignation
+
+Imagine a nearly full diagram: A1 is empty, B1 is White, and every other square is Black. White has no legal placement. It must pass. Black can then play A1, enclosing B1 against C1, and finish with all 64 discs.
+
+That diagram illustrates why passing does not end the game by itself. If the other colour can move, it continues. In an actual game, a colour might have to pass more than once on separate turns. DoStrike handles compulsory passes automatically and records them in the move history. You cannot pass voluntarily when a legal placement exists.
+
+## The board does not have to fill up
+
+A game ends when neither colour has a legal move. There can still be empty squares. DoStrike compares the Black and White discs actually on the board; unfilled squares are not awarded to either side. Equal counts are a draw.
+
+After a result, compare the two counts and check the remaining empty squares. This is a more useful explanation than assuming the person who passed first lost, or waiting for all 64 squares to be occupied.
+
+## Corners and mobility: useful ideas, with limits
+
+Once captured, a corner cannot be enclosed from beyond the board, so it cannot be flipped. A legal corner is often valuable. Squares next to an empty corner deserve care: they can give an opponent the line needed to take it.
+
+Mobility means the choices a colour has available. Before a move, ask what legal replies you are offering. Flipping many discs can sometimes increase the opponent’s choices, so do not treat a large early count as a guaranteed advantage. Corner preference and mobility are heuristics, not proofs that a particular move wins.
+
+## What DoStrike’s computer is doing
+
+Easy varies its choices among legal placements. Medium searches up to two placements ahead. Hard searches up to four, or deeper in short endgames, within a fixed node budget. Both stronger levels consider positional weights and the difference in legal choices. A search can stop before its maximum depth; no level is claimed to play perfectly or to have a calibrated competitive rating.
+
+Move suggestions use the Hard search. Hints and undo are free. Against the computer, undo returns to before your last placement and removes the later replies and passes. Browser records include assisted games and daily openings, so they are casual personal records rather than a competitive table.
+
+## A different starting point each day
+
+The website’s daily opening plays six valid placements before you take Black against Hard. It is a complete game, not a unique-answer tactic. The opening follows your local calendar date and is generated for this website; app parity is not promised.
+
+Try a normal opening first, then the daily. In each game, use preview to name the enclosed lines before placing. After a surprising turn, inspect the move history and find whether a pass or a multi-direction flip changed who had the next useful choice.
+    `
+  },
+  {
     title: 'Gomoku: open fours, forced blocks and the move that comes first',
     excerpt: 'Three concrete board examples explain when to win, when to block and why a line with two open ends is so dangerous.',
     slug: 'gomoku-threats-and-open-fours',
@@ -1524,7 +1583,7 @@ Repeat weekly and your median moves should trend down without sacrificing accura
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers four free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers five free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1554,9 +1613,15 @@ Preview confirmation helps avoid accidental placements. Intersections stay large
 
 An unfinished round can be continued from Gomoku setup when browser storage is available. Its guide works through open fours and forced blocks using the board’s coordinates. The computer is not claimed to play perfectly.
 
-## Two daily formats, with different goals
+## Reversi: count the discs at the end
 
-The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the Gomoku daily opening.
+Start with four central discs and find an empty square that encloses a line of opposing discs. Every directly enclosed line flips. The game shows legal placements, previews flips, handles compulsory passes and keeps a readable move history. Choose a computer level or play locally with a friend.
+
+The larger final count wins when neither colour can move, even if empty squares remain. An early lead is not permanent. Use the Reversi guide for worked legal-move and pass examples; the daily opening gives a different legal position after six placements.
+
+## Daily formats, with different goals
+
+The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the Gomoku and Reversi daily openings.
 
 Gomoku’s daily starts with four placed stones and continues as a full game against Hard. It has no single prescribed answer. The website generates this opening; matching a phone app’s daily is not promised.
 

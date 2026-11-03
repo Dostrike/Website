@@ -32,6 +32,8 @@ const STATIC_ROUTES = [
   '/memory',
   '/gomoku-setup',
   '/gomoku',
+  '/reversi-setup',
+  '/reversi',
   '/tictactoe',
   '/tictactoe-private',
   '/connect4',
@@ -119,7 +121,7 @@ async function main() {
           await page.close();
         }
       }
-      const sitemapRoutes = [...STATIC_ROUTES.filter(route => !['/404', '/home', '/game', '/tictactoe', '/tictactoe-private', '/connect4', '/gomoku'].includes(route)), ...articleRoutes];
+      const sitemapRoutes = [...STATIC_ROUTES.filter(route => !['/404', '/home', '/game', '/tictactoe', '/tictactoe-private', '/connect4', '/gomoku', '/reversi'].includes(route)), ...articleRoutes];
       const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + sitemapRoutes.map(route => `  <url><loc>https://dostrike.com${route}</loc></url>`).join('\n') + '\n</urlset>\n';
       await fs.writeFile(path.join(dist, 'sitemap.xml'), sitemap, 'utf8');
       await fs.writeFile(path.join(dist, 'sitemap_index.xml'), sitemap, 'utf8');

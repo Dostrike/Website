@@ -3,23 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { chooseGomokuMove, gomokuDaily, newGomoku, playGomoku, replayGomoku, type GomokuDifficulty, type Stone } from '../utils/gomokuEngine';
 import './Gomoku.css';
+import { readGameRecords, writeGameRecords, type LocalGameRecords } from '../utils/localGameRecords';
 
 type Settings = { mode: 'computer' | 'local'; difficulty: GomokuDifficulty; side: Stone; confirm: boolean; daily: boolean };
-type RecordEntry = { wins: number; losses: number; draws: number };
-type Records = Record<GomokuDifficulty, RecordEntry>;
 const defaults: Settings = { mode: 'computer', difficulty: 'medium', side: 'black', confirm: true, daily: false };
 const dateKey = () => { const date = new Date(); return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; };
 const coordinate = (index: number) => `${'ABCDEFGHIJKLMNO'[index % 15]}${15 - Math.floor(index / 15)}`;
-function loadRecords(): Records {
-  const result: Records = { easy: { wins: 0, losses: 0, draws: 0 }, medium: { wins: 0, losses: 0, draws: 0 }, hard: { wins: 0, losses: 0, draws: 0 } };
-  try {
-    const stored = JSON.parse(localStorage.getItem('dostrike-gomoku-records-v1') || 'null');
-    for (const level of ['easy', 'medium', 'hard'] as const) for (const key of ['wins', 'losses', 'draws'] as const) {
-      if (Number.isSafeInteger(stored?.[level]?.[key]) && stored[level][key] >= 0) result[level][key] = stored[level][key];
-    }
-  } catch { /* Records are optional. */ }
-  return result;
-}
+function loadRecords(): LocalGameRecords { return readGameRecords('dostrike-gomoku-records-v1'); }
 function readSettings(value: unknown): Settings {
   const data = value as Partial<Settings> | null;
   if (data?.daily) return { ...defaults, difficulty: 'hard', daily: true };
@@ -39,7 +29,7 @@ export default function Gomoku() {
   const navigate = useNavigate();
   const isSetup = location.pathname.replace(/\/+$/, '') === '/gomoku-setup';
   const [saved, setSaved] = useState(loadSession);
-  const [initial] = useState(() => location.state ? null : loadSession());
+  const [initial] = useState(loadSession);
   const [settings, setSettings] = useState<Settings>(() => initial?.settings || readSettings(location.state));
   const [day, setDay] = useState(() => initial?.day || dateKey());
   const [game, setGame] = useState(() => initial?.game || (settings.daily ? gomokuDaily(day) : newGomoku()));
@@ -93,7 +83,7 @@ export default function Gomoku() {
     const next = loadRecords();
     next[settings.difficulty][game.draw ? 'draws' : game.winner === settings.side ? 'wins' : 'losses']++;
     setRecords(next);
-    try { localStorage.setItem('dostrike-gomoku-records-v1', JSON.stringify(next)); } catch { /* Play remains available. */ }
+    writeGameRecords('dostrike-gomoku-records-v1', next);
     if (settings.daily && game.winner === 'black') {
       setDailyWon(day);
       try { localStorage.setItem('dostrike-gomoku-daily-v1', JSON.stringify({ lastWon: day })); } catch { /* Optional record. */ }
@@ -115,6 +105,7 @@ export default function Gomoku() {
     setGame(replayGomoku(game.moves.slice(0, remaining))); setPreview(null); setNotice('Move taken back.');
   };
   const start = (daily = false) => {
+    try { localStorage.removeItem('dostrike-gomoku-session-v1'); } catch { /* Optional persistence. */ }
     const next = daily ? { ...defaults, difficulty: 'hard' as const, daily: true } : { ...settings, daily: false };
     const today = dateKey(); setDay(today);
     setSettings(next); counted.current = false; initialBoardFocus.current = false;

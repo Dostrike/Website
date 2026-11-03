@@ -13,6 +13,8 @@ https://dostrike.com/tictactoe-setup
 https://dostrike.com/connect4-setup
 https://dostrike.com/memory
 https://dostrike.com/gomoku-setup
+https://dostrike.com/reversi-setup
+https://dostrike.com/blog/reversi-legal-moves-corners-and-passes
 https://dostrike.com/blog/gomoku-threats-and-open-fours
 https://dostrike.com/blog/minimax-algorithm-tic-tac-toe
 https://dostrike.com/blog/tic-tac-toe-variations
