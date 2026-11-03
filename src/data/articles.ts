@@ -13,6 +13,63 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Gomoku: open fours, forced blocks and the move that comes first',
+    excerpt: 'Three concrete board examples explain when to win, when to block and why a line with two open ends is so dangerous.',
+    slug: 'gomoku-threats-and-open-fours',
+    date: '2026-11-03',
+    readTime: '4 min read',
+    category: 'Gomoku',
+    content: `
+## Start with the rules this board actually uses
+
+DoStrike plays freestyle Gomoku on 15 by 15 intersections. Black starts, stones never move, and five or more connected stones win. Horizontal, vertical and both diagonal lines count. There are no forbidden double-threes, overline penalties or opening-swap rules in this version. A full board without five is a draw.
+
+Coordinates on the board run A to O from left to right, with row 15 at the top and row 1 at the bottom. H8 is the centre. The examples below use those coordinates so you can inspect the same patterns in a two-player game.
+
+## Example 1: a win takes priority over a block
+
+Imagine Black has D8, E8, F8 and G8. White has D10, E10, F10 and G10. All other intersections in these two rows are empty. Black is to move.
+
+Black should place at C8 or H8: either move completes five and ends the game immediately. Blocking White at C10 or H10 wastes the winning turn. The opponent never gets a reply after a completed five.
+
+This is why every DoStrike computer difficulty checks for an immediate winning move before it checks for a block. Practise that scan yourself: before choosing an attractive attack, ask whether a line can already be finished.
+
+## Example 2: closing one end changes the defence
+
+Black has D8, E8, F8 and G8. White already occupies C8. White is to move, and has no immediate win elsewhere. H8 is empty.
+
+White must play H8. C8 has already closed the left end, so H8 is Black’s only immediate winning point on that row. A distant plan cannot help if Black can end the round next turn.
+
+Now remove White’s stone from C8. Black’s four is open at both ends: C8 and H8 each complete five. If White has no immediate win, one blocking stone cannot stop both points. Open fours are therefore much stronger than fours with only one open end.
+
+## Example 3: turn an open three into an open four
+
+Black has E8, F8 and G8. D8, H8 and I8 are empty. Black is to move; suppose White has no immediate win or forcing threat elsewhere.
+
+Playing H8 creates E8–H8, four consecutive Black stones with D8 and I8 both empty. White can block one end but not both. Black then completes five at the other end.
+
+The qualification matters: do not follow this pattern blindly while White has a winning move. Local patterns help you compare plans, but the entire board still determines which move works.
+
+## Check diagonals before you commit
+
+A diagonal can hide in plain sight. E5, F6, G7 and H8 belong to one rising diagonal; D4 and I9 extend its ends. A stone at an edge may remove one of those ends altogether. Count actual connected stones and empty endpoints, rather than treating every four as equally strong.
+
+Before placing, scan four directions through your intended point. Then perform the same scan for your opponent. Preview mode lets you select an intersection before committing, which helps avoid an accidental placement on a crowded phone board.
+
+## What the computer levels mean
+
+All three levels take an available immediate win and block an immediate loss when they can. Easy varies its choice among highly scored points. Medium balances its own connected patterns with defensive patterns. Hard also checks the opponent’s strongest immediate reply among nearby points. These are heuristic opponents, not a claim of perfect Gomoku play or formally calibrated player ratings.
+
+Hints use the same Hard heuristic. They can help you find a candidate, but they do not prove that a position is won. Undo and suggestions are free. Browser records include assisted games and are casual personal records, not a competitive leaderboard.
+
+## A useful way to review your next round
+
+After the result, trace the highlighted winning line. Identify its two endpoints one turn before the final stone. Could the losing player have blocked a single winning point, or had an open four already made that too late? Then play another round focusing on that earlier decision.
+
+The daily opening offers four date-selected stones before you take Black against Hard. Its purpose is a different starting situation, not a guaranteed tactical puzzle with one correct move. It changes with your local calendar date and is generated for this website; identical app boards are not promised.
+    `
+  },
+  {
     title: 'The Unbeatable Strategy: A Deep Dive into the Minimax Algorithm for Tic-Tac-Toe',
     excerpt: 'Discover how the Minimax algorithm makes Tic-Tac-Toe unwinnable for a perfect player. Learn the basics of game theory and how AI can always force a draw or win.',
     slug: 'minimax-algorithm-tic-tac-toe',

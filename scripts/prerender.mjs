@@ -30,6 +30,8 @@ const STATIC_ROUTES = [
   '/tictactoe-setup',
   '/connect4-setup',
   '/memory',
+  '/gomoku-setup',
+  '/gomoku',
   '/tictactoe',
   '/tictactoe-private',
   '/connect4',

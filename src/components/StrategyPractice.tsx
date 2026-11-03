@@ -62,6 +62,7 @@ export default function StrategyPractice() {
       <p className="eyebrow">A LITTLE PRACTICE. A BETTER NEXT ROUND.</p>
       <h1>Find the next move</h1>
       <DailyChallenge />
+      <aside className="gomoku-daily-link" style={{ margin: '24px 0', border: '1px solid var(--border)', borderRadius: 16, padding: 20 }}><h2>Try a bigger board</h2><p>Gomoku has a daily four-stone opening against the Hard computer. Unlike the Tic-Tac-Toe puzzle, it is a full game with no single prescribed answer.</p><Link to="/gomoku-setup">Choose today’s Gomoku opening →</Link></aside>
       <h2>Learn the patterns</h2>
       <p>
         Practice the decisions that change a Tic-Tac-Toe game. These three

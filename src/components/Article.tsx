@@ -154,14 +154,18 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug.includes("connect4")
+                article.slug.includes("gomoku")
+                  ? "/gomoku-setup"
+                  : article.slug.includes("connect4")
                   ? "/connect4-setup"
                   : article.slug.includes("memory")
                     ? "/memory"
                     : "/practice"
               }
             >
-              {article.slug.includes("connect4")
+              {article.slug.includes("gomoku")
+                ? "Play Gomoku"
+                : article.slug.includes("connect4")
                 ? "Play Connect 4"
                 : article.slug.includes("memory")
                   ? "Play Memory"

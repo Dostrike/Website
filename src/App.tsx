@@ -20,6 +20,7 @@ const TicTacToeSetup = lazy(() => import("./components/TicTacToeSetup"));
 const Connect4Setup = lazy(() => import("./components/Connect4Setup"));
 const Connect4Game = lazy(() => import("./components/Connect4Game"));
 const MemoryGame = lazy(() => import("./components/MemoryGame"));
+const Gomoku = lazy(() => import("./components/Gomoku"));
 const GameScreen = lazy(() => import("./components/MatchGame"));
 const PrivateTicTacToe = lazy(() => import("./components/PrivateTicTacToe"));
 const About = lazy(() => import("./components/About"));
@@ -81,6 +82,8 @@ function App() {
                     />
                     <Route path="/connect4-setup" element={<Connect4Setup />} />
                     <Route path="/memory" element={<MemoryGame />} />
+                    <Route path="/gomoku-setup" element={<Gomoku />} />
+                    <Route path="/gomoku" element={<Gomoku />} />
                     <Route path="/tictactoe" element={<GameScreenWrapper />} />
                     <Route
                       path="/tictactoe-private"

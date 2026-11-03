@@ -8,7 +8,7 @@ Build toward 20 additional, distinct games, released in small tested batches. Th
 
 ## First release
 
-Pilot Gomoku using existing React, theme, navigation and accessibility conventions. Verify intended rules and assets against the Android source before claiming app parity. Source access is currently unresolved: the proposal names a macOS path unavailable in this Windows workspace; the user has been asked for a repository URL or Windows path.
+Pilot Gomoku using existing React, theme, navigation and accessibility conventions. Implement the supplied game specifications without claiming Android code parity. The supplied ZIP contains 12 design/planning documents and no engine code or assets. The user has no Android source and authorized original web implementations from the specifications. Exact app AI, RNG, content-bank or daily parity is therefore not a release promise. Gomoku uses the documented freestyle 15×15 rules. This supersedes the initial source-access dependency.
 
 Implement a pure rules engine first (legal moves, wins, draws, restart), then the playable board, keyboard interaction, clear turn/result feedback and replay. Verify board size and rule variant from source. Add a useful rules/strategy page with worked board positions derived from the actual engine. Start with complete local two-player play; only promise AI or daily parity after source inspection establishes a testable implementation scope. Publish when complete and tested, not as a placeholder.
 

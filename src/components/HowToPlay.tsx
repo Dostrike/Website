@@ -6,10 +6,10 @@ import BackToPortal from "./BackToPortal";
 const HowToPlay: React.FC = () => (
   <>
     <Helmet>
-      <title>How to Play Tic-Tac-Toe, Connect 4 & Memory | DoStrike</title>
+      <title>How to Play Gomoku, Tic-Tac-Toe, Connect 4 & Memory | DoStrike</title>
       <meta
         name="description"
-        content="Official how-to-play guides for DoStrike: Tic-Tac-Toe rules and tactics, Connect 4 gravity and four-in-a-row wins, Memory matching game tips and difficulty levels."
+        content="Official how-to-play guides for DoStrike: Gomoku five-in-a-row rules, Tic-Tac-Toe rules and tactics, Connect 4 gravity and four-in-a-row wins, Memory matching game tips and difficulty levels."
       />
       <link rel="canonical" href="https://dostrike.com/how-to-play" />
     </Helmet>
@@ -341,6 +341,12 @@ const HowToPlay: React.FC = () => (
         </p>
       </section>
 
+      <section style={{ marginTop: "2em" }}>
+        <h2>Gomoku: five in a row</h2>
+        <p>Place stones on a 15 by 15 board. Black goes first. Five or more connected stones horizontally, vertically or diagonally win. This freestyle version has no forbidden moves. Play a friend on the same device or choose from three computer levels.</p>
+        <p>Preview a point before placing, or use the arrow keys and Enter. On phones, scroll the board to reach the edges. Hints and undo are free.</p>
+        <Link to="/gomoku-setup">Choose your Gomoku game →</Link>{" · "}<Link to="/blog/gomoku-threats-and-open-fours">Learn open fours and forced blocks →</Link>
+      </section>
       <p
         style={{
           marginTop: "2.5em",
