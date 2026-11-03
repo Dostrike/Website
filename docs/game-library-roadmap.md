@@ -10,16 +10,16 @@ Build toward 20 additional, distinct games, released in small tested batches. Th
 
 Pilot Gomoku using existing React, theme, navigation and accessibility conventions. Implement the supplied game specifications without claiming Android code parity. The supplied ZIP contains 12 design/planning documents and no engine code or assets. The user has no Android source and authorized original web implementations from the specifications. Exact app AI, RNG, content-bank or daily parity is therefore not a release promise. Gomoku uses the documented freestyle 15×15 rules. This supersedes the initial source-access dependency.
 
-Implement a pure rules engine first (legal moves, wins, draws, restart), then the playable board, keyboard interaction, clear turn/result feedback and replay. Verify board size and rule variant from source. Add a useful rules/strategy page with worked board positions derived from the actual engine. Start with complete local two-player play; only promise AI or daily parity after source inspection establishes a testable implementation scope. Publish when complete and tested, not as a placeholder.
+Implement a pure rules engine first (legal moves, wins, draws, restart), then the playable board, keyboard interaction, clear turn/result feedback and replay. Verify board size and rule variant from the supplied specifications. Add a useful rules/strategy page with worked board positions derived from the actual engine. Include complete local two-player and independently tested computer play; daily openings are website-generated and do not claim app parity. Publish when complete and tested, not as a placeholder.
 
 ## Proposed release order
 
-These are sequencing candidates, not commitments to unverified app features. Revisit after the pilot and source audit.
+These are sequencing candidates, not commitments to unverified app features. Revisit after the pilot and specification audit.
 
 1. Gomoku, Reversi, Mancala, Checkers: finish one at a time; make variants explicit.
 2. Sudoku, Minesweeper, Slide Merge, Colour Sort: deterministic puzzle rules, valid starting states and useful difficulty choices.
 3. Dots and Boxes, Sea Battle, Chess: larger rules/AI/accessibility burden; reserve extra validation.
-4. Block Fit, Bloom Match, Bubble Drift, Mahjong Tiles, Solitaire: inspect actual app rules/assets first; verify solvability and touch controls where relevant.
+4. Block Fit, Bloom Match, Bubble Drift, Mahjong Tiles, Solitaire: inspect the supplied rules and verify any required assets first; verify solvability and touch controls where relevant.
 5. Letter Lock, Word Shuffle, Word Search, Balloon Words: verify word-list licensing, suitability and generator quality before publication.
 
 ## Content consolidation
@@ -46,3 +46,7 @@ Reuse the current theme and components incrementally. Every game needs a discove
 ## AdSense checkpoint
 
 Last confirmed November 3: Needs attention / Low value content; ads.txt Authorized. Reassess the finished pilot, consolidated content and subsequent releases against the stated rejection. Google controls approval. Review readiness depends on demonstrated usefulness and a complete site, not finishing all 20 titles.
+
+## First release evidence — 2026-11-03
+
+Gomoku is published at /gomoku-setup. Code release 866e845 plus trailing-slash correction f6805e5. Engine tests, existing game regressions, lint/build/static checks, mobile browser checks and a completed public keyboard game passed; live assets match the tested build and all 38 public pages pass HTTP checks. Save/continue, three heuristic levels, local two-player, free assistance, browser records, a website-generated daily opening and original worked guide are included. This completes the pilot, not the full 20-game objective. Next: guide consolidation and Reversi.
