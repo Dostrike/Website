@@ -37,7 +37,7 @@ function loadSession() {
 export default function Gomoku() {
   const location = useLocation();
   const navigate = useNavigate();
-  const isSetup = location.pathname === '/gomoku-setup';
+  const isSetup = location.pathname.replace(/\/+$/, '') === '/gomoku-setup';
   const [saved, setSaved] = useState(loadSession);
   const [initial] = useState(() => location.state ? null : loadSession());
   const [settings, setSettings] = useState<Settings>(() => initial?.settings || readSettings(location.state));
