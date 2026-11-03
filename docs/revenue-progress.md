@@ -92,13 +92,17 @@ Build a useful game portal with returning players and sustainable ad revenue. Ap
 - A separate account warning says payment information and site connection are needed for account activation. Do not assume which setup item is incomplete without inspecting the account checklist; financial/account declarations require user handling.
 - Remediation priority: audit the original usefulness and overlap of current guides, strengthen demonstrable game-specific learning tools/examples and navigation to that value, and establish honest audience/search evidence. Fix or consolidate weak/redundant material based on evidence. Technical health and ads.txt authorization alone did not secure approval. Avoid cosmetic churn, quantity padding, purchased traffic, or immediate resubmission. Prepare a concrete verified remediation before another review request.
 
-## Priorities
-1. Verify AdSense's actual decision in the signed-in account. If rejected, capture the exact stated issue and address evidence, not guesses. If access expires, report the access requirement once.
-2. Prioritize approval-readiness audits: original useful content, complete functional games, clear navigation, crawlability and accurate publisher disclosures. Investigate evidence-based issues; defer general expansion and speculative redesign while review is pending.
-3. Use the connected Search Console property to investigate indexing exclusions against the recent canonical/redirect fixes. After approval, establish aggregate engagement measurement when an authorized analytics property is available. Do not invent a measurement ID or claim browser-local records represent all players. Do not purchase Netlify analytics.
-4. Improve original value and reliability in existing games when a concrete deficiency is found. Validate round explanations and difficulty before introducing more titles.
-5. After approval, consider one additional game with repeat-play depth after obtaining usage evidence. Prototype privately and test it; publish only when complete and distinct enough to justify maintenance. A larger game count is not an AdSense requirement.
-6. After verified approval, configure applicable certified consent messaging, update disclosures for the actual enabled services, verify safe placements away from play controls, and enable ads deliberately. Measure actual revenue and its effect on engagement before increasing density.
+## Expansion authorized — 2026-11-03
+- User agreed to start a phased 20-game expansion and consolidation of overlapping guides. Recorded the concrete sequence, first-release scope, content audit candidates and release gates in docs/game-library-roadmap.md. This is planning/source audit work, not a shipped game or an approval claim.
+- Existing site has three games and 21 guides. Android monorepo path in the supplied proposal is unavailable in this Windows workspace; requested repository URL or Windows path. Continue content comparison independently while source access is pending.
 
+## Priorities
+1. Address the confirmed Low value content rejection with demonstrably useful playable experiences and original explanations; keep actual AdSense status separate from ads.txt authorization.
+2. Execute docs/game-library-roadmap.md: verify source, complete a Gomoku pilot, then expand in tested waves. User authorization supersedes the previous blanket deferral of game expansion until approval. Twenty additions are a roadmap, not a Google requirement.
+3. Compare overlapping guides and consolidate only after preserving useful material. Update redirects, internal links, sitemap and prerender routes together.
+4. Monitor live site and private multiplayer health; preserve unrelated work. Target remaining dependency advisories separately with regression checks.
+5. Investigate Search Console indexing and genuine search interest. Do not invent analytics data or purchase analytics/traffic.
+6. Keep ads disabled until explicit approval and applicable certified consent/placement checks. Prepare meaningful remediation before requesting another review; do not make account declarations during autonomous checks.
 ## Release checks
 Run lint, production build, relevant gameplay/solver verification, verify-site.mjs, responsive browser checks and verify-live.mjs. For round review changes run verify-round-review.mjs and verify-matches.mjs. Keep ads disabled while pending. No paid traffic, ad clicking or spending is authorized by this plan.
+
