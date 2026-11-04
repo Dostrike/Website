@@ -960,187 +960,73 @@ The two boards below provide reproducible examples for the lesson. They are chec
     `
   },
   {
-    title: 'Tic-Tac-Toe Tournaments: Organizing Competitive Play and Community Building',
-    excerpt: 'Learn how to organize Tic-Tac-Toe tournaments, create engaging competitions, and build a community around this classic game. Includes tournament formats, rules, and community engagement strategies.',
+    title: 'A four-player Tic-Tac-Toe meet-up: fixtures, fair starts and scoring',
+    excerpt: 'A concrete optional house format: three rounds, two boards per pairing, balanced X/O starts and a checked worked standings example. Keep shared ties without an endless sudden-death loop.',
     slug: 'tic-tac-toe-tournaments-community-building',
-    date: '2024-01-12',
-    readTime: '13 min read',
-    category: 'Community',
+    date: '2024-01-12', updated: '2026-11-05',
+    readTime: '4 min read', category: 'Community',
     content: `
-Tic-Tac-Toe tournaments offer a unique opportunity to bring people together, foster community spirit, and celebrate strategic thinking. This comprehensive guide covers everything you need to know about organizing successful tournaments and building an engaged community around this classic game.
+## An optional house format, not a hosted event
 
-## Tournament Planning and Organization
+This is a small plan for four people using paper or a shared local game board. It is not an official tournament rulebook or an announcement of a DoStrike event. DoStrike does not provide event registration, a tournament bracket, a standings table or a tournament clock. Keep the fixtures and results yourself.
 
-### Pre-Tournament Preparation
+The point is to give everyone equal opponents and equal first-player opportunities. It does not make Tic-Tac-Toe a game with a guaranteed decisive result: careful play can draw. A finished draw is a valid result, not an unfinished match that must be replayed until someone loses.
 
-**Venue Selection:** Choose a location that can accommodate your expected number of participants. Consider factors like accessibility, parking, and facilities.
+## Three rounds, six pairings
 
-**Equipment Needs:** Ensure you have enough game boards, markers, and timing devices. Consider using digital displays for larger tournaments.
+Call the four players A, B, C and D. Each pairing consists of two separate boards. The first named player takes X on board one; swap X and O for board two. Use these fixtures:
 
-**Staffing Requirements:** Recruit volunteers to help with registration, game monitoring, and tournament management.
+- Round 1: A–D; B–C.
+- Round 2: A–C; D–B.
+- Round 3: A–B; C–D.
 
-### Tournament Formats
+Each round has two disjoint pairings, so two boards can run at the same time. Finish both games of a pairing before moving to the next round. If you have only one board, play the pairings in sequence; the schedule still works without promising a particular duration.
 
-**Round-Robin Format:** Each player plays against every other player. This format ensures maximum participation but can be time-consuming for large groups.
+There are six different pairs and two games per pair, for 12 completed boards in total. Each person meets all three others, plays six games, and starts as X three times and O three times. Those counts are checked by the accompanying fixture verifier.
 
-**Single Elimination:** Players are eliminated after one loss. This format is faster but provides fewer games for participants.
+## Agree the scoring before starting
 
-**Double Elimination:** Players must lose twice to be eliminated. This format balances participation with tournament length.
+Use the usual 3 by 3 board: X starts, then players alternate marking one empty square. A line of three across a row, column or diagonal wins and stops the board immediately. A full board without a winning line draws. Do not continue marking after a win.
 
-**Swiss System:** Players are paired against others with similar records. This format ensures competitive matches throughout the tournament.
+For this optional event, award one point for a win, half a point for a draw and zero for a loss. Score each board separately and add both to the pairing total. Two draws therefore give one point to each person. A win and a draw give the same person 1.5 points and the opponent 0.5. Splitting two wins gives one each.
 
-**Hybrid Formats:** Combine different formats to create unique tournament experiences.
+A draw does not give either person a win in their browser record. The event standings are a separate handwritten ledger. Never add computer practice results to the event score.
 
-### Registration and Communication
+## A complete worked ledger
 
-**Registration Process:** Create clear registration forms and establish deadlines. Consider online registration for convenience.
+Here is one possible set of results in fixture order. Each listed outcome can occur in a legal completed board; the verifier also checks that every board distributes exactly one point.
 
-**Communication Strategy:** Keep participants informed about tournament details, schedule changes, and results.
+- A–D: A wins the first board and draws the second. Pair points A 1.5, D 0.5.
+- B–C: both boards draw. Pair points B 1, C 1.
+- A–C: the first board draws; C wins the second as X. Pair points A 0.5, C 1.5.
+- D–B: D wins the first board as X; B wins the second as X. Pair points D 1, B 1.
+- A–B: both boards draw. Pair points A 1, B 1.
+- C–D: C wins once as X and once as O. Pair points C 2, D 0.
 
-**Social Media Integration:** Use social media to promote tournaments and share results.
+C finishes on 4.5 points; A and B have 3 each; D has 1.5. The total is 12, matching the number of boards. This conservation check catches a common ledger mistake: awarding a full point to each player for a draw.
 
-## Tournament Rules and Regulations
+## Shared places are a valid finish
 
-### Standard Rules
-- Games are played on a 3x3 grid
-- Players alternate placing X and O
-- First player to get three in a row wins
-- If the board fills without a winner, the game is a draw
+The suggested house policy is to share a placing when totals tie. In the worked example A and B share second. Decide that before the first board so a later tie does not trigger an improvised advantage for one player.
 
-### Tournament-Specific Rules
-**Time Limits:** Consider implementing time limits to keep tournaments moving efficiently.
+The plain sum of opponents’ final points cannot separate A and B here. Each met all three others, and both sums are 12 minus 3, or 9. That observation concerns this simple unweighted calculation, not every possible weighted tie-break system.
 
-**Tie-Breaking Procedures:** Establish clear procedures for handling ties in tournament standings.
+If the group wants an extra challenge, you can agree to one more two-board pairing with starts swapped. Set a finite end to that activity and keep the shared placing if both totals still tie. Repeated sudden death is not a guaranteed way to find a winner in a game that can draw under careful play.
 
-**Dispute Resolution:** Create a process for handling rule disputes and player complaints.
+## Use the local board without inventing site features
 
-### Fair Play Guidelines
-**Anti-Cheating Measures:** Implement procedures to prevent cheating and ensure fair play.
+Open Tic-Tac-Toe setup and choose **A friend**, described as **On the same screen**. Assign the first named player to X and the other to O. Record the completed board, return to setup, then swap those assignments before the pairing’s second board. Start a fresh board from setup each time.
 
-**Sportsmanship Standards:** Establish expectations for player behavior and conduct.
+The website normally presents a first-to-two-wins match and says that draws replay. This optional event scores individual boards, including draws, instead. Do not discard a drawn board or use the website’s match winner as the event result. Keep the separate ledger above. DoStrike’s saved preferences and game records belong to the browser; they are not a multi-player event database.
 
-**Code of Conduct:** Create a clear code of conduct for all participants.
+Use paper if everyone needs to see a permanent score sheet together. If a move is disputed, reconstruct it from agreed notes when possible; otherwise follow the replacement-board policy you agreed before play. This optional format does not impose a tournament clock or penalties that the website cannot enforce.
 
-## Community Building Strategies
+## End with a board, not a promise
 
-### Pre-Tournament Engagement
-**Social Media Campaigns:** Use platforms like Facebook, Twitter, and Instagram to build excitement and share information.
+After the fixtures, choose one actual position to discuss. Ask whether the next player had an immediate win, needed to block, or could create two threats. Keep the exercise separate from the event points. The strategy guide and practice board can help check the position; they do not guarantee attendance, learning gains or a growing community.
 
-**Local Partnerships:** Partner with schools, community centers, and local businesses to promote tournaments.
-
-**Media Coverage:** Reach out to local newspapers, radio stations, and online publications for coverage.
-
-### During Tournament Activities
-**Side Events:** Organize additional activities like strategy workshops, game demonstrations, and social gatherings.
-
-**Photography and Video:** Document tournaments with photos and videos to share on social media and websites.
-
-**Live Streaming:** Consider live streaming tournaments to reach a wider audience.
-
-### Post-Tournament Follow-Up
-**Results Sharing:** Share tournament results and highlights on social media and websites.
-
-**Community Feedback:** Gather feedback from participants to improve future tournaments.
-
-**Ongoing Engagement:** Maintain contact with participants through newsletters, social media, and future events.
-
-## Educational Integration
-
-### School Tournaments
-**Curriculum Integration:** Incorporate tournaments into mathematics, logic, and strategy curricula.
-
-**Cross-Grade Competitions:** Organize tournaments that bring together students from different grade levels.
-
-**Teacher Training:** Provide training for teachers on how to use Tic-Tac-Toe in their classrooms.
-
-### Community Education
-**Strategy Workshops:** Offer workshops to teach advanced strategies and improve community skill levels.
-
-**Historical Context:** Share the history and cultural significance of Tic-Tac-Toe.
-
-**Mathematical Concepts:** Use tournaments to teach probability, game theory, and logical thinking.
-
-## Technology and Innovation
-
-### Digital Integration
-**Online Tournaments:** Organize online tournaments to reach participants who cannot attend in person.
-
-**Tournament Management Software:** Use software to manage brackets, schedules, and results.
-
-**Mobile Apps:** Develop or use mobile apps for tournament management and community engagement.
-
-### Virtual Reality and Augmented Reality
-**VR Tournaments:** Explore the potential of virtual reality for creating immersive tournament experiences.
-
-**AR Enhancements:** Use augmented reality to enhance physical tournaments with digital overlays and information.
-
-## Marketing and Promotion
-
-### Target Audience Identification
-**Demographics:** Identify your target audience based on age, location, and interests.
-
-**Psychographics:** Understand the motivations and preferences of potential participants.
-
-**Market Research:** Conduct surveys and interviews to understand community needs and preferences.
-
-### Marketing Channels
-**Social Media Marketing:** Use platforms like Facebook, Instagram, and Twitter to reach potential participants.
-
-**Email Marketing:** Build email lists and send regular updates about tournaments and events.
-
-**Content Marketing:** Create blog posts, videos, and other content to build interest and engagement.
-
-**Partnership Marketing:** Partner with local organizations and businesses to promote tournaments.
-
-### Brand Building
-**Tournament Branding:** Create consistent branding for tournaments and related materials.
-
-**Community Identity:** Develop a strong community identity and sense of belonging.
-
-**Recognition Programs:** Implement programs to recognize and reward community contributions.
-
-## Measuring Success
-
-### Key Performance Indicators
-**Participation Rates:** Track the number of participants and their engagement levels.
-
-**Community Growth:** Monitor the growth of your community over time.
-
-**Media Coverage:** Track media mentions and coverage of tournaments.
-
-**Social Media Engagement:** Monitor likes, shares, and comments on social media posts.
-
-### Feedback and Improvement
-**Participant Surveys:** Conduct surveys to gather feedback on tournament experiences.
-
-**Community Meetings:** Hold regular meetings to discuss community needs and improvements.
-
-**Continuous Improvement:** Use feedback to continuously improve tournaments and community engagement.
-
-## Sustainability and Growth
-
-### Long-Term Planning
-**Annual Calendar:** Create an annual calendar of tournaments and events.
-
-**Resource Planning:** Plan for the resources needed to sustain and grow the community.
-
-**Succession Planning:** Develop plans for leadership succession and community continuity.
-
-### Expansion Opportunities
-**Regional Tournaments:** Expand beyond local tournaments to regional and national events.
-
-**International Connections:** Connect with Tic-Tac-Toe communities in other countries.
-
-**Multi-Game Integration:** Expand to include other strategic games and activities.
-
-## Conclusion
-
-Organizing Tic-Tac-Toe tournaments is about more than just playing games—it's about building community, fostering learning, and creating meaningful connections. By following the strategies outlined in this guide, you can create successful tournaments that bring people together and build lasting community bonds.
-
-Remember: The success of tournaments depends not just on the games themselves, but on the community that surrounds them. Focus on creating positive experiences, building relationships, and fostering a sense of belonging among participants.
-
-Whether you're organizing your first tournament or looking to expand an existing community, the principles and strategies outlined here will help you create engaging, successful events that bring people together through the shared love of strategic thinking and friendly competition.
-    `
+The useful result of this plan is a complete, auditable set of games with balanced starts. There is no need to add registration systems, publicity campaigns, VR equipment or regional-event claims to run this four-person version.
+`
   },
   {
     title: 'The Future of Tic-Tac-Toe: AI, Virtual Reality, and Educational Innovation',
