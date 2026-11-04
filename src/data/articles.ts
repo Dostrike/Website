@@ -1378,7 +1378,7 @@ If you apply these habits daily for a week, your move count and completion time 
     excerpt: 'Learn practical Connect 4 endgame technique: forcing lines, block priorities, parity awareness, and draw-saving defense under pressure.',
     slug: 'connect4-endgame-guide',
     date: '2026-05-01',
-    updated: '2026-11-04',
+    updated: '2026-11-03',
     readTime: '10 min read',
     category: 'Strategy',
     content: `
@@ -1595,7 +1595,7 @@ Repeat weekly and your median moves should trend down without sacrificing accura
     excerpt: 'A clear tour of dostrike.com: which game fits your goal, how AI and difficulty options work, and the best articles to read first.',
     slug: 'dostrike-portal-player-guide',
     date: '2026-05-01',
-    updated: '2026-11-03',
+    updated: '2026-11-04',
     readTime: '11 min read',
     category: 'Guides',
     content: `
