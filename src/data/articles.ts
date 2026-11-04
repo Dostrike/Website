@@ -545,82 +545,67 @@ Finally: enjoy forcing draws against stubborn bots—that outcome *is* mastery f
     `
   },
   {
-    title: '5 Variations of Tic-Tac-Toe to Play When You\'re Bored',
-    excerpt: 'Tired of the classic 3x3 grid? Explore fun and challenging Tic-Tac-Toe variants like 4x4, 3D, and more to spice up your next game night.',
+    title: 'Five paper Tic-Tac-Toe variants with rules you can check',
+    excerpt: 'Exact house rules and worked positions for a larger grid, a three-layer board, avoid-three, shared symbols and Ultimate routing. These are paper activities, separate from DoStrike’s playable modes.',
     slug: 'tic-tac-toe-variations',
-    date: '2024-01-10',
-    readTime: '10 min read',
-    category: 'Game Variants',
+    date: '2024-01-10', updated: '2026-11-04', readTime: '4 min read', category: 'Game Variants',
     content: `
-Classic Noughts and Crosses is solved—perfect play yields a draw—so variants become laboratories for richer tactics without throwing away familiar rules.
+## Choose the rules before the first mark
 
-Below are five approachable twists that reward planning ahead while staying printable on paper.
+These five activities are for paper or a board you draw yourself. DoStrike’s classic Tic-Tac-Toe game does not switch into these variants. The definitions below specify the version to play; other groups may use different house rules. Do not carry the classic game’s perfect-play draw result over to a different ruleset without checking it.
 
-## 1. 4×4 or 5×5 Grids
+For each activity, write down the board, legal action, winning condition and draw rule. Stop as soon as the stated result occurs. The examples are rule checks, not claims of an unbeatable strategy or measured learning benefit.
 
-Scaling the lattice stretches threats horizontally and diagonally.
+## 1. Four in a row on a 4 by 4 grid
 
-Design choices matter:
+Draw sixteen cells. X starts, players alternate placing their own mark in one empty cell, and the first complete straight line of four wins. Only the four rows, four columns and two corner-to-corner diagonals qualify: ten lines in total. A full board with no line draws.
 
-- Require four-in-a-row on 4×4? Five-in-a-row on 5×5? Misaligned rule/target lengths swing fairness wildly.
-- Larger boards resemble lightweight Connect-style spatial puzzles—fork setups multiply once lines lengthen.
+A diagonal of three is not enough. For a concrete check, X at row 1 column 1, row 2 column 2 and row 3 column 3 still needs row 4 column 4 to complete that diagonal. If the fourth point contains O, those three X marks do not win.
 
-Teaching angle: students compare branching intuition (“Where do threats intersect?”) across sizes.
+This is a deliberately fixed four-on-four activity. Moving to five rows or choosing a different target length changes the rules again; it is not just a larger drawing of this same game. For a playable larger-board alternative on DoStrike, Gomoku has its own explicit fifteen-by-fifteen freestyle rules.
 
-## 2. 3D Tic-Tac-Toe
+## 2. Three layers, one straight line
 
-Stack boards vertically so wins pierce layers along pillars or stair-step diagonals.
+Draw three 3 by 3 grids and label their layers 1, 2 and 3. Give every cell a layer, row and column, each from 1 to 3. X starts, turns alternate, and three own marks in a straight line through this three-dimensional grid win. A full grid with no line draws.
 
-Humans struggle because visualization jumps from planar forks to volumetric forks—classic beginner trap is spotting two-dimensional threats while missing vertical completions.
+Define straight precisely: moving from the first point to the second must use the same coordinate step as moving from the second to the third. Each step component is -1, 0 or 1, and at least one changes. All three points must stay inside the grid. That includes lines within a layer, vertical pillars and diagonals through more than one layer.
 
-Digital implementations help beginners toggle ghost markers showing occupied pillars.
+For example, (1,1,1), (2,2,2), (3,3,3) form a line. Replacing the last point with (3,3,2) breaks it: the column step changes. A pillar such as (1,2,3), (2,2,3), (3,2,3) also qualifies.
 
-## 3. Misère (Avoid Three)
+There are 49 distinct winning lines under this definition, counting a line and its reverse only once. The accompanying verification enumerates them two ways and checks both examples. This is a geometric count, not a claim about which player can force a win.
 
-Misère reverses victory—you lose by completing three aligned marks.
+## 3. Avoid three on the classic grid
 
-Psychologically brutal: offensive-looking placements sometimes sabotage future mobility because each completion risks ending your game early.
+Use a 3 by 3 grid, own symbols and alternating turns starting with X. The player who completes a line of three own marks loses immediately. If all cells fill without a line, call it a draw. This is the avoid-three convention used for this activity; do not apply the ordinary win announcement.
 
-Discuss backward induction with learners after classic rules click—misère reminds them objectives define tactics.
+Try this legal opening using numbered cells 1 to 9, row by row: X at 1, O at 4, X at 2, O at 7. It is X’s turn. Putting X at 3 completes the top row and loses under this rule. It would win in classic play. The same visible pattern can demand a different choice when the objective changes.
 
-## 4. Wild Symbol Placement
+Before making a move, name every line it would complete. That is a concrete check you can discuss after the round; it does not require claims about psychological pressure or a particular training schedule.
 
-Allow either symbol each turn while pursuing personal triple alignment first.
+## 4. Shared symbols: a wild-style house game
 
-Adds imperfect-information flavor despite perfect visibility—players disguise intentions longer since parity tricks evolve mid-match.
+Use a 3 by 3 grid, but let either player place either X or O on each turn. Players still alternate, and each turn fills one empty cell. The mover who completes a line of three identical symbols wins, regardless of who placed the earlier symbols. A full board with no such line draws.
 
-House-rule caution: stalemate textures appear faster; specify tie-break or forbid redundant mirrored openings.
+Call the players A and B rather than assigning one permanently to X. If A places X at cell 1 and B places X at cell 2, A can win by putting X at cell 3. A could instead put O there, which would not complete the top row. Those choices are distinct legal actions, not a hidden-information mechanism.
 
-## 5. Ultimate Tic-Tac-Toe
+This section defines one shared-symbol activity explicitly rather than asserting that every game called Wild has identical conventions. All previous moves are visible. Uncertainty about what your opponent will choose does not make their previous moves secret.
 
-Macro-board nesting ties micro outcomes into positional coercion—your micro victory dictates opponent macro quadrants.
+## 5. Ultimate: the small square sends the next move
 
-Emergent lesson: **tempo**. Sometimes sacrificing micro leverage preserves macro mobility.
+Draw nine small 3 by 3 boards in a larger 3 by 3 arrangement. X starts anywhere. After that, the position of the small square just marked determines the opponent’s next small board. Winning a small board is not what selects that destination.
 
-Community tournaments thrive here because memorized openings explode compared with vanilla rules.
+For this activity, close a small board when it is won or filled. A tied board belongs to neither side. If the required destination is closed, choose any open board. Win by claiming three small boards in a macro row, column or diagonal; if all boards close without that, draw.
 
-## Why Variants Matter Strategically
+Routing check: a move in the bottom-left small square sends the opponent to the bottom-left board, even when the move occurred on the top-right board. The outer location and inner location have different jobs. Write both before moving so you can check the next destination without guessing.
 
-- They recycle fundamentals—blocking, forcing moves—inside unfamiliar geometries.
-- They motivate heuristic invention before brute-force trees balloon (Ultimate barely tractable exhaustively).
+Ben Orlin’s linked account explains this routing idea. The closed-board and neutral-tie convention above is stated explicitly for this activity; agree on it before playing.
 
-Rotate variants weekly during casual classrooms or lunch leagues—observe how learners articulate generalized patterns (“always audit dual threats”) versus brittle memorization.
+## Compare one changed rule at a time
 
-Pick one variation tonight; annotate three moves where vanilla instincts misled you—that friction becomes lasting insight.
+After a round, record the exact position and whose turn it was. Explain one legal move and its result under the chosen rules. Compare it with classic play only where the action makes sense in both games.
 
-## House Rules Worth Writing Down
-
-Groups inventing “must take center if empty” or “no mirroring openings” should log agreements on paper—ambiguity sparks disputes faster than flawed strategy ever does.
-
-Photograph finished variant boards occasionally; months later those snapshots remind you which rule tweaks produced the most balanced sessions empirically rather than theoretically alone.
-
-## Blitz Variants for Timed Evenings
-
-Set a thirty-second clock per move on larger grids—players discover which variants reward patience versus which punish overthinking instantly.
-
-Rotate who chooses the variant each hour so everyone samples unfamiliar geometries instead of optimizing one favorite ruleset all night long.
-
-    `
+A useful note is specific: cell 3 completes my own top row, so it loses in avoid-three. A vague claim that larger boards always teach better planning is not something this activity establishes. Keep your paper rules beside the board, and use DoStrike’s classic game and solver-checked strategy exercises when you want to return to its implemented rules.
+`
   },
   {
     title: 'OXO and EDSAC: a documented early computer board',
