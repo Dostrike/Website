@@ -237,6 +237,16 @@ function daily(day, id, win = true, assisted = false) {
   return assisted ? s.assistSeaRound(round) : round;
 }
 const today = daily("2026-11-05", "daily-today");
+const dailyFirst = s.restartSeaRound(today, "daily-first"),
+  dailySecond = s.restartSeaRound(today, "daily-second");
+assert.notEqual(
+  s.makeSeaRequest(dailyFirst, 1).positionKey,
+  s.makeSeaRequest(dailySecond, 1).positionKey,
+);
+assert.equal(
+  s.makeSeaRequest(dailyFirst, 1).seed,
+  s.makeSeaRequest(dailySecond, 1).seed,
+);
 let dailyRecords = r.recordSeaResult(r.emptySeaRecords(), today, "2026-11-05");
 assert.equal(dailyRecords.streak, 1);
 assert.equal(dailyRecords.rows["computer:hard:1"].cleanWins, 1);
@@ -402,6 +412,19 @@ assert.deepEqual(plain(r.readSeaRecords()), plain(r.emptySeaRecords()));
 stored.set(r.seaRecordsKey, "{");
 assert.deepEqual(plain(r.readSeaRecords()), plain(r.emptySeaRecords()));
 blocked = true;
+assert.deepEqual(
+  plain(s.seaInitialRound(s.encodeSeaRound(ongoing))),
+  plain(ongoing),
+);
+assert.equal(s.seaInitialRound("invalid"), null);
+assert.deepEqual(
+  plain(s.seaInitialRound(s.encodeSeaRound(ongoing), moved)),
+  plain(moved),
+);
+assert.deepEqual(
+  plain(s.seaInitialRound(s.encodeSeaRound(restarted), moved)),
+  plain(restarted),
+);
 assert.equal(s.readSeaRound(), null);
 assert.equal(s.writeSeaRound(ongoing), false);
 assert.deepEqual(plain(r.readSeaRecords()), plain(r.emptySeaRecords()));

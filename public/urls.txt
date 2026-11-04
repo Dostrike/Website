@@ -14,6 +14,7 @@ https://dostrike.com/connect4-setup
 https://dostrike.com/memory
 https://dostrike.com/gomoku-setup
 https://dostrike.com/reversi-setup
+https://dostrike.com/sea-battle-setup
 https://dostrike.com/dots-and-boxes-setup
 https://dostrike.com/colour-sort-setup
 https://dostrike.com/slide-merge-setup
@@ -21,6 +22,7 @@ https://dostrike.com/minesweeper-setup
 https://dostrike.com/sudoku-setup
 https://dostrike.com/checkers-setup
 https://dostrike.com/mancala-setup
+https://dostrike.com/blog/sea-battle-hidden-fleets-and-search
 https://dostrike.com/blog/dots-and-boxes-extra-turns-and-control
 https://dostrike.com/blog/colour-sort-runs-space-and-recovery
 https://dostrike.com/blog/slide-merge-pairs-space-and-undo

@@ -185,6 +185,33 @@ for (const [player, cell] of [
   assert.equal(e.playSea(fixture, player, cell), null);
   assert.equal(JSON.stringify(fixture), before);
 }
+const sinking = e.replaySea(touching, touching, [
+  { player: 1, cell: 0 },
+  { player: 2, cell: 99 },
+  { player: 1, cell: 10 },
+  { player: 2, cell: 98 },
+  { player: 1, cell: 1 },
+  { player: 2, cell: 97 },
+  { player: 1, cell: 2 },
+  { player: 2, cell: 96 },
+  { player: 1, cell: 3 },
+  { player: 2, cell: 95 },
+  { player: 1, cell: 4 },
+]);
+assert(sinking);
+assert.equal(sinking.turn, 2);
+assert.equal(sinking.history.at(-1).result, "sunk");
+assert.equal(sinking.history.at(-1).sunk, 0);
+assert.equal(e.seaKnowledge(sinking, 1).marks[10], "hit");
+assert.deepEqual(
+  plain(e.seaKnowledge(sinking, 1).sunk[0].cells),
+  [0, 1, 2, 3, 4],
+);
+assert.deepEqual(
+  plain(e.seaShipCells({ ship: 0, start: 46, axis: "vertical" })),
+  [46, 56, 66, 76, 86],
+);
+assert.equal(e.seaShipCells({ ship: 0, start: 46, axis: "horizontal" }), null);
 // Public-knowledge validation includes sparse arrays, forbidden hidden fields and malformed sunk lines.
 const empty = { marks: Array(100).fill("unknown"), sunk: [] };
 assert(e.validSeaKnowledge(empty));

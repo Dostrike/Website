@@ -147,7 +147,10 @@ export function makeSeaRequest(
     throw Error("Invalid Sea Battle request identity");
   const positionKey = seaPositionKey(round);
   // Neither placement seed nor fleet is an input to decision randomness.
-  const seed = seaHash(`sea-battle:decision:v1:${positionKey}`);
+  const decisionKey = round.day
+    ? `${round.day}:${round.settings.level}:${round.game.history.map((s) => `${s.player}.${s.cell}`).join(",")}`
+    : positionKey;
+  const seed = seaHash(`sea-battle:decision:v1:${decisionKey}`);
   return {
     requestId,
     positionKey,
@@ -200,6 +203,15 @@ export function readSeaRound(): SeaRound | null {
   } catch {
     return null;
   }
+}
+/** Carry a just-created battle across the route boundary even if storage is blocked. */
+export function seaInitialRound(
+  navigation: unknown,
+  saved: SeaRound | null = readSeaRound(),
+): SeaRound | null {
+  const carried =
+    typeof navigation === "string" ? decodeSeaRound(navigation) : null;
+  return carried && saved?.id !== carried.id ? carried : saved || carried;
 }
 export function writeSeaRound(round: SeaRound): boolean {
   try {

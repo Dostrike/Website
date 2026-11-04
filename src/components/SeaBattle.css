@@ -1,0 +1,259 @@
+.sea-page {
+  max-width: 1160px;
+}
+.sea-playing .board-game-heading {
+  text-align: left;
+  margin: 16px 0;
+}
+.sea-playing .board-game-heading h1 {
+  font-size: 36px;
+  letter-spacing: -1px;
+}
+.sea-playing .board-game-eyebrow,
+.sea-playing .board-game-heading > p {
+  display: none;
+}
+.sea-playing .sea-score {
+  margin: 16px auto;
+  gap: 8px;
+}
+.sea-playing #sea-fire-help {
+  margin: 12px auto;
+}
+.sea-topline,
+.sea-options,
+.sea-score {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.sea-options {
+  justify-content: flex-start;
+}
+.sea-options button[aria-pressed="true"],
+.sea-fleet-list button[aria-pressed="true"] {
+  background: var(--primary);
+  color: var(--background);
+}
+.sea-page fieldset {
+  margin: 20px 0;
+}
+.sea-saved,
+.sea-daily {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.sea-daily {
+  border-bottom: 0;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+}
+.sea-page .board-game-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.sea-score {
+  justify-content: center;
+  flex-direction: column;
+  margin: 28px auto;
+}
+.sea-score strong {
+  font-size: 26px;
+}
+.sea-score span {
+  font-size: 14px;
+}
+.sea-page #sea-fire-help,
+.sea-page #sea-place-help {
+  max-width: 700px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 20px auto;
+}
+.sea-fleet-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+.sea-fleet-list button {
+  font-size: 12px;
+  min-height: 44px;
+}
+.sea-scroll {
+  max-width: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  width: fit-content;
+  margin: 20px auto;
+}
+.sea-grid {
+  display: grid;
+  grid-template-columns: 24px repeat(10, 44px);
+  grid-template-rows: 24px repeat(10, 44px);
+  gap: 3px;
+  padding: 10px;
+  width: fit-content;
+}
+.sea-grid-entry {
+  display: contents;
+}
+.sea-axis {
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.sea-row {
+  grid-column: 1;
+}
+.sea-page .sea-cell {
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  min-width: 44px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #b9ccc9;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 750;
+  background: #edf5f3;
+  color: #244e47;
+  touch-action: manipulation;
+}
+.sea-page .sea-cell.has-ship {
+  background: #d6e4da;
+  border-color: #73917e;
+}
+.sea-page .sea-cell.mark-miss {
+  background: #e5edef;
+  color: #4e646c;
+}
+.sea-page .sea-cell.mark-hit {
+  background: #f3dec8;
+  color: #743a19;
+  border-color: #b87945;
+}
+.sea-page .sea-cell.mark-sunk {
+  background: #e1d2c1;
+  color: #593d27;
+  border-color: #92704e;
+}
+.sea-page .sea-cell.is-preview {
+  background: #f4e3b3;
+  border: 3px solid #a77524;
+}
+.sea-page .sea-cell.is-invalid {
+  border: 3px solid #9c3830;
+}
+.sea-page button:focus-visible {
+  outline: 3px solid #bd8526;
+  outline-offset: 2px;
+}
+.sea-ocean {
+  pointer-events: none;
+}
+.sea-boards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.sea-panel {
+  min-width: 0;
+}
+.sea-panel h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.sea-panel > p {
+  font-size: 12px;
+  min-height: 36px;
+}
+.sea-preview,
+.sea-error {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 18px;
+  max-width: 650px;
+  margin: 20px auto;
+  text-align: center;
+}
+.sea-preview button {
+  margin: 4px;
+}
+.sea-notice {
+  min-height: 40px;
+  max-width: 750px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.sea-start,
+.sea-handoff {
+  text-align: center;
+}
+.sea-handoff a {
+  display: block;
+  margin-top: 24px;
+}
+.sea-page .board-game-actions {
+  justify-content: center;
+}
+.sea-history {
+  max-width: 750px;
+  margin: 24px auto;
+}
+.sea-history summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px;
+}
+.sea-history li {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.sea-history ol {
+  padding-left: 26px;
+}
+.sea-ocean[role="img"] {
+  font-size: 18px;
+}
+@media (max-width: 1150px) {
+  .sea-boards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .sea-topline {
+    font-size: 12px;
+  }
+  .sea-page .board-game-heading h1 {
+    font-size: 42px;
+  }
+  .sea-page .board-game-actions button {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .sea-score strong {
+    font-size: 23px;
+  }
+  .sea-options button {
+    min-height: 44px;
+  }
+}

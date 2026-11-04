@@ -13,6 +13,67 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Sea Battle: hidden fleets, hits and honest search',
+    excerpt: 'Use a checked coordinate example to distinguish a hit from a sunk ship, avoid treating touching ships as one, and understand what the computer’s search scores actually mean.',
+    slug: 'sea-battle-hidden-fleets-and-search',
+    date: '2026-11-05', readTime: '4 min read', category: 'Sea Battle',
+    content: `
+## Arrange a fleet you can read
+
+DoStrike’s ocean has rows A to J and columns 1 to 10. The five ships have lengths 5, 4, 3, 3 and 2. Each occupies a straight horizontal or vertical segment. Touching is allowed; overlapping and crossing the boundary are not. There is no diagonal placement.
+
+The placement checklist names each ship and shows its length. Select one, select a starting coordinate, then confirm the preview. Rotate changes the direction. Selecting an already placed ship lets you reposition it; the old position is replaced only when the new placement is legal and confirmed. Auto-place fills the fleet but leaves it editable before battle.
+
+For example, a length-five Flagship starting at E5 horizontally occupies E5, E6, E7, E8 and E9. Starting it at E7 horizontally would run past column 10 and is rejected. Rotate at E7 instead and it occupies E7, F7, G7, H7 and I7, provided those cells do not overlap another ship.
+
+## A hit passes the turn
+
+A fires first. Each player fires one shot at an unused coordinate, then hands over, even after a hit. There is no Salvo or bonus turn. A ship sinks when all its occupied cells have been hit. Sinking the final opposing ship ends the battle immediately, without an answering shot.
+
+Take a Flagship on A1 to A5. A shot at A1 reports hit; it does not disclose the other four cells. The other player fires next. Later hits at A2, A3 and A4 still leave that ship afloat. Only the hit at A5 sinks it, revealing its identity and complete occupied segment.
+
+This web version reports only hit or miss before sinking. Some physical editions announce the ship’s identity on every hit. The distinction matters: a hit on its own does not tell you which remaining length you found. The rules here also permit adjacent ships and do not automatically mark water around a sunk one.
+
+## Adjacent hits can belong to different ships
+
+Place a Flagship horizontally on A1 to A5 and a Cruiser horizontally on B1 to B4. The ships touch along their sides, which is legal here. Hits at A1 and B1 are adjacent but belong to different ships.
+
+You cannot conclude that a vertical ship continues from A1 through B1. A useful hypothesis is still a hypothesis. Once the Flagship sinks, A1 to A5 become known sunk cells, while the hit at B1 remains unresolved until its own ship sinks. The computer keeps that distinction rather than merging every touching hit into a single supposed ship.
+
+## A worked search position: E5, D5 and E4
+
+Consider an otherwise untried attack map with E5 hit and D5 and E4 marked as misses. No ship has sunk yet. One legal hidden arrangement puts the Flagship horizontally from E5 to E9; the example does not assume that you know this arrangement during play.
+
+DoStrike’s Hard heuristic examines each still-afloat ship separately. It rejects straight candidate placements that cross a known miss or sunk cell. If a placement contains an unresolved hit, it contributes to a target score for its untried cells; placements covering more hits receive greater weight. Other ships may touch, so this is not a proof that every nearby hit belongs to that placement.
+
+In this position, the misses block continuation upward from E5 and leftward from E5. The independent evaluator and actual computer agree that E6 and F5 have the two maximal target scores. Either can be suggested, with seeded tie-breaking. Firing at F5 could still miss in the legal horizontal-Flagship arrangement above. A maximal score is not a guarantee of a hit.
+
+These are counts of individually compatible placements, not a calibrated probability over all legal complete fleets. The heuristic does not enumerate every joint arrangement or claim perfect play. The worked result is checked against a separate row-and-column evaluator, alongside complete games and layouts with touching ships.
+
+## Know what the computer is allowed to see
+
+Easy selects a seeded unused coordinate. Medium tries untried orthogonal neighbours of unresolved hits, then hunts a checkerboard before falling back to other cells. Hard uses the placement-count heuristic described above. Its work is bounded by the fixed board and fleet, rather than an unbounded search.
+
+Computer and hint requests contain observed marks and fully sunk ships only. They do not contain unhit positions, an unsunk ship’s identity or the fleet-generation seed. Tests construct different hidden fleets with identical observed transcripts, including hits and sinks, and require identical decisions for the same level and decision seed.
+
+A returned hint previews a target and marks the battle assisted. It does not reveal whether that shot will hit. Cancelling before a usable suggestion arrives changes neither shots nor assistance. Undo also marks assistance. Against the computer it returns to your previous decision by removing your shot and any answer; it cannot undo the initial computer shot before you have acted. Completed results close Undo.
+
+## Save, replay and pass the device
+
+Saved battles rebuild their state from validated fleets and the legal ordered shot transcript. Restart keeps those fleets and the original daily date but creates a new attempt. Records distinguish local A/B results from computer wins, separate levels and your side, and show assisted and unassisted wins. The most recent 128 completed attempt IDs are remembered to prevent reload duplicates.
+
+Local play uses deliberate handoff screens between placements and shots. The outgoing board is removed before the next player presses Ready. This supports casual shared-device play; both fleets still exist in browser memory and saved storage, so it is not an anti-cheat or secure multiplayer system. Completed battles offer an explicit fleet-review option.
+
+On a phone the two boards scroll inside their frames, keeping cell targets large. Arrow keys explore a board, Home and End move within a row, and Enter or Space selects and confirms. Escape cancels a preview without firing. Miss, hit and sunk symbols supplement colour.
+
+## What the daily repeats
+
+The daily fixes the opponent fleet from your local date and uses Hard with you as A. You choose your own placement, so it is a reproducible challenge rather than a unique-answer puzzle or equal-condition leaderboard. Only a win on that challenge’s original date advances the browser streak; assisted wins are included and labelled. Restarting an old daily does not move it to today.
+
+Progress and records depend on this browser’s storage. Clearing it removes the local history; blocked or unavailable storage is reported while play remains possible. No account, cross-device record or guaranteed winning strategy is implied.
+`
+  },
+  {
     title: 'Dots and Boxes: extra turns, double captures and control',
     excerpt: 'Worked positions explain why a capture keeps the turn, how one edge can claim two boxes, and when declining an immediate box improves the final score.',
     slug: 'dots-and-boxes-extra-turns-and-control',
@@ -1565,7 +1626,7 @@ Endgame discipline turns unstable games into reliable results against both human
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers twelve free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers thirteen free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1636,6 +1697,10 @@ Undo restores the previous board, score and random stream, marks the round assis
 Sort four-unit numbered colours into full single-colour tubes. Choose 3, 5 or 7 colours plus two empty tubes. These settings describe size, not a guaranteed human difficulty. Select source and destination, inspect the maximal-pour preview and confirm; arrows, Enter, Escape and pointer controls share the same actions.
 
 Every generated starting board is checked against a full forward solution witness. Undo marks assistance. Path hints only work when your exact board matches that witness; after a deviation they can honestly be unavailable. Saved puzzles replay their moves, and local records separate assisted solves from unassisted bests. The guide demonstrates whole runs, capacity-limited transfers and illegal mismatches.
+
+## Sea Battle: learn from hidden information
+
+Arrange five ships on a 10 by 10 ocean, then alternate single shots even after a hit. The attack map keeps unsunk enemy positions hidden, while your own ocean shows incoming fire. Computer choices use public shot information; local play uses deliberate handoff screens. Try the date-seeded opponent fleet or continue a saved battle.
 
 ## Dots and Boxes: consider who moves again
 
