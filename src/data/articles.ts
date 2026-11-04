@@ -13,6 +13,70 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Sudoku: candidates, singles and useful pencil notes',
+    excerpt: 'Two engine-checked examples distinguish a cell with one candidate from a digit with only one place, and explain how notes, hints and answer reveals work on DoStrike.',
+    slug: 'sudoku-candidates-singles-and-pencil-notes',
+    date: '2026-11-04', readTime: '4 min read', category: 'Sudoku',
+    content: `
+## Start with the three units
+
+In classic Sudoku, each row, column and 3 by 3 box must contain each digit from 1 to 9 once. A unit is one of those nine-cell groups. Fixed clues stay put; fill the other cells by combining the restrictions from all three units they belong to.
+
+DoStrike generates its own boards and checks that each has exactly one solution. The generator removes a clue only after an exact search proves uniqueness within its work budget. If that proof does not finish in budget, the clue stays. This is separate from a claim about how difficult a human will find the puzzle.
+
+## Example 1: one candidate in a cell
+
+Imagine a completed valid row reading 5, 3, 4, 6, 7, 8, 9, 1, 2, with only its first cell erased. The row already contains every digit except 5, so that cell must be 5. Its column and box must agree as well.
+
+The game calls this a single-candidate deduction: after checking the row, column and box, only one possible digit remains in that cell. Pencil in possibilities first if that helps you see which numbers have been excluded. A small candidate set is a possibility list, not a promise that your previous entries were all correct.
+
+## Example 2: one place for a digit
+
+Here is an original generated position. Zero means empty; rows are shown from top to bottom.
+
+- Row 1: 0 1 6 0 3 9 0 0 2
+- Row 2: 0 9 0 2 0 0 5 1 8
+- Row 3: 5 0 2 8 0 0 9 0 0
+- Row 4: 0 0 0 6 0 2 0 9 0
+- Row 5: 0 0 3 0 0 4 0 0 0
+- Row 6: 9 0 0 0 1 0 0 8 0
+- Row 7: 0 0 0 0 0 0 0 6 0
+- Row 8: 0 0 9 0 0 0 1 0 5
+- Row 9: 0 6 1 0 2 0 0 0 0
+
+The candidates at row 1, column 4 are 4, 5 and 7. It is not a single-candidate cell. Instead, scan where 5 can go across row 1.
+
+Column 1 already has a 5 in row 3. Column 7 already has a 5 in row 2. The top-right box already has that same row-2 5, which also excludes row 1, column 8. Row 1, column 4 is the only remaining place for 5 in the row, so place 5 there.
+
+That is an only-place deduction, often called a hidden single: focus on one digit in a unit, rather than one cell’s complete list. The game highlights the relevant unit and explains which of the two checks it used. These examples are verified against the implementation, not decorative diagrams.
+
+## Make notes work for you
+
+Select an empty editable cell, turn Notes on and choose a digit to toggle its pencil mark. A filled cell cannot contain notes. Entering a value clears that cell’s marks, and Undo restores both the previous value and its previous notes.
+
+Notes on other cells are manual. When a new value rules out a pencil mark elsewhere, remove it yourself; the interface does not silently tidy every peer cell. Try recording only the possibilities you have actually checked. More marks are not always more useful.
+
+A duplicate creates a visible exclamation mark as well as a colour change, and the cell’s accessible label says conflict. Those marks check immediate row/column/box duplication. An entry can still be wrong without creating an immediate duplicate, so an unmarked cell is not an answer check.
+
+## Hints explain; reveals disclose
+
+Explain a single first checks for conflicting entries, then looks for a supported deduction. If no single-candidate or only-place move is available, it says so instead of inventing an explanation. You may need a different technique.
+
+Check candidates, explained hints and explicit answer reveals mark the solve as assisted. An answer reveal fills the selected editable cell from the known solution and is labelled as a reveal; it is not presented as a logical deduction. Asking for a hint also checks whether current entries disagree with that solution before offering a deduction. Undo does not erase the assisted status.
+
+There is no timer, forced mistake limit, payment or ad gate. The goal is to understand the next step and finish a valid board.
+
+## Understand the labels and the daily
+
+Easy, Medium and Hard target 42, 35 and 29 clues. Sometimes more clues remain to preserve a unique solution. The setup calls these clue-density settings and the game shows the actual count. They are not calibrated ratings of the techniques required; fewer clues alone do not establish a harder human puzzle.
+
+The daily is a website-generated Medium board keyed to the local calendar date. It has one verified solution. Finish it on that date to advance the browser-local streak; an older saved daily remains playable but does not backdate a streak.
+
+Progress and assisted/unassisted solve counts stay on this browser, without a shared account. Clearing browser data removes them. A reload restores the puzzle, values, notes and undo history; only the most recent 300 edit states are retained. No solving-time record is collected.
+`
+  },
+
+  {
     title: 'Checkers: compulsory captures, complete jumps and kings',
     excerpt: 'Worked English draughts positions explain why a quiet move can be illegal, when you may choose a shorter capture, and why crowning ends a chain.',
     slug: 'checkers-captures-kings-and-complete-jumps',

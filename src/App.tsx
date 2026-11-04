@@ -20,6 +20,7 @@ const TicTacToeSetup = lazy(() => import("./components/TicTacToeSetup"));
 const Connect4Setup = lazy(() => import("./components/Connect4Setup"));
 const Connect4Game = lazy(() => import("./components/Connect4Game"));
 const MemoryGame = lazy(() => import("./components/MemoryGame"));
+const Sudoku = lazy(() => import("./components/Sudoku"));
 const Checkers = lazy(() => import("./components/Checkers"));
 const Mancala = lazy(() => import("./components/Mancala"));
 const Reversi = lazy(() => import("./components/Reversi"));
@@ -89,6 +90,8 @@ function App() {
                     <Route path="/gomoku" element={<Gomoku />} />
                     <Route path="/reversi-setup" element={<Reversi />} />
                     <Route path="/reversi" element={<Reversi />} />
+                    <Route path="/sudoku-setup" element={<Sudoku />} />
+                    <Route path="/sudoku" element={<Sudoku />} />
                     <Route path="/checkers-setup" element={<Checkers />} />
                     <Route path="/checkers" element={<Checkers />} />
                     <Route path="/mancala-setup" element={<Mancala />} />

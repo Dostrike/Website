@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import ts from 'typescript';import vm from 'node:vm';
+const modules={};function module(name){if(modules[name])return modules[name];const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(`src/utils/${name}.ts`,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{exports,Date,require:p=>module(p.replace('./',''))});return modules[name]=exports;}
+const e=module('sudokuEngine'),s=module('sudokuSession'),r=module('sudokuRecords');
+const p=e.generateSudoku('session-fixture','medium');let game=s.newSudokuRound(p,'round');const i=p.givens.findIndex(n=>!n),fixed=p.givens.findIndex(Boolean);
+assert.equal(s.editSudoku(game,fixed,9),game);assert.equal(s.editSudoku(game,-1,2),game);
+const noted=s.editSudoku(game,i,2,true);assert.deepEqual(JSON.parse(JSON.stringify(noted.notes[i])),[2]);assert.equal(game.notes[i].length,0);
+const filled=s.editSudoku(noted,i,p.solution[i]);assert.equal(filled.notes[i].length,0);assert.equal(s.undoSudoku(filled).notes[i][0],2);assert.equal(s.undoSudoku(noted).values[i],0);
+assert.deepEqual(JSON.parse(JSON.stringify(s.decodeSudokuRound(s.encodeSudokuRound(filled)))),JSON.parse(JSON.stringify(filled)));
+for(const mutate of [v=>{v.values[fixed]=0},v=>{v.notes[i]=[2,2]},v=>{v.history[0].values[fixed]=0},v=>{v.day='2026-11-04'},v=>{v.level='made-up'},v=>{v.values[i]=99}]){const v=JSON.parse(s.encodeSudokuRound(filled));mutate(v);assert.equal(s.decodeSudokuRound(JSON.stringify(v)),null);}
+for(let j=0;j<81;j++)if(!p.givens[j])game=s.editSudoku(game,j,p.solution[j]);assert(s.sudokuRoundComplete(game));assert.equal(s.decodeSudokuRound(s.encodeSudokuRound(game)),null);assert.equal(s.editSudoku(game,i,0),game);
+const base=r.emptySudokuRecords(),one=r.recordSudoku(base,'a',true,'2026-11-04','2026-11-04');assert.equal(one.assisted,1);assert.equal(base.solves,0);assert.equal(r.recordSudoku(one,'a',true,null,'2026-11-04'),one);const two=r.recordSudoku(one,'b',false,'2026-11-05','2026-11-05');assert.equal(two.streak,2);assert.equal(two.unassisted,1);const old=r.recordSudoku(two,'c',false,'2026-11-03','2026-11-06');assert.equal(old.streak,2);assert.equal(r.sudokuStreak(old,'2026-11-07'),0);
+console.log('Sudoku session/records passed: protected clues, notes/values/undo immutability, regenerated identity, malformed saves/history, full solve, completed-save exclusion, outcome dedupe, assisted split and daily date boundaries.');

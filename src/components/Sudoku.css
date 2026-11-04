@@ -1,0 +1,162 @@
+.sudoku-page section > p {
+  max-width: 720px;
+  margin: 16px auto;
+}
+.sudoku-status {
+  text-align: center;
+  font-size: 22px;
+}
+.sudoku-scroll {
+  max-width: 100%;
+  width: fit-content;
+  margin: 24px auto;
+  overflow: auto;
+  border: 3px solid #24473b;
+  overscroll-behavior-x: contain;
+}
+.sudoku-board {
+  --cell: clamp(44px, 6vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(9, var(--cell));
+  width: calc(9 * var(--cell));
+  background: #fffdf2;
+}
+.board-game-page button.sudoku-cell {
+  position: relative;
+  width: var(--cell);
+  height: var(--cell);
+  padding: 0;
+  border: 0;
+  border-right: 1px solid #9eaa98;
+  border-bottom: 1px solid #9eaa98;
+  border-radius: 0;
+  background: #fffdf5;
+  color: #195947;
+  font-size: 24px;
+  display: grid;
+  place-items: center;
+}
+.board-game-page button.sudoku-cell.given {
+  background: #e0e5d5;
+  color: #233c31;
+  font-weight: 800;
+}
+.board-game-page button.sudoku-cell.box-right {
+  border-right: 3px solid #24473b;
+}
+.board-game-page button.sudoku-cell.box-bottom {
+  border-bottom: 3px solid #24473b;
+}
+.sudoku-cell.selected {
+  box-shadow: inset 0 0 0 3px #bd8425;
+  z-index: 1;
+}
+.sudoku-cell.conflict {
+  color: #952e21 !important;
+  background: #ffe3d8 !important;
+}
+.sudoku-cell b {
+  position: absolute;
+  right: 3px;
+  top: 0;
+  font-size: 12px;
+}
+.sudoku-cell.hint-unit:not(.selected) {
+  box-shadow: inset 0 0 0 2px #70a28c;
+}
+.sudoku-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 90%;
+  height: 90%;
+  font-size: 10px;
+  line-height: 1;
+  align-items: center;
+}
+.sudoku-notes small {
+  min-width: 10px;
+  min-height: 10px;
+}
+.sudoku-keypad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 560px;
+  margin: 20px auto;
+}
+.sudoku-keypad button {
+  width: 48px;
+  font-size: 22px;
+  font-weight: 700;
+}
+.sudoku-reveal {
+  max-width: 650px;
+  margin: 24px auto;
+}
+.sudoku-reveal summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.sudoku-selection {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.sudoku-loading {
+  text-align: center;
+}
+.sudoku-loading a {
+  display: block;
+  margin: 20px;
+}
+.sudoku-assistance {
+  display: block;
+  margin: auto;
+}
+.sudoku-page .board-game-result a {
+  display: block;
+  margin: 16px;
+}
+.sudoku-page .board-game-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sudoku-page #sudoku-help {
+  max-width: 650px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--text-muted);
+}
+@media (max-width: 600px) {
+  .sudoku-page .board-game-topline {
+    font-size: 12px;
+    gap: 8px;
+  }
+  .sudoku-page .board-game-heading {
+    margin: 20px 0;
+  }
+  .sudoku-page .board-game-heading h1 {
+    font-size: 40px;
+  }
+  .sudoku-page .board-game-heading > p:last-child {
+    font-size: 14px;
+  }
+  .sudoku-page #sudoku-help {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .sudoku-page .board-game-actions {
+    gap: 8px;
+  }
+  .sudoku-page .board-game-actions button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .sudoku-page .sudoku-scroll {
+    margin: 16px auto;
+  }
+}

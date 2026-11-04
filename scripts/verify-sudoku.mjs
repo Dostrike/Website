@@ -22,3 +22,6 @@ for(const level of ['easy','medium','hard'])for(let n=0;n<12;n++){
 }
 assert(hidden>0);assert(singles>0);assert(boards.size>30);assert.equal(JSON.stringify(puzzle),'['+'530070000600195000098000060800060003400803001700020006060000280000419005000080079'.split('').join(',')+']');assert.equal(sudokuUnits.length,27);
 console.log(`Sudoku passed: independent uniqueness verification for 36 reproducible generated boards, valid solutions/givens, conflicts, zero/multiple/unique solution cases, bounded search, ${singles} actual single-candidate and ${hidden} only-place deductions. Slowest generator ${Math.round(maxMs)}ms.`);
+// Published only-place example: no single-candidate cell first; 5 has one spot in row 1.
+const guide='016039002090200518502800900000602090003004000900010080000000060009000105061020000'.split('').map(Number);
+assert.deepEqual(plain(sudokuCandidates(guide,3)),[4,5,7]);assert.equal(sudokuLogicalHint(guide).index,3);assert.equal(sudokuLogicalHint(guide).digit,5);assert.equal(sudokuLogicalHint(guide).technique,'only-place');assert.equal(countSudokuSolutions(guide),1);
