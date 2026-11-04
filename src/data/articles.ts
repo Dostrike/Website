@@ -13,6 +13,71 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Dots and Boxes: extra turns, double captures and control',
+    excerpt: 'Worked positions explain why a capture keeps the turn, how one edge can claim two boxes, and when declining an immediate box improves the final score.',
+    slug: 'dots-and-boxes-extra-turns-and-control',
+    date: '2026-11-05', readTime: '4 min read', category: 'Dots and Boxes',
+    content: `
+## Count boxes, not dots
+
+DoStrike’s size selector counts boxes per side. A 2 by 2-box board has 3 by 3 dots and 12 possible unit edges. The other choices are 3 by 3 boxes with 24 edges, and 4 by 4 boxes with 40. Every line joins adjacent dots horizontally or vertically; diagonals, jumps and drawing over an existing edge are unavailable.
+
+Player A starts. The player who draws the fourth side of a box claims it and moves again. A non-capturing edge passes the turn. When all boxes are claimed, the larger count wins; equal totals draw. You can choose either side against the computer or share the device locally.
+
+## One box: the fourth edge decides ownership
+
+Consider the top-left box on a 2 by 2-box board. Its corners are the dots at rows 1 and 2, columns 1 and 2. If its top, left and right edges are drawn but the bottom is open, drawing that bottom edge claims it.
+
+The earlier edge colours do not determine ownership of the box. A can claim it by finishing its fourth edge even if B drew the first three. A then has the next action. If A next draws an edge that completes no box, the turn passes to B.
+
+## Two boxes: one shared edge
+
+Take the two neighbouring boxes in the top row. Draw their top and bottom edges and the two outside vertical edges, leaving only the central shared vertical edge missing. Both boxes now have three sides.
+
+The shared edge runs from row 1 column 2 to row 2 column 2. Drawing it claims both boxes for the mover and adds two points. The mover takes another action, but does not bank two future turns. A subsequent non-capture still hands over immediately.
+
+The preview shows how many boxes an edge would claim before you commit. Use it to check the shared-edge example rather than assuming every capture is worth one.
+
+## A legal capture can give away control
+
+Here is a reproducible 3 by 3-box ending, checked with an independent exhaustive solver. Number the dots from row 1 to 4 and column 1 to 4. All unit edges are drawn except these six:
+
+- The top horizontal edge from row 1 column 1 to row 1 column 2.
+- The vertical edge from row 1 column 2 to row 2 column 2.
+- Each of the four vertical edges connecting row 3 to row 4, at columns 1, 2, 3 and 4.
+
+Four boxes have already been claimed: A has three and B one. It is A’s turn. The two unclaimed boxes at the top form one region; the three bottom-row boxes form another.
+
+A can take an immediate box by drawing the missing upper shared vertical edge. With best replies thereafter, the resulting final score is A 5, B 4.
+
+Alternatively A can draw the missing top horizontal edge. That captures nothing and passes the turn. With best continuation, A can finish 6 to 3 instead. The move offers the remaining top pair while preserving access to the bottom region later.
+
+DoStrike’s Medium capture heuristic takes the immediate vertical capture in this fixture. Hard completes an exact six-edge ending search and chooses the horizontal handover. The comparison establishes this position’s score difference, not a rule that every sacrifice is good or that every chain should be handled the same way.
+
+## What the three computer levels actually do
+
+Easy chooses a seeded legal edge. Medium prefers an immediate capture, then fewer unclaimed three-sided boxes. Hard searches with the actual player to move at each node, so a capture does not incorrectly switch the simulated side.
+
+Hard has finite time and node budgets. Small endings use memoized future-score search; a position is labelled solved only when the requested remaining search actually finishes. If the budget expires, the game uses a legal bounded choice or fallback and does not call it perfect. The hint explanation distinguishes a finished ending from a limited lookahead.
+
+Hints are suggestions, not enforced moves. Requesting one that returns a usable edge marks the round assisted. It previews the edge so you can inspect the proposed capture and then confirm or cancel. Undo also marks assistance, and that flag survives reload.
+
+## Keep a readable history
+
+Every drawn edge is listed with its endpoints and mover. In local play Undo removes one edge. Against the computer it returns to the previous human decision, removing the computer’s intervening extra-turn sequence as well as your latest placement. It cannot undo an opening computer move before you have acted.
+
+Saved rounds replay their legal history. Restart begins a new attempt from the same opening. Completed results are counted once, and Undo closes after completion. Local A/B results stay separate from wins against the computer; board size, level and your side also have separate browser records. No leaderboard or cross-device account is implied.
+
+## Daily openings and phone controls
+
+The daily uses your local date to generate eight legal non-capturing edges on a 3 by 3-box board. No boxes are claimed and A moves next. You play A against Hard to finish a full game. It is not a single-answer puzzle, and only a win on its original date advances the local streak.
+
+Tab and arrows explore edge controls. Enter or Space previews an available edge; activating that same edge again confirms it. Escape cancels without drawing. The separate Confirm edge button is also available. Edge labels state their exact endpoints and owner, and box letters make ownership readable without colour alone.
+
+Larger boards scroll within their frame on a phone. Their targets remain large rather than shrinking every line to fit. Cancel search stops a running computer or hint request; retry or undo can continue from the actual saved position. Records and progress depend on browser storage being available and can disappear when it is cleared.
+`
+  },
+  {
     title: 'Colour Sort: top runs, empty space and recovery',
     excerpt: 'Worked pour fragments explain maximal runs, capacity limits and why a legal move is not a solution guarantee. Learn what DoStrike’s verified path hints can actually tell you.',
     slug: 'colour-sort-runs-space-and-recovery',
@@ -1494,13 +1559,13 @@ Endgame discipline turns unstable games into reliable results against both human
     excerpt: 'A clear tour of dostrike.com: which game fits your goal, how AI and difficulty options work, and the best articles to read first.',
     slug: 'dostrike-portal-player-guide',
     date: '2026-05-01',
-    updated: '2026-11-04',
+    updated: '2026-11-05',
     readTime: '11 min read',
     category: 'Guides',
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers eleven free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers twelve free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1571,6 +1636,12 @@ Undo restores the previous board, score and random stream, marks the round assis
 Sort four-unit numbered colours into full single-colour tubes. Choose 3, 5 or 7 colours plus two empty tubes. These settings describe size, not a guaranteed human difficulty. Select source and destination, inspect the maximal-pour preview and confirm; arrows, Enter, Escape and pointer controls share the same actions.
 
 Every generated starting board is checked against a full forward solution witness. Undo marks assistance. Path hints only work when your exact board matches that witness; after a deviation they can honestly be unavailable. Saved puzzles replay their moves, and local records separate assisted solves from unassisted bests. The guide demonstrates whole runs, capacity-limited transfers and illegal mismatches.
+
+## Dots and Boxes: consider who moves again
+
+Choose 2, 3 or 4 boxes per side, a computer level or a local opponent. A starts; in computer play you may choose either side. One edge can close two boxes, and any capture retains the turn. More boxes wins, with equal totals drawing. The guide contrasts a tempting capture with an engine-checked handover.
+
+Preview and confirm edges with pointer or keyboard, scroll internally on a phone, save a round and inspect edge history. Computer Undo returns to the previous human decision, including any intervening extra-turn sequence, and marks assistance. The daily has eight legal noncapturing edges on a three-box-per-side board, then continues against Hard as A. It has no unique prescribed answer.
 
 ## Daily formats, with different goals
 

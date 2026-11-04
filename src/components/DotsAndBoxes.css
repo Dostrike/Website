@@ -1,0 +1,246 @@
+.dots-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.dots-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dots-options button[aria-pressed="true"] {
+  background: var(--primary);
+  color: var(--background);
+  font-weight: 700;
+}
+.dots-page .board-game-setup > button {
+  margin-bottom: 20px;
+}
+.dots-page fieldset {
+  margin-top: 20px;
+}
+.dots-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin: 24px auto;
+  font-size: 15px;
+}
+.dots-score > span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.dots-score strong {
+  font-size: 30px;
+}
+.dots-score > span:nth-child(2) {
+  font-size: 21px;
+  font-weight: 750;
+}
+.dots-page #dots-help {
+  max-width: 620px;
+  margin: 16px auto;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.dots-scroll {
+  overflow: auto;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  margin: 24px auto;
+  overscroll-behavior: contain;
+  width: fit-content;
+}
+.dots-board {
+  position: relative;
+  flex: none;
+}
+.dots-point {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+.dots-axis {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.dots-box {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #244e3f;
+}
+.dots-box.owner-1 {
+  background: #d8e7d3;
+}
+.dots-box.owner-2 {
+  background: #f1d7bf;
+  color: #71472f;
+}
+.dots-box.just-claimed {
+  box-shadow: inset 0 0 0 2px #b68427;
+}
+.dots-page button.dots-edge {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  min-height: 44px;
+  background: transparent;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  touch-action: manipulation;
+}
+.dots-page button.dots-edge.horizontal {
+  width: 52px;
+  height: 44px;
+}
+.dots-page button.dots-edge.vertical {
+  width: 44px;
+  height: 52px;
+}
+.dots-edge .dots-line {
+  background: #acb8ae;
+  pointer-events: none;
+  border-radius: 3px;
+}
+.dots-edge.horizontal .dots-line {
+  width: 44px;
+  height: 4px;
+}
+.dots-edge.vertical .dots-line {
+  width: 4px;
+  height: 44px;
+}
+.dots-edge.owner-1 .dots-line {
+  background: #2e6752;
+}
+.dots-edge.owner-0.horizontal .dots-line {
+  height: 0;
+  border-top: 2px dashed #829686;
+  background: transparent;
+}
+.dots-edge.owner-0.vertical .dots-line {
+  width: 0;
+  border-left: 2px dashed #829686;
+  background: transparent;
+}
+.dots-edge.owner-0.is-preview .dots-line {
+  border-color: #a57122;
+}
+.dots-edge.owner-2 .dots-line {
+  background: #b66e3f;
+}
+.dots-edge .dots-owner {
+  position: absolute;
+  font-size: 10px;
+  background: var(--surface);
+  border-radius: 4px;
+  padding: 1px 2px;
+  color: var(--text);
+  pointer-events: none;
+}
+.dots-page button.dots-edge.is-preview {
+  background: #f1e3bd;
+  border-color: #b68427;
+}
+.dots-page button.dots-edge.is-preview .dots-line {
+  background: #a57122;
+}
+.dots-page button:focus-visible {
+  outline: 3px solid #bd8526;
+  outline-offset: 2px;
+}
+.dots-preview {
+  text-align: center;
+  margin: 16px auto;
+  padding: 14px;
+  max-width: 600px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.dots-preview button {
+  margin: 4px;
+}
+.dots-notice {
+  text-align: center;
+  max-width: 700px;
+  font-size: 13px;
+  min-height: 36px;
+  margin: 16px auto;
+}
+.dots-error {
+  text-align: center;
+  padding: 14px;
+  border: 1px solid #ba744b;
+  border-radius: 14px;
+}
+.dots-page .board-game-actions {
+  justify-content: center;
+}
+.dots-history {
+  margin: 28px auto;
+  max-width: 700px;
+}
+.dots-history summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px;
+}
+.dots-history li {
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 6px 0;
+  overflow-wrap: anywhere;
+}
+.dots-history ol {
+  padding-left: 24px;
+}
+@media (max-width: 600px) {
+  .dots-score {
+    gap: 12px;
+  }
+  .dots-score > span:nth-child(2) {
+    font-size: 17px;
+  }
+  .dots-score strong {
+    font-size: 27px;
+  }
+  .dots-page .board-game-actions button {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+  .dots-page .board-game-heading h1 {
+    font-size: 42px;
+  }
+  .dots-topline {
+    font-size: 12px;
+  }
+  .dots-page #dots-help {
+    font-size: 12px;
+  }
+}

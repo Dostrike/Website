@@ -22,6 +22,7 @@ const Connect4Game = lazy(() => import("./components/Connect4Game"));
 const MemoryGame = lazy(() => import("./components/MemoryGame"));
 const SlideMerge = lazy(() => import("./components/SlideMerge"));
 const ColourSort = lazy(() => import("./components/ColourSort"));
+const DotsAndBoxes = lazy(() => import("./components/DotsAndBoxes"));
 const Minesweeper = lazy(() => import("./components/Minesweeper"));
 const Sudoku = lazy(() => import("./components/Sudoku"));
 const Checkers = lazy(() => import("./components/Checkers"));
@@ -97,6 +98,8 @@ function App() {
                     <Route path="/slide-merge" element={<SlideMerge />} />
                     <Route path="/colour-sort-setup" element={<ColourSort />} />
                     <Route path="/colour-sort" element={<ColourSort />} />
+                    <Route path="/dots-and-boxes-setup" element={<DotsAndBoxes />} />
+                    <Route path="/dots-and-boxes" element={<DotsAndBoxes />} />
                     <Route path="/minesweeper-setup" element={<Minesweeper />} />
                     <Route path="/minesweeper" element={<Minesweeper />} />
                     <Route path="/sudoku-setup" element={<Sudoku />} />

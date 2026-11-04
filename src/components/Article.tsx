@@ -9,6 +9,7 @@ import GuideExercises from "./GuideExercises";
 
 const ARTICLE_AUTHOR = "DoStrike Editorial Team";
 const IMPLEMENTATION_REFERENCES: Record<string, string> = {
+  'dots-and-boxes-extra-turns-and-control': 'dotsAndBoxesEngine',
   'colour-sort-runs-space-and-recovery': 'colourSortEngine',
   'slide-merge-pairs-space-and-undo': 'slideMergeEngine',
   'minimax-algorithm-tic-tac-toe': 'gameLogic',
@@ -176,7 +177,7 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug.includes("colour-sort") ? "/colour-sort-setup" : article.slug.includes("slide-merge") ? "/slide-merge-setup" : article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
+                article.slug.includes("dots-and-boxes") ? "/dots-and-boxes-setup" : article.slug.includes("colour-sort") ? "/colour-sort-setup" : article.slug.includes("slide-merge") ? "/slide-merge-setup" : article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
                   ? "/mancala-setup"
                   : article.slug.includes("reversi")
                   ? "/reversi-setup"
@@ -189,7 +190,7 @@ const Article: React.FC = () => {
                     : "/practice"
               }
             >
-              {article.slug.includes("colour-sort") ? "Play Colour Sort" : article.slug.includes("slide-merge") ? "Play Slide Merge" : article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
+              {article.slug.includes("dots-and-boxes") ? "Play Dots and Boxes" : article.slug.includes("colour-sort") ? "Play Colour Sort" : article.slug.includes("slide-merge") ? "Play Slide Merge" : article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
                 ? "Play Mancala"
                 : article.slug.includes("reversi")
                 ? "Play Reversi"
@@ -226,6 +227,7 @@ const Article: React.FC = () => {
           {article.slug === "slide-merge-pairs-space-and-undo" && <p>Classic rules reference: <a href="https://github.com/gabrielecirulli/2048/blob/master/js/game_manager.js">Gabriele Cirulli’s original 2048 game manager</a>. DoStrike uses its own engine, artwork, seeded daily and assisted undo records.</p>}
           {article.slug === "minesweeper-safe-moves-flags-and-subsets" && <p>Rules and control reference: <a href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/mines.html">Simon Tatham’s Mines manual</a>. DoStrike has its own generator, proof checks and assisted recovery rules.</p>}
           {article.slug === "history-of-tic-tac-toe" && <p>Historical sources checked November 4, 2026: <a href="https://www.cl.cam.ac.uk/events/EDSAC99/simulators/india/examples.html">Cambridge EDSAC99 example-program catalogue</a>; <a href="https://www.cl.cam.ac.uk/relics/chron.html">Wheeler/Hartley historical chronology</a>. Modern experiments: <Link to="/blog/minimax-algorithm-tic-tac-toe">DoStrike’s AI policies</Link>, <Link to="/blog/mathematical-proof-tic-tac-toe-draw">exhaustive counts</Link> and <Link to="/blog/future-tic-tac-toe-ai-vr-innovation">reviewing your round</Link>.</p>}
+          {article.slug === "dots-and-boxes-extra-turns-and-control" && <p>Rules reference: <a href="https://nrich.maths.org/games/put-yourself-box">Cambridge NRICH’s Put Yourself in a Box</a>. The control example is verified against DoStrike’s own rules engine and bounded search.</p>}
           {article.slug === "tic-tac-toe-variations" && <p>Ultimate routing reference checked November 4, 2026: <a href="https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/">Ben Orlin’s Ultimate Tic-Tac-Toe account</a>. Other sections define the paper rules used here; the website’s playable game uses classic rules. Compare with <Link to="/blog/complete-tic-tac-toe-strategy-guide">solver-checked classic exercises</Link>.</p>}
           {implementationReference && (
             <p>

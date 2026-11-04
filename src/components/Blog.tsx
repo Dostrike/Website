@@ -5,7 +5,7 @@ import { articles } from "../data/articles";
 export default function Blog() {
   const [category, setCategory] = useState("All");
   const [query, setQuery] = useState("");
-  const categories = ["All", "Tic-Tac-Toe", "Connect 4", "Memory", "Gomoku", "Reversi", "Mancala", "Checkers", "Sudoku", "Minesweeper", "Slide Merge", "Colour Sort"];
+  const categories = ["All", "Tic-Tac-Toe", "Connect 4", "Memory", "Gomoku", "Reversi", "Mancala", "Checkers", "Sudoku", "Minesweeper", "Slide Merge", "Colour Sort", "Dots and Boxes"];
   const filtered = articles.filter(
     (a) =>
       (category === "All" ||
@@ -19,7 +19,7 @@ export default function Blog() {
                 ? a.slug.includes("reversi")
                 : category === "Mancala"
                   ? a.slug.includes("mancala")
-                  : category === "Checkers" ? a.slug.includes("checkers") : category === "Sudoku" ? a.slug.includes("sudoku") : category === "Colour Sort" ? a.slug.includes("colour-sort") : category === "Slide Merge" ? a.slug.includes("slide-merge") : category === "Minesweeper" ? a.slug.includes("minesweeper") : a.slug.includes("tic-tac-toe"))) &&
+                  : category === "Checkers" ? a.slug.includes("checkers") : category === "Sudoku" ? a.slug.includes("sudoku") : category === "Dots and Boxes" ? a.slug.includes("dots-and-boxes") : category === "Colour Sort" ? a.slug.includes("colour-sort") : category === "Slide Merge" ? a.slug.includes("slide-merge") : category === "Minesweeper" ? a.slug.includes("minesweeper") : a.slug.includes("tic-tac-toe"))) &&
       `${a.title} ${a.excerpt} ${a.content}`
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
@@ -30,7 +30,7 @@ export default function Blog() {
         <title>DoStrike Blog - Game Strategy, Guides, and Tutorials</title>
         <meta
           name="description"
-          content="Read original strategy guides and practical tutorials for Colour Sort, Slide Merge, Minesweeper, Sudoku, Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, and Memory on DoStrike Gaming Portal."
+          content="Read original strategy guides and practical tutorials for Dots and Boxes, Colour Sort, Slide Merge, Minesweeper, Sudoku, Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, and Memory on DoStrike Gaming Portal."
         />
         <link rel="canonical" href="https://dostrike.com/blog" />
       </Helmet>

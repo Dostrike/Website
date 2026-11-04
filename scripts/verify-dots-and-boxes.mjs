@@ -20,6 +20,18 @@ function load(name) {
 const e = load("dotsAndBoxesEngine"),
   ai = load("dotsAndBoxesAI"),
   plain = (x) => JSON.parse(JSON.stringify(x));
+// Guide fragments: a fourth side claims one; a shared side claims two but
+// does not create banked turn credits after the next non-capturing line.
+const single = e.playDots(e.replayDots(2, [0, 6, 7]), 2);
+assert.deepEqual(plain(single.captured), [0]);
+assert.equal(single.turn, 2);
+assert.deepEqual(plain(single.scores), [0, 1]);
+const double = e.playDots(e.replayDots(2, [0, 1, 2, 3, 6, 8]), 7);
+assert.deepEqual(plain(double.captured), [0, 1]);
+assert.equal(double.turn, 1);
+const handover = e.playDots(double, 4);
+assert.equal(handover.captured.length, 0);
+assert.equal(handover.turn, 2);
 // Independent reference uses geometric endpoint pairs, not the engine's box-index formula.
 const coords = (n, id) => {
   let index = 0;
