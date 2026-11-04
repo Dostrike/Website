@@ -9,6 +9,7 @@ import GuideExercises from "./GuideExercises";
 
 const ARTICLE_AUTHOR = "DoStrike Editorial Team";
 const IMPLEMENTATION_REFERENCES: Record<string, string> = {
+  'colour-sort-runs-space-and-recovery': 'colourSortEngine',
   'slide-merge-pairs-space-and-undo': 'slideMergeEngine',
   'minimax-algorithm-tic-tac-toe': 'gameLogic',
   'history-of-tic-tac-toe': 'practiceEngine',
@@ -175,7 +176,7 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug.includes("slide-merge") ? "/slide-merge-setup" : article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
+                article.slug.includes("colour-sort") ? "/colour-sort-setup" : article.slug.includes("slide-merge") ? "/slide-merge-setup" : article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
                   ? "/mancala-setup"
                   : article.slug.includes("reversi")
                   ? "/reversi-setup"
@@ -188,7 +189,7 @@ const Article: React.FC = () => {
                     : "/practice"
               }
             >
-              {article.slug.includes("slide-merge") ? "Play Slide Merge" : article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
+              {article.slug.includes("colour-sort") ? "Play Colour Sort" : article.slug.includes("slide-merge") ? "Play Slide Merge" : article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
                 ? "Play Mancala"
                 : article.slug.includes("reversi")
                 ? "Play Reversi"

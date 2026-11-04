@@ -74,7 +74,12 @@ export function encodeColourRound(round: ColourRound): string {
 export function decodeColourRound(text: string): ColourRound | null {
   try {
     const v = JSON.parse(text);
-    if (v?.version !== 1 || typeof v.assisted !== "boolean") return null;
+    if (
+      v?.version !== 1 ||
+      typeof v.assisted !== "boolean" ||
+      (v.day !== null && typeof v.day !== "string")
+    )
+      return null;
     const initial = newColourRound(v.seed, v.colours, v.id, v.day);
     return {
       ...initial,

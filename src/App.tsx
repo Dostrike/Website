@@ -21,6 +21,7 @@ const Connect4Setup = lazy(() => import("./components/Connect4Setup"));
 const Connect4Game = lazy(() => import("./components/Connect4Game"));
 const MemoryGame = lazy(() => import("./components/MemoryGame"));
 const SlideMerge = lazy(() => import("./components/SlideMerge"));
+const ColourSort = lazy(() => import("./components/ColourSort"));
 const Minesweeper = lazy(() => import("./components/Minesweeper"));
 const Sudoku = lazy(() => import("./components/Sudoku"));
 const Checkers = lazy(() => import("./components/Checkers"));
@@ -94,6 +95,8 @@ function App() {
                     <Route path="/reversi" element={<Reversi />} />
                     <Route path="/slide-merge-setup" element={<SlideMerge />} />
                     <Route path="/slide-merge" element={<SlideMerge />} />
+                    <Route path="/colour-sort-setup" element={<ColourSort />} />
+                    <Route path="/colour-sort" element={<ColourSort />} />
                     <Route path="/minesweeper-setup" element={<Minesweeper />} />
                     <Route path="/minesweeper" element={<Minesweeper />} />
                     <Route path="/sudoku-setup" element={<Sudoku />} />

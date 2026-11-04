@@ -1,0 +1,152 @@
+.colour-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.colour-score {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+.colour-page #colour-help {
+  max-width: 600px;
+  margin: 18px auto;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.colour-tubes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 24px 8px;
+  max-width: 740px;
+  margin: auto;
+}
+.colour-page button.colour-tube {
+  width: 100px;
+  min-width: 72px;
+  padding: 10px 12px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.colour-page button.colour-tube.is-source {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+.colour-page button.colour-tube.is-destination {
+  border-color: #ac7522;
+  background: #f3e8c9;
+}
+.colour-page button:focus-visible {
+  outline: 3px solid #b47e25;
+  outline-offset: 3px;
+}
+.colour-vessel {
+  width: 68px;
+  padding: 3px 4px 5px;
+  border: 3px solid #405e54;
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  background: #e0e5dd;
+}
+.colour-unit {
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #172e27;
+}
+.colour-unit.colour-0 {
+  background: transparent;
+}
+.colour-1 {
+  background: #f19a78;
+}
+.colour-2 {
+  background: #96bde6;
+}
+.colour-3 {
+  background: #ebcd70;
+}
+.colour-4 {
+  background: #c1a5dc;
+}
+.colour-5 {
+  background: #9cce8d;
+}
+.colour-6 {
+  background: #e8a8c1;
+}
+.colour-7 {
+  background: #85c5bd;
+}
+.colour-tube-number {
+  font-size: 12px;
+  font-weight: 650;
+}
+.colour-notice {
+  max-width: 660px;
+  min-height: 40px;
+  text-align: center;
+  margin: 16px auto;
+  font-size: 14px;
+}
+.colour-preview {
+  text-align: center;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin: 16px auto;
+  max-width: 450px;
+}
+.colour-page .board-game-actions {
+  justify-content: center;
+}
+.colour-page .board-game-setup > button {
+  margin-bottom: 18px;
+}
+@media (max-width: 600px) {
+  .colour-page {
+    padding: 20px 16px 48px;
+  }
+  .colour-tubes {
+    gap: 12px 6px;
+    padding: 12px 0;
+  }
+  .colour-page button.colour-tube {
+    width: 82px;
+    padding: 8px 4px;
+  }
+  .colour-vessel {
+    width: 60px;
+  }
+  .colour-unit {
+    height: 36px;
+  }
+  .colour-page .board-game-heading {
+    margin-bottom: 24px;
+  }
+  .colour-page .board-game-actions button {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+  .colour-score {
+    font-size: 19px;
+  }
+}

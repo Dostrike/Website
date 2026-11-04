@@ -13,6 +13,63 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Colour Sort: top runs, empty space and recovery',
+    excerpt: 'Worked pour fragments explain maximal runs, capacity limits and why a legal move is not a solution guarantee. Learn what DoStrike’s verified path hints can actually tell you.',
+    slug: 'colour-sort-runs-space-and-recovery',
+    date: '2026-11-04', readTime: '4 min read', category: 'Colour Sort',
+    content: `
+## Read from the bottom to the top
+
+Each tube holds four units. A number identifies a colour even when two shades are hard to distinguish: 1 is Coral, 2 Blue, 3 Gold, 4 Violet, 5 Green, 6 Rose and 7 Teal. The visual board puts the top unit at the top of the vessel; the accessible tube label lists its contents from bottom to top.
+
+You can pour only the contiguous top run of one colour. The destination must be empty or have the same top colour, with space remaining. A move transfers as much of that run as fits. The game does not let you choose an arbitrary smaller amount.
+
+The following fragments describe two tubes, not a complete generated puzzle. Brackets list units bottom to top; an empty pair of brackets means an empty tube.
+
+## Example 1: move the whole available run
+
+Let tube A contain [1, 2, 2] and tube B be empty. A pour from A to B transfers both top 2 units. The result is A [1] and B [2, 2]. It is one pour, not two moves, because the identical top units form one run.
+
+The 1 underneath remains in A. You cannot skip the 2 units to pour that buried 1 first. Before selecting a destination, predict both the transfer amount and which colour becomes exposed in the source.
+
+## Example 2: capacity limits a run
+
+Now A is [1, 2, 2, 2] and B is [2, 2, 2]. B has one free slot, so the legal pour transfers one 2. A becomes [1, 2, 2] and B becomes [2, 2, 2, 2]. The destination is complete, but the 1 in A remains covered.
+
+This is a permitted partial pour because capacity imposes it. Pouring from that same source into an empty tube would move all three top 2 units instead. Both cases are checked against a separate unit-at-a-time reference in the engine tests.
+
+## Example 3: a matching colour lower down is insufficient
+
+With A [1, 2] and B [1], A cannot pour into B. Their top colours are 2 and 1. The fact that A also contains a buried 1 does not make the move legal. A full destination rejects a pour even if its top matches.
+
+Choose a source and destination to see the actual preview. Confirm commits the pour. Choosing the source again or using Cancel selection clears it. With the keyboard, Tab or arrows move between tubes, Enter selects, Escape cancels, and Enter on a previewed destination confirms. The separate Confirm pour button is also available.
+
+## Empty space is a resource
+
+Every initial board has two empty tubes and four units of every included colour. Moving a uniform tube into an empty one can be legal while changing little about the arrangement. Collecting one colour may also expose a useful new top, or occupy space you later need for another colour.
+
+Inspect the newly exposed tops before committing. A legal local action is not proof that the resulting puzzle remains solvable. If no legal pours remain, undo or restart. Undo restores the previous board and marks the attempt assisted; it does not shuffle the contents.
+
+The win condition requires every nonempty tube to be full and single-colour. A collection of short single-colour tubes is not yet sorted. Conservation of the four units per colour leaves two empty tubes at completion.
+
+## What the verified path proves
+
+DoStrike generates its own seeded starting boards from sorted tubes using reversible segment exchanges. Each individual reverse step is accepted only when a legal forward maximal pour returns exactly to its predecessor. It then replays the complete forward witness before exposing the puzzle.
+
+All initial full tubes must be mixed, and two tubes remain empty. Generation uses a finite attempt budget and a cancellable worker. It can report that a verified puzzle was not found rather than silently presenting an unchecked board. The 3, 5 and 7 colour settings describe size, not a human difficulty rating.
+
+The stored witness establishes that at least one solution exists. It does not establish the fewest pours or a solution for every position you might reach. Show path hint checks whether your current exact board lies on that known path. If so, it previews a verified next move and marks assistance. If not, it honestly reports no hint. Undo or restart can return to the path; the hint does not run a general solver for an arbitrary deviation.
+
+## Resume, restart and compare records honestly
+
+Saved rounds regenerate their puzzle from its seed and replay the legal move history. They do not trust an arbitrary saved board. Hint assistance and undo remain marked after reload. Restart restores the same starting tubes as a new attempt; New puzzle requests another seed.
+
+The five-colour daily uses your local date. Only a solve on that board’s date advances its browser streak, at most once per date. Restarting an older saved daily preserves its original puzzle and date, so it cannot advance today’s streak.
+
+Solves are counted once at completion, separately by size and assistance. Undo closes after completion; restart begins another attempt. The best unassisted pour count compares different generated puzzles of that size. It is a personal browser record, not an optimal-solution certificate or leaderboard. Storage can be cleared or unavailable, and there is no cross-device account.
+`
+  },
+  {
     title: 'Slide Merge: pairs, space and an honest undo',
     excerpt: 'Compare worked rows before the random spawn, learn why a newly merged tile cannot merge twice, and use undo without rerolling the next tile.',
     slug: 'slide-merge-pairs-space-and-undo',
@@ -1458,7 +1515,7 @@ Endgame discipline turns unstable games into reliable results against both human
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers ten free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers eleven free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1524,9 +1581,15 @@ Slide a 4 by 4 number board with arrows, WASD, swipes or direction buttons. Equa
 
 Undo restores the previous board, score and random stream, marks the round assisted and does not reroll a repeated move. Records retain the best score and tile reached earlier in the round. The guide gives concrete before-spawn rows so you can check a prediction without confusing the merge with the new tile.
 
+## Colour Sort: predict the top run
+
+Sort four-unit numbered colours into full single-colour tubes. Choose 3, 5 or 7 colours plus two empty tubes. These settings describe size, not a guaranteed human difficulty. Select source and destination, inspect the maximal-pour preview and confirm; arrows, Enter, Escape and pointer controls share the same actions.
+
+Every generated starting board is checked against a full forward solution witness. Undo marks assistance. Path hints only work when your exact board matches that witness; after a deviation they can honestly be unavailable. Saved puzzles replay their moves, and local records separate assisted solves from unassisted bests. The guide demonstrates whole runs, capacity-limited transfers and illegal mismatches.
+
 ## Daily formats, with different goals
 
-The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the newer games’ daily formats. Checkers offers a legal opening, Sudoku a unique-solution board, Minesweeper a proven Intermediate field and Slide Merge a shared initial board and random stream. Their goals differ; none is a claim of parity with an unavailable phone-app source.
+The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the newer games’ daily formats. Checkers offers a legal opening, Sudoku a unique-solution board, Minesweeper a proven Intermediate field Slide Merge a shared initial board and random stream, and Colour Sort a verified five-colour tube puzzle. Their goals differ; none is a claim of parity with an unavailable phone-app source.
 
 Gomoku’s daily starts with four placed stones and continues as a full game against Hard. It has no single prescribed answer. The website generates this opening; matching a phone app’s daily is not promised.
 
