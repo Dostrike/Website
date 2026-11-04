@@ -1,6 +1,7 @@
 // Materially revised guides. Dates describe these edits, not the original publication.
-export const reviewedGuides: Record<string, { title: string; excerpt: string; content: string }> = {
+export const reviewedGuides: Record<string, { title: string; excerpt: string; content: string; updated?: string }> = {
   'mathematical-proof-tic-tac-toe-draw': {
+    updated: '2026-11-04',
     title: 'Why perfect Tic-Tac-Toe is a draw: an exhaustive check you can reproduce',
     excerpt: 'Explore all 5,478 reachable boards with a small solver. See why an empty board evaluates to a draw, how legal positions are counted, and what the result does and does not prove.',
     content: `
@@ -17,6 +18,12 @@ These rules matter. Continuing to place marks after a win produces boards that c
 Start with nine empty squares and X to move. For every legal empty square, create the board after X plays, then explore O’s replies. Repeat until the game ends. Store each board in a set so that reaching the same arrangement through a different move order does not count it twice.
 
 Our verification script finds **5,478 distinct reachable boards**, including the empty board. **958 are terminal boards**: a winning line has been completed or the board is full. Rotations and reflections are counted separately here. We are counting board arrangements, not distinct move sequences; two different games can arrive at the same arrangement.
+
+## Count complete move histories separately
+
+If the enumeration keeps every legal move order instead of merging matching boards, it reaches **255,168 complete games**: **131,184 X wins**, **77,904 O wins** and **46,080 draws**. Each history stops at the first winning line or a full board. Rotations and reflections remain separate. The verification script checks these counts as well as the distinct-board totals.
+
+Those totals are not the probability that a person or a particular computer level will win. Counting histories gives every complete sequence one count; random choices at each turn weight sequences differently, and strategic players use a different policy again. State the player policy before reporting a win rate.
 
 ## Evaluate the terminal boards first
 
@@ -85,6 +92,7 @@ You can inspect the public implementation in the DoStrike Website repository, in
 `,
   },
   'future-tic-tac-toe-ai-vr-innovation': {
+    updated: '2026-11-04',
     title: 'Review your Tic-Tac-Toe round: find the move that changed the result',
     excerpt: 'Replay your actual DoStrike round, spot a missed block, and compare a stronger move. See a worked example and understand what perfect-play analysis can tell you.',
     content: `
@@ -129,6 +137,12 @@ A future adaptive mode could choose exercises based on missed threats, but it wo
 ## Keep feedback usable on a phone
 
 Each square needs a readable label and a large target. Feedback should remain visible long enough to read, and a visitor should be able to reveal an explanation without a timer. A keyboard user needs to reach empty squares and choose them without a mouse. Motion and visual effects should support the lesson rather than cover the board.
+
+## Write a prediction before revealing the analysis
+
+Pause at one move in your own replay. Before opening the explanation, write which line the opponent could finish next, which square you would choose, and what reply you expect. Then reveal the analysis and compare the named lines with the actual board.
+
+If your prediction missed a column, record that column and retry the position. You do not need to label yourself forgetful or overconfident to make the exercise useful. A recorded move and a checkable reply let you discuss the decision; they do not establish a diagnosis or a general cognitive benefit.
 
 ## Measure a narrow, observable skill
 

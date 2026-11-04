@@ -87,6 +87,43 @@
   status = 301
   force = true
 
+
+[[redirects]]
+  from = "/blog/psychology-tic-tac-toe-decision-making"
+  to = "/blog/future-tic-tac-toe-ai-vr-innovation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/psychology-tic-tac-toe-decision-making/"
+  to = "/blog/future-tic-tac-toe-ai-vr-innovation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/famous-tic-tac-toe-games"
+  to = "/blog/history-of-tic-tac-toe/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/famous-tic-tac-toe-games/"
+  to = "/blog/history-of-tic-tac-toe/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/fun-facts-tic-tac-toe"
+  to = "/blog/mathematical-proof-tic-tac-toe-draw/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/fun-facts-tic-tac-toe/"
+  to = "/blog/mathematical-proof-tic-tac-toe-draw/"
+  status = 301
+  force = true
+
 # Serve prerendered files before the fallback. Unknown URLs are real 404s.
 [[redirects]]
   from = "/*"

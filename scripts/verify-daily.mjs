@@ -40,3 +40,7 @@ for (let offset = 0; offset < 64; offset++) {
   assert.equal(JSON.stringify(puzzle), JSON.stringify(dailyPuzzle(key)), 'The same date must select the same board');
 }
 console.log(`Verified solver across ${seen.size} reachable boards (${terminal} terminal), empty-board draw, four valid edge defenses, date boundaries, and 64 daily selections.`);
+// Complete histories differ from distinct board arrangements: do not merge transpositions here.
+const sequences={X:0,O:0,draw:0};
+function visitSequence(board,player){const won=winner(board);if(won){sequences[won]++;return;}if(board.every(Boolean)){sequences.draw++;return;}for(let i=0;i<9;i++)if(!board[i])visitSequence(afterMove(board,i,player),opposite(player));}
+visitSequence(Array(9).fill(''),'X');assert.deepEqual(sequences,{X:131184,O:77904,draw:46080});assert.equal(Object.values(sequences).reduce((a,b)=>a+b,0),255168);console.log('Verified 255,168 complete histories: X131,184 / O77,904 / draw46,080; terminal stop and separate move orders.');

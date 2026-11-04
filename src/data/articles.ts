@@ -513,69 +513,45 @@ Rotate who chooses the variant each hour so everyone samples unfamiliar geometri
     `
   },
   {
-    title: 'The Surprising History of Noughts and Crosses',
-    excerpt: 'Did you know Tic-Tac-Toe has roots in ancient Egypt and Rome? Dive into the fascinating history of this timeless game.',
+    title: 'OXO and EDSAC: a documented early computer board',
+    excerpt: 'What Cambridge’s archive actually records about OXO, where that evidence stops, and how to explore the rules and search behind DoStrike’s own Tic-Tac-Toe engine.',
     slug: 'history-of-tic-tac-toe',
-    date: '2024-01-05',
-    readTime: '9 min read',
-    category: 'History',
+    date: '2024-01-05', updated: '2026-11-04', readTime: '3 min read', category: 'History',
     content: `
-Tic-Tac-Toe—Noughts and Crosses depending which shoreline you grew up near—is ancient simplicity disguised as playground filler.
+## Start with a documented example
 
-Tracing lineage reminds us strategy isn’t invented wholesale by consoles; grids attract thinkers everywhere grids fit.
+Cambridge’s EDSAC99 simulator project lists OXO among its original example programs, attributing the noughts-and-crosses game to A. S. Douglas in 1952. That is a concrete reference a reader can inspect, rather than an unnamed story about an early computer demonstration.
 
-## Ancient Grid Rituals
+The list distinguishes original programs from modern examples supplied for the simulator. An example shown by a modern simulator is not automatically a newly discovered original program; check the attribution attached to the specific item.
 
-Roof slabs and tomb graffiti across Egypt roughly fifteen centuries BCE show lattice markings resembling alignment contests archaeologists cautiously label cousins—not literal rule manuals survived, yet recurring geometries imply enduring ludic literacy independent of literacy hardware.
+## A display with another everyday purpose
 
-Roman “Terni Lapilli” boards scratched across pavements illustrate tactical doodling preceding codification—soldiers carved divergent constraints yet preserved contiguous-row ambitions recognizable today.
+The Computer Laboratory’s historical chronology contains notes by David Wheeler with additional material by David Hartley. It describes an EDSAC monitor that displayed the contents of a selected delay line and says it was also used unofficially for noughts and crosses. The notes describe its usual purpose as watching changing numerical data.
 
-Historians emphasize continuity rather than cloning: naming drifted while cognitive skeleton persisted.
+The same chronology records a telephone dial as a way to supply data during a program run and select stored material for diagnostics. That general equipment note alone does not establish every detail of OXO’s playing interface. This account does not turn it into a claim about exactly which keys or dial settings a player used.
 
-## Industrial Revolution Packaging
+The chronology identifies itself as draft retrospective notes. It is valuable institutional evidence, with that limitation made visible.
 
-British nineteenth-century parlours marketed boxed sets branded “Noughts and Crosses,” aligning polite leisure with pedagogical optics—Victorian tutors prized orderly turns embedding bourgeois etiquette alongside reasoning drills.
+## What this history does not establish
 
-Across the Atlantic early twentieth-century educators rebranded grids phonetically—“tic tac toe” playful consonants marketed classrooms alongside spelling drills.
+These sources support a specific early computing example. They do not, by themselves, prove an ancient origin for today’s exact rules, or settle which project deserves the label first video game. Similar-looking grids, a display experiment and a complete playable program are different kinds of evidence.
 
-Localization echoes globally—languages rename symbols yet cooperative antagonism persists.
+The useful question is narrower: what did a particular program accept as a move, how did it show a board, and what rules did it enforce? Answering that requires evidence about that implementation. A familiar board shape is a starting point for investigation, not a substitute for it.
 
-## Computational Mythmaking vs Facts
+## Explore a modern implementation you can inspect
 
-Popular lore cites Cambridge laboratory OXO (1952) visualizing adversarial programs—accuracy nuanced: constrained interfaces challenged operators rotating switches rather than toddlers tapping glass.
+DoStrike implements the standard nine-square game: X starts, turns alternate, a completed line of three ends the round immediately, and a full board without a winner draws. These are statements about this website’s rules; they are not claims of operation-for-operation similarity to OXO.
 
-Nevertheless milestone symbolism sticks—tiny grids seeded enormous AI lineage including exhaustive minimax proofs demonstrating draws under perfection.
+The site’s Hard computer evaluates continuations with minimax. Easy and Medium use different policies. An opponent’s result therefore depends on its actual move-selection rules, not simply on being a computer. The AI guide explains those policies against the code used here.
 
-## Cultural Persistence Factors
+For a reproducible experiment, start a local two-player round, make a move, and name every line that either player could finish on the next turn. Complete the round and open its review. Compare the result of the move played with a reply that preserves a better outcome. You are examining a specific decision, rather than treating one win as evidence of a general learning benefit.
 
-Accessibility dominates—two pencils suffice during blackout boredom.
+## Keep boards and games separate when counting
 
-Teaching resonance ranks equally—fork intuition emerges visually faster than algebraic abstraction alone permits.
+A board arrangement can be reached through more than one move order. The exhaustive draw guide distinguishes reachable arrangements from complete legal histories, stops immediately at a win, and links the check that produces the reported counts. Rotations and reflections are counted separately unless stated otherwise.
 
-Modern classrooms remix grids into mathematics discourse probability trees symmetry lectures sociology fairness rotations ensuring equitable starts.
-
-## Closing Lens
-
-Historical trivia embellishes affection—but pedagogical lineage proves sturdy.
-
-Next casual round glance sideways envision Egyptian sketches Roman sandals Victorian tutors twentieth-century programmers—you inhabit layered continuity nothing disposable despite meme-era dismissal “too solved.”
-
-Celebrate lineage consciously—that humility fuels respectful variation invention afterwards.
-
-## Postwar Textbooks and Global Classrooms
-
-After mid-century curriculum reforms, grids appeared inside arithmetic workbooks worldwide—not always labeled “game theory,” yet teachers recognized the same diagrams migrating from recreation sections into logic units.
-
-Cold War classrooms on multiple continents used identical worksheets, proving cultural portability transcended geopolitical branding even when governments rarely agreed on much else pedagogically.
-
-## Takeaway for Historians of Play
-
-Treat each surviving photograph of chalk grids as primary evidence: captions may omit context, yet worn symmetry reveals where curious fingers paused longest debating the next mark.
-
-Those material traces matter when oral histories fade—future researchers will still read boards better than press releases alone.
-
-Archivists note the same diagrams resurfacing inside refugee-learning kits decades later—proof that portable strategy comforts displaced learners when luggage space vanishes entirely.
-    `
+That gives the historical curiosity a practical next step: inspect a program’s rules, reproduce a small result and be clear about what was counted. The archive sources below provide the historical reference; DoStrike’s implementation links support the modern experiment.
+`
   },
   {
     title: 'A Mathematical Proof: Why a Perfect Tic-Tac-Toe Game Always Ends in a Draw',
@@ -627,126 +603,6 @@ Even if you never formalize lemmas, believing the draw theorem explains why hust
 Play our AI at its strongest setting: if you never miss a forced block, you’ll feel the asymptote—**wins imply your opponent slipped**, not that the board hid a secret tactic.
 
 Enjoy the serenity of provable fairness: tiny grid, gigantic lesson in honest limits.
-    `
-  },
-  {
-    title: 'Famous Tic-Tac-Toe Games in History',
-    excerpt: 'Explore some of the most interesting and famous Tic-Tac-Toe games ever played, including computer vs. human matches.',
-    slug: 'famous-tic-tac-toe-games',
-    date: '2024-06-09',
-    readTime: '9 min read',
-    category: 'History',
-    content: `
-Public memory treats Tic-Tac-Toe as filler—yet several implementations shaped how audiences imagined “thinking machines.” Reviewing milestones clarifies engineering heritage beyond blockbuster consoles.
-
-## OXO / Noughts and Crosses (1952)
-
-Alexander Sandy Douglas defended his Cambridge dissertation partly through **OXO**, displayed on **EDSAC’s oscilloscope**. Operators dialed moves via rotary phone inputs—a UX nightmare by modern VR standards yet revolutionary politically.
-
-Historical nuance matters: labeling OXO “first video game” sparks taxonomy debates (training simulations preceded it). Nevertheless **perfect-information pursuit encoded digitally** signaled academia noticed playful proofs as credible demos.
-
-## MIT Hack Culture Minigraph
-
-Students sporadically wired tic-tac-toe demonstrations onto primitive outputs—not blockbuster franchises but pedagogy proofs recruiters remembered.
-
-Those sketches seeded expectation computers could tutor discrete logic puzzles interactively unlike batch Fortran grind previously dominating impressions.
-
-## Teaching Artificial Intelligence Waves
-
-1970s textbooks showcased exhaustive trees illustrating minimax—the **same pedagogical spine** powering chess engines later albeit scaled aggressively.
-
-Toy grids anchored intuition before NP-hard metaphors intimidated newcomers prematurely.
-
-## Pop Culture Echo Chambers
-
-Hollywood occasionally props chalkboards or oscilloscope doodles into rational-duel shorthand—even when realism loses to pacing.
-
-Sitcom jokes reused the motif so widely that familiarity crossed borders faster than merchandise-heavy franchises often manage without localized branding friction.
-
-## Why Minimal Rules Still Echo Worldwide
-
-Pen-and-pencil logistics sidestep licensing fights bigger franchises endured—schoolyards reinvent identical markings independently across continents.
-
-Laboratory demos where lights drew simple squares lowered psychological barriers before blockbuster CGI budgets existed; viewers glimpsed algorithms acting on-screen long before jargon-heavy textbooks spelled minimax formally.
-
-## Museums, Science Centers, and Pop-Up Exhibits
-
-Interactive museums still mount oversized grids because parents instantly understand the rules—docents can pivot from toddler play to minimax trees without swapping hardware.
-
-Those exhibits quietly recruit future engineers: hands smudge acrylic, siblings negotiate ties, and docents narrate parity arguments that stick longer than textbook diagrams alone.
-
-## Hobbyist Ports and “10-Line” Challenges
-
-Modern hobbyists reimplement Tic-Tac-Toe in esoteric languages to stress-test syntax minimalism—community threads compare edge-case handling (stalemates, illegal replays) more than graphics polish.
-
-Such challenges prove the game remains a **benchmark for API design**: tiny state machines expose whether frameworks make illegal states unrepresentable—or embarrassingly easy.
-
-## Television Demonstrations and Public Science
-
-Televised science segments still drag portable whiteboards into plazas because producers know pedestrians recognize the grid instantly—no rulebook distribution required.
-
-Hosts can interview PhD guests about minimax while children in the background keep playing—layered audiences mirror how classrooms mix grade levels during STEM nights.
-
-## Celebrate Humble Grids
-
-Celebrate humble grids—they threaded twentieth-century optimism about machines reasoning visibly, step by step, without needing each milestone glamorized by a blockbuster budget.
-    `
-  },
-  {
-    title: 'Fun Facts About Tic-Tac-Toe',
-    excerpt: 'Did you know Tic-Tac-Toe is played in nearly every country? Discover fun and surprising facts about this classic game.',
-    slug: 'fun-facts-tic-tac-toe',
-    date: '2024-06-08',
-    readTime: '8 min read',
-    category: 'Fun',
-    content: `
-Playgrounds everywhere reinvent the same diagram under affectionate nicknames—**Noughts and Crosses** in much of the Commonwealth, casual **Xs and Os** wording elsewhere, plus translations that swap vowels while leaving the logic untouched.
-
-## Rainy-Recess Logistics
-
-Rules propagate orally faster than merchandise-heavy franchises negotiate localization contracts—kids sketch grids on napkins, foggy windows, or worksheet margins without waiting for deluxe boxed editions.
-
-Teachers quietly reuse Tic-Tac-Toe when introducing branching logic: describing threats aloud mirrors pseudocode (“if they block my column, threaten the diagonal”) without burying newcomers beneath jargon stacks.
-
-## Numbers Worth Knowing
-
-Scholars tally roughly **255,168 distinct completed games** before symmetry reductions—that headline illustrates modest combinatorial growth compared with Chess yet still surprises anyone expecting “only nine squares.”
-
-Against optimal replies nearly everything collapses toward draws—human humor erupts whenever pride overlooks simple pairs and accidentally donates a fork.
-
-## Tiny Echoes Across History
-
-Roman paving scratched grids beside Egyptian lattice echoes centuries apart yet emotionally identical urges—to align marks proudly before adulthood insists seriousness prematurely.
-
-Modern meme culture lovingly mocks how solved the classic grid is; veterans laugh along because humility beats nostalgia every time.
-
-## Symbols, Typography, and Tiny Math Lessons
-
-Unicode includes dedicated noughts-and-crosses symbols educators sometimes paste into slides—yet chalkboard X’s remain undefeated for legibility six rows back in a classroom.
-
-Probability lessons attach naturally: estimate how often beginners draw against classmates, then compare with AI that never drifts—empirical histograms land harder than abstract “solved game” pronouncements alone.
-
-## Why Casual Leaderboards Still Celebrate Draws
-
-Speedrun communities occasionally time perfect-play exhibitions—not because records stay exciting forever, but because flawless defense is a skill worth filming when commentary explains each forced reply.
-
-That culture reinforces an underrated lesson: **defensive excellence is content**, not filler between flashy wins.
-
-## Age Bands and Playground Physics
-
-Primary students often negotiate best-of-three mini matches during recess—adults underestimate how much diplomacy hides inside “who goes first” rock-paper-scissors preludes.
-
-Older teens sometimes treat the grid as a speed benchmark: who can spot a forced block fastest becomes bragging rights without needing scoreboards—micro-competitions keep skills sharp between formal club meetings.
-
-## Accessibility Wins Quietly
-
-Because the board needs no audio cues, Deaf and hard-of-hearing players enjoy identical information parity with hearing peers—rare among mainstream party games without specialized editions.
-
-Low-vision players benefit from high-contrast X/O tokens or tactile magnets; digital versions should honor system font scaling so elders joining family video calls can still follow grandchildren’s moves.
-
-## Takeaway
-
-Share these trivia sparks during lobby waits—you bond faster dissecting folklore than pretending blockbuster lore automatically beats pencil traditions worldwide.
     `
   },
   {
@@ -880,145 +736,6 @@ A language activity can ask learners to describe a move in a complete sentence. 
 You can record the number of rounds, who played first and whether each ended in an X win, O win or draw. State the actual sample and how opponents chose moves. A class’s observed result frequency is not the universal probability of winning Tic-Tac-Toe; it depends on the players and their decisions. Do not compare learners as though a few game outcomes measure a general ability.
 
 The two boards below provide reproducible examples for the lesson. They are checked by the game solver, work without a time limit and allow you to retry or reveal an explanation.
-    `
-  },
-  {
-    title: 'The Psychology of Tic-Tac-Toe: Understanding Human Decision Making',
-    excerpt: 'Explore the fascinating psychology behind Tic-Tac-Toe gameplay. Learn how cognitive biases, pattern recognition, and decision-making processes influence our game choices.',
-    slug: 'psychology-tic-tac-toe-decision-making',
-    date: '2024-01-15',
-    readTime: '14 min read',
-    category: 'Psychology',
-    content: `
-Tic-Tac-Toe, despite its mathematical simplicity, offers profound insights into human psychology and decision-making processes. This exploration delves into the cognitive mechanisms that influence how we play and think about this classic game.
-
-## Cognitive Biases in Gameplay
-
-### Confirmation Bias
-Players often look for moves that confirm their existing strategies, even when better options are available. This bias can lead to suboptimal play and missed opportunities.
-
-**Research Finding:** Studies show that players are 40% more likely to choose moves that align with their initial strategy, even when objectively better moves exist.
-
-### Anchoring Effect
-The first move in Tic-Tac-Toe can anchor a player's entire strategy. Players who start in the center often become overly focused on center-based strategies, even when the game state changes.
-
-**Practical Application:** Understanding anchoring can help players break free from rigid thinking patterns and adapt to changing game situations.
-
-### Availability Heuristic
-Players tend to choose moves based on easily recalled patterns or recent experiences, rather than analyzing the current board state objectively.
-
-**Example:** A player who recently won by creating a fork might overemphasize fork opportunities in future games, even when other strategies are more appropriate.
-
-## Pattern Recognition and Learning
-
-### Neural Network Simulation
-The human brain processes Tic-Tac-Toe patterns similarly to how artificial neural networks learn. We develop pattern recognition through repeated exposure and experience.
-
-**Research Insight:** Brain imaging studies show that experienced players activate different neural pathways when analyzing board positions compared to novices.
-
-### Chunking Theory
-Expert players don't analyze individual moves but instead recognize common patterns or "chunks" of board positions. This allows for faster and more accurate decision-making.
-
-**Practical Implication:** Training should focus on pattern recognition rather than individual move calculation.
-
-### Transfer Learning
-Skills developed in Tic-Tac-Toe can transfer to other strategic games and real-world decision-making scenarios.
-
-**Applications:** The strategic thinking developed through Tic-Tac-Toe can improve performance in business, military strategy, and everyday problem-solving.
-
-## Decision-Making Processes
-
-### Dual-Process Theory
-Tic-Tac-Toe engages both intuitive (System 1) and analytical (System 2) thinking processes.
-
-**System 1 (Intuitive):** Quick pattern recognition and automatic responses
-**System 2 (Analytical):** Deliberate calculation and strategic planning
-
-### Prospect Theory
-Players often make decisions based on potential gains and losses rather than absolute outcomes. This can lead to risk-averse or risk-seeking behavior depending on the game state.
-
-**Example:** Players are more likely to take risks when losing (trying to force a win) than when winning (playing conservatively to maintain advantage).
-
-### Bounded Rationality
-Human players cannot analyze all possible game states due to cognitive limitations. Instead, they use heuristics and shortcuts to make decisions.
-
-**Implications:** Understanding these limitations can help design better training methods and game interfaces.
-
-## Emotional Factors
-
-### Loss Aversion
-Players often make suboptimal moves to avoid immediate losses, even when these moves reduce their long-term winning chances.
-
-**Research Finding:** Players are twice as likely to make defensive moves when threatened, even when offensive moves offer better winning opportunities.
-
-### Overconfidence Bias
-Many players overestimate their Tic-Tac-Toe skills, leading to poor decision-making and missed learning opportunities.
-
-**Solution:** Regular practice against strong opponents can help calibrate self-assessment and improve performance.
-
-### Flow State
-Optimal gameplay often occurs when players achieve a state of focused concentration, where time seems to pass quickly and decisions feel automatic.
-
-**Characteristics:** Clear goals, immediate feedback, and balanced challenge-skill ratio.
-
-## Social Psychology Aspects
-
-### Competitive Dynamics
-The social context of Tic-Tac-Toe can significantly influence decision-making. Players may make different choices when playing against friends, strangers, or computers.
-
-**Research Finding:** Players are more likely to take risks when playing against friends and more conservative when playing against strangers.
-
-### Social Learning
-Players learn strategies through observation, imitation, and social interaction. This learning process is crucial for skill development.
-
-**Implications:** Creating opportunities for social learning can accelerate skill development and engagement.
-
-### Group Decision Making
-When Tic-Tac-Toe is played in groups (with multiple people advising on moves), different psychological dynamics emerge.
-
-**Benefits:** Multiple perspectives can lead to better decisions
-**Challenges:** Groupthink and social pressure can lead to suboptimal choices
-
-## Developmental Psychology
-
-### Age-Related Differences
-Children, adolescents, and adults approach Tic-Tac-Toe differently due to varying cognitive development levels.
-
-**Children (5-8):** Focus on immediate moves, limited strategic thinking
-**Adolescents (9-14):** Developing strategic thinking, beginning to plan ahead
-**Adults (15+):** Full strategic thinking, can analyze multiple moves ahead
-
-### Learning Progression
-Understanding the natural progression of Tic-Tac-Toe skills can help design age-appropriate learning experiences.
-
-**Stages:**
-1. Basic rule understanding
-2. Immediate threat recognition
-3. Simple strategic planning
-4. Advanced tactical thinking
-5. Optimal play mastery
-
-## Applications in Other Fields
-
-### Artificial Intelligence
-Understanding human decision-making in Tic-Tac-Toe helps develop more human-like AI systems and better human-computer interaction.
-
-### Education
-Psychological insights can improve teaching methods and learning outcomes in mathematics and strategic thinking.
-
-### Business Strategy
-The decision-making patterns observed in Tic-Tac-Toe can inform business strategy and competitive analysis.
-
-### Cognitive Training
-Tic-Tac-Toe can be used as a tool for cognitive training and brain health maintenance.
-
-## Conclusion
-
-The psychology of Tic-Tac-Toe reveals the complex interplay between cognitive processes, emotional factors, and social dynamics that influence human decision-making. Understanding these psychological aspects can improve gameplay, enhance learning, and provide insights into broader human behavior patterns.
-
-The game's simplicity makes it an ideal laboratory for studying human cognition, while its strategic depth ensures that psychological insights remain relevant and valuable. Whether you're a player looking to improve your game, an educator seeking better teaching methods, or a researcher interested in human decision-making, the psychology of Tic-Tac-Toe offers valuable insights and practical applications.
-
-Remember: The goal is not just to play better Tic-Tac-Toe, but to understand how and why we make the decisions we do, both in games and in life.
     `
   },
   {
@@ -1888,7 +1605,7 @@ Records can disappear when browser storage is cleared, unavailable or used on an
   }
 ].map(article => {
   const revision = reviewedGuides[article.slug];
-  const reviewed = { ...article, ...revision, ...(revision ? { updated: '2026-10-24' } : {}) };
+  const reviewed = { ...article, ...revision, ...(revision ? { updated: revision.updated || '2026-10-24' } : {}) };
   return { ...reviewed, readTime: `${Math.max(1, Math.ceil(reviewed.content.trim().split(/\s+/).length / 200))} min read` };
 });
 

@@ -28,11 +28,8 @@ https://dostrike.com/blog/minimax-algorithm-tic-tac-toe
 https://dostrike.com/blog/tic-tac-toe-variations
 https://dostrike.com/blog/history-of-tic-tac-toe
 https://dostrike.com/blog/mathematical-proof-tic-tac-toe-draw
-https://dostrike.com/blog/famous-tic-tac-toe-games
-https://dostrike.com/blog/fun-facts-tic-tac-toe
 https://dostrike.com/blog/complete-tic-tac-toe-strategy-guide
 https://dostrike.com/blog/tic-tac-toe-education-teaching-resource
-https://dostrike.com/blog/psychology-tic-tac-toe-decision-making
 https://dostrike.com/blog/tic-tac-toe-tournaments-community-building
 https://dostrike.com/blog/future-tic-tac-toe-ai-vr-innovation
 https://dostrike.com/blog/connect4-strategy-blueprint

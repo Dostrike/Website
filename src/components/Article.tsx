@@ -10,6 +10,7 @@ import GuideExercises from "./GuideExercises";
 const ARTICLE_AUTHOR = "DoStrike Editorial Team";
 const IMPLEMENTATION_REFERENCES: Record<string, string> = {
   'minimax-algorithm-tic-tac-toe': 'gameLogic',
+  'history-of-tic-tac-toe': 'practiceEngine',
   'mathematical-proof-tic-tac-toe-draw': 'practiceEngine',
   'future-tic-tac-toe-ai-vr-innovation': 'roundReview',
   'complete-tic-tac-toe-strategy-guide': 'practiceEngine',
@@ -221,6 +222,7 @@ const Article: React.FC = () => {
           {article.slug === "checkers-captures-kings-and-complete-jumps" && <p>Rules reference: <a href="https://wcdf.net/rules/rules_of_checkers_english.pdf">WCDF English draughts rules</a>. Automatic draw adjudication is described above.</p>}
           {article.slug === "sudoku-candidates-singles-and-pencil-notes" && <p>Classic rules reference: <a href="https://www.nikoli.co.jp/en/puzzles/sudoku/">Nikoli’s Sudoku rules</a>. DoStrike generates its own puzzles and does not reproduce Nikoli boards.</p>}
           {article.slug === "minesweeper-safe-moves-flags-and-subsets" && <p>Rules and control reference: <a href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/mines.html">Simon Tatham’s Mines manual</a>. DoStrike has its own generator, proof checks and assisted recovery rules.</p>}
+          {article.slug === "history-of-tic-tac-toe" && <p>Historical sources checked November 4, 2026: <a href="https://www.cl.cam.ac.uk/events/EDSAC99/simulators/india/examples.html">Cambridge EDSAC99 example-program catalogue</a>; <a href="https://www.cl.cam.ac.uk/relics/chron.html">Wheeler/Hartley historical chronology</a>. Modern experiments: <Link to="/blog/minimax-algorithm-tic-tac-toe">DoStrike’s AI policies</Link>, <Link to="/blog/mathematical-proof-tic-tac-toe-draw">exhaustive counts</Link> and <Link to="/blog/future-tic-tac-toe-ai-vr-innovation">reviewing your round</Link>.</p>}
           {implementationReference && (
             <p>
               Implementation reference:{" "}
