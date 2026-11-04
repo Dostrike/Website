@@ -13,6 +13,59 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Slide Merge: pairs, space and an honest undo',
+    excerpt: 'Compare worked rows before the random spawn, learn why a newly merged tile cannot merge twice, and use undo without rerolling the next tile.',
+    slug: 'slide-merge-pairs-space-and-undo',
+    date: '2026-11-04', readTime: '4 min read', category: 'Slide Merge',
+    content: `
+## Read the row before you slide
+
+Slide Merge moves every tile toward the chosen edge of a 4 by 4 board. Equal neighbours combine in pairs. The merged value adds to your score, and that new tile cannot merge again during the same move. A changed board then receives one new tile: 2 has 90% weighting and 4 has 10%.
+
+These examples describe the slide before that new tile appears. Zero means an empty cell. Keeping those stages separate makes your prediction checkable instead of blaming a random spawn for a mistaken merge.
+
+## Example 1: four equal tiles
+
+Take the row 2, 2, 2, 2. Sliding left produces 4, 4, 0, 0 and adds 8 points. The two new 4 tiles stay separate during this move. They can combine on a later move if they remain adjacent along its direction.
+
+Sliding right instead produces 0, 0, 4, 4, also scoring 8. Predict the occupied cells as well as the total score. Two moves can have the same immediate reward while leaving different space for the rest of your board.
+
+## Example 2: resist the extra merge
+
+Now start with 2, 2, 4, 0. A left slide gives 4, 4, 0, 0 and adds 4 points. It does not give 8, 0, 0, 0: the newly created 4 has already participated in a merge this turn.
+
+For 2, 2, 4, 4, the same slide gives 4, 8, 0, 0 and adds 12. Two original pairs merge independently. These row results are executable fixtures in the engine verification script, including vertical and reversed-direction checks.
+
+Try writing the expected row and score before moving. Then compare with the game’s merge notice. The new spawn is announced separately with its row, column and value.
+
+## Space is useful, but a corner is not a guarantee
+
+An empty cell allows tiles to compress and gives the next spawn somewhere to go. A row of alternating unequal values may occupy the same space while offering no immediate pair. Before choosing a high-scoring move, inspect what can move on the following turn.
+
+Keeping larger tiles near one edge or corner can help you organise a sequence. Treat that as a planning heuristic, not a rule that guarantees 2048. A forced move or new tile can disrupt it. Compare two candidate directions: which leaves compatible values near each other, and which blocks a small tile behind a larger one?
+
+A full board is not automatically finished. If two orthogonal neighbours match, a merge is available. A full board with no equal horizontal or vertical neighbours has no legal slide. Diagonal matches alone cannot save it.
+
+## Undo restores the experiment
+
+DoStrike saves the seeded random stream along with the board and score. Undo restores the previous state. Repeating that same move gives the same spawn; it is not a way to keep rerolling until a preferred tile appears. Choosing a different direction changes the available empty cells, so the same stream need not put a tile in the same coordinate.
+
+Undo marks the whole round assisted. That label survives reload and also applies to an earlier 2048 milestone. Your best score and largest tile reached during the round remain in your browser records even if you later undo them. The current board score can therefore be lower than your recorded best.
+
+## A milestone and a daily stream
+
+Reaching 2048 pauses play. Choose Continue beyond 2048 to keep going or use Undo. Continuing does not start another round or count a second target. A round counts after its first valid slide; pressing a direction that changes nothing consumes neither a spawn nor a move.
+
+The daily uses your local calendar date to share an initial board and random stream. It is an open-ended game, not a uniquely solvable puzzle or a promise that every strategy wins. Only a target reached on its board’s date advances the local daily streak. Assistance is counted separately; there is no competitive ranking or cross-device account.
+
+## Controls and a useful replay
+
+Focus the board and use arrows or WASD. Direction buttons and swipes offer the same four actions. Your saved round, including a finished board, can be resumed; Undo remains available when moves run out. Start another board when you want a separate attempt.
+
+After a loss, look for the earlier move that reduced your options. Undo it, predict the next two rows before sliding, and compare an alternative. The useful question is whether your prediction matches the rules and leaves room for another pair. A higher score on one attempt alone does not prove a stronger strategy.
+`
+  },
+  {
     title: 'Minesweeper: safe moves, flags and subset deductions',
     excerpt: 'Worked neighbour-count and subset examples explain safe reveals, why an incorrect flag can make a chord dangerous, and what DoStrike’s no-guess proof actually covers.',
     slug: 'minesweeper-safe-moves-flags-and-subsets',
@@ -1325,7 +1378,7 @@ If you apply these habits daily for a week, your move count and completion time 
     excerpt: 'Learn practical Connect 4 endgame technique: forcing lines, block priorities, parity awareness, and draw-saving defense under pressure.',
     slug: 'connect4-endgame-guide',
     date: '2026-05-01',
-    updated: '2026-11-03',
+    updated: '2026-11-04',
     readTime: '10 min read',
     category: 'Strategy',
     content: `
@@ -1548,7 +1601,7 @@ Repeat weekly and your median moves should trend down without sacrificing accura
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers six free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers ten free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1590,9 +1643,33 @@ Play Kalah with 3–6 seeds in each of six pits per side. Sow counter-clockwise,
 
 Preview a sow before committing. The phone layout turns vertically to keep pits large. A worker runs the computer and hints, and saved rounds can be continued. The daily is a symmetric 48-seed distribution; browser records include assisted games and all seed settings.
 
+## Checkers: follow the complete capture
+
+English draughts requires a capture when one is available. Choose any complete jump chain; it does not have to be the longest. Men move and capture forward, short kings can also go backward, and crowning ends the turn. A player with no legal move loses. This version automatically draws at threefold repetition or forty moves each without a capture or a man move.
+
+Choose a computer level and colour, or share the board locally. Preview the complete route before confirming. The capture guide demonstrates promotion and alternative jumps; saved rounds, hints and assisted undo support a closer review.
+
+## Sudoku: compare the candidates
+
+Fill rows, columns and 3 by 3 boxes with digits 1–9. Every generated board is checked for a unique solution. Clue-density settings are disclosed as generation targets, rather than guaranteed human difficulty ratings. Pencil notes, keyboard entry and undo let you work at your own pace.
+
+The guide distinguishes a cell with one candidate from a digit with only one place in a unit. Explained singles and explicit answer reveals are separate assisted tools. Daily boards use the Medium clue target; local solve records distinguish assistance.
+
+## Minesweeper: establish the flags
+
+Reveal every safe cell using the neighbouring mine counts. The opening area is safe, and default fields require a complete single-number/subset proof before receiving the no-guess label. Generation has a finite budget and may honestly report that no proven board was found.
+
+Beginner, Intermediate, Expert and bounded Custom fields support flags, keyboard controls and scrolling. A chord trusts your flag count, so incorrect flags can lose. Guaranteed-safe reveals and one recovery are explicitly assisted. The guide works through that risk and an actual subset deduction.
+
+## Slide Merge: make room for another pair
+
+Slide a 4 by 4 number board with arrows, WASD, swipes or direction buttons. Equal tiles merge once per move. Changed boards receive a new tile; no-op directions do not. Reach 2048, then explicitly choose whether to continue. A full board can still move when neighbouring tiles match.
+
+Undo restores the previous board, score and random stream, marks the round assisted and does not reroll a repeated move. Records retain the best score and tile reached earlier in the round. The guide gives concrete before-spawn rows so you can check a prediction without confusing the merge with the new tile.
+
 ## Daily formats, with different goals
 
-The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the Gomoku and Reversi daily openings and the Mancala daily board.
+The practice page has a daily Tic-Tac-Toe position with solver-checked saving or winning moves. Its progress and streak are local to your browser and local calendar date. It also links to the newer games’ daily formats. Checkers offers a legal opening, Sudoku a unique-solution board, Minesweeper a proven Intermediate field and Slide Merge a shared initial board and random stream. Their goals differ; none is a claim of parity with an unavailable phone-app source.
 
 Gomoku’s daily starts with four placed stones and continues as a full game against Hard. It has no single prescribed answer. The website generates this opening; matching a phone app’s daily is not promised.
 

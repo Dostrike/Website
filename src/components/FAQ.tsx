@@ -8,7 +8,7 @@ const FAQ: React.FC = () => (
       <title>FAQ - DoStrike Gaming Portal</title>
       <meta
         name="description"
-        content="Answers about DoStrike games (Minesweeper, Sudoku, Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, Memory), AI modes, privacy, ads, and how to contact us."
+        content="Answers about DoStrike games (Slide Merge, Minesweeper, Sudoku, Checkers, Mancala, Reversi, Gomoku, Tic-Tac-Toe, Connect 4, Memory), AI modes, privacy, ads, and how to contact us."
       />
       <link rel="canonical" href="https://dostrike.com/faq" />
     </Helmet>
@@ -56,7 +56,7 @@ const FAQ: React.FC = () => (
         <p style={{ lineHeight: 1.7 }}>
           You can play <strong>Tic-Tac-Toe</strong> (including private room
           style play), <strong>Connect 4</strong> with AI or two humans, and a{" "}
-          <strong>Memory</strong> matching game with difficulty options. Minesweeper offers first-click safe fields with optional no-guess proof; Sudoku adds unique-solution number puzzles with notes and explained hints; Checkers adds English draughts with complete jump chains. Mancala offers Kalah sowing with extra turns and captures; Reversi offers an 8 by 8 disc-flipping board; Gomoku adds a 15 by 15 five-in-a-row board with computer and local two-player modes. Start
+          <strong>Memory</strong> matching game with difficulty options. Slide Merge adds a 4 by 4 number-sliding puzzle with exact-stream undo and daily boards. Minesweeper offers first-click safe fields with optional no-guess proof; Sudoku adds unique-solution number puzzles with notes and explained hints; Checkers adds English draughts with complete jump chains. Mancala offers Kalah sowing with extra turns and captures; Reversi offers an 8 by 8 disc-flipping board; Gomoku adds a 15 by 15 five-in-a-row board with computer and local two-player modes. Start
           from the{" "}
           <a href="/" style={{ color: "var(--primary)" }}>
             home portal
