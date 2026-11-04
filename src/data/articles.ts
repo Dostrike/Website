@@ -13,6 +13,69 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Chess: checks, promotion choices and the draws we actually play',
+    excerpt: 'Work through a mating attack, a pinned en-passant capture and a promotion where a rook keeps the game alive. Learn the exact casual draw rules used on this website.',
+    slug: 'chess-checks-promotion-and-draws',
+    date: '2026-11-05', readTime: '5 min read', category: 'Chess',
+    content: `
+## Read the square before the move
+
+White moves first from the standard arrangement. Files run a to h and ranks 1 to 8. A square keeps its name when you flip the board: e2 is still e2 with Black at the bottom. Select a piece to mark its legal destinations, select a destination to preview, then confirm. Arrows move visually around the displayed board; Enter or Space selects, and Escape cancels the selection.
+
+Pawns move forward into empty squares, with a two-square option from their starting rank when both squares are clear, and capture one square diagonally forward. Knights jump in an L. Bishops follow diagonals, rooks follow ranks or files, and queens combine those sliding directions. Sliding pieces cannot pass through another piece. Kings move one square, subject to safety. You never capture the opposing king: a legal move must leave your own king safe.
+
+The preview describes the resulting move, check or outcome without changing the saved position. Promotion needs an explicit Queen, Rook, Bishop or Knight choice; selecting the destination alone never silently chooses a queen. On narrow screens the board scrolls inside its frame so the square controls remain large.
+
+## Check is a question; mate has no answer
+
+From the normal start, play e4, e5, Bc4, Nc6, Qh5, Nf6, Qxf7#. In this cooperative example, the final queen capture on f7 checks the king on e8. White’s bishop on c4 protects that queen along c4–d5–e6–f7. Black cannot capture it with the king, block the adjacent queen’s attack or move to a safe square. The legal-move list is empty while the king is attacked, so this is checkmate and White wins.
+
+The sequence demonstrates a pattern, not a forced opening win: Black could choose different replies before the final move. A checking move on its own is not necessarily mate. The interface reports Check while legal answers remain, and a checkmated king stays on the board.
+
+Stalemate also has no legal move, but the king is not attacked. It is a draw here. The distinction is easy to miss when a player has very few pieces, so the next example deliberately makes it visible.
+
+## A promotion where the queen ends the game in a draw
+
+Set up this paper position: White king c6 and pawn c7, Black king a7, with White to move and no other pieces. You cannot import this position into the website; it is a separate worked example checked by the same rules adapter and a dedicated test.
+
+Promote the pawn on c8 to a queen. Black’s king on a7 is not in check. Its possible neighbouring squares are a6, b6, b7, a8 and b8. The queen controls a6 on a diagonal and a8 and b8 along rank 8. White’s king controls b6 and b7. With no legal reply and no check, Black is stalemated.
+
+Choose a rook on c8 instead. The rook still controls a8 and b8, but does not attack a6 diagonally. Black can play Ka6, so the game continues. The reflected Black-pawn example is tested too. A larger piece is not always the right promotion when your goal is to keep playing for a win.
+
+Queen, rook, bishop and knight all remain selectable when legally promoting in a normal game. Cancelling the preview leaves the pawn untouched. Underpromotion does not promise a win: the actual position and subsequent replies still decide the result.
+
+## Castling needs a safe route
+
+White’s kingside castle moves the king e1 to g1 and rook h1 to f1 in one move. Both pieces must retain their castling rights, the intervening squares must be clear, and the king cannot start in check, cross attacked f1 or finish on attacked g1. Moving the king or that rook away and back does not restore the right.
+
+Queenside castling moves the king e1 to c1 and rook a1 to d1. The spaces between them must be empty, including b1. The king’s safety test concerns e1, d1 and c1; an attack on b1 alone does not prohibit castling. Black has the corresponding rank-8 moves. Rook capture and replayed history are included in the rights checks.
+
+## En passant can be geometrically possible and still illegal
+
+Consider Black king a8, Black rook e8 and Black pawn d5, with White king e1 and White pawn e5. Assume Black has just advanced d7 to d5 in one move. The en-passant destination is d6, available only on the immediate reply.
+
+White’s pawn is on the right rank and next to d5, but e5xd6 en passant is illegal in this position. It would remove White’s pawn from the e-file and remove the pawn on d5, leaving the rook on e8 with an open line to the White king on e1. A special capture cannot override king safety. This pinned-pawn rejection is one of the adapter’s regression fixtures.
+
+## Know the website’s draw policy
+
+DoStrike uses untimed casual play. It automatically ends a game at stalemate, recognized insufficient-material cases, a third occurrence of a repetition position, or fifty moves by each side without a pawn move or capture. Checkmate takes precedence when the final move also reaches a clock boundary. A material helper does not recognize every theoretically dead position; we do not claim complete dead-position adjudication.
+
+For a simple repetition, play Nf3, Nf6, Ng1, Ng8 twice from the starting position. The initial arrangement has then occurred three times with the same player to move and relevant rights intact. The website declares a draw immediately. The save retains the full move transcript because a final board diagram or FEN alone would lose this history.
+
+These early automatic repetition and fifty-move draws differ from FIDE’s tournament claim procedure. There is no claim button, clock, arbiter, rating or online Chess matchmaking in this release. Local play shares the device; computer play offers either colour.
+
+## Search, assistance and saved openings
+
+Easy chooses a seeded legal move. Medium and Hard use original bounded search and evaluation, retaining completed search iterations and a legal fallback when the budget ends. Hard is not perfect, Elo rated or a substitute for a dedicated analysis engine. Hints use the bounded Hard search, so a suggested move is an idea to inspect rather than proof of optimal play.
+
+A delivered usable hint or Undo marks the round assisted. Cancelling search before a suggestion arrives does not. Computer Undo returns to before your most recent move and removes the computer answer too; it cannot remove an initial White computer move before you have acted as Black. Completed results close Undo. Restart creates a new attempt, and recent completion IDs prevent reloads from counting that same result twice.
+
+The daily supplies six reproducible quiet legal opening plies, then a full game as White against Hard. Those six plies cannot be undone. It is not a unique-solution puzzle or a promised balanced opening. Only winning on its original local date advances the browser streak; assisted wins are included and labelled. Reload restores the transcript, and restarting an older daily preserves its date.
+
+Records distinguish local White/Black outcomes and computer level and human colour, including assisted wins. Saves and records belong to this browser. When storage is blocked, play can continue but persistence is reported as unavailable. Legal move generation comes from chess.js 1.4.0 under BSD-2-Clause; DoStrike supplies the adapter, opponent, sessions, interface and these worked examples.
+`
+  },
+  {
     title: 'Sea Battle: hidden fleets, hits and honest search',
     excerpt: 'Use a checked coordinate example to distinguish a hit from a sunk ship, avoid treating touching ships as one, and understand what the computer’s search scores actually mean.',
     slug: 'sea-battle-hidden-fleets-and-search',
@@ -1512,7 +1575,7 @@ Endgame discipline turns unstable games into reliable results against both human
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers thirteen free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers fourteen free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1583,6 +1646,10 @@ Undo restores the previous board, score and random stream, marks the round assis
 Sort four-unit numbered colours into full single-colour tubes. Choose 3, 5 or 7 colours plus two empty tubes. These settings describe size, not a guaranteed human difficulty. Select source and destination, inspect the maximal-pour preview and confirm; arrows, Enter, Escape and pointer controls share the same actions.
 
 Every generated starting board is checked against a full forward solution witness. Undo marks assistance. Path hints only work when your exact board matches that witness; after a deviation they can honestly be unavailable. Saved puzzles replay their moves, and local records separate assisted solves from unassisted bests. The guide demonstrates whole runs, capacity-limited transfers and illegal mismatches.
+
+## Chess: read a legal reply
+
+Choose either colour against a bounded computer opponent or play locally. Legal destinations and move previews support careful decisions; every promotion asks which piece you want. The game includes castling and en passant, complete move history, saved rounds and a date-seeded opening. Its casual automatic repetition and fifty-move draws are explained on setup rather than presented as tournament claim procedure.
 
 ## Sea Battle: learn from hidden information
 

@@ -96,3 +96,7 @@
 .lobby-preview-sea { background: #dae9e7; }
 .lobby-preview-sea > div { display:grid; grid-template-columns:repeat(5,30px); gap:5px; transform:rotate(-8deg); }
 .lobby-preview-sea span { width:30px; height:30px; border:1px solid #8ea9a4; border-radius:5px; display:grid; place-items:center; color:#3d665c; font-size:23px; background:#edf5ef; }
+
+.lobby-preview-chess > div { display:grid; grid-template-columns:repeat(4,46px); transform:rotate(-8deg); border:5px solid #f6edda; border-radius:5px; overflow:hidden; }
+.lobby-preview-chess span { width:46px; height:46px; display:grid; place-items:center; font-size:36px; line-height:1; background:#f6edda; color:#153d37; }
+.lobby-preview-chess span:nth-child(8n+2),.lobby-preview-chess span:nth-child(8n+4),.lobby-preview-chess span:nth-child(8n+5),.lobby-preview-chess span:nth-child(8n+7) { background:#7ba191; }
