@@ -1,0 +1,38 @@
+{
+  "seed": "guide-order-39",
+  "moves": [
+    { "slot": 0, "anchor": 40 },
+    { "slot": 1, "anchor": 0 },
+    { "slot": 2, "anchor": 6 },
+    { "slot": 2, "anchor": 19 },
+    { "slot": 1, "anchor": 51 },
+    { "slot": 0, "anchor": 41 },
+    { "slot": 2, "anchor": 24 },
+    { "slot": 0, "anchor": 30 },
+    { "slot": 1, "anchor": 36 },
+    { "slot": 2, "anchor": 53 },
+    { "slot": 1, "anchor": 54 },
+    { "slot": 0, "anchor": 42 },
+    { "slot": 2, "anchor": 46 },
+    { "slot": 0, "anchor": 16 },
+    { "slot": 1, "anchor": 2 },
+    { "slot": 0, "anchor": 17 },
+    { "slot": 2, "anchor": 26 },
+    { "slot": 1, "anchor": 13 },
+    { "slot": 2, "anchor": 56 },
+    { "slot": 1, "anchor": 33 },
+    { "slot": 0, "anchor": 23 },
+    { "slot": 2, "anchor": 45 }
+  ],
+  "board": [
+    4, 4, 4, 14, 0, 0, 8, 0, 0, 0, 14, 14, 14, 10, 10, 0, 1, 1, 0, 1, 0, 10, 10,
+    0, 7, 7, 13, 13, 13, 0, 1, 0, 7, 7, 7, 13, 8, 8, 0, 0, 0, 7, 0, 0, 0, 1, 0,
+    0, 0, 6, 6, 8, 8, 1, 8, 0, 1, 0, 0, 0, 8, 0, 0, 0
+  ],
+  "tray": [9, 5, null],
+  "score": 73,
+  "badSlot": 1,
+  "badAnchors": [38],
+  "goodFirst": { "slot": 0, "anchor": 38 },
+  "goodSecond": { "slot": 1, "anchor": 29 }
+}

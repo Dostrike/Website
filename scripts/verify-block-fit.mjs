@@ -358,6 +358,44 @@ assert.equal(replayBlockFit("seed", [{ slot: 0, anchor: 0, board: [] }]), null);
 assert.equal(replayBlockFit("", []), null);
 assert.equal(replayBlockFit("seed", null), null);
 assert.equal(undoBlockFit(newBlockFit("seed")), null);
+// Original reachable teaching fixture: the only elbow-first move loses the remaining square.
+const lesson = JSON.parse(
+  fs.readFileSync("scripts/fixtures/block-fit-piece-order.json", "utf8"),
+);
+const position = replayBlockFit(lesson.seed, lesson.moves);
+assert(position && !position.over);
+assert.deepEqual(plain(position.board), lesson.board);
+assert.deepEqual(plain(position.tray), lesson.tray);
+assert.equal(position.score, lesson.score);
+const referenceElbowAnchors = Array.from({ length: 64 }, (_, i) => i).filter(
+  (a) => reference(position.board, 5, a, position.combo, 8),
+);
+assert.deepEqual(referenceElbowAnchors, [38]);
+const badReference = reference(position.board, 5, 38, position.combo, 8);
+assert.equal(badReference.clear.size, 0);
+const bad = playBlockFit(position, { slot: 1, anchor: 38 });
+assert(bad.over);
+assert.equal(bad.score, 76);
+assert.equal(
+  Array.from({ length: 64 }, (_, i) =>
+    reference(bad.board, 9, i, bad.combo, 8),
+  ).some(Boolean),
+  false,
+);
+const firstRef = reference(position.board, 9, 38, position.combo, 8);
+assert.deepEqual(firstRef.rows, [4]);
+assert.deepEqual(firstRef.columns, []);
+assert.equal(firstRef.clear.size, 8);
+assert.equal(firstRef.points, 14);
+const first = playBlockFit(position, lesson.goodFirst);
+assert.equal(first.score, 87);
+const secondRef = reference(first.board, 5, 29, first.combo, 8);
+assert(secondRef);
+assert.equal(secondRef.points, 3);
+const second = playBlockFit(first, lesson.goodSecond);
+assert.equal(second.score, 90);
+assert.equal(second.trayIndex, position.trayIndex + 1);
+assert(!second.over);
 console.log(
   `Block Fit passed: ${shapes.length} distinct connected fixed shapes; ${geometryCases} geometry cases;512 small-board subsets/${subsetCases} move cases (${legalCases} legal);300 independent8×8 masks;9000 deterministic trays/single-cell guarantees;100 natural full games/${moves} moves/${replenishments} tray refills/${clears} clearing placements; exact immutable replay/Undo and malformed-input boundaries.`,
 );
