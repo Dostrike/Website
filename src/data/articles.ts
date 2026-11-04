@@ -1275,103 +1275,59 @@ That combination beats most casual opponents and gives you a stable foundation a
     `
   },
   {
-    title: 'Memory Game Improvement Guide: Faster Pairing, Better Recall, and Lower Move Counts',
-    excerpt: 'Learn practical memory-game techniques that improve speed and accuracy: zoning, anchor cards, pairing rhythm, and error reduction habits you can train in short sessions.',
+    title: 'Memory: keep a card map and check your next pair',
+    excerpt: 'A worked card-location example, the actual 6/8/10-pair rules, and a simple mistake ledger help you review a round without promised memory or speed gains.',
     slug: 'memory-game-improvement-guide',
-    date: '2026-04-26',
-    readTime: '9 min read',
-    category: 'Training',
+    date: '2026-04-26', updated: '2026-11-04', readTime: '4 min read', category: 'Memory',
     content: `
-Most memory-game players lose time because they click randomly under pressure. Better results come from a repeatable system: structured scanning, location anchors, and disciplined pair confirmation.
+## Know what the board records
 
-## Core Principle: Location First, Symbol Second
+DoStrike Memory offers Easy with 6 pairs, Medium with 8 and Hard with 10. Every symbol appears on two cards. Reveal two different cards to make an attempt. A matching pair disappears; a mismatch turns face down again before you can choose another pair.
 
-Beginners try to remember every symbol instantly. Stronger players first remember where useful information is located.
+The move count increases after the second card of an attempt, whether or not you matched. Revealing the first card alone does not add a move. Six pairs require at least six attempts, but that is a lower bound with every pair already known or fortunate guesses, not a realistic promise for an unseen shuffled board.
 
-Think:
-- Top-left had a moon
-- Bottom row, second card was a rocket
+The timer starts on your first reveal and includes the time spent watching match and mismatch feedback. It stops when the last matching pair has been removed. It is a casual browser timer, not a precision or competitive benchmark. Restarting or changing difficulty creates a new shuffled board and resets its counters.
 
-Position memory creates a reliable map for future turns.
+## Give each place a stable name
 
-## Step 1: Divide the Board into Zones
+Easy and Medium use four columns; Hard uses five. Describe locations as row and column, counted from the top left. Cards keep their original grid slots when matched cards disappear. Empty spaces therefore help preserve your map rather than shifting later cards into new positions.
 
-Split the board into 4 zones (top-left, top-right, bottom-left, bottom-right). In harder layouts, use 5 or 6 smaller zones.
+Choose one scan direction, such as left to right within each row. That is a way to keep track of which cards you have inspected, not a proven optimal strategy for every player. When you leave the scan to collect a known pair, remember where to resume.
 
-Why this works:
-- Reduces overload
-- Makes recall faster
-- Prevents repeating the same mistakes across the full board
+## Worked example: use what the mismatch taught you
 
-## Step 2: Use an Efficient Flip Pattern
+Imagine an Easy board where you have already seen a moon at row 1 column 2 and a rocket at row 2 column 1. They were a mismatch and are now face down.
 
-Adopt a scanning rhythm instead of random clicks:
+You reveal an unknown card at row 3 column 4 and see a moon. If your earlier location is correct, choose row 1 column 2 as the second card. You can predict the match before clicking. Opening another unknown card instead would spend this opportunity gathering information rather than collecting the known pair.
 
-1. Reveal unknown cards in a consistent path (left-to-right, top-to-bottom)
-2. Immediately pair when a known match appears
-3. Resume scan where you left off
+After collecting those moons, the rocket still belongs to row 2 column 1. The missing moon slots do not change that coordinate. If a later first reveal is a rocket, you have another predicted pair available.
 
-This keeps your mental map clean and minimizes wasted turns.
+If you cannot actually recall the location, mark that uncertainty in your review. A remembered symbol without a reliable place is not a known pair. Guessing and getting lucky is a different event from predicting both locations correctly.
 
-## Step 3: Anchor Difficult Symbols
+## A useful second card when the match is unknown
 
-Some symbols are visually similar or easy to confuse. Attach a simple cue:
+Suppose your first reveal is a planet and you have never seen its partner. Choosing a card you already know is a rocket cannot make that particular pair match, assuming your map is correct. An uninspected card might be the partner and also gives you new information if it is not.
 
-- Planet equals upper corner
-- Satellite equals lower edge
+That is a local decision under the stated knowledge, not a claim that one scan order minimises all expected moves. A mismatch still teaches two locations. Before the cards close, repeat those places once if that helps you keep track of them.
 
-One short cue is enough. Avoid overcomplicated mnemonics during active play.
+## Turn the old drills into one small experiment
 
-## Step 4: Avoid High-Cost Errors
+Choose a single focus for one round: keep a consistent scan, say a short location cue, or avoid reopening a known mismatch. These are optional methods to try, not prescribed chunk sizes or a promise of general memory improvement.
 
-### Error: Re-opening already known mismatch cards
-Fix: After a mismatch, say the two positions mentally once before next move.
+After the round, write down the difficulty, total attempts and one concrete error. For example: I saw both moons but chose the wrong row for the second. On another round, try a clearer row-and-column cue and see whether that kind of error recurs.
 
-### Error: Chasing one forgotten pair too long
-Fix: Continue scan; missing card will reappear naturally.
+You can keep a small ledger with columns for the difficulty, move count, elapsed time and repeated-known-mismatch errors. The game displays moves and time; you must tally the error category yourself. It does not upload or analyse that ledger. Do not count a first-time mismatch as a forgotten known pair.
 
-### Error: Speeding up too early
-Fix: Accuracy first. Speed comes after your recall map is stable.
+Compare like-sized boards, and remember that each shuffle changes the information available and the luck of the opening. A lower score on a later board does not by itself establish that the method caused it. Stop or take a break whenever you prefer; no age-based or fatigue-training schedule is required.
 
-## Difficulty-Specific Tips
+## Read personal records carefully
 
-### Easy (fewer pairs)
-- Prioritize perfect accuracy
-- Aim for smooth rhythm over raw speed
+Best move count and best time are stored separately for each difficulty in this browser. They may come from different completed rounds. A fast round need not have the fewest attempts. The page's Boards cleared counter counts cleared boards; it does not give you an abandon-inclusive win rate.
 
-### Medium
-- Strengthen zone recall
-- Track 2-3 pending unmatched cards mentally
+The New personal best message refers to an improved move count in this version. Use the displayed numbers to compare times. Records are local, with no account, cross-device sync or leaderboard. Reload starts a new board rather than restoring an unfinished Memory round, while completed records remain when storage is available.
 
-### Hard
-- Use tighter zone segmentation
-- Reduce hesitation by committing to pattern scan
-
-## Mini Practice Plan (10 Minutes)
-
-Repeat this cycle:
-
-1. Round A: Focus only on clean scan order
-2. Round B: Focus only on remembering mismatch locations
-3. Round C: Play normally and compare moves/time
-
-Track:
-- Total moves
-- Completion time
-- Number of repeat mismatch mistakes
-
-Small measurable goals improve consistency fast.
-
-## Final Takeaway
-
-To improve quickly:
-- Build a board map by zones
-- Follow a fixed scan rhythm
-- Pair immediately when confirmed
-- Reduce repeat mistakes
-
-If you apply these habits daily for a week, your move count and completion time should drop noticeably.
-    `
+Use this game to practise remembering this board and reviewing specific choices. These exercises do not demonstrate health benefits, general cognitive transfer, guaranteed weekly gains or a particular learning outcome.
+`
   },
   {
     title: 'Connect 4 Endgame Guide: Convert Winning Positions and Save Lost Boards',
@@ -1492,105 +1448,6 @@ Endgame discipline turns unstable games into reliable results against both human
     `
   },
   {
-    title: 'Memory Game Advanced Drills: Chunking, Narratives, and Mistake Tracking',
-    excerpt: 'Go beyond basics with repeatable memory drills: chunk sizes, verbal anchors, fatigue management, and how to shave moves off your average round.',
-    slug: 'memory-game-advanced-drills',
-    date: '2026-05-01',
-    readTime: '11 min read',
-    category: 'Training',
-    content: `
-Once your scan pattern is stable, improvement comes from deliberate drills—not more random clicks.
-
-## Drill 1: Fixed Chunk Sizes
-
-Pick a chunk size (for example 4 cards) and complete the board using only that window mentally before expanding.
-
-Why it works:
-- Trains precision under limited working memory
-- Reduces panic flips late in the round
-
-Progress by shrinking rest time between chunks, not by speeding up individual clicks first.
-
-## Drill 2: One-Word Narratives
-
-After each mismatch, attach one short word to each card location (not the symbol):
-
-- "high-left pair"
-- "bridge middle"
-
-Avoid long stories. One word per card is enough to survive the next loop.
-
-## Drill 3: Mistake Ledger
-
-Keep a tally for ten rounds:
-
-- Repeated mismatch clicks
-- Forgotten known pairs
-- Out-of-order scans
-
-Pick only one category to fix next session. Narrow focus beats vague goals.
-
-## Drill 4: Fatigue Training
-
-Play two rounds back-to-back:
-
-- Round 1: accuracy priority
-- Round 2: maintain accuracy with 10 percent faster pacing
-
-If accuracy drops, return to single-round practice until stable.
-
-## Drill 5: Worst-Pair Spotlight
-
-Identify the symbol type you confuse most. Spend five minutes pairing only those symbols across sessions.
-
-This removes your largest error bucket fastest.
-
-## Difficulty Scaling
-
-### Easy boards
-Optimize move count before time.
-
-### Medium boards
-Combine zones with verbal anchors.
-
-### Hard boards
-Shrink chunk size and slow the first minute of play.
-
-## Dual Coding: Whisper What You See
-
-Quietly naming shapes (“satellite,” “ringed planet”) while pairing engages verbal memory alongside visual memory—especially helpful when icon sets reuse similar palettes.
-
-Avoid poetry-length phrases; one or two syllables beat elaborate stories when the timer pressure returns.
-
-## Board Shape Heuristics
-
-Rectangular layouts reward vertical scanning on tall boards and horizontal sweeps on wide boards—mirror your path to the aspect ratio so neck strain stays low during long sessions.
-
-If the UI animates flips, anchor your eyes on card centers rather than trailing motion blur—centering reduces mis-clicks under animation-heavy themes.
-
-## Session Planning: Adults vs Kids
-
-Adults benefit from twenty-minute caps before fatigue spikes; kids often prefer three micro-rounds with dance breaks between.
-
-Log one metric only—median moves **or** median time—not both simultaneously until habits stabilize; split metrics later once variance shrinks.
-
-## When *Not* to Drill
-
-Skip drills after poor sleep or high stress—data collected then misrepresents baseline skill and reinforces negative self-talk.
-
-Instead play untimed exploratory rounds focusing purely on clean scan order; return to timed drills once sleep debt clears.
-
-## Final Takeaway
-
-Advanced memory play is boring on purpose:
-- Controlled chunks
-- Minimal narratives
-- Measured mistakes
-
-Repeat weekly and your median moves should trend down without sacrificing accuracy.
-    `
-  },
-  {
     title: 'DoStrike Portal Guide: Games, Difficulty Settings, and Where to Learn Next',
     excerpt: 'A clear tour of dostrike.com: which game fits your goal, how AI and difficulty options work, and the best articles to read first.',
     slug: 'dostrike-portal-player-guide',
@@ -1621,7 +1478,7 @@ Use the strategy blueprint for supported threats and the endgame guide for tight
 
 Pick a difficulty, reveal cards in pairs and find every match. The larger boards contain more pairs to remember. Keep a steady scan, and use a mismatch to record two locations rather than immediately guessing again.
 
-The improvement guide introduces a repeatable scanning method; the advanced drills offer optional ways to compare your own attempts. Browser bests are personal records. A faster time or lower move count in one attempt is not evidence of a general improvement in memory.
+The improvement guide introduces a repeatable scanning method; the same guide offers a small mistake ledger for reviewing your own attempts. Browser bests are personal records. A faster time or lower move count in one attempt is not evidence of a general improvement in memory.
 
 ## Gomoku: a bigger board and a saved round
 

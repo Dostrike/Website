@@ -27,6 +27,20 @@
   force = true
 
 # Consolidated guides: preserve bookmarks and search links without duplicate pages.
+
+[[redirects]]
+  from = "/blog/memory-game-advanced-drills"
+  to = "/blog/memory-game-improvement-guide/"
+  status = 301
+  force = true
+
+
+[[redirects]]
+  from = "/blog/memory-game-advanced-drills/"
+  to = "/blog/memory-game-improvement-guide/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/blog/tic-tac-toe-opening-moves"
   to = "/blog/complete-tic-tac-toe-strategy-guide/"

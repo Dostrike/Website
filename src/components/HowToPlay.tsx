@@ -319,19 +319,12 @@ const HowToPlay: React.FC = () => (
             lineHeight: 1.6,
           }}
         >
-          Train with our{" "}
+          Try a worked location example and a small mistake ledger in our{" "}
           <Link
             to="/blog/memory-game-improvement-guide"
             style={{ color: "var(--primary)" }}
           >
             Memory improvement guide
-          </Link>{" "}
-          and{" "}
-          <Link
-            to="/blog/memory-game-advanced-drills"
-            style={{ color: "var(--primary)" }}
-          >
-            advanced drills
           </Link>
           .{" "}
           <Link to="/memory" style={{ color: "var(--primary)" }}>

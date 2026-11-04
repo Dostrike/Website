@@ -1,5 +1,6 @@
 /** Retired guides retain permanent host redirects and equivalent client navigation. */
 export const articleRedirects: Record<string, string> = {
+  'memory-game-advanced-drills': 'memory-game-improvement-guide',
   'psychology-tic-tac-toe-decision-making': 'future-tic-tac-toe-ai-vr-innovation',
   'famous-tic-tac-toe-games': 'history-of-tic-tac-toe',
   'fun-facts-tic-tac-toe': 'mathematical-proof-tic-tac-toe-draw',

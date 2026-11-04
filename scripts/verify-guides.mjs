@@ -41,7 +41,7 @@ const netlify=fs.readFileSync('netlify.toml','utf8');
 for(const [old,destination] of Object.entries(articleRedirects)){
   assert.equal(getArticleBySlug(old),undefined);
   const target=getArticleBySlug(destination);assert(target,`Missing destination ${destination}`);
-  assert.equal(target.updated, ['psychology-tic-tac-toe-decision-making','famous-tic-tac-toe-games','fun-facts-tic-tac-toe'].includes(old) ? '2026-11-04' : '2026-11-03');
+  assert.equal(target.updated, ['memory-game-advanced-drills','psychology-tic-tac-toe-decision-making','famous-tic-tac-toe-games','fun-facts-tic-tac-toe'].includes(old) ? '2026-11-04' : '2026-11-03');
   assert(!Object.hasOwn(articleRedirects,destination),'Redirect chain');
   for(const suffix of ['','/']){
     const block=netlify.split('[[redirects]]').find(block=>block.includes(`from = "/blog/${old}${suffix}"`));
