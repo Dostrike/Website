@@ -20,6 +20,7 @@ const TicTacToeSetup = lazy(() => import("./components/TicTacToeSetup"));
 const Connect4Setup = lazy(() => import("./components/Connect4Setup"));
 const Connect4Game = lazy(() => import("./components/Connect4Game"));
 const MemoryGame = lazy(() => import("./components/MemoryGame"));
+const Minesweeper = lazy(() => import("./components/Minesweeper"));
 const Sudoku = lazy(() => import("./components/Sudoku"));
 const Checkers = lazy(() => import("./components/Checkers"));
 const Mancala = lazy(() => import("./components/Mancala"));
@@ -90,6 +91,8 @@ function App() {
                     <Route path="/gomoku" element={<Gomoku />} />
                     <Route path="/reversi-setup" element={<Reversi />} />
                     <Route path="/reversi" element={<Reversi />} />
+                    <Route path="/minesweeper-setup" element={<Minesweeper />} />
+                    <Route path="/minesweeper" element={<Minesweeper />} />
                     <Route path="/sudoku-setup" element={<Sudoku />} />
                     <Route path="/sudoku" element={<Sudoku />} />
                     <Route path="/checkers-setup" element={<Checkers />} />

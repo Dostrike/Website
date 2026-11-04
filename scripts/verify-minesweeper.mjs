@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import ts from 'typescript';import vm from 'node:vm';const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync('src/utils/minesweeperEngine.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{exports});
+const {generateMineBoard,newMineState,playMines,replayMines,proveMineBoard,deduceMines,mineNeighbours,mineVisible,validMineSettings}=exports;
+const plain=x=>JSON.parse(JSON.stringify(x));
+function fixture(w,h,mineCells,first){const mines=Array(w*h).fill(false);mineCells.forEach(i=>{mines[i]=true});const numbers=mines.map((_,i)=>mineNeighbours(i,w,h).filter(j=>mines[j]).length);return {settings:{width:w,height:h,mines:mineCells.length,noGuess:false},mines,numbers,seed:'fixture',first,certified:false};}
+assert.equal(validMineSettings({width:9,height:9,mines:10,noGuess:true}),true);assert.equal(validMineSettings({width:3,height:3,mines:10,noGuess:true}),false);assert.equal(mineNeighbours(0,9,9).length,3);assert.equal(mineNeighbours(40,9,9).length,8);
+// Single-number deductions from just visible values, no mine map argument.
+const visible=Array(25).fill(null),flags=Array(25).fill(false);visible[0]=0;let d=deduceMines(visible,flags,5,5);assert.equal(d.kind,'safe');assert.deepEqual(plain(d.cells),[1,5,6]);visible[0]=3;d=deduceMines(visible,flags,5,5);assert.equal(d.kind,'mine');flags[1]=flags[5]=flags[6]=true;visible[0]=1;assert.equal(deduceMines(visible,flags,5,5),null);
+const board=fixture(5,5,[6,24],0),initial=newMineState(board);assert.equal(initial.revealed[0],true);assert.equal(initial.revealed[6],false);
+const flagged=playMines(initial,{type:'flag',index:1});assert.equal(initial.flags[1],false);assert.equal(playMines(flagged,{type:'reveal',index:1}),flagged);assert.equal(playMines(initial,{type:'flag',index:0}),initial);
+// Correct flag chords safely; incorrect matching flag can hit a mine.
+const correct=playMines(initial,{type:'flag',index:6}),chord=playMines(correct,{type:'chord',index:0});assert.equal(chord.hit,null);assert.equal(chord.revealed[1],true);assert.equal(chord.revealed[5],true);
+const lost=playMines(flagged,{type:'chord',index:0});assert.equal(lost.over,true);assert.equal(lost.won,false);assert.equal(lost.hit,6);assert.equal(playMines(lost,{type:'reveal',index:2}),lost);assert.deepEqual(plain(replayMines(board,lost.actions.slice(0,-1))),plain(flagged));assert.throws(()=>replayMines(board,[{type:'reveal',index:0}]));
+let maxMs=0,subset=0,certified=0,failures=0;
+for(const [width,height,mines] of [[9,9,10],[16,16,40],[16,30,99]])for(let n=0;n<8;n++){
+ const settings={width,height,mines,noGuess:true},first=n%2?0:Math.floor(height/2)*width+Math.floor(width/2),seed=`proof-${n}`;const start=performance.now();let b;try{b=generateMineBoard(settings,seed,first,128);}catch(error){assert.match(error.message,/No board proven/);failures++;continue;}maxMs=Math.max(maxMs,performance.now()-start);assert.equal(b.mines.filter(Boolean).length,mines);for(const i of [first,...mineNeighbours(first,width,height)])assert.equal(b.mines[i],false);assert.equal(b.numbers[first],0);assert.deepEqual(plain(b),plain(generateMineBoard(settings,seed,first,128)));assert(b.certified);
+ const proof=proveMineBoard(b);assert(proof.solved);let state=newMineState(b);
+ for(const step of proof.steps){if(state.over)break;subset+=step.rule==='subset'?1:0;
+  // Independent certificate check: reconstruct every source constraint from visible numbers.
+  const seen=mineVisible(state),all=[];for(let i=0;i<seen.length;i++)if(seen[i]!==null){const ns=[];const r=Math.floor(i/width),c=i%width;for(let rr=Math.max(0,r-1);rr<=Math.min(height-1,r+1);rr++)for(let cc=Math.max(0,c-1);cc<=Math.min(width-1,c+1);cc++)if(rr!==r||cc!==c)ns.push(rr*width+cc);const cells=ns.filter(j=>seen[j]===null&&!state.flags[j]).sort((a,b)=>a-b),remaining=seen[i]-ns.filter(j=>state.flags[j]).length;if(cells.length)all.push({cells,mines:remaining});}
+  for(const p of step.premises)assert(all.some(a=>JSON.stringify(a)===JSON.stringify(p)));
+  let expectedCells=step.premises[0].cells,remaining=step.premises[0].mines;if(step.rule==='subset'){const [a,b]=step.premises;assert(a.cells.every(i=>b.cells.includes(i)));expectedCells=b.cells.filter(i=>!a.cells.includes(i));remaining=b.mines-a.mines;}
+  assert.deepEqual(plain(step.cells),plain(expectedCells));assert.equal(remaining,step.kind==='safe'?0:step.cells.length);
+  for(const index of step.cells){if(state.over)break;if(step.kind==='safe')assert.equal(b.mines[index],false);else assert.equal(b.mines[index],true);state=playMines(state,{type:step.kind==='safe'?'reveal':'flag',index});}
+ }
+ assert(state.won);assert.deepEqual(plain(replayMines(b,state.actions)),plain(state));certified++;
+}
+assert(certified>=16);assert(subset>0);const ordinary=generateMineBoard({width:9,height:9,mines:10,noGuess:false},'ordinary',0);assert.equal(ordinary.certified,false);console.log(`Minesweeper passed: first-area safety, immutable flags/reveals, correct/wrong chords, loss/replay cleanup and ${certified} independently checked proof certificates (${subset} subset steps; ${failures} bounded generation failures; slowest accepted generation ${Math.round(maxMs)}ms).`);
+// Worked subset fixture from generated guide-0: A={r1c3,r2c3}, B=A+{r3c3}, both need one mine.
+const guideBoard=fixture(9,9,[4,11,24,29,35,36,42,65,68,79],0),guideRevealed=Array(81).fill(false);[0,1,9,10,18,19,27,28].forEach(i=>{guideRevealed[i]=true});const guideFlags=Array(81).fill(false),guideVisible=guideRevealed.map((r,i)=>r?guideBoard.numbers[i]:null);const guideStep=deduceMines(guideVisible,guideFlags,9,9);assert.equal(guideStep.rule,'subset');assert.equal(guideStep.kind,'safe');assert.deepEqual(plain(guideStep.cells),[20]);assert.equal(guideBoard.mines[20],false);
+let boundedFailure=false;for(let n=0;n<20;n++){try{generateMineBoard({width:16,height:30,mines:99,noGuess:true},`bounded-${n}`,0,1)}catch(error){assert.match(error.message,/No board proven/);boundedFailure=true;break;}}assert(boundedFailure,'bounded generation must report unproven board rather than label it certified');

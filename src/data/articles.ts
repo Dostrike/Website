@@ -13,6 +13,71 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Minesweeper: safe moves, flags and subset deductions',
+    excerpt: 'Worked neighbour-count and subset examples explain safe reveals, why an incorrect flag can make a chord dangerous, and what DoStrike’s no-guess proof actually covers.',
+    slug: 'minesweeper-safe-moves-flags-and-subsets',
+    date: '2026-11-04', readTime: '4 min read', category: 'Minesweeper',
+    content: `
+## Count the neighbours, including diagonals
+
+A revealed number tells you how many mines lie in the eight cells touching it, including corners. At an edge there are fewer neighbours. Your goal is to reveal every safe cell; placing all flags is not itself the win condition.
+
+DoStrike waits until your first reveal to place mines. That cell and its neighbours are excluded, so the opening reveals an area with zero neighbouring mines. The date-keyed daily instead uses one disclosed starting cell, row 1 column 1, so everyone gets the same opening for that date.
+
+## Example 1: account for the remaining mines
+
+Consider the top-left cell, row 1 column 1. It has only three neighbours: row 1 column 2, row 2 column 1 and row 2 column 2.
+
+If it reads 3 and all three neighbours remain covered, all three must be mines. This is the all-mine version of a single-number deduction: the number of mines still required equals the number of unknown neighbours.
+
+Now suppose it reads 1, and you have already established that row 2 column 2 is a mine. The other two neighbours must be safe. The required mine is fully accounted for, so zero mines remain in those unknown cells.
+
+The word established matters. A flag is your assertion. Simply placing one beside a 1 does not make the other cells safe if the flag is wrong.
+
+## Example 2: compare overlapping groups
+
+This is a position from an original generated 9 by 9 field, verified by the same proof checker used in the game. The first two columns of rows 1 to 4 have been revealed, and there are no flags.
+
+- Row 1 column 2 reads 1. Its only unknown neighbours are row 1 column 3 and row 2 column 3.
+- Row 2 column 2 also reads 1. Its unknown neighbours are those same two cells plus row 3 column 3.
+
+Call the shared pair A. The larger group is A plus the third cell. Both groups must contain exactly one mine, so adding the third cell contributes no additional mine. Row 3 column 3 is safe.
+
+This is a subset deduction. Subtract both the cells and the remaining mine counts of a smaller group from a larger group that contains it. If the difference needs zero mines, its cells are safe. If it needs as many mines as there are cells, all are mines. Do not subtract arbitrary overlapping groups when neither fully contains the other.
+
+## Chording is a shortcut, not a correctness check
+
+Clicking a revealed number in Dig mode, or pressing C on it, attempts to open its unflagged neighbours when the adjacent flag count equals that number. The game checks the count, not whether you put those flags on the real mines.
+
+For a concrete risk, let the top-left 1 have a mine at row 2 column 2. If you incorrectly flag row 1 column 2 instead, the flag count still matches 1. A chord opens the unflagged mine and loses the round. This fixture is tested along with correct-flag chording.
+
+Review the reasoning behind your flags before chording. It saves clicks after a sound deduction; it does not replace one.
+
+## What no-guess certification means
+
+The default generator runs a solver from the chosen safe opening. The decision function receives only revealed numbers and established flags. It uses single-number and subset deductions; the hidden mine map resolves reveals and checks the resulting proof, rather than choosing the solver’s next move.
+
+A board receives the no-guess label only when that process clears every safe cell. Generation runs in a cancellable worker with finite attempts and a time limit. If proof is unavailable, the interface reports a failure and offers another seed or board choice. It does not quietly relabel an unproven random board.
+
+Certification demonstrates that a logical completion exists from this opening using those rules. It does not prevent you making an incorrect deduction, and it does not promise that every position will be easy to recognise. If you switch certification off, random boards can require guessing; the safe opening still applies.
+
+## Assistance and the second chance
+
+Safe reveal deliberately uses the hidden mine map to open an unflagged safe cell. It is labelled assisted. The single second chance after a mine hit restores the whole losing action, including every cell opened by a chord, and also marks the round assisted.
+
+After the first loss, choose that second chance or Finish round. A loss is not counted while that choice is pending. Finishing it, or choosing a new board, records the result once. If you recover and later win, the result is one assisted win. A second recovery is unavailable. Assistance remains marked after saving and reloading.
+
+## Choose a field that fits your screen
+
+Beginner is 9 columns by 9 rows with 10 mines. Intermediate is 16 by 16 with 40. Expert uses 16 columns by 30 rows with 99, keeping the long direction vertical. Custom fields are bounded to usable dimensions and mine density, and generation can still fail to find a proof in budget.
+
+Use Dig or Flag mode on touch screens. Right-click or long-press a cell to flag; F toggles a flag with the keyboard, arrows inspect cells, and C chords. Large fields scroll in both directions. The cell-size selector offers 36, 44 and 56 pixels so you can choose compact or larger targets.
+
+The daily is an Intermediate certified board keyed to your local calendar date. Only wins completed on that board’s date advance the local streak. Records combine board sizes and random/proven modes, with assisted wins counted separately. They stay in this browser, without an account or cross-device sync. No time-based record is collected.
+`
+  },
+
+  {
     title: 'Sudoku: candidates, singles and useful pencil notes',
     excerpt: 'Two engine-checked examples distinguish a cell with one candidate from a digit with only one place, and explain how notes, hints and answer reveals work on DoStrike.',
     slug: 'sudoku-candidates-singles-and-pencil-notes',

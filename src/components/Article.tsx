@@ -16,6 +16,7 @@ const IMPLEMENTATION_REFERENCES: Record<string, string> = {
   'tic-tac-toe-education-teaching-resource': 'practiceEngine',
   'connect4-strategy-blueprint': 'connect4Logic',
   'connect4-endgame-guide': 'connect4Logic',
+  'minesweeper-safe-moves-flags-and-subsets': 'minesweeperEngine',
   'sudoku-candidates-singles-and-pencil-notes': 'sudokuEngine',
   'checkers-captures-kings-and-complete-jumps': 'checkersEngine',
   'mancala-extra-turns-captures-and-counting': 'mancalaEngine',
@@ -172,7 +173,7 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
+                article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
                   ? "/mancala-setup"
                   : article.slug.includes("reversi")
                   ? "/reversi-setup"
@@ -185,7 +186,7 @@ const Article: React.FC = () => {
                     : "/practice"
               }
             >
-              {article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
+              {article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
                 ? "Play Mancala"
                 : article.slug.includes("reversi")
                 ? "Play Reversi"
@@ -219,6 +220,7 @@ const Article: React.FC = () => {
           {article.slug === "mancala-extra-turns-captures-and-counting" && <p>Rules reference: <a href="https://publikace.k.utb.cz/bitstream/handle/10563/1009973/Fulltext_1009973.pdf?sequence=1">Published Kalah rules, section 3.1</a>. This version requires a non-empty opposite pit for capture.</p>}
           {article.slug === "checkers-captures-kings-and-complete-jumps" && <p>Rules reference: <a href="https://wcdf.net/rules/rules_of_checkers_english.pdf">WCDF English draughts rules</a>. Automatic draw adjudication is described above.</p>}
           {article.slug === "sudoku-candidates-singles-and-pencil-notes" && <p>Classic rules reference: <a href="https://www.nikoli.co.jp/en/puzzles/sudoku/">Nikoli’s Sudoku rules</a>. DoStrike generates its own puzzles and does not reproduce Nikoli boards.</p>}
+          {article.slug === "minesweeper-safe-moves-flags-and-subsets" && <p>Rules and control reference: <a href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/mines.html">Simon Tatham’s Mines manual</a>. DoStrike has its own generator, proof checks and assisted recovery rules.</p>}
           {implementationReference && (
             <p>
               Implementation reference:{" "}

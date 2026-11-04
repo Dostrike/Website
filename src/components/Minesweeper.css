@@ -1,0 +1,152 @@
+.mines-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mines-status {
+  text-align: center;
+  font-size: 22px;
+}
+.mines-help,
+.mines-proof {
+  text-align: center;
+  max-width: 680px;
+  margin: 16px auto;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.mines-scroll {
+  max-width: 100%;
+  max-height: 65vh;
+  overflow: auto;
+  width: fit-content;
+  margin: 20px auto;
+  border: 5px solid #294b3d;
+  overscroll-behavior: contain;
+}
+.mines-board {
+  --mine-cell: inherit;
+  display: grid;
+  background: #c8d6bd;
+}
+.board-game-page button.mine-cell {
+  width: var(--mine-cell, 44px);
+  height: var(--mine-cell, 44px);
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid #8ca384;
+  background: #dbe4ce;
+  color: #214c3b;
+  font-size: 22px;
+  font-weight: 800;
+  touch-action: pan-x pan-y;
+}
+.board-game-page button.mine-cell.opened {
+  background: #f8f6e8;
+  border-color: #bac4ad;
+}
+.board-game-page button.mine-cell.flagged {
+  background: #f1d9a2;
+  color: #775418;
+}
+.board-game-page button.mine-cell.mine {
+  background: #ffe1ce;
+  color: #922e21;
+}
+.board-game-page button.mine-cell.hit {
+  background: #a33125;
+  color: white;
+}
+.mine-cell:focus-visible {
+  outline: 3px solid #bd7d1e;
+  outline-offset: -3px;
+  z-index: 1;
+}
+.mine-covered {
+  color: #7b9273;
+}
+.mine-cell.number-1 {
+  color: #1a4d93 !important;
+}
+.mine-cell.number-2 {
+  color: #25622b !important;
+}
+.mine-cell.number-3 {
+  color: #a23424 !important;
+}
+.mine-cell.number-4 {
+  color: #6a3486 !important;
+}
+.mines-no-guess {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 20px 0;
+}
+.mines-no-guess input {
+  width: 22px;
+  height: 22px;
+}
+.mines-custom {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mines-custom label {
+  display: grid;
+  gap: 6px;
+  width: 120px;
+  text-transform: capitalize;
+}
+.mines-custom input {
+  min-height: 44px;
+  width: 100%;
+  font: inherit;
+}
+.mines-size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px;
+}
+.mines-size select {
+  min-height: 44px;
+  font: inherit;
+}
+.mines-page .board-game-result a {
+  display: block;
+  margin: 16px;
+}
+.mines-page section > p[role="status"] {
+  text-align: center;
+}
+.mines-page [role="alert"] {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.mines-page [role="alert"] a {
+  display: block;
+  margin-top: 16px;
+}
+@media (max-width: 600px) {
+  .mines-topline {
+    font-size: 12px;
+  }
+  .mines-page .board-game-heading h1 {
+    font-size: 38px;
+  }
+  .mines-page .board-game-heading {
+    margin: 20px 0;
+  }
+  .mines-page .board-game-actions {
+    gap: 8px;
+  }
+  .mines-page .board-game-actions button {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
