@@ -2,6 +2,10 @@
 
 Started 2026-11-03. User authorized expanding the library and consolidating overlapping guides following the Low value content rejection. This supersedes the earlier approval backlog that deferred all new games until approval.
 
+## Current scope override — 2026-11-05
+
+The user instructed: complete the work underway and stop adding more games. The expansion is now closed at15 playable games (twelve additions completed). The remaining eight proposed additions, including Bloom Match, are deferred indefinitely and must not start without a new explicit user request. Existing briefs are historical planning material, not authorization to continue expansion. Finish the underway Connect4 guide corrections and publication checks, then focus authorized maintenance and AdSense readiness on the existing site. This instruction supersedes all older next-game and twenty-addition sequencing notes below. It does not pause daily monitoring or justified improvements to existing games/content.
+
 ## Outcome and boundaries
 
 Build toward 20 additional, distinct games, released in small tested batches. This is a product roadmap, not an AdSense quota or approval guarantee. Keep the existing three games working. Ads remain disabled until the account explicitly shows approval and consent/placement checks are complete. Do not resubmit merely because a game count has been reached.

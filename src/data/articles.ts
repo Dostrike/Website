@@ -1360,105 +1360,53 @@ As we look to the future, let us remember that technology is a tool to enhance h
     `
   },
   {
-    title: 'Connect 4 Strategy Blueprint: Control the Center, Build Threats, and Avoid Common Traps',
-    excerpt: 'A practical Connect 4 guide that covers openings, mid-game plans, defensive priorities, and endgame conversion. Learn how to win more consistently against humans and AI.',
+    title: 'Connect 4 strategy: playable threats, forks and the winning drop',
+    excerpt: 'Two reachable board examples show why a winning drop comes before a block, how a genuine two-threat fork works, and why gravity matters more than an attractive empty square.',
     slug: 'connect4-strategy-blueprint',
-    date: '2026-04-26',
-    updated: '2026-11-03',
-    readTime: '11 min read',
-    category: 'Strategy',
+    date: '2026-04-26', updated: '2026-11-05', readTime: '5 min read', category: 'Strategy',
     content: `
-Connect 4 looks simple, but strong play comes from planning two and three turns ahead while controlling key columns. If you rely only on immediate moves, you will miss winning sequences and fall into avoidable traps.
+## Read a threat from the bottom up
 
-## Why the Center Matters
+DoStrike uses a six-row, seven-column board. A disc falls to the lowest empty slot in the chosen column. The first horizontal, vertical or diagonal line of four ends the round. A full board without four is a draw. The diagrams above use R for Red, Y for Yellow and a dot for an empty slot; row 1 is the top and columns 1–7 run left to right.
 
-The center columns (especially column 4 in a 7-column board) participate in more possible four-in-a-row lines than edge columns. That means center control gives you:
+A threat is immediate only if the winning square is where the next disc would actually land. Three discs that point toward an unsupported empty square are a possible future line, not a winning drop this turn. Count the empty spaces below that square before deciding whether it is urgent.
 
-- More attacking options
-- Better defensive flexibility
-- Higher chance to create forks (two threats at once)
+For a paper example, alternate drops in columns 1, 2, 2, 3, 3, 7, 3, 7. Red has a rising diagonal at row 6 column 1, row 5 column 2 and row 4 column 3. Its fourth point would be row 3 column 4. But column 4 is empty: Red dropping there lands at row 6, three rows below the desired point. That drop does not complete this diagonal. The executable example checks both the geometry and the actual landing slot.
 
-If two moves are equally safe, the center-side move is usually stronger.
+## First diagram: win before blocking
 
-## Opening Rules That Win Games
+Start with Red and alternate columns 1, 7, 2, 7, 3, 7. The first diagram shows the result. Red is to move. Red has three bottom-row discs in columns 1–3, while Yellow has three stacked discs in column 7.
 
-### 1) Start near the middle
-Opening in the center gives long-term initiative. If center is occupied, choose the closest inside column before moving outward.
+Red should drop in column 4. It completes the bottom-row four and the round ends immediately. Yellow never receives the next turn to complete its vertical line in column 7. Blocking column 7 instead would pass up an available win; being under threat does not remove the right to finish first.
 
-### 2) Avoid random edge stacking early
-Edge stacks can become useful later, but early edge-heavy play often gives up tempo and board influence.
+Use this order when choosing a drop:
 
-### 3) Respect parity and move order
-The same shape can be winning or losing depending on whose turn it is. Always ask: "If I play this, what is my opponent's best response immediately?"
+1. Check every legal column for your own immediate win.
+2. If none wins, find the opponent’s immediate winning drops and look for a move that removes all of them.
+3. If the immediate danger is covered, compare the resulting positions, including forks and the support you give the opponent.
 
-## Mid-Game Planning: Build Layers, Not Single Moves
+If the opponent already has two distinct playable winning drops and you cannot win now, a single block may not save the round. Do not assume that any defensive-looking move is sufficient. The endgame guide has an exact example where blocking the current threat still leaves a forced loss.
 
-Strong mid-game play is about preparing future threats while keeping your position safe.
+## Second diagram: two threats that can actually be played
 
-### Build vertically with support
-A potential horizontal or diagonal win is only real if the target cell is playable (supported from below). Many players see lines that are not yet physically reachable.
+Alternate columns 3, 7, 4, 7, then let Red drop in column 2. The second diagram is now Yellow to move. Red occupies bottom-row columns 2, 3 and 4. Red can complete four at either column 1 or column 5, and both are currently playable.
 
-### Create forcing sequences
-A forcing sequence is when your move demands a block. Chain enough forcing moves and your opponent eventually runs out of answers.
+Yellow can occupy one of those endpoints but cannot occupy both in one turn. Yellow also has no immediate win of its own. After every legal Yellow reply, at least one of Red’s winning endpoints remains available. The verifier checks all seven replies, rather than assuming a fork from the shape alone.
 
-### Prefer dual-purpose moves
-The best move often improves your attack and blocks or limits the opponent.
+This is a concrete two-threat fork, not a guarantee that every group of three can become one. An endpoint above empty cells, an already occupied endpoint or an opponent’s immediate winning reply changes the conclusion. In a different position, run those checks again.
 
-## Defense: What to Block First
+## What the centre count really says
 
-### Priority 1: Immediate loss prevention
-First check whether you can complete four now: a winning drop ends the round immediately. If you have no immediate win and the opponent does, block that threat if a saving move exists. Do not ignore it for a setup move.
+There are 69 four-cell line segments on the empty board:24 horizontal, 21 vertical and 24 diagonal. Counting each cell’s membership in those segments gives column totals of 24, 36, 48, 60, 48, 36, 24. A vertical segment contributes four memberships to its column, so these are line-cell memberships, not seven disjoint sets of lines.
 
-### Priority 2: Fork prevention
-If they can create two threats with one move, prevent that shape before it appears.
+This explains why central cells can participate in many geometrical plans. It does not give a probability of winning, prove that a centre drop is best in every position or outweigh an immediate win or necessary block. Occupied cells, gravity and whose turn it is determine which plans remain possible. Both the 69 segments and the column totals are independently enumerated in the linked check.
 
-### Priority 3: Center denial
-If no urgent threat exists, reduce their center influence.
+## Practise one prediction at a time
 
-## Common Mistakes (and Fixes)
+Try the two short sequences on paper or in a local two-player round, starting with Red. Before the next drop, name the landing row, the winning column if one exists and the opponent’s strongest immediate reply. Then check the prediction against the board.
 
-### Mistake: Tunnel vision on one line
-Fix: Scan the board left-to-right for all opponent threats before choosing your move.
-
-### Mistake: Ignoring playable-cell logic
-Fix: Confirm the target winning cell is actually playable this turn.
-
-### Mistake: Over-attacking when behind
-Fix: Stabilize first, then transition into counterplay.
-
-### Mistake: Late-game panic moves
-Fix: Slow down in endgame. One accurate defensive move can flip a losing game into a draw.
-
-## Endgame Conversion
-
-When the board gets crowded:
-
-- Re-evaluate every column for immediate tactical shots.
-- Prefer moves that preserve multiple defensive answers.
-- Convert advantage by forcing predictable blocks.
-
-If you are ahead, do not rush. If you are behind, look for drawing resources by removing your opponent's fork potential.
-
-## Practical Training Routine
-
-Use this 15-minute routine:
-
-1. Play 2 short games focusing only on center control.
-2. Play 2 games where your only objective is preventing forks.
-3. Review 1 lost game and identify the first move where you stopped planning ahead.
-
-Consistency beats memorizing one magic opening.
-
-## Final Takeaway
-
-To improve quickly in Connect 4:
-- Control center space
-- Build supported threats
-- Defend immediate losses first
-- Think in forcing sequences, not isolated moves
-
-That combination beats most casual opponents and gives you a stable foundation against stronger players and AI.
-    `
+During an unfinished round, Undo can help revisit the latest decision. The Connect 4 interface does not offer a completed-round replay or position importer; keep a paper column transcript if you want to reconstruct an older example. These are optional drills in reading this game, not a promise of measured learning gains or wins against a particular computer level.
+`
   },
   {
     title: 'Memory: keep a card map and check your next pair',
@@ -1516,122 +1464,66 @@ Use this game to practise remembering this board and reviewing specific choices.
 `
   },
   {
-    title: 'Connect 4 Endgame Guide: Convert Winning Positions and Save Lost Boards',
-    excerpt: 'Learn practical Connect 4 endgame technique: forcing lines, block priorities, parity awareness, and draw-saving defense under pressure.',
+    title: 'Connect 4 endings: a saving draw and a block that cannot save',
+    excerpt: 'Two legal eight-empty positions have independently checked outcomes for every legal drop. Learn the difference between an immediate threat, a forced loss and DoStrike’s actual draw scoring.',
     slug: 'connect4-endgame-guide',
-    date: '2026-05-01',
-    updated: '2026-11-03',
-    readTime: '10 min read',
-    category: 'Strategy',
+    date: '2026-05-01', updated: '2026-11-05', readTime: '5 min read', category: 'Strategy',
     content: `
-Many players improve in the opening but still throw winning games in the last 8-12 moves. Endgame skill is what turns good positions into consistent results.
+## A threat is not the same as a solved outcome
 
-## Endgame Objective
+An immediate threat means a player can win with the next legal drop. A forced win means a player has a winning continuation against every legal defence, even if the win takes several turns. A forced loss cannot be rescued against best play from that position; a later opponent error may change it. A draw can be preserved when neither player can force a win and the defending player chooses correctly.
 
-In Connect 4 endgames, your goal is not "play a good move." Your goal is:
+The two diagrams above are original reachable positions with eight empty slots and Red to move. For these small endings, we enumerated all legal continuations to a win or full-board draw. A separate bitboard win detector and an unpruned traversal of the actual rules engine agree with the independent array evaluator. This analysis is limited to these examples. It does not mean DoStrike’s computer opponent always plays perfectly, and it is not an interactive analysis or position-import feature.
 
-- Force a sequence the opponent must answer
-- Limit their counterplay choices
-- Convert advantage without giving tactical shots
+Coordinates use row 1 at the top and columns 1–7 from left to right. To reconstruct an example, alternate Red and Yellow drops using its column transcript on paper. Every prefix was checked for gravity and for the absence of an earlier win.
 
-When behind, the goal changes to:
-- Remove fork threats
-- Force predictable blocks
-- Hold for a draw if a win is gone
+## A: preserve a draw rather than support a loss
 
-## First Endgame Checklist
+The first diagram follows these 34 alternating drops, starting with Red:
 
-Before every move in a crowded board:
+4, 5, 3, 3, 2, 2, 7, 1, 3, 5, 4, 5, 1, 3, 5, 5, 6, 1, 6, 4, 2, 6, 4, 6, 4, 2, 2, 2, 1, 1, 3, 6, 6, 1
 
-1. Do I have an immediate win?
-2. Does the opponent have an immediate win?
-3. Can either side create a two-threat fork next turn?
-4. Which move keeps the most safe replies available?
+Columns 1, 2 and 6 are full. Red’s legal choices are 3, 4, 5 and 7. Their exact outcomes under best replies are:
 
-This checklist prevents panic blunders.
+- Column 3: draw.
+- Column 4: draw.
+- Column 5: draw.
+- Column 7: forced loss.
 
-## Forcing Line Basics
+Why is column 7 dangerous? Red’s disc lands at row 5 column 7. That supplies support for Yellow to play row 4 column 7 on the next turn. Yellow then completes the horizontal line along row 4, columns 4–7. The dangerous square was not playable before Red supplied the support.
 
-A forcing line is a sequence where each move demands a response.
+One verified drawing continuation is 3, 4, 5, 7, 7, 7, 7, 7, alternating from Red. It fills the board without an earlier four. That one sequence demonstrates a legal draw; the full search is what establishes that Red can preserve the draw against every Yellow reply after choosing 3, 4 or 5. It also checks that Red has no forced win from this position.
 
-### Why it works
-If you keep asking one clear tactical question each turn, your opponent has no time to build their own attack.
+## B: blocking now can still leave a forced loss
 
-### Practical pattern
-- Create one must-block threat.
-- After the block, play a second threat that improves your structure.
-- Repeat until the final winning drop appears.
+The second diagram follows these 34 drops:
 
-Do not break a forcing line for a "nice-looking" move unless it wins immediately.
+2, 4, 7, 3, 7, 7, 7, 1, 5, 1, 5, 7, 1, 1, 6, 7, 3, 3, 1, 1, 5, 5, 2, 4, 3, 4, 3, 5, 5, 6, 3, 2, 2, 2
 
-## Block Priority in Tight Positions
+Red can drop only in columns 2, 4 or 6. Yellow currently threatens a vertical four in column 4. Playing 2 or 6 lets Yellow win immediately in 4. Red has no immediate winning move.
 
-### Priority 1: Direct win prevention
-Take an immediate winning drop first, because it ends the round before the opponent can reply. If you cannot win now, block an immediate loss if a saving move exists.
+Red dropping in 4 occupies row 3 column 4 and prevents that immediate vertical win. It does not save the outcome: exhaustive continuations still give Yellow a forced win. All three legal Red moves therefore have the same loss value under best play, though they need not lose in the same number of moves. The analysis here ranks win/draw/loss, not speed of defeat.
 
-### Priority 2: Fork denial
-If opponent can create two winning threats with one move, prevent that square now.
+This is why “block, then the position is safe” is too strong. Blocking may be necessary to survive the next turn while being insufficient to draw the game. Conversely, an intimidating position is not proved lost merely because a player cannot see a defence. Separate a local threat scan from a complete outcome claim.
 
-### Priority 3: Central control
-If no urgent tactics exist, deny central columns to reduce their line options.
+## Count access to a square, not a universal parity rule
 
-This order keeps defense disciplined.
+Example A turns on who makes row 4 column 7 available. Dropping below a threat can give the opponent exactly the square they need. In larger endings, a player may also spend a turn in another column, changing the arrival order. A claim about odd or even rows without stating the available columns, supports and player to move is not a reliable shortcut.
 
-## Parity Awareness (Simple Version)
+Before a crowded-board move, check for your own win, then the opponent’s immediate wins, then the new landing slots created by your drop. When few moves remain, compare complete replies rather than assuming that the move with the most empty columns is safest.
 
-In late boards, the row a threat lands on matters. Some threats become reachable for one side first because of move order.
+## How DoStrike counts a drawn round
 
-Simple practical rule:
-- If a key winning cell is one move away but opponent reaches it first, treat that line as unsafe and switch plans.
+DoStrike’s Connect 4 match is first to two round wins. A drawn round awards neither player a win; the match continues with another round. Starting colours alternate after each completed round, including a draw. The optional paper-event half-point scoring described elsewhere is not used here.
 
-You do not need advanced math to benefit from parity awareness. Just track who reaches critical cells first.
+Browser statistics count completed rounds from Red’s perspective: Red wins, Yellow wins as losses, and drawn rounds. The displayed win rate is wins divided by total completed rounds, rounded to a whole percent. For example, 4 wins, 4 losses and 2 draws give 40%; one additional draw gives 4/11, displayed as 36%. A draw avoids a loss in that round but does not automatically raise this win rate. Reloading or navigating away is not a saved Connect 4 continuation.
 
-## Common Endgame Throw Patterns
+## Review an actual decision honestly
 
-### Throw 1: Ignoring opponent's one-move win while building your own setup
-Fix: Immediate threats always come first.
+In an unfinished round, use Undo if you want to revisit the latest move; computer mode steps back over the paired reply. After a round ends, the interface offers the next round rather than a completed-round replay or arbitrary-position importer. For a longer review, write down column numbers while playing and reconstruct them on paper.
 
-### Throw 2: Playing the only move that reduces your own safe replies
-Fix: Prefer moves that preserve multiple defensive answers.
-
-### Throw 3: Rushing when ahead
-Fix: If you are winning, force the board. Do not gamble.
-
-### Throw 4: Resigning mentally in bad positions
-Fix: Many "lost" boards can still be drawn by removing fork squares and forcing blocks.
-
-## How to Save a Worse Position
-
-If you are behind:
-- Identify the opponent's best winning route.
-- Spend moves removing the entry points of that route.
-- Force them into single-line attacks.
-- Trade activity for safety until no direct conversion remains.
-
-Saving half-points (draws) improves long-term win rate over many games.
-
-## 15-Minute Endgame Training Plan
-
-1. Play one full game focused only on endgame checklist discipline.
-2. Replay a previous loss from move 24 onward and find first tactical miss.
-3. Play one game where your goal is "no immediate threat misses."
-
-Track:
-- Missed immediate wins
-- Missed immediate blocks
-- Games converted from winning positions
-- Draws saved from worse positions
-
-## Final Takeaway
-
-To get stronger in Connect 4 endgames:
-- Use a strict tactical checklist
-- Build and maintain forcing lines
-- Defend by priority, not emotion
-- Preserve safe replies when under pressure
-
-Endgame discipline turns unstable games into reliable results against both humans and AI.
-    `
+For each recorded decision, label what you actually established: missed immediate win, missed block, newly supported threat, or fully checked small-ending outcome. Do not label every eventual loss a forced loss from the first mistake. These worked positions explain specific decisions without promising a win rate, AI strength or general learning benefit.
+`
   },
   {
     title: 'DoStrike Portal Guide: Games, Difficulty Settings, and Where to Learn Next',

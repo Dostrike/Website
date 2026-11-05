@@ -8,6 +8,7 @@ import { articleRedirects } from "../data/articleRedirects";
 import GuideExercises from "./GuideExercises";
 import { blockFitLessonRows } from "../data/blockFitLesson";
 import "./BlockFitLesson.css";
+import Connect4Lessons from './Connect4Lessons';
 
 const ARTICLE_AUTHOR = "DoStrike Editorial Team";
 const IMPLEMENTATION_REFERENCES: Record<string, string> = {
@@ -212,6 +213,8 @@ const Article: React.FC = () => {
           </aside>
 
           {article.slug === "block-fit-piece-order-lines-and-combos" && <figure className="block-guide-figure"><table className="block-guide-board"><caption>Worked position · 73 points</caption><thead><tr><th scope="col">r/c</th>{Array.from({length:8},(_,i)=><th scope="col" key={i}>{i+1}</th>)}</tr></thead><tbody>{blockFitLessonRows.map((row,r)=><tr key={r}><th scope="row">{r+1}</th>{Array.from(row,(cell,c)=><td key={c} className={`${cell==='#'?'filled':''} ${r===4&&c===6?'lesson-anchor':''}`} aria-label={`row ${r+1} column ${c+1}: ${cell==='#'?'occupied':'empty'}`}>{cell==='#'?'#':'·'}</td>)}</tr>)}</tbody></table><figcaption># means occupied; · means empty. The outlined anchor is row5 column7. A square and a southeast elbow remain. The guide below compares their order; this is a checked reachable example, not an editable or imported game.</figcaption></figure>}
+          {article.slug === 'connect4-strategy-blueprint' && <Connect4Lessons scope="strategy" />}
+          {article.slug === 'connect4-endgame-guide' && <Connect4Lessons scope="endgame" />}
           <div
             className="article-copy"
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
@@ -239,6 +242,7 @@ const Article: React.FC = () => {
           {article.slug === "sea-battle-hidden-fleets-and-search" && <p>Rules reference: <a href="https://instructions.hasbro.com/api/download/A3264_en-us_Battleship-Classic-Board-Game-Strategy-Game.pdf">Hasbro A3264 instructions (Spanish/Portuguese file)</a>. DoStrike’s identity-on-sinking convention is explicit; its coordinate examples and search comparison use the original web engine and independent verifier.</p>}
           {article.slug === "dots-and-boxes-extra-turns-and-control" && <p>Rules reference: <a href="https://nrich.maths.org/games/put-yourself-box">Cambridge NRICH’s Put Yourself in a Box</a>. The control example is verified against DoStrike’s own rules engine and bounded search.</p>}
           {article.slug === "tic-tac-toe-variations" && <p>Ultimate routing reference checked November 4, 2026: <a href="https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/">Ben Orlin’s Ultimate Tic-Tac-Toe account</a>. Other sections define the paper rules used here; the website’s playable game uses classic rules. Compare with <Link to="/blog/complete-tic-tac-toe-strategy-guide">solver-checked classic exercises</Link>.</p>}
+          {article.slug.startsWith('connect4-') && <p>Classic rules: <a href="https://www.hasbro.com/common/documents/dad2614d1c4311ddbd0b0800200c9a66/DE3C8F8050569047F5AA9FBB9F16909B.pdf">Hasbro’s Connect 4 instructions</a>. Worked positions and outcome claims: <a href="https://github.com/Dostrike/Website/blob/main/src/data/connect4Lessons.json">original legal transcripts</a> and <a href="https://github.com/Dostrike/Website/blob/main/scripts/verify-connect4-guides.mjs">DoStrike’s independent example checks</a>. The small-ending analysis explains these examples; it is not a new analysis tool or a perfect-play claim for the game’s computer levels.</p>}
           {implementationReference && (
             <p>
               Implementation reference:{" "}
