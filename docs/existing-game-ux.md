@@ -18,6 +18,8 @@ Observed shared header links around21–23px high and footer targets32px high. S
 
 After the change,45 painted game-entry/viewport combinations have no horizontal page overflow relative to the actual document client width, no undersized targets in the measured shared navigation selectors, and no sticky board-game action panels. A real phone-sized Block Fit placement/confirmation/Undo restores the exact64 board labels; keyboard Tab reaches a44px navigation link with a3px focus outline. No observed console warnings/errors in that interaction. Initial measurements taken immediately after resizing briefly mixed old styles with the new viewport; painted-frame captures resolved those false overflow readings. Do not log them as persistent defects.
 
+Published9796586 verified on Netlify November5 at7:46PM. Public main and all21 CSS files exactly match the tested build; all50 live pages/9 retired mappings pass. Real live320px header targets44px and ordinary-flow actions verified with client/scroll width305px. Proof E:/Web App/review-evidence/shared-ui-phone-live-2026-11-05.png. This completes the shared foundation pass, not the remaining per-game/deeper-state backlog below.
+
 ## Prioritized remaining work
 
 1. Connect4 phone interaction: actual cells measure29px at320px. Evaluate larger targets and a clearly labelled, contained interaction without causing accidental drops or hiding keyboard selection. Test a complete local/computer round, full columns, Undo, result/restart and reduced motion before publishing. Current page containment is correct; the old immediate-resize452px reading was transient.
