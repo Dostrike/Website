@@ -53,3 +53,13 @@ Actual source read: generic tournament/marketing/VR boilerplate offered no usabl
 
 ## Community remediation verified live — November5
 Publishedbb1d2db supersedes that pending note. Exact live main/article/data assets match the build, all46 pages/9 retired mappings pass, and public browser verifies retained URL/dates, three rounds, six worked ledger entries, honest scope, local-setup CTA and executable verification link.320px page containment passes; proof E:/Web App/review-evidence/community-guide-live-2026-11-05.png. Guide count stays22. Partial Connect4 audit remains the open factual-review item; do not call every guide audited.
+
+## Remaining Connect4 findings — November5 (not yet remediated)
+
+Read both full current article entries, connect4-strategy-blueprint and connect4-endgame-guide, plus the actual game, board and statistics implementation. The November3 immediate-win priority correction is present in the defense subsection; preserve it. The strategy summary still inconsistently says to defend immediate losses first. Replace unsupported claims about beating most casual opponents or improving quickly with reproducible positions rather than promised outcomes.
+
+The endgame guide says draws save half-points and improve long-term win rate. Actual website matches are first to two wins, draws award no win and replay, and browser win rate is wins divided by completed rounds. A draw is not half a match point or an automatic win-rate improvement. Advice to replay a previous loss from move24 must be an explicitly optional paper-transcript exercise: the actual Connect4 interface has transient in-round Undo, not a completed-round review/import tool. Distinguish a visible immediate threat from a mathematically forced loss; do not claim a proven losing position can be drawn under best play merely by defending once.
+
+Preserve the two URLs only with distinct useful content: strategy should explain gravity, currently playable threats and win-before-block with reachable moves; endgames should use independently solved small remaining positions, precise optimal-play outcome definitions and actual match semantics. Vague parity slogans need concrete support/tempo conditions, not a universal shortcut. Do not infer learning/retention benefits without measurements or merge by title alone.
+
+Primary classic rules read November5: https://www.hasbro.com/common/documents/dad2614d1c4311ddbd0b0800200c9a66/DE3C8F8050569047F5AA9FBB9F16909B.pdf . This supports alternating disc drops and horizontal/vertical/diagonal four-in-a-row, not the website's match scoring, statistics or AI strength. Any original geometry/solver claims must be independently computed and checked before publication. No content change or audit-closure claim at this checkpoint.
