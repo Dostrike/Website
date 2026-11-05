@@ -37,3 +37,5 @@ Official guidance read November5: https://support.google.com/adsense/answer/1001
 ## Memory phone follow-up — November5
 
 Hard phone spacing completed in c0c7d2e: five-column gap6px gives44.59375×66px cards at320px, previously42.1875px. Medium already55px wide with visible3px keyboard focus. No page overflow in phone/tablet/desktop/landscape checks. Rules/record keys unchanged; no all-state/hardware certification. Next investigate unguarded statistics writes with a controlled blocked-storage case, then continue older-game flow/zoom/result checks.
+
+Memory persistence repair completed November6 in94c9a06: malformed records normalize safely, writes are guarded outside state updaters and a truthful tab-only notice appears after saving fails.23 module cases and actual normal/read-write-denied/write-denied adapter completions pass. Published11-move/time16 best and cleared-board counter survive reload. Controlled adapters do not certify an actual browser privacy-policy restriction. Next older Tic-Tac-Toe/deeper-state review remains open.
