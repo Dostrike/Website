@@ -57,43 +57,103 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
   // Shake state for columns
   const [shakeCol, setShakeCol] = useState<number | null>(null);
   const moveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(
-    () => () => {
+  const shakeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const boardElement = useRef<HTMLDivElement>(null);
+  const inputMode = useRef<"pointer" | "keyboard">("pointer");
+  useEffect(() => {
+    // Undo or any other position change invalidates a pending visual move.
+    if (moveTimeout.current) clearTimeout(moveTimeout.current);
+    if (shakeTimeout.current) clearTimeout(shakeTimeout.current);
+    moveTimeout.current = null;
+    shakeTimeout.current = null;
+    setAnimating(false);
+    setDroppingDisc(null);
+    setShakeCol(null);
+    return () => {
       if (moveTimeout.current) clearTimeout(moveTimeout.current);
-    },
-    [],
-  );
+      if (shakeTimeout.current) clearTimeout(shakeTimeout.current);
+    };
+  }, [board]);
+  useEffect(() => {
+    if (hoverCol === null) return;
+    const cell = boardElement.current?.querySelector<HTMLElement>(
+      `[data-column="${hoverCol}"]`,
+    );
+    const frame = boardElement.current?.parentElement;
+    if (!cell || !frame) return;
+    const reveal = () => {
+      const target = cell.getBoundingClientRect(),
+        visible = frame.getBoundingClientRect();
+      // Reveal the chosen column without moving the document vertically.
+      if (target.left < visible.left + 8)
+        frame.scrollLeft -= visible.left + 8 - target.left;
+      else if (target.right > visible.right - 8)
+        frame.scrollLeft += target.right - visible.right + 8;
+    };
+    reveal();
+    window.addEventListener("resize", reveal);
+    return () => window.removeEventListener("resize", reveal);
+  }, [hoverCol]);
 
   // Handle column click with shake for full columns
   const handleColumnClick = (col: number) => {
     if (disabled || animating || gameStatus !== "PLAYING") return;
     if (board[0][col] !== null) {
       setShakeCol(col);
-      setTimeout(() => setShakeCol(null), 500);
+      if (shakeTimeout.current) clearTimeout(shakeTimeout.current);
+      shakeTimeout.current = setTimeout(() => setShakeCol(null), 500);
       return;
     }
     const row = getDropRow(board, col);
     if (row === null) return;
     setDroppingDisc({ col, row, player: currentPlayer });
     setAnimating(true);
-    // Animation duration matches CSS (0.45s)
-    moveTimeout.current = setTimeout(() => {
-      setAnimating(false);
-      setDroppingDisc(null);
-      onColumnClick(col);
-    }, 450);
+    // Reduced motion commits without waiting for the decorative drop.
+    const duration = Number.parseFloat(
+      boardElement.current
+        ? getComputedStyle(boardElement.current).getPropertyValue(
+            "--c4-drop-duration",
+          )
+        : "450",
+    );
+    moveTimeout.current = setTimeout(
+      () => {
+        setAnimating(false);
+        setDroppingDisc(null);
+        moveTimeout.current = null;
+        onColumnClick(col);
+      },
+      Number.isFinite(duration) ? Math.max(0, duration) : 450,
+    );
   };
 
   // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (disabled || animating || gameStatus !== "PLAYING") return;
-    if (["ArrowLeft", "ArrowRight", "Enter", " "].includes(e.key))
+    inputMode.current = "keyboard";
+    if (
+      [
+        "ArrowLeft",
+        "ArrowRight",
+        "Home",
+        "End",
+        "Escape",
+        "Enter",
+        " ",
+      ].includes(e.key)
+    )
       e.preventDefault();
     if (hoverCol === null) setHoverCol(0);
     if (e.key === "ArrowLeft") {
       setHoverCol((prev) => (prev === null ? 0 : (prev + COLS - 1) % COLS));
     } else if (e.key === "ArrowRight") {
       setHoverCol((prev) => (prev === null ? 0 : (prev + 1) % COLS));
+    } else if (e.key === "Home") {
+      setHoverCol(0);
+    } else if (e.key === "End") {
+      setHoverCol(COLS - 1);
+    } else if (e.key === "Escape") {
+      setHoverCol(null);
     } else if (e.key === "Enter" || e.key === " ") {
       handleColumnClick(hoverCol ?? 0);
     }
@@ -104,15 +164,14 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
     if (!droppingDisc) return null;
     const { col, row, player } = droppingDisc;
     // Calculate drop distance (in cells)
-    const dropDistance = row + 1;
     return (
       <div
         className={`c4-disc-drop-anim ${player.toLowerCase()}`}
         style={{
-          left: `calc(${col} * (var(--c4-cell-size, 48px) + 6px))`,
+          left: `calc(14px + ${col} * (var(--c4-cell-size, 44px) + 6px))`,
           // Animate from top to the cell
           top: 0,
-          height: `calc(${dropDistance} * (var(--c4-cell-size, 48px) + 6px))`,
+          height: `calc(14px + ${row + 1} * var(--c4-cell-size, 44px) + ${row} * 6px - 2.5px)`,
           zIndex: 10,
         }}
         aria-hidden="true"
@@ -142,24 +201,24 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
   return (
     <div
       className="c4-board-wrapper"
+      ref={boardElement}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       role="application"
       aria-label={
         gameStatus !== "PLAYING"
           ? "Connect 4 board. Round complete."
-          : `Connect 4 board. ${currentPlayer}'s turn. Use left and right arrows to choose a column, then press Enter to drop.`
+          : `Connect 4 board. ${currentPlayer}'s turn.${hoverCol === null ? "" : ` Column ${hoverCol + 1}${board[0][hoverCol] ? " is full" : " selected"}.`} Use left and right arrows or Home and End to choose a column, then press Enter to drop.`
       }
-      style={{
-        outline: "none",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
     >
-      {/* ...existing code... */}
+      <p className="c4-scroll-note">Scroll inside this board ↔</p>
+      <div className="c4-column-labels" aria-hidden="true">
+        {Array.from({ length: COLS }, (_, col) => (
+          <span key={col} className={hoverCol === col ? "is-selected" : ""}>
+            {col + 1}
+          </span>
+        ))}
+      </div>
       <div
         className="c4-board-grid"
         style={{ position: "relative", margin: "0 auto" }}
@@ -183,6 +242,7 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
               return (
                 <div
                   key={colIdx}
+                  data-column={colIdx}
                   className={`c4-cell${cell ? " " + cell.toLowerCase() : ""}${isWinningCell(rowIdx, colIdx) ? " winning" : ""}${winningLine && !isWinningCell(rowIdx, colIdx) ? " faded" : ""}${hoverCol === colIdx && cell === null ? ` c4-col-hover ${currentPlayer.toLowerCase()}` : ""}${shake}`}
                   aria-label={
                     cell
@@ -193,9 +253,21 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
                     opacity:
                       winningLine && !isWinningCell(rowIdx, colIdx) ? 0.5 : 1,
                   }}
-                  onMouseEnter={() => setHoverCol(colIdx)}
-                  onMouseLeave={() => setHoverCol(null)}
-                  onClick={() => handleColumnClick(colIdx)}
+                  onPointerMove={() => {
+                    inputMode.current = "pointer";
+                    setHoverCol(colIdx);
+                  }}
+                  onMouseEnter={() => {
+                    if (inputMode.current === "pointer") setHoverCol(colIdx);
+                  }}
+                  onMouseLeave={() => {
+                    if (inputMode.current === "pointer") setHoverCol(null);
+                  }}
+                  onClick={() => {
+                    inputMode.current = "pointer";
+                    setHoverCol(colIdx);
+                    handleColumnClick(colIdx);
+                  }}
                   role="gridcell"
                   tabIndex={-1}
                 >

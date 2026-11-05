@@ -1,4 +1,5 @@
 .c4-board-wrapper {
+  --c4-drop-duration: 450ms;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -325,6 +326,9 @@
 } 
 
 @media (prefers-reduced-motion: reduce) {
+  .c4-board-wrapper {
+    --c4-drop-duration: 0ms;
+  }
   .c4-disc-drop-anim,
   .c4-disc.preview.bounce,
   .c4-cell.shake,

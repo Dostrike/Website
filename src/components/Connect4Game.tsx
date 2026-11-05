@@ -1,4 +1,4 @@
-import ResultMark from './ResultMark';
+import ResultMark from "./ResultMark";
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -62,6 +62,8 @@ export default function Connect4Game() {
   const currentName = game.currentPlayer === "RED" ? settings.first : second;
   const winnerName = game.winner === "RED" ? settings.first : second;
   const round = completed.RED + completed.YELLOW + completed.draws + 1;
+  const nextStarterName = starter === "RED" ? second : settings.first;
+  const undoFloor = isAi && starter === "YELLOW" ? 2 : 1;
   useEffect(() => {
     if (!thinking) return;
     const timer = window.setTimeout(() => {
@@ -92,6 +94,7 @@ export default function Connect4Game() {
     setHistory((current) => {
       const previous = current[current.length - 1];
       if (
+        previous !== game ||
         previous.gameStatus !== Connect4GameStatus.PLAYING ||
         (isAi && previous.currentPlayer === "YELLOW")
       )
@@ -126,7 +129,12 @@ export default function Connect4Game() {
   };
   const undo = () =>
     setHistory((current) =>
-      current.slice(0, Math.max(1, current.length - (isAi ? 2 : 1))),
+      current.length <= undoFloor
+        ? current
+        : current.slice(
+            0,
+            Math.max(undoFloor, current.length - (isAi ? 2 : 1)),
+          ),
     );
   const resultTitle =
     game.gameStatus === Connect4GameStatus.DRAW
@@ -188,7 +196,12 @@ export default function Connect4Game() {
             : "Local two-player match"}
         </span>
       </div>
-      <div className="connect4-board-area">
+      <div
+        className="connect4-board-area"
+        role="region"
+        aria-label="Scrollable Connect 4 board"
+        tabIndex={0}
+      >
         <Connect4Board
           key={boardKey}
           board={game.board}
@@ -200,8 +213,26 @@ export default function Connect4Game() {
         />
       </div>
       {ended ? (
-        <section className="match-result" aria-label="Round result" data-outcome={game.gameStatus === Connect4GameStatus.DRAW ? "draw" : isAi && game.winner === "YELLOW" ? "loss" : "win"}>
-          <ResultMark outcome={game.gameStatus === Connect4GameStatus.DRAW ? "draw" : isAi && game.winner === "YELLOW" ? "loss" : "win"} />
+        <section
+          className="match-result"
+          aria-label="Round result"
+          data-outcome={
+            game.gameStatus === Connect4GameStatus.DRAW
+              ? "draw"
+              : isAi && game.winner === "YELLOW"
+                ? "loss"
+                : "win"
+          }
+        >
+          <ResultMark
+            outcome={
+              game.gameStatus === Connect4GameStatus.DRAW
+                ? "draw"
+                : isAi && game.winner === "YELLOW"
+                  ? "loss"
+                  : "win"
+            }
+          />
           <p className="match-eyebrow">
             {matchOver ? "MATCH COMPLETE" : "ROUND COMPLETE"}
           </p>
@@ -209,7 +240,7 @@ export default function Connect4Game() {
           <p>
             {matchOver
               ? "A fresh match starts at zero. Ready for a rematch?"
-              : `${firstWins}–${secondWins} in the match. ${starter === "RED" ? second : settings.first} starts the next round.`}
+              : `${firstWins}–${secondWins} in the match. ${nextStarterName} ${nextStarterName.toLowerCase() === "you" ? "start" : "starts"} the next round.`}
           </p>
           <button className="match-primary" onClick={restart}>
             {matchOver ? "Start another match" : "Play next round"} →
@@ -224,10 +255,16 @@ export default function Connect4Game() {
       ) : (
         <>
           <p className="board-help">
-            Choose a column to drop a disc. Connect four to win.
+            Choose a numbered column to drop a disc. Scroll sideways inside the
+            board on a small screen. Focus the board and use Left/Right or
+            Home/End to choose a column, then Enter to drop. Connect four to
+            win.
           </p>
           <div className="match-controls">
-            <button onClick={undo} disabled={history.length <= 1 || thinking}>
+            <button
+              onClick={undo}
+              disabled={history.length <= undoFloor || thinking}
+            >
               Undo move
             </button>
             <button onClick={restart}>Restart round</button>
@@ -237,7 +274,11 @@ export default function Connect4Game() {
       <details className="match-details">
         <summary>Your round statistics</summary>
         <p className="stats-note">
-          Saved on this device. Results are from {settings.first}’s side.
+          Saved on this device. Results are from{" "}
+          {settings.first.toLowerCase() === "you"
+            ? "your side (Red)"
+            : `${settings.first}’s side (Red)`}
+          . Casual rounds can include Undo; these are not competitive ratings.
         </p>
         <div className="compact-stats">
           <span>
