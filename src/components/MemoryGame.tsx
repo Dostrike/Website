@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 const symbols = ["🚀", "🪐", "👾", "🌟", "🛰️", "🌙", "🛸", "☄️", "🌌", "🔭"];
 
-type MemoryDifficulty = "EASY" | "MEDIUM" | "HARD";
+import { loadMemoryStats, saveMemoryStats, type MemoryDifficulty, type MemoryStats } from "../utils/memoryRecords";
 
 const MEMORY_LEVELS: Record<
   MemoryDifficulty,
@@ -16,41 +16,6 @@ const MEMORY_LEVELS: Record<
   EASY: { label: "Easy", pairs: 6, columns: 4 },
   MEDIUM: { label: "Medium", pairs: 8, columns: 4 },
   HARD: { label: "Hard", pairs: 10, columns: 5 },
-};
-
-type DifficultyStats = {
-  gamesPlayed: number;
-  wins: number;
-  bestMoves: number | null;
-  bestTime: number | null;
-};
-
-type MemoryStats = Record<MemoryDifficulty, DifficultyStats>;
-
-const MEMORY_STATS_KEY = "memoryGameStats";
-
-const createDefaultStats = (): MemoryStats => ({
-  EASY: { gamesPlayed: 0, wins: 0, bestMoves: null, bestTime: null },
-  MEDIUM: { gamesPlayed: 0, wins: 0, bestMoves: null, bestTime: null },
-  HARD: { gamesPlayed: 0, wins: 0, bestMoves: null, bestTime: null },
-});
-
-const loadStats = (): MemoryStats => {
-  try {
-    const stored = localStorage.getItem(MEMORY_STATS_KEY);
-    if (!stored) return createDefaultStats();
-    const parsed = JSON.parse(stored) as Partial<MemoryStats>;
-    return {
-      ...createDefaultStats(),
-      ...parsed,
-    };
-  } catch {
-    return createDefaultStats();
-  }
-};
-
-const saveStats = (stats: MemoryStats) => {
-  localStorage.setItem(MEMORY_STATS_KEY, JSON.stringify(stats));
 };
 
 function shuffle<T>(array: T[]): T[] {
@@ -80,7 +45,12 @@ const MemoryGame: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [personalBest, setPersonalBest] = useState(false);
   const [difficulty, setDifficulty] = useState<MemoryDifficulty>("MEDIUM");
-  const [stats, setStats] = useState<MemoryStats>(() => loadStats());
+  const [initialRecords] = useState(loadMemoryStats);
+  const [stats, setStats] = useState<MemoryStats>(initialRecords.stats);
+  const [recordsSaved, setRecordsSaved] = useState(initialRecords.available);
+  useEffect(() => {
+    if (stats !== initialRecords.stats) setRecordsSaved(saveMemoryStats(stats));
+  }, [stats, initialRecords.stats]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const pendingTimeoutsRef = useRef<number[]>([]);
   const hasRecordedWinRef = useRef(false);
@@ -206,7 +176,6 @@ const MemoryGame: React.FC = () => {
                   : Math.min(current.bestTime, timer),
             },
           };
-          saveStats(updated);
           return updated;
         });
       }
@@ -451,6 +420,7 @@ const MemoryGame: React.FC = () => {
             </a>
           </details>
 
+          {!recordsSaved && <p role="status" className="board-help">Records cannot be saved on this device right now. You can keep playing; new records are kept only in this tab until it closes or reloads.</p>}
           <details className="memory-records">
             <summary>Your personal records</summary>{" "}
             <div className="memory-stats-row">
