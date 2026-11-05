@@ -1,7 +1,8 @@
+import { resolveCasualSetup } from "../utils/casualSetup";
 import ResultMark from './ResultMark';
 import RoundReview from './RoundReview';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Difficulty,
   GameMode,
@@ -17,35 +18,6 @@ import ScoreBoard from "./ScoreBoard";
 import "./GameScreen.css";
 import "./MatchGame.css";
 
-type Settings = {
-  gameMode: GameMode;
-  difficulty: Difficulty;
-  player1Name: string;
-  player2Name: string;
-};
-function loadSettings(): Settings | null {
-  try {
-    const value = JSON.parse(localStorage.getItem("gameSettings") || "null");
-    if (!value || ![GameMode.AI, GameMode.PVP].includes(value.gameMode))
-      return null;
-    return {
-      gameMode: value.gameMode,
-      difficulty: Object.values(Difficulty).includes(value.difficulty)
-        ? value.difficulty
-        : Difficulty.MEDIUM,
-      player1Name:
-        typeof value.player1Name === "string" && value.player1Name.trim()
-          ? value.player1Name.slice(0, 40)
-          : "You",
-      player2Name:
-        typeof value.player2Name === "string" && value.player2Name.trim()
-          ? value.player2Name.slice(0, 40)
-          : "Player 2",
-    };
-  } catch {
-    return null;
-  }
-}
 function scoreRound(next: GameState): GameState {
   if (next.gameStatus === GameStatus.PLAYING) return next;
   const score = { ...next.score };
@@ -62,7 +34,9 @@ export default function MatchGame({
 }: {
   onBackToHome: () => void;
 }) {
-  const [settings] = useState(loadSettings);
+  const location = useLocation();
+  const [setup] = useState(() => resolveCasualSetup("tictactoe", location.state));
+  const settings = setup ? { ...setup.settings, gameMode: setup.settings.gameMode as GameMode, difficulty: setup.settings.difficulty as Difficulty } : null;
   const [game, setGame] = useState<GameState & { roundMoves: number[] }>(() => ({
     ...GameLogic.createInitialGameState(),
     roundMoves: [],
@@ -154,6 +128,7 @@ export default function MatchGame({
     );
   return (
     <main className="game-screen match-game">
+      {setup && !setup.saved && <p role="status" className="board-help">Game settings could not be saved to browser storage. You can still play this game.</p>}
       <nav className="match-top" aria-label="Game navigation">
         <button onClick={onBackToHome}>← Game lobby</button>
         <Link to="/tictactoe-setup">Change opponent</Link>

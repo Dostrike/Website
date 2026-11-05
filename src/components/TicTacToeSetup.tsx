@@ -1,3 +1,4 @@
+import { prepareCasualSetup } from "../utils/casualSetup";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -10,7 +11,7 @@ type JoinRoomResponse = {
   message?: string;
 };
 
-const TicTacToeSetup: React.FC = () => {
+const TicTacToeSetup: React.FC<{ setupStorage?: Pick<Storage, "getItem" | "setItem"> }> = ({ setupStorage }) => {
   const navigate = useNavigate();
   const [gameMode, setGameMode] = useState("AI");
   const [difficulty, setDifficulty] = useState("MEDIUM");
@@ -111,26 +112,10 @@ const TicTacToeSetup: React.FC = () => {
   }, []);
 
   const handleStartGame = () => {
-    localStorage.setItem(
-      "gameSettings",
-      JSON.stringify({
-        gameMode,
-        difficulty,
-        player1Name: player1Name.trim() || "You",
-        player2Name: player2Name.trim() || "Player 2",
-      }),
-    );
-
-    // Navigate to different routes based on game mode
-    if (gameMode === "PRIVATE") {
-      // Private room games use the PrivateTicTacToe component
-      navigate("/tictactoe-private", { state: { roomId, isPrivate: true } });
-    } else {
-      // AI and Player vs Player use the regular GameScreen
-      navigate("/tictactoe");
-    }
+    if (gameMode === "PRIVATE") { navigate("/tictactoe-private", { state: { roomId, isPrivate: true } }); return; }
+    const handoff = prepareCasualSetup("tictactoe", { gameMode, difficulty, player1Name, player2Name }, setupStorage);
+    if (handoff) navigate("/tictactoe", { state: { casualSetup: handoff } });
   };
-
   // Private room logic
   const handleCreateRoom = () => {
     if (!isConnected) {

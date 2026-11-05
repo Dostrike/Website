@@ -10,3 +10,18 @@ for(const game of ['tictactoe','connect4'])for(const mode of ['AI','PVP'])for(co
 for(const invalid of [null,[],false,{gameMode:'PRIVATE'},{gameMode:'AI',difficulty:'BAD',player1Name:'A',player2Name:'B'}]){assert.equal(prepareCasualSetup('tictactoe',invalid),null);checks++;}
 assert.equal(resolveCasualSetup('connect4',null,{getItem(){throw Error('blocked');}}),null);assert.equal(resolveCasualSetup('connect4',null,{getItem:()=>'{broken'}),null);assert.equal(prepareCasualSetup('connect4',{gameMode:'PVP',difficulty:'HARD',player1Name:'W'.repeat(50),player2Name:' '}).settings.player1Name.length,40);assert.equal(normalizeCasualSettings({gameMode:'AI'}).difficulty,'MEDIUM');checks+=4;
 console.log(`Casual setup handoff checks passed: ${checks} normal reload, denied-write, stale-precedence, malformed/cross-game, key/name and unavailable-storage cases.`);
+
+// Execute actual setup handlers with a controlled adapter, without room traffic.
+let handlerChecks=0;
+for(const file of ["Connect4Setup", "TicTacToeSetup"]){
+ const source=fs.readFileSync(`src/components/${file}.tsx`,"utf8");const start=source.indexOf("  const handleStartGame = () => {");const end=source.indexOf("\n  };",start)+6;assert(start>=0&&end>start);
+ for(const gameMode of ["AI","PVP"])for(const denied of [false,true]){
+  let navigation=null;
+  vm.runInNewContext(source.slice(start,end)+";handleStartGame();",{prepareCasualSetup,gameMode,difficulty:"HARD",player1Name:" ChosenA ",player2Name:"ChosenB",roomId:"PRIVATE_FIXTURE",setupStorage:{setItem(){if(denied)throw Error("quota");}},navigate:(path,options)=>{navigation={path,options};}});
+  assert.equal(navigation.path,file==="Connect4Setup"?"/connect4":"/tictactoe");assert.equal(navigation.options.state.casualSetup.settings.gameMode,gameMode);assert.equal(navigation.options.state.casualSetup.settings.player1Name,"ChosenA");assert.equal(navigation.options.state.casualSetup.saved,!denied);handlerChecks++;
+ }
+ if(file==="TicTacToeSetup"){
+  let navigation=null;vm.runInNewContext(source.slice(start,end)+";handleStartGame();",{gameMode:"PRIVATE",roomId:"PRIVATE_FIXTURE",navigate:(path,options)=>{navigation={path,options};}});assert.equal(navigation.path,"/tictactoe-private");assert.deepEqual(plain(navigation.options.state),{roomId:"PRIVATE_FIXTURE",isPrivate:true});handlerChecks++;
+ }
+}
+console.log(`Actual setup handlers passed ${handlerChecks} local/computer/denied/normal/private-routing cases without contacting players.`);

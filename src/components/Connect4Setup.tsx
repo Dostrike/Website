@@ -1,24 +1,17 @@
+import { prepareCasualSetup } from "../utils/casualSetup";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import GameSetup from "./GameSetup";
-export default function Connect4Setup() {
+export default function Connect4Setup({ setupStorage }: { setupStorage?: Pick<Storage, "getItem" | "setItem"> } = {}) {
   const navigate = useNavigate();
   const [gameMode, setGameMode] = useState("AI");
   const [difficulty, setDifficulty] = useState("MEDIUM");
   const [player1Name, setPlayer1Name] = useState("You");
   const [player2Name, setPlayer2Name] = useState("Player 2");
   const handleStartGame = () => {
-    localStorage.setItem(
-      "connect4Settings",
-      JSON.stringify({
-        gameMode,
-        difficulty,
-        player1Name: player1Name.trim() || "You",
-        player2Name: player2Name.trim() || "Player 2",
-      }),
-    );
-    navigate("/connect4");
+    const handoff = prepareCasualSetup("connect4", { gameMode, difficulty, player1Name, player2Name }, setupStorage);
+    if (handoff) navigate("/connect4", { state: { casualSetup: handoff } });
   };
   return (
     <>

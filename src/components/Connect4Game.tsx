@@ -1,7 +1,8 @@
+import { resolveCasualSetup } from "../utils/casualSetup";
 import ResultMark from "./ResultMark";
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Connect4Logic } from "../utils/connect4Logic";
 import { Connect4AI, type AIDifficulty } from "../utils/connect4AI";
 import { Connect4Stats } from "../utils/gameStats";
@@ -14,35 +15,10 @@ import Connect4Board from "./Connect4Board";
 import "./MatchGame.css";
 import "./Connect4Game.css";
 
-function loadSettings() {
-  try {
-    const s =
-      JSON.parse(localStorage.getItem("connect4Settings") || "{}") || {};
-    return {
-      mode: s.gameMode === "PVP" ? ("PVP" as const) : ("AI" as const),
-      difficulty: (["EASY", "MEDIUM", "HARD"].includes(s.difficulty)
-        ? s.difficulty
-        : "MEDIUM") as AIDifficulty,
-      first:
-        typeof s.player1Name === "string" && s.player1Name.trim()
-          ? s.player1Name.slice(0, 40)
-          : "You",
-      second:
-        typeof s.player2Name === "string" && s.player2Name.trim()
-          ? s.player2Name.slice(0, 40)
-          : "Player 2",
-    };
-  } catch {
-    return {
-      mode: "AI" as const,
-      difficulty: "MEDIUM" as AIDifficulty,
-      first: "You",
-      second: "Player 2",
-    };
-  }
-}
 export default function Connect4Game() {
-  const [settings] = useState(loadSettings);
+  const location = useLocation();
+  const [setup] = useState(() => resolveCasualSetup("connect4", location.state));
+  const settings = { mode: setup?.settings.gameMode ?? "AI", difficulty: (setup?.settings.difficulty ?? "MEDIUM") as AIDifficulty, first: setup?.settings.player1Name ?? "You", second: setup?.settings.player2Name ?? "Player 2" };
   const [history, setHistory] = useState<Connect4GameState[]>([
     Connect4Logic.createInitialGameState(),
   ]);
@@ -140,12 +116,14 @@ export default function Connect4Game() {
     game.gameStatus === Connect4GameStatus.DRAW
       ? "A draw. Go again?"
       : `${winnerName} ${winnerName.toLowerCase() === "you" ? (matchOver ? "take the match" : "win this round") : matchOver ? "takes the match" : "wins this round"}!`;
+  if (!setup && Object.prototype.hasOwnProperty.call(location.state ?? {}, "casualSetup")) return <main className="container"><h1>Choose your Connect 4 game</h1><Link to="/connect4-setup">Set up a game</Link></main>;
   return (
     <main className="match-game connect4-match">
       <Helmet>
         <title>Connect 4 game | DoStrike</title>
         <meta name="robots" content="noindex" />
       </Helmet>
+      {setup && !setup.saved && <p role="status" className="board-help">Game settings could not be saved to browser storage. You can still play this game.</p>}
       <nav className="match-top" aria-label="Game navigation">
         <Link to="/">← Game lobby</Link>
         <Link to="/connect4-setup">Change opponent</Link>
