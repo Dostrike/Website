@@ -2,7 +2,15 @@
 
 Started 2026-11-03. User authorized expanding the library and consolidating overlapping guides following the Low value content rejection. This supersedes the earlier approval backlog that deferred all new games until approval.
 
-## Current scope override — 2026-11-05
+## Current scope override — 2026-11-06: isolated development reopened
+
+The user authorized regular tested bug fixes, accessibility improvements and useful content corrections on the live site, and reopened new-game work on a separate development branch while AdSense review is pending. Production remains fifteen games. Build the eight remaining roadmap additions only in local branch `development/post-approval`, separate worktree `E:/Web App/dostrike-next`. Do not add their routes/cards/content to production main or merge them while review is pending. Main's E:/Web App/dostirke-web stays dedicated to tested existing-site fixes and monitoring.
+
+Develop complete tested releases on the branch, starting with Bloom Match using its existing brief, then Bubble Drift, Mahjong Tiles, Solitaire, Letter Lock, Word Shuffle, Word Search and Balloon Words. Verify word-list licences before word games. Approval is a release gate, not proof that all accumulated work is ready: merge only completed independently checked releases after actual AdSense approval, compatibility/mobile/accessibility review and live verification. Ads have their separate approval/consent/placement gate. No automatic bulk merge or new-game quantity promise.
+
+The development branch stays local for now, matching the request to publish after approval and avoiding unknown hosting branch-preview behavior. Before any remote feature push, verify that it cannot alter production or create an unintended public deployment. Keep changes committed locally; do not confuse local branch commits with publication. See docs/parallel-development.md. This supersedes the November5 stop only for isolated development; live expansion remains closed pending verified approval.
+
+## Historical scope override — 2026-11-05
 
 The user instructed: complete the work underway and stop adding more games. The expansion is now closed at15 playable games (twelve additions completed). The remaining eight proposed additions, including Bloom Match, are deferred indefinitely and must not start without a new explicit user request. Existing briefs are historical planning material, not authorization to continue expansion. Finish the underway Connect4 guide corrections and publication checks, then focus authorized maintenance and AdSense readiness on the existing site. This instruction supersedes all older next-game and twenty-addition sequencing notes below. It does not pause daily monitoring or justified improvements to existing games/content.
 
