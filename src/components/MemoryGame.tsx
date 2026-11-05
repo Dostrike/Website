@@ -35,7 +35,7 @@ interface Card {
   mismatched?: boolean;
 }
 
-const MemoryGame: React.FC = () => {
+const MemoryGame: React.FC<{ recordStorage?: Pick<Storage, "getItem" | "setItem"> }> = ({ recordStorage }) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
@@ -45,12 +45,12 @@ const MemoryGame: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [personalBest, setPersonalBest] = useState(false);
   const [difficulty, setDifficulty] = useState<MemoryDifficulty>("MEDIUM");
-  const [initialRecords] = useState(loadMemoryStats);
+  const [initialRecords] = useState(() => loadMemoryStats(recordStorage));
   const [stats, setStats] = useState<MemoryStats>(initialRecords.stats);
   const [recordsSaved, setRecordsSaved] = useState(initialRecords.available);
   useEffect(() => {
-    if (stats !== initialRecords.stats) setRecordsSaved(saveMemoryStats(stats));
-  }, [stats, initialRecords.stats]);
+    if (stats !== initialRecords.stats) setRecordsSaved(saveMemoryStats(stats, recordStorage));
+  }, [stats, initialRecords.stats, recordStorage]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const pendingTimeoutsRef = useRef<number[]>([]);
   const hasRecordedWinRef = useRef(false);
