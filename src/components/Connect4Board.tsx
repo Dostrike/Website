@@ -82,6 +82,8 @@ const Connect4Board: React.FC<Connect4BoardProps> = ({
     const frame = boardElement.current?.parentElement;
     if (!cell || !frame) return;
     const reveal = () => {
+      // Pointer scrolling must not move a target underneath a click.
+      if (inputMode.current !== "keyboard") return;
       const target = cell.getBoundingClientRect(),
         visible = frame.getBoundingClientRect();
       // Reveal the chosen column without moving the document vertically.
