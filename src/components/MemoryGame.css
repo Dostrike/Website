@@ -554,3 +554,10 @@
 .memory-game-board[hidden] {
   display: none;
 }
+
+/* Keep five-column phone cards above the shared 44px target. */
+@media (max-width: 650px) {
+  .memory-game-board--five-columns {
+    gap: 6px;
+  }
+}

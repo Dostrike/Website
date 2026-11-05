@@ -316,7 +316,7 @@ const MemoryGame: React.FC = () => {
             <span>Time: {formatTime(timer)}</span>
           </div>
           <div
-            className="memory-game-board"
+            className={`memory-game-board${boardColumns === 5 ? " memory-game-board--five-columns" : ""}`}
             hidden={showModal}
             style={{
               gridTemplateColumns: `repeat(${boardColumns}, 1fr)`,
