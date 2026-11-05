@@ -1,0 +1,44 @@
+.block-guide-figure {
+  max-width: 600px;
+  margin: 26px auto;
+  text-align: center;
+}
+.block-guide-board {
+  border-collapse: separate;
+  border-spacing: 2px;
+  margin: 0 auto;
+  font-size: 12px;
+}
+.block-guide-board caption {
+  font-size: 16px;
+  font-weight: 750;
+  margin-bottom: 12px;
+}
+.block-guide-board th,
+.block-guide-board td {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  padding: 0;
+}
+.block-guide-board td {
+  border: 1px solid #b9c9b6;
+  background: #eef1e7;
+  color: #254b3e;
+  border-radius: 2px;
+}
+.block-guide-board td.filled {
+  background: #93b9a6;
+  color: #173b31;
+  font-weight: 800;
+}
+.block-guide-board td.lesson-anchor {
+  outline: 3px solid #aa7925;
+  outline-offset: -2px;
+}
+.block-guide-figure figcaption {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 14px auto;
+  max-width: 500px;
+}

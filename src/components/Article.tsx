@@ -6,9 +6,12 @@ import BackToPortal from "./BackToPortal";
 import NotFound from "./NotFound";
 import { articleRedirects } from "../data/articleRedirects";
 import GuideExercises from "./GuideExercises";
+import { blockFitLessonRows } from "../data/blockFitLesson";
+import "./BlockFitLesson.css";
 
 const ARTICLE_AUTHOR = "DoStrike Editorial Team";
 const IMPLEMENTATION_REFERENCES: Record<string, string> = {
+  'block-fit-piece-order-lines-and-combos': 'blockFitEngine',
   'chess-checks-promotion-and-draws': 'chessEngine',
   'sea-battle-hidden-fleets-and-search': 'seaBattleEngine',
   'dots-and-boxes-extra-turns-and-control': 'dotsAndBoxesEngine',
@@ -179,7 +182,7 @@ const Article: React.FC = () => {
             <strong>Try the idea on a board.</strong>
             <Link
               to={
-                article.slug === "tic-tac-toe-tournaments-community-building" ? "/tictactoe-setup" : article.slug.includes("chess") ? "/chess-setup" : article.slug.includes("sea-battle") ? "/sea-battle-setup" : article.slug.includes("dots-and-boxes") ? "/dots-and-boxes-setup" : article.slug.includes("colour-sort") ? "/colour-sort-setup" : article.slug.includes("slide-merge") ? "/slide-merge-setup" : article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
+                article.slug === "tic-tac-toe-tournaments-community-building" ? "/tictactoe-setup" : article.slug.includes("block-fit") ? "/block-fit-setup" : article.slug.includes("chess") ? "/chess-setup" : article.slug.includes("sea-battle") ? "/sea-battle-setup" : article.slug.includes("dots-and-boxes") ? "/dots-and-boxes-setup" : article.slug.includes("colour-sort") ? "/colour-sort-setup" : article.slug.includes("slide-merge") ? "/slide-merge-setup" : article.slug.includes("minesweeper") ? "/minesweeper-setup" : article.slug.includes("sudoku") ? "/sudoku-setup" : article.slug.includes("checkers") ? "/checkers-setup" : article.slug.includes("mancala")
                   ? "/mancala-setup"
                   : article.slug.includes("reversi")
                   ? "/reversi-setup"
@@ -192,7 +195,7 @@ const Article: React.FC = () => {
                     : "/practice"
               }
             >
-              {article.slug === "tic-tac-toe-tournaments-community-building" ? "Set up local Tic-Tac-Toe" : article.slug.includes("chess") ? "Play Chess" : article.slug.includes("sea-battle") ? "Play Sea Battle" : article.slug.includes("dots-and-boxes") ? "Play Dots and Boxes" : article.slug.includes("colour-sort") ? "Play Colour Sort" : article.slug.includes("slide-merge") ? "Play Slide Merge" : article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
+              {article.slug === "tic-tac-toe-tournaments-community-building" ? "Set up local Tic-Tac-Toe" : article.slug.includes("block-fit") ? "Play Block Fit" : article.slug.includes("chess") ? "Play Chess" : article.slug.includes("sea-battle") ? "Play Sea Battle" : article.slug.includes("dots-and-boxes") ? "Play Dots and Boxes" : article.slug.includes("colour-sort") ? "Play Colour Sort" : article.slug.includes("slide-merge") ? "Play Slide Merge" : article.slug.includes("minesweeper") ? "Play Minesweeper" : article.slug.includes("sudoku") ? "Play Sudoku" : article.slug.includes("checkers") ? "Play Checkers" : article.slug.includes("mancala")
                 ? "Play Mancala"
                 : article.slug.includes("reversi")
                 ? "Play Reversi"
@@ -208,6 +211,7 @@ const Article: React.FC = () => {
             {["complete-tic-tac-toe-strategy-guide", "tic-tac-toe-education-teaching-resource"].includes(article.slug) && <a href="#guide-exercises-title">Try the playable examples ↓</a>}
           </aside>
 
+          {article.slug === "block-fit-piece-order-lines-and-combos" && <figure className="block-guide-figure"><table className="block-guide-board"><caption>Worked position · 73 points</caption><thead><tr><th scope="col">r/c</th>{Array.from({length:8},(_,i)=><th scope="col" key={i}>{i+1}</th>)}</tr></thead><tbody>{blockFitLessonRows.map((row,r)=><tr key={r}><th scope="row">{r+1}</th>{Array.from(row,(cell,c)=><td key={c} className={`${cell==='#'?'filled':''} ${r===4&&c===6?'lesson-anchor':''}`} aria-label={`row ${r+1} column ${c+1}: ${cell==='#'?'occupied':'empty'}`}>{cell==='#'?'#':'·'}</td>)}</tr>)}</tbody></table><figcaption># means occupied; · means empty. The outlined anchor is row5 column7. A square and a southeast elbow remain. The guide below compares their order; this is a checked reachable example, not an editable or imported game.</figcaption></figure>}
           <div
             className="article-copy"
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
@@ -230,6 +234,7 @@ const Article: React.FC = () => {
           {article.slug === "minesweeper-safe-moves-flags-and-subsets" && <p>Rules and control reference: <a href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/mines.html">Simon Tatham’s Mines manual</a>. DoStrike has its own generator, proof checks and assisted recovery rules.</p>}
           {article.slug === "history-of-tic-tac-toe" && <p>Historical sources checked November 4, 2026: <a href="https://www.cl.cam.ac.uk/events/EDSAC99/simulators/india/examples.html">Cambridge EDSAC99 example-program catalogue</a>; <a href="https://www.cl.cam.ac.uk/relics/chron.html">Wheeler/Hartley historical chronology</a>. Modern experiments: <Link to="/blog/minimax-algorithm-tic-tac-toe">DoStrike’s AI policies</Link>, <Link to="/blog/mathematical-proof-tic-tac-toe-draw">exhaustive counts</Link> and <Link to="/blog/future-tic-tac-toe-ai-vr-innovation">reviewing your round</Link>.</p>}
           {article.slug === "tic-tac-toe-tournaments-community-building" && <p>Fixture and scoring checks: <a href="https://github.com/Dostrike/Website/blob/main/scripts/verify-community-event.mjs">DoStrike’s executable event example</a>. This is an optional house format, not a hosted tournament or an official event rulebook.</p>}
+          {article.slug === "block-fit-piece-order-lines-and-combos" && <p>Worked-example evidence: <a href="https://github.com/Dostrike/Website/blob/main/scripts/fixtures/block-fit-piece-order.json">original reachable piece-order transcript</a> and <a href="https://github.com/Dostrike/Website/blob/main/scripts/verify-block-fit.mjs">independent coordinate/clear/score verifier</a>. The linked replay and separate coordinate evaluator check this guide’s board, legal anchors, clears and scores.</p>}
           {article.slug === "chess-checks-promotion-and-draws" && <p>Rules reference: <a href="https://handbook.fide.com/chapter/e012023">FIDE Laws of Chess</a>. Our casual automatic-draw policy differs from tournament claims. Legal moves use <a href="https://jhlywa.github.io/chess.js/">chess.js 1.4.0</a> under its <a href="/licenses/chess-js-1.4.0.txt">BSD-2-Clause notice</a>; DoStrike supplies the adapter, bounded opponent, interface and worked examples.</p>}
           {article.slug === "sea-battle-hidden-fleets-and-search" && <p>Rules reference: <a href="https://instructions.hasbro.com/api/download/A3264_en-us_Battleship-Classic-Board-Game-Strategy-Game.pdf">Hasbro A3264 instructions (Spanish/Portuguese file)</a>. DoStrike’s identity-on-sinking convention is explicit; its coordinate examples and search comparison use the original web engine and independent verifier.</p>}
           {article.slug === "dots-and-boxes-extra-turns-and-control" && <p>Rules reference: <a href="https://nrich.maths.org/games/put-yourself-box">Cambridge NRICH’s Put Yourself in a Box</a>. The control example is verified against DoStrike’s own rules engine and bounded search.</p>}

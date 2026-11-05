@@ -100,3 +100,5 @@
 .lobby-preview-chess > div { display:grid; grid-template-columns:repeat(4,46px); transform:rotate(-8deg); border:5px solid #f6edda; border-radius:5px; overflow:hidden; }
 .lobby-preview-chess span { width:46px; height:46px; display:grid; place-items:center; font-size:36px; line-height:1; background:#f6edda; color:#153d37; }
 .lobby-preview-chess span:nth-child(8n+2),.lobby-preview-chess span:nth-child(8n+4),.lobby-preview-chess span:nth-child(8n+5),.lobby-preview-chess span:nth-child(8n+7) { background:#7ba191; }
+
+.lobby-preview-block>div{display:grid;grid-template-columns:repeat(5,32px);gap:3px;transform:rotate(-7deg);padding:9px;background:#f2efdf;border-radius:9px}.lobby-preview-block span{width:32px;height:32px;display:grid;place-items:center;border:1px solid #bdcaba;border-radius:4px;background:#e6ecdf;color:#153d33;font-size:13px;font-weight:800}.lobby-preview-block span.filled{background:repeating-linear-gradient(45deg,#92b9a8 0 6px,#b9d0bd 6px 8px);border-color:#526f5e}

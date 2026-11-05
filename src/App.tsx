@@ -25,6 +25,7 @@ const ColourSort = lazy(() => import("./components/ColourSort"));
 const DotsAndBoxes = lazy(() => import("./components/DotsAndBoxes"));
 const SeaBattle = lazy(() => import("./components/SeaBattle"));
 const ChessGame = lazy(() => import("./components/ChessGame"));
+const BlockFit = lazy(() => import("./components/BlockFit"));
 const Minesweeper = lazy(() => import("./components/Minesweeper"));
 const Sudoku = lazy(() => import("./components/Sudoku"));
 const Checkers = lazy(() => import("./components/Checkers"));
@@ -106,6 +107,8 @@ function App() {
                     <Route path="/sea-battle" element={<SeaBattle />} />
                     <Route path="/chess-setup" element={<ChessGame />} />
                     <Route path="/chess" element={<ChessGame />} />
+                    <Route path="/block-fit-setup" element={<BlockFit />} />
+                    <Route path="/block-fit" element={<BlockFit />} />
                     <Route path="/minesweeper-setup" element={<Minesweeper />} />
                     <Route path="/minesweeper" element={<Minesweeper />} />
                     <Route path="/sudoku-setup" element={<Sudoku />} />

@@ -1,0 +1,313 @@
+.board-game-page.block-page {
+  max-width: 1000px;
+  min-width: 0;
+}
+.block-playing .board-game-heading {
+  text-align: left;
+  margin: 12px 0 20px;
+}
+.block-playing .board-game-heading h1 {
+  font-size: 38px;
+  letter-spacing: -1px;
+}
+.block-playing .board-game-eyebrow,
+.block-playing .board-game-heading > p {
+  display: none;
+}
+.block-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.block-status {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 22px auto;
+}
+.block-status strong {
+  font-size: 30px;
+}
+.block-status span {
+  font-size: 13px;
+}
+.block-tray {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.block-page .block-piece-choice {
+  min-width: 0;
+  width: 150px;
+  flex: 0 0 150px;
+  max-width: 100%;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.block-piece-choice > span:last-child {
+  font-size: 12px;
+  max-width: 100%;
+  white-space: normal;
+}
+.block-page .block-piece-choice[aria-pressed="true"] {
+  outline: 3px solid #b88427;
+  outline-offset: 2px;
+  background: var(--surface);
+}
+.block-used {
+  font-size: 18px;
+  padding: 20px 0;
+}
+.block-mini {
+  display: grid;
+  gap: 2px;
+  place-content: center;
+  min-height: 51px;
+  pointer-events: none;
+}
+.block-mini i {
+  display: grid;
+  place-items: center;
+  border: 1px solid #385c50;
+  border-radius: 3px;
+  color: #143b32;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 800;
+}
+.block-mini .block-gap {
+  visibility: hidden;
+}
+.block-page #block-help {
+  max-width: 650px;
+  margin: 18px auto;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+.block-scroll {
+  max-width: 100%;
+  width: fit-content;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 22px auto;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 16px;
+}
+.block-board {
+  display: grid;
+  grid-template-columns: 24px repeat(8, 44px);
+  grid-template-rows: 24px repeat(8, 44px);
+  padding: 10px;
+  width: fit-content;
+}
+.block-entry {
+  display: contents;
+}
+.block-axis {
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+.block-rank {
+  grid-column: 1;
+}
+.block-page button.block-cell {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 3px;
+  border: 1px solid #c7d2c5;
+  border-radius: 2px;
+  background: #edf1e8;
+  position: relative;
+  display: grid;
+  place-items: center;
+  touch-action: manipulation;
+}
+.block-page button.block-cell:focus-visible {
+  outline: 3px solid #99651c;
+  outline-offset: 1px;
+  z-index: 3;
+}
+.block-tile {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #385c50;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #153d33;
+  box-shadow: inset 0 -3px 0 #00000018;
+}
+.block-ink-0 {
+  background: #e8c275;
+}
+.block-ink-1 {
+  background: repeating-linear-gradient(45deg, #91b9a9 0 5px, #adcabd 5px 7px);
+}
+.block-ink-2 {
+  background: radial-gradient(#6c8a85 1px, transparent 1.5px), #b8d1d4;
+  background-size: 5px 5px;
+}
+.block-ink-3 {
+  background: repeating-linear-gradient(0deg, #e1b59d 0 5px, #efcbb7 5px 7px);
+}
+.block-ink-4 {
+  background: repeating-linear-gradient(90deg, #bcaed0 0 5px, #d7cbe4 5px 7px);
+}
+.block-page .block-cell.ghost-legal {
+  background: #d5e6b7;
+  box-shadow: inset 0 0 0 2px #506a2d;
+}
+.block-page .block-cell.ghost-bad {
+  box-shadow: inset 0 0 0 3px #a54837;
+}
+.block-page .block-cell.is-anchor {
+  outline: 3px solid #b88427;
+  outline-offset: -3px;
+  z-index: 1;
+}
+.block-ghost {
+  font-size: 25px;
+  color: #355847;
+  font-weight: 800;
+}
+.block-page .block-cell.will-clear {
+  box-shadow: inset 0 0 0 3px #a4691b;
+}
+.block-clear-symbol {
+  position: absolute;
+  right: 1px;
+  top: 0;
+  background: #fff4c6;
+  color: #6e431b;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 14px;
+  min-width: 12px;
+  border-radius: 3px;
+}
+.block-page .block-cell.revive-region {
+  outline: 2px dashed #a4691b;
+  outline-offset: -3px;
+}
+.block-anchor-dot {
+  font-size: 22px;
+  color: #355847;
+}
+.block-preview {
+  max-width: 660px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  text-align: center;
+}
+.block-preview h2 {
+  font-size: 21px;
+}
+.block-preview button {
+  margin: 4px;
+}
+.block-swap-pieces {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.block-swap-pieces > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+  font-size: 12px;
+}
+.block-notice {
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 40px;
+  max-width: 700px;
+  margin: 18px auto;
+}
+.block-page .board-game-actions {
+  justify-content: center;
+}
+.block-history {
+  max-width: 700px;
+  margin: 28px auto;
+}
+.block-history summary,
+.block-page .board-game-records summary {
+  padding: 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.block-history ol {
+  columns: 2;
+  padding-left: 26px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.block-history li {
+  break-inside: avoid;
+}
+.block-saved {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.block-daily {
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+  margin-top: 24px;
+}
+@media (max-width: 600px) {
+  .block-page .block-piece-choice {
+    min-width: 0;
+    width: 128px;
+    flex-basis: 128px;
+    min-height: 125px;
+    padding: 8px;
+  }
+  .block-tray {
+    gap: 8px;
+  }
+  .block-history ol {
+    columns: 1;
+  }
+  .block-page .board-game-actions button {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .block-preview {
+    padding: 14px;
+  }
+  .block-page .board-game-records p {
+    overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .block-page * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

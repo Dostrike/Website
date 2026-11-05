@@ -13,6 +13,75 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    title: 'Block Fit: piece order, simultaneous clears and combo scoring',
+    excerpt: 'A reachable square-and-elbow position shows why a piece’s only legal anchor can still be the wrong first placement. Check line-union scoring, combo resets and what a daily tray guarantee promises.',
+    slug: 'block-fit-piece-order-lines-and-combos',
+    date: '2026-11-05', readTime: '5 min read', category: 'Block Fit',
+    content: `
+## Read the shape, then its anchor
+
+DoStrike’s Block Fit is an 8 by 8 placement game. Each tray contains three fixed shapes drawn from a documented pool of twenty orientations, each using one to five cells. You cannot rotate or reflect a piece while playing. Use the three slots in any order; the next tray arrives only when all three have been placed.
+
+Select a tray piece to mark its legal anchors. An anchor is the top-left cell of the shape’s bounding box, which need not itself contain a block. The southwest elbow, for example, occupies offsets one step right, one step down, and down-and-right from that corner. An occupied anchor cell can be allowed if the shape does not actually cover it; every covered cell must still be empty and inside the board.
+
+Select an anchor to see the ghost and exact clear/point preview, then confirm or activate that anchor again. Choosing a different anchor changes the preview without using the piece. An overlapping or out-of-bounds proposal changes neither tray nor score. Arrows, Enter/Space and Escape provide the same path without dragging. On a phone the board scrolls internally instead of shrinking the controls.
+
+## Crossed lines clear together
+
+Suppose row4 is occupied except column5, and column5 is occupied except row4. Leave every other cell empty. Put a single-cell piece at row4 column5. That completes one row and one column on the board after placement.
+
+The game first detects both full lines, then removes their union. Eight plus eight minus their shared crossing gives fifteen distinct removed cells. Clearing the row first and only then searching for a full column would miss the column; that is not the rule here.
+
+At combo0, the move earns one point for its placed cell plus 10 × 2 lines × 1, for21 points. The same geometry at an existing combo4 earns1 + 10 × 2 × 5 =101. The independent verifier checks the fifteen-cell union and both scores. Lines are counted separately for points; the crossing cell is removed once.
+
+## A multi-line move is one clearing placement
+
+First clearing placement: combo1. If the very next placement also clears, combo2. Continuing this sequence raises the multiplier to a maximum of5. A placement that clears no line resets it to0, even when it fills an attractive-looking gap.
+
+The number of lines and the consecutive-placement combo are different quantities. A move clearing two lines does not by itself jump from combo0 to combo2. At combo1, a following three-cell placement clearing one line earns3 + 10 × 1 × 2 =23 points. A following non-clearing three-cell placement earns only3 and resets the combo.
+
+Swap and revive do not award points or change combo. Undo restores the previous board, score, tray and combo together. Use the preview to check the arithmetic before committing instead of treating every disappearing block as a separate bonus.
+
+## The square and elbow position above
+
+The illustrated board is reachable after22 ordinary placements from the saved seed guide-order-39, at score73. Its remaining tray pieces are a2×2 square and a southeast elbow. The elbow covers its anchor, the cell directly below, and the cell below-and-right. The third slot is already used.
+
+Row5 is filled in columns1 through6, with columns7 and8 empty. Both shapes can initially anchor at row5 column7. The elbow occupies row5 column7 and row6 columns7 and8; the square also needs row5 column8.
+
+A separate coordinate evaluator checks every anchor on this particular board. The elbow has exactly one legal anchor: row5 column7. Taking it first adds3 points and clears nothing, reaching76. The square then has no legal placement anywhere. This is a natural no-piece-fits state, not merely an inconvenient selected destination.
+
+Place the square first at row5 column7 instead. It fills row5 columns7 and8 and row6 columns7 and8, completing row5. Four placed cells plus the first clearing-line bonus earns14 points, taking73 to87. Row5 is now empty, while the two new blocks in row6 remain.
+
+The elbow can now anchor at row4 column6, covering row4 column6 and row5 columns6 and7. That adds3 without a clear, reaching90 and resetting the combo. Both remaining slots are used, so a fresh tray arrives. This comparison demonstrates a specific ordering opportunity. It does not prove that squares should always go first or that the whole future run is solvable.
+
+The diagram is a worked reference rather than an editable position importer. The linked transcript and verifier let you reconstruct its exact board, legal anchors and score.
+
+## One guaranteed small piece is not a guaranteed tray solution
+
+Every new ordinary tray contains one single-cell piece plus two other shapes, with seeded slot order. Whenever the board has an empty cell, that single-cell piece can fit. After you use it, however, the other two pieces can still be trapped. Keeping a gap for one large piece does not necessarily leave room for the other.
+
+The first four trays use other shapes of up to three cells, trays5–12 of up to four, then the full pool of up to five. This schedule depends on tray number, not your score or board. The daily repeats the original date’s ordinary tray stream, independent of player choices and attempt IDs. It is a score challenge, not a certified-solvable puzzle or equal-condition leaderboard.
+
+Restart uses a new attempt identity on the same stream. It does not move an older daily to today. Records keep Classic and Daily separate, show clean and assisted bests, and attach daily scores to the original challenge date. There is no invented win count or streak for this endless score game.
+
+## Preview recovery before spending it
+
+Every attempt has one free swap and one free revive. They mark assistance only when confirmed; previews and cancellations do not. Neither is an advertisement gate.
+
+Swap replaces unused slots only, leaving used slots empty and preserving the ordinary tray index. Its separate deterministic helper stream may repeat a shape or fail to rescue a partial tray. The replacement preview says whether at least one piece fits now, so you can cancel before using it. It does not certify that every replacement can be placed.
+
+Revive is available at no-piece-fits. Select the top-left of a3 by3 area; the region clips at the right and bottom boundary. Its preview counts occupied cells to remove. Confirmation is allowed only if the area removes blocks and creates at least one legal placement. It gives no points and does not advance trays or combo.
+
+Undo reverses the latest placement, swap or revive board effect, including a tray refill. Assistance stays marked and an already consumed helper allowance is not refunded. Those facts are replayed from the action history, rather than trusting a saved claim that a helper is unused.
+
+## Finish is a deliberate score decision
+
+When no remaining piece fits, choose Undo, an available recovery helper, or Finish and save score. The game does not count a completion while that choice is pending. Finishing closes Undo and records the attempt once among the most recent128 IDs; clearing browser data removes that protection and the local records.
+
+Validated saves rebuild placements, helper use, scores and completion from the legal action transcript. Records retain the most recent90 challenge dates. Storage failure is reported while play remains possible. For input safety, saved histories are limited to5000 actions and one million characters; a longer active run may continue, but its latest progress cannot be persisted and the interface reports that limitation.
+`
+  },
+  {
     title: 'Chess: checks, promotion choices and the draws we actually play',
     excerpt: 'Work through a mating attack, a pinned en-passant capture and a promotion where a rook keeps the game alive. Learn the exact casual draw rules used on this website.',
     slug: 'chess-checks-promotion-and-draws',
@@ -1575,7 +1644,7 @@ Endgame discipline turns unstable games into reliable results against both human
     content: `
 ## Pick a game for the break you have
 
-DoStrike currently offers fourteen free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
+DoStrike currently offers fifteen free browser games. You do not need an account to play. The homepage cards take you to a quick game or to the setup choices; the Guides page has game filters and a text search. Game records and optional preferences are stored on the browser you use, not in a shared account.
 
 ## Tic-Tac-Toe: a quick round with a useful review
 
@@ -1646,6 +1715,10 @@ Undo restores the previous board, score and random stream, marks the round assis
 Sort four-unit numbered colours into full single-colour tubes. Choose 3, 5 or 7 colours plus two empty tubes. These settings describe size, not a guaranteed human difficulty. Select source and destination, inspect the maximal-pour preview and confirm; arrows, Enter, Escape and pointer controls share the same actions.
 
 Every generated starting board is checked against a full forward solution witness. Undo marks assistance. Path hints only work when your exact board matches that witness; after a deviation they can honestly be unavailable. Saved puzzles replay their moves, and local records separate assisted solves from unassisted bests. The guide demonstrates whole runs, capacity-limited transfers and illegal mismatches.
+
+## Block Fit: make space before the next tray
+
+Place fixed shapes and clear full rows and columns together. The preview shows exact cleared lines and points before confirmation. Every ordinary tray has a single-cell anchor, but using the other pieces still requires planning. Classic and date-seeded score runs have exact saves/Undo and separate assisted bests; free swaps and revives have clear limits.
 
 ## Chess: read a legal reply
 

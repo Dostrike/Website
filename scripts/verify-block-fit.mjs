@@ -396,6 +396,33 @@ const second = playBlockFit(first, lesson.goodSecond);
 assert.equal(second.score, 90);
 assert.equal(second.trayIndex, position.trayIndex + 1);
 assert(!second.over);
+const lessonExports = {};
+vm.runInNewContext(
+  ts.transpileModule(fs.readFileSync("src/data/blockFitLesson.ts", "utf8"), {
+    compilerOptions: {
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2022,
+    },
+  }).outputText,
+  { exports: lessonExports },
+);
+assert.deepEqual(
+  plain(lessonExports.blockFitLessonRows),
+  Array.from({ length: 8 }, (_, r) =>
+    lesson.board
+      .slice(r * 8, r * 8 + 8)
+      .map((n) => (n ? "#" : "."))
+      .join(""),
+  ),
+  "Published diagram must match the reachable fixture",
+);
+const oneLine = Array(64).fill(0);
+for (let c = 3; c < 8; c++) oneLine[56 + c] = 1;
+assert.equal(
+  previewBlock(oneLine, 3, 56, 1).points,
+  23,
+  "Guide consecutive single-line arithmetic",
+);
 console.log(
   `Block Fit passed: ${shapes.length} distinct connected fixed shapes; ${geometryCases} geometry cases;512 small-board subsets/${subsetCases} move cases (${legalCases} legal);300 independent8×8 masks;9000 deterministic trays/single-cell guarantees;100 natural full games/${moves} moves/${replenishments} tray refills/${clears} clearing placements; exact immutable replay/Undo and malformed-input boundaries.`,
 );
