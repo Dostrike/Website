@@ -269,3 +269,23 @@
   max-height: none;
   aspect-ratio: 1;
 }
+
+/* User-supplied names must fit status, results and expanded statistics. */
+.match-turn,
+.match-result h2 {
+  overflow-wrap: anywhere;
+}
+.match-game .score-row {
+  gap: 12px;
+}
+.match-game .score-player {
+  min-width: 0;
+  flex: 1;
+}
+.match-game .player-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.match-game .score-stats {
+  flex-shrink: 0;
+}
