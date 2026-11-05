@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function SiteHeader() {
   const { pathname } = useLocation();
-  if (pathname === "/") return null;
+  if (pathname === "/") return <a className="skip-link" href="#games-start">Skip to games</a>;
   return (
     <>
       <a className="skip-link" href="#page-content">
