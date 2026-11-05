@@ -19,9 +19,16 @@
   cursor: pointer;
 }
 .match-top a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
   font-size: 12px;
   color: var(--secondary);
   text-decoration: none;
+}
+.match-top button {
+  min-height: 44px;
 }
 .match-heading {
   text-align: center;

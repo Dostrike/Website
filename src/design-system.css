@@ -49,6 +49,7 @@ button:disabled {
   border-bottom: 1px solid var(--border);
 }
 .site-brand {
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -72,6 +73,10 @@ button:disabled {
   gap: 28px;
 }
 .site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
   font-size: 13px;
   font-weight: 650;
   text-decoration: none;
@@ -81,6 +86,9 @@ button:disabled {
   text-decoration-thickness: 2px;
 }
 .site-header-help {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   border: 1px solid var(--border);
   padding: 8px 16px;
   border-radius: 24px;
@@ -431,7 +439,7 @@ button:disabled {
   color: var(--secondary) !important;
   font-size: 12px !important;
   font-weight: 600 !important;
-  min-height: 28px;
+  min-height: 44px;
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -440,7 +448,8 @@ button:disabled {
 .site-footer nav a,
 .site-footer nav button {
   font-size: 12px !important;
-  min-height: 32px;
+  min-height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
 }

@@ -11,6 +11,13 @@
   font-size: 13px;
   margin-bottom: 32px;
 }
+.board-game-top a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  overflow-wrap: anywhere;
+}
 .board-game-heading {
   text-align: center;
   margin-bottom: 32px;
@@ -280,9 +287,8 @@
     padding: 10px 0;
   }
   .board-game-actions {
-    position: sticky;
-    bottom: 0;
-    z-index: 5;
+    /* Multi-row action bars must not cover the board on a small screen. */
+    position: static;
     background: var(--background);
     padding: 12px 0;
     border-top: 1px solid var(--border);

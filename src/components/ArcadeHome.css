@@ -6,6 +6,7 @@
 .lobby-brand { display:flex; align-items:center; gap:10px; font-size:25px; font-weight:850; letter-spacing:-1px; }
 .lobby-brand>span { display:grid; place-items:center; width:35px; height:35px; background:var(--lobby-ink); color:#e7f395; border-radius:11px; font-size:25px; }
 .lobby-nav>div { display:flex; gap:32px; font-size:14px; font-weight:650; }
+.lobby-nav a { display:inline-flex; align-items:center; min-height:44px; min-width:44px; }
 .lobby-nav-friend { font-size:13px; border:1px solid #bcc8bc; padding:11px 17px; border-radius:30px; }
 .lobby-hero { display:grid; grid-template-columns:1.35fr 1fr; gap:48px; padding:58px 0 64px; align-items:center; }
 .lobby-eyebrow { font-size:11px; font-weight:750; letter-spacing:1.5px; text-transform:uppercase; }
