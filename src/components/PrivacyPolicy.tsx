@@ -35,12 +35,14 @@ const PrivacyPolicy: React.FC = () => (
         Privacy Policy
       </h1>
       <p>
-        <strong>Last updated:</strong> October 27, 2026
+        <strong>Last updated:</strong> November 7, 2026
       </p>
       <p>
         Thank you for choosing DoStrike Gaming Portal. Your privacy is important
         to us. This Privacy Policy explains how we collect, use, disclose, and
         safeguard your information when you use our <strong>website</strong>.
+        This policy covers dostrike.com; it does not describe the data practices
+        of Android apps distributed through Google Play.
       </p>
       <p>
         For how we separate editorial content from advertising and how Google
@@ -62,16 +64,19 @@ const PrivacyPolicy: React.FC = () => (
       <ul>
         <li>
           <strong>Personal Data:</strong> We do not require personal information
-          to play games or read content on this website, and we do not operate a
-          contact form that uploads messages through the site. If you choose to
+          or an account to play games or read content on this website. We do not
+          operate a contact form that uploads messages through the site. If you choose to
           email us (via the address on our Contact page), anything you send—such
           as your email address, name, or other details you include—is ordinary
-          email correspondence handled for support purposes only.
+          email correspondence handled to respond to you and resolve your request.
+          Our email provider also processes that correspondence. Please avoid
+          sending passwords, payment details or other sensitive information.
         </li>
         <li>
           <strong>Browser storage:</strong> Game settings, theme, scores, daily
           challenge progress and cookie preferences are saved locally on your
-          device. These records are not an aggregate visitor tracking service.
+          device, in this browser. They are not synced to a DoStrike account.
+          These records are not an aggregate visitor tracking service.
           Google Analytics and Netlify Web Analytics are not enabled in the
           current release. If advertising is enabled in a future release,
           Google and its partners may use cookies and other identifiers to
@@ -91,7 +96,9 @@ const PrivacyPolicy: React.FC = () => (
           connection information, such as IP addresses and requested pages, to
           deliver the website. Private online games send room identifiers and
           moves through our game server to the other player; this differs from
-          local play against the computer or on the same device.
+          local play against the computer or on the same device. Our game server
+          records operational events, including room and connection identifiers,
+          joins, leaves and errors, for operation and troubleshooting.
         </li>
       </ul>
       <h2
@@ -138,6 +145,13 @@ const PrivacyPolicy: React.FC = () => (
           .
         </li>
         <li>
+          <strong>Service providers:</strong> Netlify hosts the website, Render
+          hosts the private-game server, and our email provider handles support
+          correspondence. These providers process the connection or message
+          information needed to provide their services. Information may also be
+          disclosed where required by law.
+        </li>
+        <li>
           <strong>No Sale of Personal Data:</strong> We do not sell your
           personal data to third parties.
         </li>
@@ -158,16 +172,21 @@ const PrivacyPolicy: React.FC = () => (
           scores, daily progress and cookie preferences on that browser.
         </li>
         <li>
-          We retain your data only as long as necessary to provide our services
-          and for legitimate business purposes.
+          Live room membership is held in server memory; an empty room is
+          removed after its players leave or disconnect. This does not delete
+          operational logs held by the hosting provider. Hosting logs follow the
+          provider's retention settings and policies. Support correspondence is
+          retained as needed to handle the request and meet applicable obligations.
         </li>
         <li>
-          We use industry-standard security measures to protect your information
-          from unauthorized access or disclosure.
+          The public website and its online-game connection use encrypted
+          connections. No internet service or device storage can be
+          guaranteed completely secure; protect access to your device and email.
         </li>
         <li>
-          Data related to advertising and analytics may be retained by
-          third-party partners according to their policies.
+          If advertising is enabled in a future release, advertising data held
+          by Google and its partners will follow their retention policies. The
+          current release does not send Google Analytics events.
         </li>
       </ul>
       <h2
@@ -194,6 +213,12 @@ const PrivacyPolicy: React.FC = () => (
             Google Ad Settings
           </a>
           .
+        </li>
+        <li>
+          <strong>Local game data:</strong> Use your browser's site-data controls
+          to remove locally saved games and records. We cannot recover or clear
+          those browser-local records remotely. Clearing browser data does not
+          delete support emails or hosting logs.
         </li>
         <li>
           <strong>Access and Deletion:</strong> If you wish to access or delete
