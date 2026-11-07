@@ -1,0 +1,94 @@
+{
+  "title": "DoStrike Games – Privacy Policy (Android apps)",
+  "updated": "7 November 2026",
+  "intro": "This policy covers the DoStrike Games apps for Android distributed by DoStrike Games: DoStrike Games (the hub), Balloon Words, Block Fit, Bloom Match, Bubble Drift, Checkers, Chess, Colour Sort, Dots and Boxes, Four in a Row, Gomoku, Letter Lock, Mahjong Tiles, Mancala, Minesweeper, Reversi, Sea Battle, Slide & Merge, Solitaire, Sudoku, Word Search and Word Shuffle (\"the apps\"). The DoStrike website has its own policy at https://dostrike.com/privacy/. Features described below apply only in apps that offer them.",
+  "sections": [
+    {
+      "title": "The short version",
+      "paragraphs": [
+        "- You do not need an account to play, and the apps do not ask for your contacts. If you email us for support, we receive your email address and anything you choose to include.\n- Your saved games, scores, settings and progress are stored on your device; Android backup may also apply as described below.\n- The apps are free and show ads from Google AdMob. Where the law requires it, we ask for your consent first.\n- Usage analytics are off unless you turn them on in Settings.\n- We do not sell your personal data."
+      ]
+    },
+    {
+      "title": "1. Information stored on your device",
+      "paragraphs": [
+        "Game progress, records, daily challenge results, settings (theme, sound, vibration), lesson and practice progress, and reminder choices are saved locally on your device. These local records are not uploaded to a DoStrike account. The advertising, optional analytics and Nearby SDK processing described below are separate from those local saves. Android may include this data in your device's own backup to your Google account if you have backup turned on; that backup is controlled by you and Google, not by us. Uninstalling an app deletes its data from the device."
+      ]
+    },
+    {
+      "title": "2. Advertising (Google AdMob)",
+      "paragraphs": [
+        "The apps show banner ads, ads between rounds, and optional rewarded ads that you choose to watch (for example, for an extra hint). These are provided by Google AdMob.",
+        "To show and measure ads, Google and its partners may collect your device's advertising ID, IP address, approximate location derived from it, device and app information, and how you interact with ads, and may use cookies or similar identifiers. Where required, the apps show a privacy message to collect consent or provide applicable privacy choices before requesting ads. You can revisit available choices from Settings → Privacy choices in the app. You can also reset or delete your advertising ID in your device settings.",
+        "How Google uses this data: https://policies.google.com/technologies/partner-sites"
+      ]
+    },
+    {
+      "title": "3. Usage analytics (Google Firebase), off by default",
+      "paragraphs": [
+        "If you turn on Settings → Share usage analytics, the app sends usage events to Google Firebase Analytics, such as a round finished, a lesson started or a daily challenge completed, along with standard device and app information. Firebase Analytics uses an app-instance identifier, so these events should not be considered fully anonymous. This helps us see which features are used and investigate problems. We never send player names, board contents or anything you type. We do not use these optional usage events to personalise ads. Turning the setting off stops future optional usage-event collection; it does not itself delete events already collected. Google SDK identifier processing also depends on the SDK configuration, device permissions and privacy choices.",
+        "Firebase privacy information: https://firebase.google.com/support/privacy"
+      ]
+    },
+    {
+      "title": "4. Nearby play",
+      "paragraphs": [
+        "Some games let you play against someone next to you. This uses Google Play services' Nearby Connections over Bluetooth and Wi-Fi to connect the two devices directly. Only game moves and the details needed to set up the game are exchanged, and only with the device you choose to play. The game payload is exchanged with the selected peer, rather than through a DoStrike game server. Separately, Google Play services Nearby SDK collects usage diagnostics, including device information and connection performance metrics. Google's device settings provide controls for this SDK usage information; the optional Firebase analytics switch is a separate control. See https://developers.google.com/nearby/connections/overview for details. Android may ask for nearby-devices permission (on older Android versions, location permission, which this feature does not use to find where you are)."
+      ]
+    },
+    {
+      "title": "5. Reminders",
+      "paragraphs": [
+        "If you turn on daily reminders, the app schedules notifications on your device. No reminder information leaves the device."
+      ]
+    },
+    {
+      "title": "6. Purchases",
+      "paragraphs": [
+        "Where an app offers an optional purchase (for example, Four in a Row Premium), payment is handled entirely by Google Play. The app receives purchase status and transaction information needed to check your entitlement. We do not receive your full payment-card details."
+      ]
+    },
+    {
+      "title": "7. Ratings",
+      "paragraphs": [
+        "The apps may occasionally show Google Play's in-app review prompt. Any rating or review you leave is handled by Google Play under Google's policies."
+      ]
+    },
+    {
+      "title": "8. Children",
+      "paragraphs": [
+        "The apps are intended for a general audience aged 13 and over and are not directed at children under 13. We do not knowingly collect personal information from children."
+      ]
+    },
+    {
+      "title": "9. Sharing",
+      "paragraphs": [
+        "We do not sell or rent personal data. Data is processed by the Google services described above, by your chosen peer during Nearby play, and by our email provider if you contact support. Information may also be disclosed where required by law. Google services process data under their applicable terms and privacy policies."
+      ]
+    },
+    {
+      "title": "10. Data retention and your choices",
+      "paragraphs": [
+        "- Data on your device stays until you clear the app's data or uninstall it.\n- Advertising data held by Google follows Google's retention policies; you can manage it with the consent choices and your device's advertising ID settings.\n- Optional analytics data is retained according to the Google Analytics property retention settings and Google policies. User-level/event-level retention controls do not apply in the same way to standard aggregated reports; there is no blanket promise that all analytics data is deleted after 14 months. See https://support.google.com/analytics/answer/7667196 for the retention controls.\n- Support emails are retained as needed to respond to your request and meet applicable obligations.\n- You can contact us to request access to or deletion of information we hold about you, subject to applicable law. We cannot remotely recover or delete your device-local saves; use Android app-storage controls. Requests about data Google controls can also be made through Google's privacy tools."
+      ]
+    },
+    {
+      "title": "11. Security",
+      "paragraphs": [
+        "Protect access to your device and Google account. Nearby Connections encrypts peer connections, and Google services use encrypted transport as described in their service documentation. No device or internet service can be guaranteed completely secure. Local app data, Google service data, Android backups and support emails have different storage and deletion controls."
+      ]
+    },
+    {
+      "title": "12. Changes",
+      "paragraphs": [
+        "If we change this policy, we will update the date above and publish the new version at this address."
+      ]
+    },
+    {
+      "title": "13. Contact",
+      "paragraphs": [
+        "DoStrike Games, Avishek Pokhrel\nEmail: dostrike0@gmail.com\nWebsite: https://dostrike.com/"
+      ]
+    }
+  ]
+}

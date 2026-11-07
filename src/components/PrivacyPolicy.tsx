@@ -42,7 +42,8 @@ const PrivacyPolicy: React.FC = () => (
         to us. This Privacy Policy explains how we collect, use, disclose, and
         safeguard your information when you use our <strong>website</strong>.
         This policy covers dostrike.com; it does not describe the data practices
-        of Android apps distributed through Google Play.
+        of Android apps distributed through Google Play. For those apps, see the{" "}
+        <a href="/app-privacy">Android app privacy policy</a>.
       </p>
       <p>
         For how we separate editorial content from advertising and how Google

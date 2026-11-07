@@ -38,6 +38,7 @@ const About = lazy(() => import("./components/About"));
 const Blog = lazy(() => import("./components/Blog"));
 const Article = lazy(() => import("./components/Article"));
 const Contact = lazy(() => import("./components/Contact"));
+const AppPrivacyPolicy = lazy(() => import("./components/AppPrivacyPolicy"));
 const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
 const FAQ = lazy(() => import("./components/FAQ"));
 const TermsOfService = lazy(() => import("./components/TermsOfService"));
@@ -137,6 +138,7 @@ function App() {
                     <Route path="/blog/:slug" element={<Article />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route path="/app-privacy" element={<AppPrivacyPolicy />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/terms" element={<TermsOfService />} />
                     <Route path="/cookies" element={<CookiePolicy />} />
